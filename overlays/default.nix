@@ -49,6 +49,7 @@ final: prev: {
 
   # Gtk
   paleta = prev.callPackage ./paleta {};
+  tubeconverter = prev.callPackage ./tubeconverter {};
 
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};
