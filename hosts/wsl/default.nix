@@ -46,7 +46,7 @@
   environment.pathsToLink = ["/share/zsh"];
 
   documentation.enable = false;
-  documentation.nixos.enable = false;
+  # documentation.nixos.enable = false;
   programs.command-not-found.enable = false;
 
   time.timeZone = "Asia/Shanghai";

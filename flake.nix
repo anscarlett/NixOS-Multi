@@ -182,13 +182,15 @@
         };
 
         # for repl
-        inherit lib;
+        inherit lib inputs;
+        hm = self.nixosConfigurations.yoga.config.home-manager.users.iab;
+
+        # for easy build
+        wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
 
         livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
         # or
         # nixos-generate -f iso -c ~/nsworld/hosts/livecd/vanilla-iso.nix
-
-        wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
       };
 
       systems = ["x86_64-linux" "aarch64-linux"];
@@ -201,9 +203,11 @@
       }: let
         pkgs = import nixpkgs {
           inherit system overlays;
-          allowUnfree = true;
-          # allowBroken = true;
-          # allowUnsupportedSystem = true;
+          config = {
+            allowUnfree = true;
+            # allowBroken = true;
+            # allowUnsupportedSystem = true;}
+          };
         };
       in {
         # nix build .#apps or self#apps / nix run self#apps
