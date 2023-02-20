@@ -43,18 +43,15 @@ final: prev: {
   # Rust
   # mousai = prev.callPackage ./mousai {};
   sniffnet = prev.callPackage ./sniffnet {}; # iced
-  gnome-metronome = prev.callPackage ./gnome-metronome {};
 
   # Go
 
   # Gtk
   paleta = prev.callPackage ./paleta {};
-  tubeconverter = prev.callPackage ./tubeconverter {};
 
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};
   klever = prev.libsForQt5.callPackage ./klever {};
-  aphototoollibre = prev.libsForQt5.callPackage ./aphototoollibre {};
 
   # Python
   gestures-gtk = prev.callPackage ./gestures-gtk {}; #WIP!!

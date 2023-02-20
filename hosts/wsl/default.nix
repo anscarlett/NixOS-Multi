@@ -19,7 +19,8 @@
   };
 
   networking.hostName = "wsl";
-  # users.defaultUserShell = pkgs.zsh;
+
+  users.defaultUserShell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
     binutils
@@ -46,10 +47,11 @@
   environment.pathsToLink = ["/share/zsh"];
 
   documentation.enable = false;
-  # documentation.nixos.enable = false;
+
   programs.command-not-found.enable = false;
 
   time.timeZone = "Asia/Shanghai";
+
   system.stateVersion = "22.05";
 
   #######################################################################

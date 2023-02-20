@@ -35,6 +35,7 @@
       "https://mirror.sjtu.edu.cn/nix-channels/store"
     ];
     trusted-users = ["@wheel"];
+    experimental-features = ["nix-command" "flakes" "repl-flake"];
   };
 
   #######################################################################
@@ -65,6 +66,8 @@
     ydict
     unp
     unrar
+    ouch
+    ipinfo
   ];
 
   time.timeZone = "Asia/Shanghai";

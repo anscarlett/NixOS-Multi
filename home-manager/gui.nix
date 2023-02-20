@@ -86,7 +86,7 @@ in {
     # rnote # handwritten note
     # foliate # (webkitgtk)
     # standardnotes
-    # iotas
+    iotas
     # paper-note
     # endeavour
     ghostwriter

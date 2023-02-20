@@ -66,7 +66,7 @@
       _comp_options+=(globdots)
     '';
     initExtra = ''
-      # Promt pure-promt
+      # Promt pure-prompt
       autoload -U promptinit; promptinit
       PURE_PROMPT_SYMBOL=›
       PURE_PROMPT_VICMD_SYMBOL=‹
