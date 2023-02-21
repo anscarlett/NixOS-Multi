@@ -11,6 +11,7 @@ in {
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv
+    csbooks
 
     foot
     kitty
@@ -51,7 +52,7 @@ in {
     goodvibes
     go-musicfox
     # netease-cloud-music-gtk
-    mousai # 听歌识曲
+    mousai
     # eartag
     # tagger
     # jamesdsp

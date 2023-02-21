@@ -60,6 +60,7 @@
       # clipboard-indicator
       # blur-my-shell
       gradient-top-bar
+      top-bar-organizer
       # weather-oclock
       # proxy-switcher
       # just-perfection
