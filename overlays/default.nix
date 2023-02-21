@@ -28,7 +28,6 @@ final: prev: {
   # deb / autoPatchelf
   he3 = prev.callPackage ./he3 {};
   xmind = prev.callPackage ./xmind {};
-  freedownloadmanager = prev.callPackage ./freedownloadmanager {};
   clash-verge = prev.callPackage ./clash-verge {};
   clash-verge-source = prev.callPackage ./clash-verge-source {};
   clash-for-windows = prev.callPackage ./clash-for-windows {};
@@ -36,11 +35,9 @@ final: prev: {
   clash-premium = prev.callPackage ./clash-premium {};
 
   # C
-  xclicker = prev.callPackage ./xclicker {};
   azcomicv = prev.callPackage ./azcomicv {};
 
   # Rust
-  # mousai = prev.callPackage ./mousai {};
   sniffnet = prev.callPackage ./sniffnet {}; # iced
 
   # Go
@@ -74,7 +71,6 @@ final: prev: {
 
   # Java
   spotiflyer = prev.callPackage ./spotiflyer {};
-  mindustry = prev.callPackage ./mindustry {}; # game
 
   # Ruby
   bashly = prev.callPackage ./bashly {};
