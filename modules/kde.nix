@@ -15,7 +15,7 @@ in {
     dconf.enable = true;
     kdeconnect.enable = true;
     partition-manager.enable = true;
-    fcitxCustomize.enable = true;
+    my-fcitx.enable = true;
   };
 
   # services.gnome.gnome-keyring.enable = true;

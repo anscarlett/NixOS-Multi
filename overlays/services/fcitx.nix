@@ -4,14 +4,14 @@
   config,
   ...
 }: {
-  options.programs.fcitxCustomize = {
+  options.programs.my-fcitx = {
     enable = lib.mkEnableOption (lib.mdDoc ''
-      fcitx5 customize.
+      my fcitx5 customize.
     '');
   };
 
   config = let
-    cfg = config.programs.fcitxCustomize;
+    cfg = config.programs.my-fcitx;
   in
     lib.mkIf cfg.enable {
       i18n.inputMethod = lib.mkIf cfg.enable {

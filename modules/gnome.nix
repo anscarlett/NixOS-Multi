@@ -75,7 +75,7 @@
     package = pkgs.gnomeExtensions.gsconnect;
   };
 
-  programs.fcitxCustomize.enable = true;
+  programs.my-fcitx.enable = true;
 
   # i18n.inputMethod = {
   #   enabled = "ibus";

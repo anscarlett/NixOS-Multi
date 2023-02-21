@@ -31,7 +31,7 @@
     # gtklock.enable = true;
     evince.enable = true;
     file-roller.enable = true;
-    fcitxCustomize.enable = true;
+    my-fcitx.enable = true;
 
     thunar = {
       enable = true;
