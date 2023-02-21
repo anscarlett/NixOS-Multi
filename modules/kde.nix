@@ -15,6 +15,7 @@ in {
     dconf.enable = true;
     kdeconnect.enable = true;
     partition-manager.enable = true;
+    fcitxCustomize.enable = true;
   };
 
   # services.gnome.gnome-keyring.enable = true;
@@ -47,17 +48,6 @@ in {
       # kcontacts
       # korganizer
     ]);
-
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.enableRimeData = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-rime
-      fcitx5-breeze
-      rime-easy-en
-      rime-aurora-pinyin
-    ];
-  };
 
   services.xserver = {
     enable = true;

@@ -13,6 +13,7 @@
     };
 
     gnome.sushi.enable = true;
+
     packagekit.enable = false;
     gnome.tracker.enable = false;
     gnome.tracker-miners.enable = false;
@@ -62,14 +63,11 @@
       # weather-oclock
       # proxy-switcher
       # just-perfection
-      # user-avatar-in-quick-settings
       space-bar
       dotspaces
       runcat
-      # forge
       caffeine
       ddterm
-      # replace-activities-text
     ]);
 
   programs.kdeconnect = {
@@ -77,22 +75,14 @@
     package = pkgs.gnomeExtensions.gsconnect;
   };
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.enableRimeData = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-rime
-      fcitx5-breeze
-      rime-easy-en
-      rime-aurora-pinyin
-      # fcitx5-chinese-addons
-    ];
+  programs.fcitxCustomize.enable = true;
 
-    # enabled = "ibus";
-    # ibus.engines = with pkgs.ibus-engines; [
-    #   rime
-    #   # libpinyin
-    #   # typing-booster
-    # ];
-  };
+  # i18n.inputMethod = {
+  #   enabled = "ibus";
+  #   ibus.engines = with pkgs.ibus-engines; [
+  #     rime
+  #     # libpinyin
+  #     # typing-booster
+  #   ];
+  # };
 }

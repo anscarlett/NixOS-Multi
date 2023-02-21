@@ -25,6 +25,10 @@ in
           ../hosts/${hostname}
 
           {
+            imports = [
+              ../overlays/services/fcitx.nix
+            ];
+
             nixpkgs.overlays = overlays;
             nixpkgs.config = {
               allowUnfree = true;

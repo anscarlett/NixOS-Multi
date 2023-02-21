@@ -3,18 +3,18 @@
   pkgs,
   ...
 }: {
-  zramSwap.enable = true;
-
   boot = {
     # tmpOnTmpfs = true;
     cleanTmpDir = true;
     plymouth.enable = true;
     supportedFilesystems = ["ntfs"];
 
-    # Silent boot in initrd.systemd
+    # Silent boot on initrd.systemd
     kernelParams = ["systemd.show_status=false"];
     initrd.systemd.enable = true;
   };
+
+  zramSwap.enable = true;
 
   services = {
     fwupd.enable = true;
@@ -39,8 +39,6 @@
     # efitools
   ];
 
-  environment.variables = {};
-
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Electron wayland support
   };
@@ -52,10 +50,7 @@
 
   programs.command-not-found.enable = false;
 
-  documentation = {
-    enable = false;
-    nixos.enable = false;
-  };
+  documentation.enable = false;
 
   time.timeZone = "Asia/Shanghai";
 

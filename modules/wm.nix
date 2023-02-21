@@ -31,6 +31,7 @@
     # gtklock.enable = true;
     evince.enable = true;
     file-roller.enable = true;
+    fcitxCustomize.enable = true;
 
     thunar = {
       enable = true;
@@ -62,18 +63,6 @@
     enable = true;
     wlr.enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk];
-  };
-
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.enableRimeData = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-rime
-      fcitx5-breeze
-      rime-easy-en
-      rime-aurora-pinyin
-      # fcitx5-chinese-addons
-    ];
   };
 
   home-manager.users.${username} = {
