@@ -37,7 +37,6 @@ final: prev: {
 
   # C
   xclicker = prev.callPackage ./xclicker {};
-  implay = prev.callPackage ./implay {};
   azcomicv = prev.callPackage ./azcomicv {};
 
   # Rust
