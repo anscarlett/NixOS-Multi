@@ -26,7 +26,7 @@ in
 
           {
             imports = [
-              ../overlays/services/fcitx.nix
+              ../modules/services/fcitx.nix
             ];
 
             nixpkgs.overlays = overlays;

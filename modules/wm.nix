@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    # ../overlays/services/gtklock.nix
+    # ./services/gtklock.nix
   ];
 
   services = {

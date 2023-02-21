@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
-    ../overlays/services/clash-verge.nix
-    ../overlays/services/clash-for-windows.nix
+    ./services/clash-verge.nix
+    ./services/clash-for-windows.nix
   ];
 
   programs.clash-verge = {

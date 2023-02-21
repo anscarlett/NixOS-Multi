@@ -9,7 +9,7 @@
     plymouth.enable = true;
     supportedFilesystems = ["ntfs"];
 
-    # Silent boot on initrd.systemd
+    # Silent boot at initrd.systemd
     kernelParams = ["systemd.show_status=false"];
     initrd.systemd.enable = true;
   };
