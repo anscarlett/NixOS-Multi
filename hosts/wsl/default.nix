@@ -33,8 +33,9 @@
 
     # Gui
     foot
-    emacs
+    kitty
     alacritty
+    emacs
     goodvibes
   ];
 
