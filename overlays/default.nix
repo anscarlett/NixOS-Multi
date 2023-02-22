@@ -15,6 +15,7 @@ final: prev: {
 
   # RIME
   fcitx5-breeze = prev.callPackage ./fcitx5-breeze {};
+  rime-ice = prev.callPackage ./rime-ice {};
   rime-easy-en = prev.callPackage ./rime-easy-en {};
   rime-aurora-pinyin = prev.callPackage ./rime-aurora-pinyin {};
 

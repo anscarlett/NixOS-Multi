@@ -53,7 +53,7 @@
   sbctl enroll-keys --microsoft
   */
   boot.lanzaboote = {
-    enable = true;
+    enable = false;
     configurationLimit = 8;
     pkiBundle = "/etc/secureboot";
   };
@@ -64,7 +64,7 @@
       efiSysMountPoint = "/boot/efi"; # default /boot
     };
     systemd-boot = {
-      enable = false;
+      enable = true;
       configurationLimit = 8; # bootmenu items
       consoleMode = "max";
     };

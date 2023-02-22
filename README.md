@@ -35,7 +35,7 @@ go/rust/python/java/node/php/ruby-on-rails
 # Desktop Setup
 
 ``` shell
-....
+curl -fsSL https://git.io/rime-install | rime_dir="$HOME/.local/share/fcitx5/rime" bash -s -- rime-install iDvel/rime-ice:others/recipes/full
 ```
 
 # Nix Lang
