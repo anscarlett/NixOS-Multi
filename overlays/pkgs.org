@@ -451,6 +451,13 @@ pushd deps/nightpdf/build/icon.iconset
   cp -r $image $out/share/icons/hicolor/''${image%.png}/apps/${pname}.png
   done
 popd
+
+let
+  inherit ((builtins.getFlake
+    "github:NixOS/nixpkgs/8de8b98839d1f20089582cfe1a81207258fcc1f1").legacyPackages.${stdenv.system})
+    # v2ray 4
+    v2ray v2ray-geoip v2ray-domain-list-community;
+in
 #+end_src>
 
 * meta

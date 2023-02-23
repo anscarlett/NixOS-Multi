@@ -10,8 +10,8 @@ stdenvNoCC.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "iDvel";
     repo = pname;
-    rev = "23a8c8efb46c66ad3eb730255a36382481b99c00";
-    hash = "sha256-yl6PgYW2vudftA8/NOnK5Va+bT3Z/7QCFoQCUOCGDuM=";
+    rev = "3888e03637b7943051e83ed2960a133cc5a35af2";
+    hash = "sha256-ImJAX/imye6dJucVpfbsKI0LekSjAiGpMpmg37AImQk=";
   };
 
   installPhase = ''
@@ -21,9 +21,9 @@ stdenvNoCC.mkDerivation rec {
     install -Dm644 symbols_custom.yaml    $out/share/rime-data
     # install -Dm644 *.{lua,gram}           $out/share/rime-data
 
-    cp -r opencc    $out/share/rime-data
-    cp -r cn_dicts  $out/share/rime-data
-    cp -r en_dicts  $out/share/rime-data
+    mv opencc    $out/share/rime-data
+    mv cn_dicts  $out/share/rime-data
+    mv en_dicts  $out/share/rime-data
   '';
 
   meta = with lib; {

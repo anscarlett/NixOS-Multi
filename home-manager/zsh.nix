@@ -82,6 +82,9 @@
       autoload -U select-word-style
       select-word-style bash
 
+      # hstr
+      export HISTFILE=${config.xdg.configHome}/zsh/.zsh_history
+
       # Keybindings
       bindkey -e                               # Emacs keybinding
       bindkey  "^[[3~"  delete-char            # Del key

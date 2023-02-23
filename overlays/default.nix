@@ -25,6 +25,7 @@ final: prev: {
   thorium-reader = prev.callPackage ./thorium-reader {};
   nightpdf = prev.callPackage ./nightpdf {};
   music-you = prev.callPackage ./music-you {};
+  weektodo = prev.callPackage ./weektodo {};
 
   # deb / autoPatchelf
   he3 = prev.callPackage ./he3 {};
