@@ -27,11 +27,15 @@
     #   enable = true; # Completion failed on wsl
     #   prompt.theme = "pure";     # off / pure
     # };
-    # oh-my-zsh = {
-    #   enable = true;
-    #   theme = "simple";         # "" / simple / af-magic
-    #   plugins = [ "git" "sudo" ];
-    # };
+    oh-my-zsh = {
+      enable = true;
+      theme = "refined"; # "" /simple/af-magic/refined
+      plugins = [
+        "sudo" # pressing `ESC` twice
+        "copypath"
+        "copyfile"
+      ];
+    };
     plugins = [
       # {
       #   name = "zsh-nix-shell";
@@ -55,23 +59,23 @@
       setopt no_nomatch                        # bash wildcard
       unsetopt correct                         # Disable AutoCorrect
 
-      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"       # Colored completion (different colors for dirs/files/etc)
-      zstyle ':completion:*' completer _complete _ignored _approximate
-      zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-      zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-      zstyle ':completion:*' menu select
-      zstyle ':completion:*' verbose true
-      _comp_options+=(globdots)
+      # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+      # zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"       # Colored completion (different colors for dirs/files/etc)
+      # zstyle ':completion:*' completer _complete _ignored _approximate
+      # zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+      # zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+      # zstyle ':completion:*' menu select
+      # zstyle ':completion:*' verbose true
+      # _comp_options+=(globdots)
     '';
     initExtra = ''
       # Promt pure-prompt
-      autoload -U promptinit; promptinit
-      PURE_PROMPT_SYMBOL=›
-      PURE_PROMPT_VICMD_SYMBOL=‹
-      zstyle :prompt:pure:git:stash show yes
-      zstyle :prompt:pure:prompt:success color green
-      prompt pure
+      # autoload -U promptinit; promptinit
+      # PURE_PROMPT_SYMBOL=›
+      # PURE_PROMPT_VICMD_SYMBOL=‹
+      # zstyle :prompt:pure:git:stash show yes
+      # zstyle :prompt:pure:prompt:success color green
+      # prompt pure
 
       # Compatibility bash completion
       autoload -U bashcompinit && bashcompinit
