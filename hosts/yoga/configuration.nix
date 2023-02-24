@@ -16,8 +16,8 @@
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
   ];
 
-  # nixos-hardware
-  # hardware.amdgpu.amdvlk = true;
+  # amdvlk || opengl
+  hardware.amdgpu.amdvlk = true;
 
   #######################################################################
   ## Kernel
