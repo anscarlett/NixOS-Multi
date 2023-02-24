@@ -12,8 +12,6 @@ final: prev: {
   # Data
   nixos-helper = prev.callPackage ./nixos-helper {};
   sddm-theme-astronaut = prev.callPackage ./sddm-theme-astronaut {};
-
-  # RIME
   fcitx5-breeze = prev.callPackage ./fcitx5-breeze {};
   rime-ice = prev.callPackage ./rime-ice {};
   rime-easy-en = prev.callPackage ./rime-easy-en {};
