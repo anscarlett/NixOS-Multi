@@ -5,7 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    pure-prompt
+    # pure-prompt
   ];
 
   programs.fish = {
@@ -18,26 +18,12 @@
     enableZshIntegration = true;
   };
 
-  # https://github.com/wszqkzqk/easy-zsh-config/blob/master/easy-zsh-config
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
     enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
-    # prezto = {
-    #   enable = true; # Completion failed on wsl
-    #   prompt.theme = "pure";     # off / pure
-    # };
-    # oh-my-zsh = {
-    #   enable = true;
-    #   theme = "refined"; # "" /simple/af-magic/refined
-    #   plugins = [
-    #     "sudo" # pressing `ESC` twice
-    #     "copypath"
-    #     "copyfile"
-    #   ];
-    # };
     plugins = [
       # {
       #   name = "zsh-nix-shell";
@@ -62,20 +48,10 @@
     shellAliases = {
       history = "history 0"; # show whole history
     };
-    profileExtra = ''
-      setopt no_nomatch # Compatible bash
+    initExtra = ''
+      # setopt no_nomatch # Compatible bash wildcard
       unsetopt correct  # Disable AutoCorrect
 
-      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"       # Colored completion (different colors for dirs/files/etc)
-      zstyle ':completion:*' menu select
-      # zstyle ':completion:*' completer _complete _ignored _approximate
-      # zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-      # zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-      # zstyle ':completion:*' verbose true
-      # _comp_options+=(globdots)
-    '';
-    initExtra = ''
       # Promt themes
       # autoload -U promptinit; promptinit
       # PURE_PROMPT_SYMBOL=›
@@ -89,7 +65,22 @@
       autoload -U bashcompinit && bashcompinit
       source ${../overlays/nixos-helper/ns.bash}
 
-      # Compatibility bash word-style
+      # Completions
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive tab completion
+      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" # Colored completion (different colors for dirs/files/etc)
+      zstyle ':completion:*' menu select                        # Hit 'TAB' to select
+
+      # Color man pages
+      export LESS_TERMCAP_mb=$'\E[01;32m'
+      export LESS_TERMCAP_md=$'\E[01;32m'
+      export LESS_TERMCAP_me=$'\E[0m'
+      export LESS_TERMCAP_se=$'\E[0m'
+      export LESS_TERMCAP_so=$'\E[01;47;34m'
+      export LESS_TERMCAP_ue=$'\E[0m'
+      export LESS_TERMCAP_us=$'\E[01;36m'
+      export LESS=-R
+
+      # Bash-like navigation between words
       autoload -U select-word-style
       select-word-style bash
 

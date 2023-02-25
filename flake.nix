@@ -216,7 +216,7 @@
         # nix fmt :Formatter all files in this repo.
         formatter = pkgs.alejandra;
 
-        # nix run . -- diff
+        # nix run . -- run
         packages.default = pkgs.nixos-helper;
 
         # nix develop .#rust
