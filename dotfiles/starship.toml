@@ -3,10 +3,10 @@
 # disabled = true
 
 # Print a new line at the start of the prompt
-add_newline = true
+# add_newline = false
 
 # Timeout for commands executed by starship (in milliseconds).
-command_timeout = 1000
+# command_timeout = 1000
 
 # disable "It took xxs"
 # cmd_duration.disabled = true;

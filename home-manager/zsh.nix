@@ -13,7 +13,7 @@
   };
 
   programs.starship = {
-    enable = false;
+    enable = true;
     enableBashIntegration = false;
     enableZshIntegration = true;
   };
@@ -21,21 +21,22 @@
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
+    enableCompletion = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
     # prezto = {
     #   enable = true; # Completion failed on wsl
     #   prompt.theme = "pure";     # off / pure
     # };
-    oh-my-zsh = {
-      enable = true;
-      theme = "refined"; # "" /simple/af-magic/refined
-      plugins = [
-        "sudo" # pressing `ESC` twice
-        "copypath"
-        "copyfile"
-      ];
-    };
+    # oh-my-zsh = {
+    #   enable = true;
+    #   theme = "refined"; # "" /simple/af-magic/refined
+    #   plugins = [
+    #     "sudo" # pressing `ESC` twice
+    #     "copypath"
+    #     "copyfile"
+    #   ];
+    # };
     plugins = [
       # {
       #   name = "zsh-nix-shell";
@@ -43,9 +44,14 @@
       #   src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
       # }
       # {
-      #   name = "forgit";
-      #   file = "forgit.plugin.zsh";
-      #   src = "${pkgs.zsh-forgit}/share/zsh/zsh-forgit";
+      #   name = "minimal";
+      #   file = "minimal.zsh";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "subnixr";
+      #     repo = "minimal";
+      #     rev = "6588a399744f34194a25988b4c159cb8b8c67e27";
+      #     hash = "sha256-r5AIk7TzXQ5x+mXRA6isWCn0FvmICeFR36k5Kq4s+Yk=";
+      #   };
       # }
     ];
     history = {
@@ -59,23 +65,24 @@
       setopt no_nomatch                        # bash wildcard
       unsetopt correct                         # Disable AutoCorrect
 
-      # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-      # zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"       # Colored completion (different colors for dirs/files/etc)
-      # zstyle ':completion:*' completer _complete _ignored _approximate
-      # zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-      # zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-      # zstyle ':completion:*' menu select
-      # zstyle ':completion:*' verbose true
-      # _comp_options+=(globdots)
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"       # Colored completion (different colors for dirs/files/etc)
+      zstyle ':completion:*' completer _complete _ignored _approximate
+      zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+      zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+      zstyle ':completion:*' menu select
+      zstyle ':completion:*' verbose true
+      _comp_options+=(globdots)
     '';
     initExtra = ''
-      # Promt pure-prompt
+      # Promt
       # autoload -U promptinit; promptinit
       # PURE_PROMPT_SYMBOL=›
       # PURE_PROMPT_VICMD_SYMBOL=‹
-      # zstyle :prompt:pure:git:stash show yes
-      # zstyle :prompt:pure:prompt:success color green
       # prompt pure
+      # source ${pkgs.pure-prompt}/share/zsh/site-functions/prompt_pure_setup
+      # source minimal.zsh
+      # source ${../dotfiles/zsh/oxide.zsh-theme}
 
       # Compatibility bash completion
       autoload -U bashcompinit && bashcompinit
