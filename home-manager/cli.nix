@@ -8,7 +8,7 @@
     nixos-helper
     nixpkgs-fmt
     alejandra
-    # nil # lsp
+    # nil
     lorri
     # cachix
     nixos-generators

@@ -71,8 +71,8 @@
     ...
   }: {
     imports = [
-      ../overlays/services/wob.nix
-      ../overlays/services/polkit.nix
+      ./services/wob.nix
+      ./services/polkit.nix
     ];
 
     home.packages = with pkgs; [

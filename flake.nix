@@ -71,7 +71,7 @@
       # inputs.nur.overlay
       inputs.nix-alien.overlay
       inputs.emacs-overlay.overlay
-      (import ./overlays)
+      self.overlays.default
       # (final: prev: {
       #   stable = nixpkgs-stable.legacyPackages.${prev.system};
       # })
@@ -85,6 +85,8 @@
   in
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       flake = {
+        overlays.default = import ./overlays;
+
         nixosConfigurations = {
           yoga = lib.mkHost {
             username = "iab";

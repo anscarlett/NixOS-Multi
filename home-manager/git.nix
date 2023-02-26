@@ -9,7 +9,6 @@
     userEmail = "linzway@qq.com";
     aliases = {
       st = "status -sb";
-      pm = "push -u origin main";
       undo = "reset --hard HEAD~1";
       patch = "format-patch --stdout HEAD~1";
       rank = "shortlog -s -n --no-merges";
