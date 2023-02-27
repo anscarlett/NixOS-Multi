@@ -20,10 +20,16 @@ in {
     remmina # (webkitgtk)
 
     # Browsers
+    # (chromium.override {
+    #   commandLineArgs = [
+    #     "--gtk-version=4"
+    #   ];
+    # })
     # (google-chrome.override {
     #   commandLineArgs = [
     #     "--enable-features=VaapiVideoDecoder"
     #     "--use-gl=egl"
+    #     "--gtk-version=4"
     #   ];
     # })
     # (vivaldi.override {

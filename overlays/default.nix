@@ -17,7 +17,7 @@ final: prev: {
   rime-easy-en = prev.callPackage ./rime-easy-en {};
   rime-aurora-pinyin = prev.callPackage ./rime-aurora-pinyin {};
 
-  # electron / appimage
+  # electron ALL WIP!!!
   listen1 = prev.callPackage ./listen1 {};
   koodo-reader = prev.callPackage ./koodo-reader {};
   thorium-reader = prev.callPackage ./thorium-reader {};
@@ -48,6 +48,7 @@ final: prev: {
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};
   klever = prev.libsForQt5.callPackage ./klever {};
+  efibooteditor = prev.qt6Packages.callPackage ./efibooteditor {};
 
   # Python
   gestures-gtk = prev.callPackage ./gestures-gtk {}; #WIP!!
