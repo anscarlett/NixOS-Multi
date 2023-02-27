@@ -484,18 +484,18 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1677402710,
-        "narHash": "sha256-lJDmkqVH6fyhPbcDDpYz+V+p0MlcoPjBsYxAzTt5+fg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "30e272bc047dfa347315e9fe9bcb10a9cf1e0865",
-        "type": "github"
+        "lastModified": 1677485736,
+        "narHash": "sha256-bK/N+18qv2HMEDV73SeQP974LfxEd34N882Hri+mLsk=",
+        "ref": "fix/chrome-gtk4-ime",
+        "rev": "a5c505bc471aacf4067e9670670db06e432a7c9b",
+        "revCount": 458361,
+        "type": "git",
+        "url": "file:///home/iab/devs/nixpkgs/"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable-small",
-        "repo": "nixpkgs",
-        "type": "github"
+        "ref": "fix/chrome-gtk4-ime",
+        "type": "git",
+        "url": "file:///home/iab/devs/nixpkgs/"
       }
     },
     "plasma-manager": {

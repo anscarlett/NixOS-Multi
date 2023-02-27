@@ -5,7 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # pure-prompt
+    pure-prompt
   ];
 
   programs.fish = {
@@ -13,7 +13,7 @@
   };
 
   programs.starship = {
-    enable = true;
+    enable = false;
     enableBashIntegration = false;
     enableZshIntegration = true;
   };
@@ -53,10 +53,10 @@
       unsetopt correct  # Disable AutoCorrect
 
       # Promt themes
-      # autoload -U promptinit; promptinit
-      # PURE_PROMPT_SYMBOL=›
-      # PURE_PROMPT_VICMD_SYMBOL=‹
-      # prompt pure
+      autoload -U promptinit; promptinit
+      PURE_PROMPT_SYMBOL=›
+      PURE_PROMPT_VICMD_SYMBOL=‹
+      prompt pure
       # source ${pkgs.pure-prompt}/share/zsh/site-functions/prompt_pure_setup
       # source minimal.zsh
       # source ${../dotfiles/zsh/oxide.zsh-theme}

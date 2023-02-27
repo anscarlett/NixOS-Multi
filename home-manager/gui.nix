@@ -25,13 +25,13 @@ in {
     #     "--gtk-version=4"
     #   ];
     # })
-    # (google-chrome.override {
-    #   commandLineArgs = [
-    #     "--enable-features=VaapiVideoDecoder"
-    #     "--use-gl=egl"
-    #     "--gtk-version=4"
-    #   ];
-    # })
+    (google-chrome.override {
+      commandLineArgs = [
+        "--enable-features=VaapiVideoDecoder"
+        "--use-gl=egl"
+        "--gtk-version=4"
+      ];
+    })
     # (vivaldi.override {
     #   proprietaryCodecs = true;
     #   enableWidevine = true; # drm
