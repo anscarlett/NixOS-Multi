@@ -47,6 +47,8 @@
 ;; Theme
 (leaf doom-themes
   :ensure t)
+;; (leaf ef-themes
+;;   :ensure t)
 ;; (leaf tangonov-theme
 ;;   :ensure t
 ;;   :require t)
@@ -59,6 +61,7 @@
 ;; (leaf eclipse-theme
 ;;   :require t)
 (load-theme 'doom-tomorrow-night t)
+;; (load-theme 'ef-frost t)
 
 (leaf all-the-icons
   :ensure t)

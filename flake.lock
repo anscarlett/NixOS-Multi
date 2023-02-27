@@ -258,11 +258,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1677437727,
-        "narHash": "sha256-1BoofKqPT08sLCtm2hzABocYrSwkc8GtmeDuvrIXdjc=",
+        "lastModified": 1677533532,
+        "narHash": "sha256-2Ie47MONhIFOxvbLmwhmCCe/IoVDVd7YnoK61vu5Xy8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bf76afbb06b77237507b5279d0d555e05b5cc7f7",
+        "rev": "305daba44a9df57738cffc67c08129005a25579a",
         "type": "github"
       },
       "original": {
@@ -285,11 +285,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1677437790,
-        "narHash": "sha256-RVcWThQSizT4k3WfuNrsRwb6/58tvaZsyRO/5TQkDkM=",
+        "lastModified": 1677488617,
+        "narHash": "sha256-7Y/xDEr2paX7m4+x9lP+5d8CCFVbNCP961NaXc62+Hk=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "a393ac767312d1c69024fcf6f5767bfdd0a4accf",
+        "rev": "a3bff52602cf310e991153e4260b4aa01f4ecb29",
         "type": "github"
       },
       "original": {
@@ -484,18 +484,18 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1677485736,
-        "narHash": "sha256-bK/N+18qv2HMEDV73SeQP974LfxEd34N882Hri+mLsk=",
-        "ref": "fix/chrome-gtk4-ime",
-        "rev": "a5c505bc471aacf4067e9670670db06e432a7c9b",
-        "revCount": 458361,
-        "type": "git",
-        "url": "file:///home/iab/devs/nixpkgs/"
+        "lastModified": 1677517442,
+        "narHash": "sha256-3EJINvDhfwlrMi7arwntVJ6uu6L+MApxyoUxUZ22uHQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7b6e7dd796f8fe17f673b7434e9366f2f7dbd67e",
+        "type": "github"
       },
       "original": {
-        "ref": "fix/chrome-gtk4-ime",
-        "type": "git",
-        "url": "file:///home/iab/devs/nixpkgs/"
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "plasma-manager": {

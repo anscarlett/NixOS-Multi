@@ -9,7 +9,7 @@
   ];
 
   programs.clash-verge = {
-    enable = true;
+    enable = false;
     # tunMode = true;
     # autoStart = true;
   };
