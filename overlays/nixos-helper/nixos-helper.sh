@@ -36,16 +36,8 @@ while [[ $# -gt 0 ]]; do
             nix run nixpkgs#"$2"
             shift ;;
 
-        run-impure)
-            NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#"$2" --impure
-            shift ;;
-
         shell)
             nix shell nixpkgs#"$2"
-            shift ;;
-
-        shell-impure)
-            NIXPKGS_ALLOW_UNFREE=1 nix shell nixpkgs#"$2" --impure
             shift ;;
 
         boot)
@@ -126,6 +118,14 @@ while [[ $# -gt 0 ]]; do
 
         pr-pull)
             gh pr checkout -R NixOS/nixpkgs "$2"
+            shift ;;
+
+        impure-run)
+            NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#"$2" --impure
+            shift ;;
+
+        impure-shell)
+            NIXPKGS_ALLOW_UNFREE=1 nix shell nixpkgs#"$2" --impure
             shift ;;
 
         hash2sri)
