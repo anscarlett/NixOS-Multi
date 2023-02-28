@@ -7,15 +7,12 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
-  # amdvlk = prev.callPackage ./amdvlk { };
 
   # Data
   nixos-helper = prev.callPackage ./nixos-helper {};
   sddm-theme-astronaut = prev.callPackage ./sddm-theme-astronaut {};
   fcitx5-breeze = prev.callPackage ./fcitx5-breeze {};
   rime-ice = prev.callPackage ./rime-ice {};
-  rime-easy-en = prev.callPackage ./rime-easy-en {};
-  rime-aurora-pinyin = prev.callPackage ./rime-aurora-pinyin {};
 
   # electron ALL WIP!!!
   listen1 = prev.callPackage ./listen1 {};

@@ -21,8 +21,6 @@
           fcitx5-rime
           fcitx5-breeze
           rime-ice
-          # rime-easy-en
-          # rime-aurora-pinyin
           # fcitx5-chinese-addons
         ];
       };
