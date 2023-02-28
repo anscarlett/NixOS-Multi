@@ -42,7 +42,6 @@ final: prev: {
   # Go
 
   # Gtk
-  paleta = prev.callPackage ./paleta {};
 
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};

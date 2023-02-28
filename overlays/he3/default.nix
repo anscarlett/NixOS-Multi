@@ -55,9 +55,9 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "A Free, Modern Toolbox Built for Developers";
+    description = "Free, Modern, Productive, Developer Toolbox";
     homepage = "https://he3.app";
-    license = licenses.gpl3Plus;
+    license = licenses.mit;
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     maintainers = with maintainers; [ zendo ];

@@ -67,8 +67,9 @@
       setw -g mode-style 'fg=colour1 bg=colour18 bold'
 
       # Title bar
+      # #H[ost] #W #T #I #{b:pane_current_path}
       set -g set-titles on
-      set -g set-titles-string '#H: #W #I' # Host W T
+      set -g set-titles-string '#H: #W #I'
 
       # Pane borders
       set -g pane-border-style fg=colour235 #fg=base02
@@ -81,6 +82,7 @@
       set -g status-position top
       set -g status-justify left
       set -g status-style 'bg=#282c34 fg=#aab2bf dim'
+      # set -g status-style 'bg=terminal'
       set -g status-left ' '
       set -g status-right '#[bg=#282c34,fg=#aab2bf] %m/%d #[fg=colour233,bg=colour8] %H:%M '
       set -g status-right-length 50
@@ -88,11 +90,11 @@
 
       # default window title colors
       setw -g window-status-style 'fg=white,bg=default,dim'
-      setw -g window-status-format ' [#S]:#I:#{b:pane_current_path} '
+      setw -g window-status-format '[#S]:#I: #W '
 
       # active window title colors
       setw -g window-status-current-style 'fg=black bg=brightgreen bold'
-      setw -g window-status-current-format ' [#S]:#I#[fg=colour249]:#[fg=black]#{b:pane_current_path} '
+      setw -g window-status-current-format '[#S]:#I: #W '
 
       setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
     '';

@@ -19,7 +19,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    clash-verge
 
     git
     firefox
