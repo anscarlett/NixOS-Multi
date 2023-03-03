@@ -17,6 +17,7 @@
       i18n.inputMethod = lib.mkIf cfg.enable {
         enabled = "fcitx5";
         fcitx5.enableRimeData = true;
+        # rime.packages = [ pkgs.rime-ice ];
         fcitx5.addons = with pkgs; [
           fcitx5-rime
           fcitx5-breeze

@@ -80,6 +80,7 @@
 
   # i18n.inputMethod = {
   #   enabled = "ibus";
+  #   rime.packages = [ pkgs.rime-ice ];
   #   ibus.engines = with pkgs.ibus-engines; [
   #     rime
   #     # libpinyin

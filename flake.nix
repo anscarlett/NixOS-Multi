@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    # nixpkgs.url = "git+file:///home/iab/devs/nixpkgs/?ref=fix/chrome-gtk4-ime";
+    # nixpkgs.url = "git+file:///home/iab/devs/nixpkgs/?ref=ibus-rime-data";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -93,8 +93,8 @@
             hostname = "yoga";
             inherit overlays;
             extraModules = [
-              ./modules/gnome.nix
-              # ./modules/kde.nix
+              # ./modules/gnome.nix
+              ./modules/kde.nix
               # ./modules/wm-sway.nix
               # ./modules/wm-hyprland.nix
 

@@ -18,8 +18,9 @@
     # "services/desktops/pipewire/pipewire.nix"
   ];
 
-  environment.systemPackages = with pkgs; [
+  programs.my-fcitx.enable = true;
 
+  environment.systemPackages = with pkgs; [
     git
     firefox
     goodvibes
@@ -76,4 +77,11 @@
 
   # Password: test
   users.users.${username}.hashedPassword = lib.mkForce "$6$HFoXsNJNYZ.lVv0r$vxau6GLUcGMmPctb135ZFYzRO7p0Y0JXDeqSASudCbSSa917.7I4Vi1A/AOjWAWkT2DguOB0VMf0.HW4cy5zp0";
+
+  home-manager.users.${username} = {
+    config,
+    pkgs,
+    ...
+  }: {
+  };
 }

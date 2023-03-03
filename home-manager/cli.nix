@@ -55,7 +55,8 @@
     age
     # rage # age encrypt RIIR
     lf
-    # ctpv
+    ctpv
+    chafa
     viu # image viewer
     graphviz
     # imagemagick
@@ -107,6 +108,7 @@
     ipinfo
     elinks
     dnspeep
+    nethogs
     bandwhich
     traceroute
     speedtest-cli
