@@ -39,7 +39,7 @@
   (define-key org-babel-map (kbd "C-=") 'org-babel-mark-block))
 
 ;; <s TAB: The old way, C-c C-, New way.
-(require 'org-tempo)
+;; (require 'org-tempo) ;; Startup blame
 
 ;; babel
 ;; (org-babel-do-load-languages 'org-babel-load-languages

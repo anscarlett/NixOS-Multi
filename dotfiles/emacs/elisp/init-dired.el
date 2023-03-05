@@ -4,12 +4,10 @@
 
 ;; all-the-icons-dired
 (leaf all-the-icons-dired
-  :require t
   :ensure t
   :hook (dired-mode-hook))
 
 (leaf diredfl
-  :require t
   :ensure t
   :config
   (diredfl-global-mode 1))
