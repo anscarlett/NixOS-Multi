@@ -150,11 +150,6 @@
    "SPC" #'just-one-space
    ))
 
-;; meow
-;; (when (modulep! :editor meow)
-;;   (map!
-;;    ))
-
 ;; 新建 window 并切换过去
 (global-set-key (kbd "C-x 2")
                 (lambda()

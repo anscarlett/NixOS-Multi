@@ -55,6 +55,7 @@ in {
       patch:
         schema_list:
           - schema: rime_ice
+        menu/page_size: 6
     '';
     "ibus/rime/ibus_rime.custom.yaml".text = ''
       patch:
@@ -73,6 +74,7 @@ in {
       patch:
         schema_list:
           - schema: rime_ice
+        menu/page_size: 6
     '';
   };
 }
