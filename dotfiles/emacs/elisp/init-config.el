@@ -121,18 +121,6 @@
 (setq ispell-program-name "aspell" ; use aspell instead of ispell
       ispell-extra-args '("--sug-mode=ultra"))
 
-
-;; move to early-init
-;; (leaf startup
-;;   :custom
-;;   ((inhibit-startup-screen            . t)
-;;    (inhibit-startup-message           . t) ;关闭欢迎界面
-;;    (inhibit-startup-echo-area-message . t) ;关闭 mminibuffer 欢迎消息
-;;    (initial-scratch-message           . nil)
-;;    (initial-major-mode   . 'fundamental-mode)
-;;    ;; (inhibit-default-init . t) ;default.el
-;;    ))
-
 (leaf cus-edit
   :custom `((custom-file . ,(locate-user-emacs-file ".custom.el"))))
 

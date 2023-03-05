@@ -8,9 +8,9 @@
   hmDots = config.home.homeDirectory + "/nsworld/dotfiles";
 in {
   home.sessionPath = [
+    "${../dotfiles/bin}"
     "${config.home.homeDirectory}/.local/bin"
     "${config.home.homeDirectory}/.emacs.d/bin"
-    "${../dotfiles/bin}"
   ];
 
   home.sessionVariables = {

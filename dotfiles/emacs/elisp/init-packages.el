@@ -242,7 +242,7 @@
   :hook (emacs-startup-hook)
   :setq ((gcmh-idle-delay quote auto)
          (gcmh-auto-idle-delay-factor . 10)
-         (gcmh-high-cons-threshold . 16777216)))
+         (gcmh-high-cons-threshold . (* 16 1024 1024))))  ; 16mb
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

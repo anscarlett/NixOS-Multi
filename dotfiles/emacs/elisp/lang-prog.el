@@ -108,11 +108,6 @@
                                                   (current-local-map)))
                                        (corfu-mode)))))
 
-(leaf corfu-doc
-  :ensure t
-  :after corfu
-  :hook (corfu-mode . corfu-doc-mode))
-
 (leaf cape
   :ensure t
   ;; Available: cape-file cape-dabbrev cape-history cape-keyword
