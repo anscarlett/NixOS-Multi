@@ -12,7 +12,7 @@ mkfs.btrfs /dev/nvme0n1p5
 mkdir -p /mnt/boot/efi
 
 nixos-generate-config --root /mnt
-nixos-install --flake .#yoga --no-root-passwd
+nixos-install --no-root-passwd --flake .#host
 --option substituters "https://cache.nixos.org"
 --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
 ```
@@ -20,8 +20,6 @@ nixos-install --flake .#yoga --no-root-passwd
 [Config Example](https://github.com/thiagokokada/nix-configs)
 
 [More Example](https://github.com/foo-dogsquared/nixos-config)
-
-[FUP Example](https://github.com/jakehamilton/config)
 
 # Nix Commands
 

@@ -32,6 +32,7 @@
     openssl
     gitui
     # onefetch
+    discount # markdown
     efm-langserver # markdown lsp
     gnumake
     # python3

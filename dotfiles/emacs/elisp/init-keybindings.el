@@ -16,7 +16,6 @@
 (global-set-key (kbd "C-z") 'nil) ;unbind C-z
 (define-key global-map (kbd "C-c p") project-prefix-map)
 (global-set-key [remap kill-buffer] #'kill-this-buffer)
-(global-set-key [remap other-window] 'ace-window)
 
 ;; easy-kill
 (leaf easy-kill
@@ -28,7 +27,6 @@
 (leaf crux
   :ensure t
   :bind (("C-k" . crux-smart-kill-line)
-         ("C-x 4 x" . crux-swap-windows)
          ("C-<return>" . crux-smart-open-line)
          ("C-S-<return>" . crux-smart-open-line-above)))
 
@@ -37,8 +35,6 @@
   :bind
   (("M-+" . text-scale-increase)
    ("M-_" . text-scale-decrease)
-   ("C-c w x" . ace-swap-window)
-   ("C-c w v" . rotate-layout)
 
    ;; ("C-." . company-complete)
    ("C-." . hippie-expand)
@@ -55,9 +51,6 @@
    ("C-;" . comment-line)
    ("C-\\" . align-regexp)
    ("C-x \\" . toggle-input-method)
-   ("M-s" . avy-goto-char)
-   ("M-z" . avy-zap-up-to-char-dwim)
-
    ("C-x C-d" . dired-jump)
 
    ;; file-map
@@ -69,9 +62,6 @@
    ;; code-map
    ("C-c c f" . nix-mode-format)
    ("C-c c ." . consult-lsp-diagnostics)
-   ;; multiple-cursors-map
-   ("C-c m '" . er/mark-inside-quotes)
-   ("C-c m [" . er/mark-inside-pairs)
    ;; remove-items
    ("C-c - b" . bookmark-delete)
    ("C-c - r" . recentf-edit-list)

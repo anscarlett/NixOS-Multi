@@ -77,11 +77,6 @@
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)))
 
-(leaf expand-region
-  :ensure t
-  :bind (("C-=" . er/expand-region)
-         ("C--" . er/contract-region)))
-
 ;; mwim ;moving to the beginning/end code
 (leaf mwim
   :ensure t
@@ -108,6 +103,13 @@
   :bind (("C-}" . mc/mark-next-like-this)
          ("C-{" . mc/mark-previous-like-this)
          ("C-|" . mc/mark-all-like-this-dwim)))
+
+(leaf expand-region
+  :ensure t
+  :bind (("C-=" . er/expand-region)
+         ("C--" . er/contract-region)
+         ("C-c m '" . er/mark-inside-quotes)
+         ("C-c m [" . er/mark-inside-pairs)))
 
 ;; Smartly select region, rectangle, multi cursors
 (leaf smart-region
@@ -174,12 +176,12 @@
   (fancy-narrow-mode 1))
 
 (leaf goto-last-change
-  :ensure t)
+  :ensure t
+  :bind (("C-c m l" . goto-last-change)))
 
 ;; Bookmark
 (leaf bm
   :ensure t
-  :leaf-defer t
   :bind
   (("C-c m m" . bm-toggle)
    ;; ("C-c m p" . bm-previous)
@@ -188,19 +190,26 @@
 
 ;; avy
 (leaf avy
-  :ensure t)
+  :ensure t
+  :bind (("M-s" . avy-goto-char)))
 
 ;; avy-zap
 (leaf avy-zap
-  :ensure t)
+  :ensure t
+  :bind (("M-z" . avy-zap-up-to-char-dwim)))
 
 ;; ace-window
 (leaf ace-window
-  :ensure t)
+  :ensure t
+  :bind
+  (([remap other-window] . ace-window)
+   ("C-x 4 x" . ace-swap-window)
+   ("C-c w x" . ace-swap-window)))
 
 ;; rotate
 (leaf rotate
-  :ensure t)
+  :ensure t
+  :bind (("C-c w v" . rotate-layout)))
 
 (leaf ialign
   :ensure t

@@ -13,7 +13,10 @@
 ;; conf-mode
 (leaf conf-mode
   :ensure t
-  :mode "/credentials$" "\\.accept_keywords$" "\\lfrc$" "\\.keywords$" "\\.license$" "\\.mask$" "\\.unmask$" "\\.use$")
+  :mode
+  "/credentials$" "\\.accept_keywords$"
+  "\\lfrc$" "\\.keywords$" "\\.license$"
+  "\\.mask$" "\\.unmask$" "\\.use$")
 (global-set-key [remap conf-space-keywords] #'project-find-file)
 
 ;; compilation
@@ -23,7 +26,8 @@
       )
 
 (leaf quickrun
-  :ensure t)
+  :ensure t
+  :leaf-defer t)
 
 (leaf editorconfig
   :ensure t
@@ -36,14 +40,14 @@
 ;; Markdown
 (leaf markdown-mode
   :ensure t
-  :after t
   :custom
   (markdown-hide-urls . nil)
   (markdown-fontify-code-blocks-natively . t)
   :mode (("\\.md\\'" . gfm-mode)
          ("README\\'" . gfm-mode)))
 (leaf markdown-preview-mode
-  :ensure t)
+  :ensure t
+  :leaf-defer t)
 
 ;; SQL
 (leaf sql-indent
@@ -72,7 +76,8 @@
   :mode ("\\.nix'"))
 
 (leaf nixpkgs-fmt
-  :ensure t)
+  :ensure t
+  :leaf-defer t)
 
 ;; lua
 (leaf lua-mode
