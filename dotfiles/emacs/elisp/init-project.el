@@ -73,6 +73,10 @@
   :after magit
   )
 
+(leaf git-timemachine
+  :ensure t
+  :bind (("C-x v t" . git-timemachine-toggle)))
+
 (leaf editorconfig
   :ensure t
   :diminish editorconfig-mode
