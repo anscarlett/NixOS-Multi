@@ -13,6 +13,7 @@
 , udev
 , libappindicator
 , imagemagick
+, nodePackages
 , makeDesktopItem
 }:
 
@@ -35,13 +36,10 @@ stdenv.mkDerivation rec {
     hash = "sha256-pc55Pa2LwPGApdAcLqmnDZ9SKrT6hZ45ssBpFurT4Ps=";
   };
 
-  icon = fetchurl {
-    url = "https://web.archive.org/web/20211210004725if_/https://docs.cfw.lbyczf.com/favicon.ico";
-    hash = "sha256-4uLJzumIqF6T1yvrdKciqrSNYpJ1+6ecmonRzOsopP0=";
-  };
-
   nativeBuildInputs = [
     autoPatchelfHook
+    imagemagick
+    nodePackages.asar
   ];
 
   buildInputs = [
@@ -68,19 +66,20 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p "$out/opt"
     cp -r . "$out/opt/clash-for-windows"
+
     mkdir -p "$out/bin"
     ln -s "$out/opt/clash-for-windows/cfw" "$out/bin/cfw"
 
     mkdir -p "$out/share/applications"
     install "${desktopItem}/share/applications/"* "$out/share/applications/"
 
-    # icon_dir="$out/share/icons/hicolor"
-    # for s in 16 24 32 48 64 128 256; do
-    #   size="''${s}x''${s}"
-    #   echo "create icon \"$size\""
-    #   mkdir -p "$icon_dir/$size/apps"
-    #   ${imagemagick}/bin/convert -resize "$size" "${icon}" "$icon_dir/$size/apps/clash-for-windows.png"
-    # done
+    mkdir app-extract
+    asar extract resources/app.asar app-extract
+    raw_icon=app-extract/dist/electron/static/imgs/icon_512.png
+    icon_dir="$out/share/icons/hicolor/512x512/apps"
+
+    mkdir -p "$icon_dir"
+    cp app-extract/dist/electron/static/imgs/icon_512.png "$icon_dir/clash-for-windows.png"
   '';
 
   meta = with lib; {

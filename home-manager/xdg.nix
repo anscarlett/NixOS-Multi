@@ -6,25 +6,6 @@
 }: let
   mkOOSL = config.lib.file.mkOutOfStoreSymlink;
   hmDots = config.home.homeDirectory + "/nsworld/dotfiles";
-  rime-ice-custom = ''
-    patch:
-      "switches":
-        - name: ascii_mode # 0 中文，1 英文
-          states: [ 中, A ]
-          reset: 1
-        - name: full_shape
-          # states: [ 半角, 全角 ]
-          reset: 0
-        - name: ascii_punct
-          states: [ 。，, ．， ]
-          # reset: 0
-        - name: traditionalization
-          states: [ 简, 繁 ]
-          reset: 0
-        - name: emoji
-          states: [ 💀, 😄 ]
-          # reset: 1
-  '';
 in {
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
@@ -69,6 +50,7 @@ in {
     "hypr/custom.conf".source = mkOOSL hmDots + "/hypr/custom.conf";
 
     # ibus-rime
+    "ibus/rime/rime_ice.custom.yaml".source = ../dotfiles/rime/rime_ice.custom.yaml;
     "ibus/rime/default.custom.yaml".text = ''
       patch:
         schema_list:
@@ -79,7 +61,6 @@ in {
         style:
           horizontal: true
     '';
-    "ibus/rime/rime_ice.custom.yaml".text = rime-ice-custom;
   };
 
   xdg.dataFile = {
@@ -87,11 +68,11 @@ in {
     "color-schemes/Genshin.colors".source = ../dotfiles/misc/kde-color-Genshin.colors;
 
     # fcitx-rime
+    "fcitx5/rime/rime_ice.custom.yaml".source = ../dotfiles/rime/rime_ice.custom.yaml;
     "fcitx5/rime/default.custom.yaml".text = ''
       patch:
         schema_list:
           - schema: rime_ice
     '';
-    "fcitx5/rime/rime_ice.custom.yaml".text = rime-ice-custom;
   };
 }
