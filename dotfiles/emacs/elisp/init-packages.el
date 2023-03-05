@@ -132,6 +132,7 @@
 
 ;; 显示截断竖线
 (leaf fill-column-indicator
+  :ensure t
   :commands fci-mode)
 
 ;; 高亮删除插入操作
@@ -150,14 +151,12 @@
   :blackout t
   :hook (prog-mode-hook))
 
+;; same as beacon
 (leaf scrollkeeper
   :ensure t
   :bind
   (([remap scroll-up-command] . scrollkeeper-contents-up)
    ([remap scroll-down-command] . scrollkeeper-contents-down)))
-
-(leaf goto-last-change
-  :ensure t)
 
 ;; (leaf beacon
 ;;   :ensure t
@@ -173,6 +172,9 @@
   :diminish fancy-narrow-mode
   :init
   (fancy-narrow-mode 1))
+
+(leaf goto-last-change
+  :ensure t)
 
 ;; Bookmark
 (leaf bm
@@ -242,7 +244,7 @@
   :hook (emacs-startup-hook)
   :setq ((gcmh-idle-delay quote auto)
          (gcmh-auto-idle-delay-factor . 10)
-         (gcmh-high-cons-threshold . (* 16 1024 1024))))  ; 16mb
+         (gcmh-high-cons-threshold . 16777216)))
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

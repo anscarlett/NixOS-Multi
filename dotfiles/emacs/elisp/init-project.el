@@ -101,13 +101,9 @@
 ;; Persp-mode
 (leaf persp-mode
   :ensure t
-  :init
-  (setq persp-keymap-prefix (kbd "C-c w"))
+  :init (setq persp-keymap-prefix (kbd "C-c w"))
   :setq ((persp-auto-resume-time . 0))
-  :config
-  (add-hook 'after-init-hook
-            #'(lambda nil
-                (persp-mode 1))))
+  :hook (after-init-hook . persp-mode))
 
 ;; Projectile
 ;; (use-package projectile

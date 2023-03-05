@@ -65,8 +65,7 @@
 (leaf org-modern
   :ensure t
   :after org
-  :hook (org-mode-hook)
-  :require t)
+  :hook (org-mode-hook))
 
 ;; (use-package org-roam
 ;;   :custom

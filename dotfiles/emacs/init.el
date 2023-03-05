@@ -59,9 +59,8 @@
 (require 'init-vertico)
 (require 'init-project)
 (require 'init-keybindings)
-;; (require 'init-meow)
 
-(require 'lang-prog)
+(require 'lang-main)
 (require 'lang-org)
 (require 'lang-web)
 ;; (require 'lang-c-cpp-java)

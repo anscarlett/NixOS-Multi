@@ -37,14 +37,10 @@
 ;; all-the-icons-completion
 (leaf all-the-icons-completion
   :ensure t
-  :config
-  (with-eval-after-load 'all-the-icons
-    (eval-after-load 'marginalia
-      '(progn
-         (unless (fboundp 'all-the-icons-completion-marginalia-setup)
-           (autoload #'all-the-icons-completion-marginalia-setup "all-the-icons-completion" nil t))
-         (all-the-icons-completion-mode)
-         (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)))))
+  :after all-the-icons
+  :hook
+  (marginalia-mode-hook . all-the-icons-completion-marginalia-setup)
+  :init (all-the-icons-completion-mode))
 
 ;; Consulting completing-read
 (leaf consult
