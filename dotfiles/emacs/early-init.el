@@ -51,12 +51,5 @@
   "Delete starup message"
   (message ""))
 
-(setq frame-inhibit-implied-resize t)
-(setq site-run-file nil)
-
-(when (featurep 'native-compile)
-  (setq native-comp-async-report-warnings-errors nil
-        native-comp-deferred-compilation t))
-
 (provide 'early-init)
 ;;; early-init.el ends here
