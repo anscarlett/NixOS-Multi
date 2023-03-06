@@ -1,4 +1,4 @@
-;;; init-config.el --- main core settings -*- lexical-binding: t; -*-
+;;; init-common.el --- main core settings -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -50,6 +50,7 @@
       system-time-locale "C"        ;使用英文时间格式
       ispell-dictionary "en"        ;使用英文词典
       sentence-end-double-space nil ;Sentences should end in one space
+      display-time-24hr-format t
       sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*" ;识别中文标点符号
       require-final-newline t)
 
@@ -75,8 +76,7 @@
 ;; (prefer-coding-system 'utf-8-unix)
 
 ;; Tab and Space
-(setq-default c-basic-offset   4
-              tab-width        4
+(setq-default tab-width        4
               indent-tabs-mode nil ;indent with spaces, never with TABs
               tab-always-indent 'complete) ;Tab key indent first then completion.
 
@@ -117,32 +117,9 @@
 (setq ispell-program-name "aspell" ; use aspell instead of ispell
       ispell-extra-args '("--sug-mode=ultra"))
 
-(leaf cus-edit
-  :custom `((custom-file . ,(locate-user-emacs-file ".custom.el"))))
-
-(eval-and-compile
-  (leaf bytecomp
-    :custom
-    ((byte-compile-warnings . '(not
-                                obsolete
-                                free-vars
-                                unresolved
-                                callargs
-                                redefine
-                                noruntime
-                                cl-functions
-                                interactive-only
-                                make-local))
-     (debug-on-error        . nil))
-    :config
-    (let ((win (get-buffer-window "*Compile-Log*")))
-      (when win (delete-window win)))
-    ))
-
-(leaf server
-  :require t
-  :defun (server-running-p)
-  :config (unless (server-running-p) (server-start)))
+(unless (and (fboundp 'server-running-p)
+             (server-running-p))
+  (server-start))
 
 ;; kill emacsclient message
 (add-hook 'server-after-make-frame-hook
@@ -150,5 +127,18 @@
             (setq inhibit-message t)
             (run-with-idle-timer 0 nil (lambda () (setq inhibit-message nil)))))
 
-(provide 'init-config)
+;; disable warnings
+(setq warning-minimum-level :emergency
+      byte-compile-warnings '(not
+                              obsolete
+                              free-vars
+                              unresolved
+                              callargs
+                              redefine
+                              noruntime
+                              cl-functions
+                              interactive-only
+                              make-local))
+
+(provide 'init-common)
 ;;; config.el ends here

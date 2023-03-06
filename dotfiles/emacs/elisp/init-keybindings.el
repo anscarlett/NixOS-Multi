@@ -18,81 +18,77 @@
 (global-set-key [remap kill-buffer] #'kill-this-buffer)
 
 ;; easy-kill
-(leaf easy-kill
-  :ensure t
+(use-package easy-kill
   :bind (([remap mark-sexp] . easy-mark)
          ([remap kill-ring-save] . easy-kill)))
 
 ;; crux
-(leaf crux
-  :ensure t
+(use-package crux
   :bind (("C-k" . crux-smart-kill-line)
          ("C-<return>" . crux-smart-open-line)
          ("C-S-<return>" . crux-smart-open-line-above)))
 
-(leaf *global-set-key
-  :leaf-autoload nil
-  :bind
-  (("M-+" . text-scale-increase)
-   ("M-_" . text-scale-decrease)
+(bind-keys*
+ ("M-+" . text-scale-increase)
+ ("M-_" . text-scale-decrease)
 
-   ;; ("C-." . company-complete)
-   ("C-." . hippie-expand)
+ ;; ("C-." . company-complete)
+ ("C-." . hippie-expand)
 
-   ("C-c <SPC>" . project-find-file)
-   ("C-c C-<SPC>" . project-find-file)
-   ("C-c ." . find-file)
-   ("C-c /" . consult-ripgrep)
-   ("C-c s" . consult-ripgrep)
-   ("C-c ," . project-switch-to-buffer)
-   ("C-x b" . project-switch-to-buffer)
+ ("C-c <SPC>" . project-find-file)
+ ("C-c C-<SPC>" . project-find-file)
+ ("C-c ." . find-file)
+ ("C-c /" . consult-ripgrep)
+ ("C-c s" . consult-ripgrep)
+ ("C-c ," . project-switch-to-buffer)
+ ("C-x b" . project-switch-to-buffer)
 
-   ("s-d" . dired-jump)
-   ("C-;" . comment-line)
-   ("C-\\" . align-regexp)
-   ("C-x \\" . toggle-input-method)
-   ("C-x C-d" . dired-jump)
+ ("s-d" . dired-jump)
+ ("C-;" . comment-line)
+ ("C-\\" . align-regexp)
+ ("C-x \\" . toggle-input-method)
+ ("C-x C-d" . dired-jump)
 
-   ;; file-map
-   ("C-c f o" . crux-open-with)
-   ("C-c f s" . save-some-buffers)
-   ("C-c f S" . crux-sudo-edit)
-   ("C-c f x" . crux-delete-file-and-buffer)
-   ("C-c f <f2>" . crux-rename-file-and-buffer)
-   ;; code-map
-   ("C-c c f" . nix-mode-format)
-   ("C-c c ." . consult-lsp-diagnostics)
-   ;; remove-items
-   ("C-c - b" . bookmark-delete)
-   ("C-c - r" . recentf-edit-list)
-   ("C-c - p" . project-forget-project)
+ ;; file-map
+ ("C-c f o" . crux-open-with)
+ ("C-c f s" . save-some-buffers)
+ ("C-c f S" . crux-sudo-edit)
+ ("C-c f x" . crux-delete-file-and-buffer)
+ ("C-c f <f2>" . crux-rename-file-and-buffer)
+ ;; code-map
+ ("C-c c f" . nix-mode-format)
+ ("C-c c ." . consult-lsp-diagnostics)
+ ;; remove-items
+ ("C-c - b" . bookmark-delete)
+ ("C-c - r" . recentf-edit-list)
+ ("C-c - p" . project-forget-project)
 
-   ("C-x 2" .  (lambda()
-                  (interactive)
-                  (split-window-below)
-                  (select-window (next-window))))
-   ("C-x 3" . (lambda()
-                  (interactive)
-                  (split-window-right)
-                  (select-window (next-window))))
+ ("C-x 2" .  (lambda()
+               (interactive)
+               (split-window-below)
+               (select-window (next-window))))
+ ("C-x 3" . (lambda()
+              (interactive)
+              (split-window-right)
+              (select-window (next-window))))
 
-   ("<f7>" . compile)
-   ("<C-f7>" . (lambda () (interactive)
-                 (save-buffer)
-                 (recompile)))
-   ))
+ ("<f7>" . compile)
+ ("<C-f7>" . (lambda () (interactive)
+               (save-buffer)
+               (recompile)))
+ )
 
 ;; view-mode
-(leaf view
-  :require t
+(use-package view
+  :ensure nil
   ;; :chord (("fj" . view-mode))
-  :bind  (:view-mode-map
-          ("j" . next-line)
-          ("k" . previous-line)
-          ("h" . backward-char)
-          ("l" . forward-char)
-          ("g" . goto-line)
-          ("b" . View-scroll-page-backward))
+  :bind  (:map view-mode-map
+               ("j" . next-line)
+               ("k" . previous-line)
+               ("h" . backward-char)
+               ("l" . forward-char)
+               ("g" . goto-line)
+               ("b" . View-scroll-page-backward))
   :config
   (setq view-read-only t))
 

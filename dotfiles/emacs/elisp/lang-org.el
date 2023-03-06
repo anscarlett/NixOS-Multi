@@ -62,10 +62,10 @@
 ;;                                ))
 
 
-(leaf org-modern
-  :ensure t
+(use-package org-modern
   :after org
-  :hook (org-mode-hook))
+  :config
+  (add-hook 'org-mode-hook #'org-modern-mode))
 
 ;; (use-package org-roam
 ;;   :custom

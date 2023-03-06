@@ -1,4 +1,4 @@
-;;; lang-main.el --- Main Development languages -*- lexical-binding: t; -*-
+;;; lang-programs.el --- Main Development languages -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -10,9 +10,28 @@
   (display-line-numbers-mode)) ;显示行号
 (add-hook 'prog-mode-hook 'my-prog-settings)
 
+(use-package reformatter
+  :defer t
+  :config
+  (reformatter-define nix-alejandra
+    :program "alejandra"
+    ;; :args '("--" "quiet")
+    )
+  ;; Experimental.
+  ;; (reformatter-define golint
+  ;;   :program "golint"
+  ;;   :stdin nil
+  ;;   :stdout nil
+  ;;   :args (list (buffer-file-name)))
+  )
+
+;; tree-sitter
+(use-package treesit-auto
+  :hook (after-init . global-treesit-auto-mode)
+  :init (setq treesit-auto-install 'prompt))
+
 ;; conf-mode
-(leaf conf-mode
-  :ensure t
+(use-package conf-mode
   :mode
   "/credentials$" "\\.accept_keywords$"
   "\\lfrc$" "\\.keywords$" "\\.license$"
@@ -25,65 +44,60 @@
       compilation-scroll-output 'first-error ; Automatically scroll to first error
       )
 
-(leaf quickrun
-  :ensure t
-  :leaf-defer t)
+(use-package quickrun
+  :defer t)
 
-(leaf editorconfig
-  :ensure t
+(use-package editorconfig
   :diminish editorconfig-mode
   :custom
-  (editorconfig-get-properties-function . 'editorconfig-core-get-properties-hash)
+  (editorconfig-get-properties-function  'editorconfig-core-get-properties-hash)
   :init
   (editorconfig-mode t))
 
 ;; Markdown
-(leaf markdown-mode
-  :ensure t
-  :custom
-  (markdown-hide-urls . nil)
-  (markdown-fontify-code-blocks-natively . t)
+(use-package markdown-mode
+  :config
+  (setq markdown-hide-urls nil
+        markdown-fontify-code-blocks-natively t)
   :mode (("\\.md\\'" . gfm-mode)
          ("README\\'" . gfm-mode)))
-(leaf markdown-preview-mode
-  :ensure t
-  :leaf-defer t)
+(use-package markdown-preview-mode
+  :defer t)
 
 ;; SQL
-(leaf sql-indent
-  :ensure t
+(use-package sql-indent
   :mode ("\\.sql\\'")
   :interpreter (("sql" . sql-mode)))
 
 ;; docker
-(leaf dockerfile-mode
-  :ensure t
+(use-package dockerfile-mode
   :mode ("Dockerfile\\'"))
 
+;; json
+(use-package json-mode
+  :mode ("\\.json'"))
+
+(use-package json-reformat
+  :commands json-reformat-region)
+
 ;; toml
-(leaf toml-mode
-  :ensure t
+(use-package toml-mode
   :mode ("\\.toml'"))
 
 ;; yaml
-(leaf yaml-mode
-  :ensure t
-  :mode ("\\.yml'"))
+(use-package yaml-mode
+  :mode ("\\.yml'" "\\.yaml'"))
 
 ;; nixos
-(leaf nix-mode
-  :ensure t
+(use-package nix-mode
   :mode ("\\.nix'"))
 
-(leaf nixpkgs-fmt
-  :ensure t
-  :leaf-defer t)
+(use-package nixpkgs-fmt
+  :defer t)
 
 ;; lua
-(leaf lua-mode
-  :ensure t
+(use-package lua-mode
   :mode ("\\.lua'"))
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,51 +105,104 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; corfu
-(leaf corfu
-  :ensure t
-  :init
-  (setq corfu-auto t
-        corfu-quit-no-match t
-        corfu-quit-at-boundary 'separator)
-  (global-corfu-mode)
+(use-package corfu
+  :hook
+  (emacs-startup . global-corfu-mode)
+  :bind
+  (:map corfu-map
+   ("C-j"      . corfu-next)
+   ("C-k"      . corfu-previous)
+   ("C-g"      . corfu-quit)
+   ("M-l"      . corfu-show-location)
+   ("M-SPC" . corfu-insert-separator)
+   ("<escape>" . corfu-quit)
+   ("<return>" . corfu-insert)
+   ("TAB" . corfu-insert)
+   ([tab] . corfu-insert))
+  :custom
+  ;; auto-complete
+  (corfu-auto t)
+  (corfu-min-width 25)
+  (corfu-max-width 90)
+  (corfu-count 10)
+  (corfu-scroll-margin 4)
+  (corfu-cycle t)
+  ;; TAB cycle if there are only few candidates
+  (completion-cycle-threshold 3)
+  (corfu-echo-documentation nil) ;; use corfu doc
+  (corfu-separator  ?_)
+  (corfu-quit-no-match 'separator)
+  (corfu-quit-at-boundary t)
+  (corfu-preview-current nil)       ; Preview current candidate?
+  (corfu-preselect-first t)           ; Preselect first candidate?
   :config
-  (define-key corfu-map
-              (kbd "SPC") #'corfu-insert-separator)
-  (setq completion-cycle-threshold 3)
-  ;; Use Corfu in `eval-expression' and other commands that bind
-  ;; `completion-at-point' in the minibuffer.
-  ;;
-  ;; WHY IS THIS NOT AVAILABLE IN AN OPTION IF IT'S ALREADY LISTED IN
-  ;; THE README
-  (add-hook 'minibuffer-setup-hook (lambda ()
-                                     (when (memq #'completion-at-point
-                                                 (flatten-tree
-                                                  (current-local-map)))
-                                       (corfu-mode)))))
+  ;; Enable Corfu completion for commands like M-: (eval-expression) or M-!
+  ;; (shell-command)
+  (defun corfu-enable-in-minibuffer ()
+    "Enable Corfu in the minibuffer if `completion-at-point' is bound."
+    (when (where-is-internal #'completion-at-point (list (current-local-map)))
+      ;; (setq-local corfu-auto nil) Enable/disable auto completion
+      (corfu-mode 1)))
+  (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer))
+;; (use-package corfu
+;;   :init
+;;   (setq corfu-auto t
+;;         corfu-quit-no-match t
+;;         corfu-quit-at-boundary 'separator)
+;;   (global-corfu-mode)
+;;   :config
+;;   (define-key corfu-map
+;;               (kbd "SPC") #'corfu-insert-separator)
+;;   (setq completion-cycle-threshold 3)
+;;   ;; Use Corfu in `eval-expression' and other commands that bind
+;;   ;; `completion-at-point' in the minibuffer.
+;;   ;;
+;;   ;; WHY IS THIS NOT AVAILABLE IN AN OPTION IF IT'S ALREADY LISTED IN
+;;   ;; THE README
+;;   (add-hook 'minibuffer-setup-hook (lambda ()
+;;                                      (when (memq #'completion-at-point
+;;                                                  (flatten-tree
+;;                                                   (current-local-map)))
+;;                                        (corfu-mode)))))
 
-(leaf cape
-  :ensure t
+;; Corfu Extensions
+(use-package cape
   ;; Available: cape-file cape-dabbrev cape-history cape-keyword
   ;; cape-tex cape-sgml cape-rfc1345 cape-abbrev cape-ispell
   ;; cape-dict cape-symbol cape-line
   :init
+  (add-to-list 'completion-at-point-functions #'cape-tex)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-symbol)
+  (add-to-list 'completion-at-point-functions #'cape-ispell)
+;; (add-to-list 'completion-at-point-functions #'cape-dict)
+;; (add-to-list 'completion-at-point-functions #'cape-line)
+;; (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+;; (add-to-list 'completion-at-point-functions #'cape-abbrev)
   (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'completion-at-point-functions #'cape-dabbrev 90)
   (add-hook 'prog-mode-hook
             (lambda ()
               (add-hook 'completion-at-point-functions
-                        #'cape-keyword nil t)))
+                        #'cape-keyword nil t))))
   ;; :config
   ;; (require 'company)
   ;; (cl-loop for backend in '(company-glsl company-shell company-ledger)
   ;;          do (add-hook 'completion-at-point-functions
-  ;;                       (cape-company-to-capf backend)))
-  )
+;;                       (cape-company-to-capf backend)))
+
+;; TODO
+;; (use-package kind-icon
+;;   :after corfu
+;;   :ini
+;;   :custom
+;;   (kind-icon-use-icons t)
+;;   (kind-icon-default-face 'corfu-default) ; Have background color be the same as `corfu' face background
+;;   (kind-icon-blend-background nil))
 
 ;; company
-;; (leaf company
-;;   :ensure t
-;;   :leaf-defer nil
+;; (use-package company
+;;   :use-package-defer nil
 ;;   :setq ((company-idle-delay . 0)
 ;;          (company-minimum-prefix-length . 1)
 ;;          (company-backends . '((company-dabbrev-code :separate company-capf company-keywords)
@@ -175,43 +242,37 @@
 ;; (add-to-list 'company-backends #'company-tabnine)
 
 ;; flycheck
-(leaf flycheck
-  :ensure t
-  :leaf-defer t
-  :hook (prog-mode-hook . flycheck-mode))
+(use-package flycheck
+  :defer t
+  :diminish (flycheck-mode)
+  :hook (prog-mode . flycheck-mode))
 
 ;; tempel
 
 ;; yasnippet
-;; (leaf yasnippet
-;;   :ensure t
+;; (use-package yasnippet
 ;;   :hook (((prog-mode-hook org-mode-hook) . yas-minor-mode-on)
 ;;          (yas-minor-mode-hook . yas-reload-all)))
 
 
 ;; LSP https://emacs-lsp.github.io/lsp-mode/
-;; (leaf lsp-mode
-;;   :ensure t
+;; (use-package lsp-mode
 ;;   :commands lsp-deferred lsp
 ;;   :hook ((python-mode-hook . lsp-deferred)
 ;;          (rust-mode-hook . lsp-deferred)))
 
-;; (leaf lsp-ui
-;;   :ensure t
+;; (use-package lsp-ui
 ;;   :commands lsp-ui-mode)
-;; (leaf lsp-ivy
-;;   :ensure t
+;; (use-package lsp-ivy
 ;;   :commands lsp-ivy-workspace-symbol)
 
-;; (leaf consult-lsp
-;;   :ensure t
+;; (use-package consult-lsp
 ;;   :package t)
 
 
 ;; eglot
-(leaf eglot
-  :ensure t
-  :require t
+(use-package eglot
+  :defer t
   :config
   (add-hook 'python-mode-hook 'eglot-ensure)
   (add-hook 'c-mode-hook 'eglot-ensure)
@@ -235,14 +296,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; rustic https://github.com/brotzeit/rustic
-(leaf rustic
-  :ensure t
+(use-package rustic
   :mode "\\.rs$"
   :custom
-  (rustic-format-display-method . 'ignore) ; Rustfmtのメッセージをポップアップしない
-  (rustic-format-trigger . 'on-save)
+  (rustic-format-display-method 'ignore) ; Rustfmtのメッセージをポップアップしない
+  (rustic-format-trigger 'on-save)
   :after flycheck
-  :defvar flycheck-checkers
   :config
   (push 'rustic-clippy flycheck-checkers))
 
@@ -264,8 +323,7 @@
 ;; (with-eval-after-load 'rust-mode
 ;;   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
-;; (leaf go-mode
-;;   :ensure t
+;; (use-package go-mode
 ;;   :commands go-mode
 ;;   :config
 ;;   (setq gofmt-command "goimports")
@@ -275,8 +333,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;; Python ;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(leaf python-mode
-  :ensure t
+(use-package python-mode
   :mode ("\\.py\\'")
   :config
   (with-eval-after-load 'python-mode
@@ -286,6 +343,8 @@
           default-tab-width 4
           python-shell-interpreter "python3")))
 
+ ;; (use-package live-py-mode)
+
 ;; (use-package lsp-python-ms
 ;;   :hook (python-mode . (lambda ()
 ;;                           (require 'lsp-python-ms)
@@ -293,14 +352,13 @@
                                         ; or lsp-deferred
 
 ;;; Ruby
-;; (leaf ruby-mode
+;; (use-package ruby-mode
 ;;   :defvar ruby-mode-map
 ;;   :custom (ruby-insert-encoding-magic-comment . nil)
 ;;   :hook (ruby-mode-hook . lsp)
 ;;   :config
 ;;   (dvorak-set-key-prog ruby-mode-map)
-;;   (leaf inf-ruby
-;;     :ensure t
+;;   (use-package inf-ruby
 ;;     :hook (ruby-mode-hook . inf-ruby-minor-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -316,8 +374,7 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ξ "))) ;hook for shortname
 
 
-;; (leaf lsp-mode
-;;   :ensure t
+;; (use-package lsp-mode
 ;;   :require t
 ;;   :commands lsp
 ;;   :hook
@@ -326,8 +383,7 @@
 ;;   (elixir-mode-hook . lsp)
 ;;   (typescript-mode-hook . lsp)
 ;;   :config
-;;   (leaf lsp-ui
-;;     :ensure t
+;;   (use-package lsp-ui
 ;;     :require t
 ;;     :hook
 ;;     (lsp-mode-hook . lsp-ui-mode)
@@ -366,5 +422,5 @@
 ;;                       ("S" lsp-shutdown-workspace))))
 
 
-(provide 'lang-main)
+(provide 'lang-programs)
 ;;; init-main.el ends here

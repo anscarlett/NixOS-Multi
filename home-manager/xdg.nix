@@ -48,33 +48,10 @@ in {
     "wayfire.ini".source = mkOOSL hmDots + "/wayfire.ini";
     "sway/custom.conf".source = mkOOSL hmDots + "/sway/custom.conf";
     "hypr/custom.conf".source = mkOOSL hmDots + "/hypr/custom.conf";
-
-    # ibus-rime
-    "ibus/rime/rime_ice.custom.yaml".source = ../dotfiles/rime/rime_ice.custom.yaml;
-    "ibus/rime/default.custom.yaml".text = ''
-      patch:
-        schema_list:
-          - schema: rime_ice
-        menu/page_size: 6
-    '';
-    "ibus/rime/ibus_rime.custom.yaml".text = ''
-      patch:
-        style:
-          horizontal: true
-    '';
   };
 
   xdg.dataFile = {
     "goodvibes".source = ../dotfiles/goodvibes;
     "color-schemes/Genshin.colors".source = ../dotfiles/misc/kde-color-Genshin.colors;
-
-    # fcitx-rime
-    "fcitx5/rime/rime_ice.custom.yaml".source = ../dotfiles/rime/rime_ice.custom.yaml;
-    "fcitx5/rime/default.custom.yaml".text = ''
-      patch:
-        schema_list:
-          - schema: rime_ice
-        menu/page_size: 6
-    '';
   };
 }

@@ -2,73 +2,67 @@
 ;;; Commentary:
 ;;; Code:
 
-;; TODO: ivy-resume  ivy-occur
-
 ;; VERTical Interactive COmpletion
-(leaf vertico
-  :ensure t
-  :bind ((vertico-map
-          ("RET" . vertico-directory-enter)
-          ("DEL" . vertico-directory-delete-char)))
-  :config
+(use-package vertico
+  :bind (:map vertico-map
+              ("<escape>" . #'minibuffer-keyboard-quit)
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char))
+  :init
   (vertico-mode)
-  (vertico-mouse-mode 1)
-  :hook (emacs-startup-hook . vertico-mode))
+  (vertico-mouse-mode 1))
 
 ;; Completion style for matching regexps in any order
-(leaf orderless
-  :ensure t
-  :setq ((completion-styles . '(orderless))
-         (completion-ignore-case . t)
-         (read-buffer-completion-ignore-case . t)
-         (read-file-name-completion-ignore-case . t)
-         (orderless-smart-case . t)
-         (orderless-matching-styles . '(orderless-prefixes
-                                        orderless-initialism
-                                        orderless-regexp))))
+(use-package orderless
+  :init (setq completion-styles '(orderless)
+              completion-ignore-case  t
+              read-buffer-completion-ignore-case  t
+              read-file-name-completion-ignore-case  t
+              orderless-smart-case  t
+              orderless-matching-styles '(orderless-prefixes
+                                          orderless-initialism
+                                          orderless-regexp)))
 
 ;; Enrich existing commands with completion annotations
-(leaf marginalia
-  :ensure t
+(use-package marginalia
   :after vertico
   :init
   (marginalia-mode +1))
 
 ;; all-the-icons-completion
-(leaf all-the-icons-completion
-  :ensure t
+(use-package all-the-icons-completion
   :after all-the-icons
   :hook
-  (marginalia-mode-hook . all-the-icons-completion-marginalia-setup)
+  (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init (all-the-icons-completion-mode))
 
 ;; Consulting completing-read
-(leaf consult
-  :ensure t
-  :bind (([remap list-buffers] . consult-buffer)              ; C-x b
-         ([remap apropos-command] . consult-apropos)             ; C-h a
+(use-package consult
+  :bind (([remap list-buffers] . consult-buffer) ; C-x b
+         ([remap apropos-command] . consult-apropos) ; C-h a
          ([remap find-file-read-only-other-window] . consult-buffer-other-window)
          ([remap yank-pop] . consult-yank-pop) ; M-y
          ("C-s" . consult-line)
          ("C-x C-r" . consult-recent-file)
          ("C-c r" . consult-ripgrep)
          ("C-c b" . consult-bookmark)
+         ("M-." . consult-imenu)
          ("M-m" . consult-mark)))
 
 ;; Mini-Buffer Actions Rooted in Keymaps
-(leaf embark
-  :ensure t
+(use-package embark
   :bind (("C-c C-c" . embark-act)
          ("C-c C-o" . embark-export)
          ("C-h b" . embark-bindings))
-  :setq ((prefix-help-command function embark-prefix-help-command)))
+  :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 ;; Consult users will also want the embark-consult package.
-(leaf embark-consult
-  :ensure t
+(use-package embark-consult
   :after (embark consult)
   :hook
-  (embark-collect-mode-hook . consult-preview-at-point-mode))
+  (embark-collect-mode . consult-preview-at-point-mode))
 
 ;;----------------------------------------------------------------------------
 ;; Functions

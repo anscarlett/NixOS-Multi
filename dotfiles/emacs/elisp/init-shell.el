@@ -6,45 +6,43 @@
 (setq tramp-default-method "ssh"
       password-cache-expiry 36000)
 
-;; eshell
-
-
 ;; bash-completion
-(leaf bash-completion
-  :ensure t
-  :when (eq system-type 'gnu/linux)
-  :commands bash-completion-dynamic-complete
-  :hook ((shell-dynamic-complete-functions . bash-completion-dynamic-complete)))
+;; (use-package bash-completion
+;;   :defer t
+;;   :when (eq system-type 'gnu/linux)
+;;   :init
+;;   (autoload 'bash-completion-dynamic-complete
+;;     "bash-completion"
+;;     "BASH completion hook")
+;;   (add-hook 'shell-dynamic-complete-functions
+;;             'bash-completion-dynamic-complete))
 
 ;; exec-path-from-shell
-(leaf exec-path-from-shell
-  :ensure t
-  :when (eq system-type 'gnu/linux)
-  :config
-  (exec-path-from-shell-initialize))
+;; (use-package exec-path-from-shell
+;;   :defer t
+;;   :when (eq system-type 'gnu/linux)
+;;   :init
+;;   (exec-path-from-shell-initialize))
 
 ;; vterm
-(leaf vterm
-  :ensure t
+(use-package vterm
+  :defer t
   :when (eq system-type 'gnu/linux)
-  :setq ((vterm-shell . "zsh"))
-  :bind (:vterm-mode-map
-         ("<f2>" . shell-pop)))
+  :config
+  (setq vterm-shell "zsh")
+  :bind (:map vterm-mode-map
+              ("<f2>" . shell-pop)))
 
 ;; shell-pop
-(leaf shell-pop
-  :ensure t
-  :blackout t
+(use-package shell-pop
   :bind (("<f2>" . shell-pop))
-  :custom ((shell-pop-window-size . 30)
-           (shell-pop-full-span . t)
-           ;; (shell-pop-universal-key . "<f2>")
-           (shell-pop-window-position . "bottom")))
-(setq shell-pop-shell-type
-      (cond ((fboundp 'vterm) '("vterm" "*vterm*" #'vterm))
-            ((eq system-type 'windows-nt) '("eshell" "*eshell*" #'eshell))
-            (t '("terminal" "*terminal*"
-                 (lambda () (term shell-pop-term-shell))))))
+  :init
+  (setq shell-pop-window-size 30
+        shell-pop-shell-type
+        (cond ((fboundp 'vterm) '("vterm" "*vterm*" #'vterm))
+              ((eq system-type 'windows-nt) '("eshell" "*eshell*" #'eshell))
+              (t '("terminal" "*terminal*"
+                   (lambda () (term shell-pop-term-shell)))))))
 
 (provide 'init-shell)
 ;;; init-shell.el ends here

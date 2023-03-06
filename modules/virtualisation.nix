@@ -16,6 +16,7 @@ sudo mkdir /mnt/vfs_share
 sudo chown iab /mnt/vfs_share
 mkdir share #guest
 sudo mount -t 9p -o trans=virtio share ~/share #guest
+https://www.reddit.com/r/NixOS/comments/11j9qf7/virtio_fs_with_virtmanager/
 
 qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
 */

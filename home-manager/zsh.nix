@@ -53,13 +53,12 @@
       unsetopt correct  # Disable AutoCorrect
 
       # Promt themes
-      autoload -U promptinit; promptinit
-      PURE_PROMPT_SYMBOL=›
-      PURE_PROMPT_VICMD_SYMBOL=‹
-      prompt pure
-      # source ${pkgs.pure-prompt}/share/zsh/site-functions/prompt_pure_setup
+      # autoload -U promptinit; promptinit
+      # PURE_PROMPT_SYMBOL=›
+      # PURE_PROMPT_VICMD_SYMBOL=‹
+      # prompt pure
       # source minimal.zsh
-      # source ${../dotfiles/zsh/oxide.zsh-theme}
+      source ${../dotfiles/zsh/oxide.zsh-theme}
 
       # Compatibility bash completion
       autoload -U bashcompinit && bashcompinit

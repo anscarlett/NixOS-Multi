@@ -57,26 +57,20 @@
 
 
 ;; undo-fu
-(leaf undo-fu
-  :ensure t
-  :require t)
+(use-package undo-fu)
 
 ;; undo-fu-session
-(leaf undo-fu-session
-  :ensure t
-  :require t
-  :setq ((undo-fu-session-incompatible-files quote
-                                             ("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
+(use-package undo-fu-session
   :config
-  (global-undo-fu-session-mode))
+  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
+(global-undo-fu-session-mode)
 
 ;; undo-tree C-x u
-(leaf vundo
-  :ensure t
-  :require t
+(use-package vundo
   :bind (("C-x u" . vundo))
-  :setq ((vundo-glyph-alist . vundo-unicode-symbols)
-         (vundo-roll-back-on-quit)))
+  :config
+  (setq vundo-glyph-alist vundo-unicode-symbols)
+  (setq vundo-roll-back-on-quit nil))
 
 
 (provide 'init-backup)

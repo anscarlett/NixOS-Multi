@@ -2,59 +2,37 @@
 ;;; Commentary:
 ;;; Code:
 
-;; setup leaf
-(eval-and-compile
-  (customize-set-variable
-   'package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+
+(require 'package)
+
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-  (package-initialize)
-  (unless (package-installed-p 'leaf)
-    (package-refresh-contents)
-    (package-install 'leaf))
 
-  (leaf leaf-keywords
-    :ensure t
-    :init
-    ;; optional packages if you want to use :hydra, :el-get, :blackout,,,
-    (leaf hydra :ensure t)
-    (leaf el-get :ensure t)
-    (leaf blackout :ensure t)
+;; Initialize packages
+(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
+  (setq package-enable-at-startup nil)          ; To prevent initializing twice
+  (package-initialize))
 
-    :config
-    ;; initialize leaf-keywords.el
-    (leaf-keywords-init)))
+;; ;; Bootstrap `use-package` remove after emacs 29
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
 
-;; (leaf feather
-;;   :el-get conao3/feather.el
-;;   :config (feather-mode))
+;; use-package setting
+(setq use-package-always-ensure t
+      ;; use-package-always-defer t
+      ;; use-package-verbose t
+      use-package-enable-imenu-support t)
+(require 'use-package)
 
-(leaf leaf
-  :config
-  ;; (leaf leaf-convert :ensure t)
-  (leaf leaf-tree
-    :ensure t
-    :custom ((imenu-list-size . 30)
-             (imenu-list-position . 'left))))
+(require 'cl-lib)
 
-(leaf macrostep
-  :ensure t
-  :bind (("C-c e" . macrostep-expand)))
+;; (use-package dash)
+(use-package s) ;string manipulation
+(use-package f) ;file manipulation
 
-;; string manipulation
-;; (leaf s
-;;   :ensure t
-;;   :require t)
-
-;; ;; file manipulation
-;; (leaf f
-;;   :ensure t
-;;   :require t)
-
-;; (use-package bind-key)
-(leaf diminish
-  :ensure t
-  :require t)
-
+(use-package bind-key)
+(use-package diminish)
 (diminish 'visual-line-mode)
 (diminish 'eldoc-mode) ;echo area 显示函数的参数列表
 
@@ -62,148 +40,130 @@
 ;; :safe means set the safe variables, and ignore the rest.
 (setq enable-local-variables :safe)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;; Extensions ;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Theme
-(leaf doom-themes
-  :ensure t)
-;; (leaf ef-themes
-;;   :ensure t)
-;; (leaf tangonov-theme
-;;   :ensure t
-;;   :require t)
-;; (leaf monokai-theme
-;;   :require t)
-;; (leaf vscode-dark-plus-theme
-;;   :require t)
-;; (leaf zenburn
-;;   :require t)
-;; (leaf eclipse-theme
-;;   :require t)
+(use-package doom-themes)
+;; (use-package ef-themes)
+;; (use-package tangonov-theme)
+;; (use-package monokai-theme)
+;; (use-package vscode-dark-plus-theme)
+;; (use-package zenburn)
+;; (use-package eclipse-theme)
 (load-theme 'doom-tomorrow-night t)
 ;; (load-theme 'ef-frost t)
 
-(leaf all-the-icons
-  :ensure t)
+(use-package nyan-mode
+  :commands nyan-mode)
 
-(leaf which-key
-  :ensure t
+(use-package all-the-icons)
+
+(use-package which-key
   :diminish which-key-mode
-  :hook (after-init-hook . which-key-mode))
+  :config
+  (which-key-mode))
 
-(leaf helpful
-  :ensure t
+(use-package helpful
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)))
 
+(use-package macrostep
+  :bind (:map emacs-lisp-mode-map
+         ("C-c e" . macrostep-expand)
+         :map lisp-interaction-mode-map
+         ("C-c e" . macrostep-expand)))
+
 ;; mwim ;moving to the beginning/end code
-(leaf mwim
-  :ensure t
+(use-package mwim
   :bind (("C-a" . mwim-beginning-of-code-or-line)
          ("C-e" . mwim-end-of-code-or-line)))
 
-;; (leaf mosey
-;;   :ensure t
+;; (use-package mosey
 ;;   :bind (("C-a" . mosey-backward-bounce)
 ;;          ("C-e" . mosey-forward-bounce)))
 
-
 ;; move-text M-up/M-down
-(leaf move-text
-  :ensure t
+(use-package move-text
   :init
   (move-text-default-bindings))
 
-(leaf iedit
-  :ensure t)
+(use-package iedit
+  :defer t)
 
-(leaf multiple-cursors
-  :ensure t
+(use-package multiple-cursors
   :bind (("C-}" . mc/mark-next-like-this)
          ("C-{" . mc/mark-previous-like-this)
          ("C-|" . mc/mark-all-like-this-dwim)))
 
-(leaf expand-region
-  :ensure t
+(use-package expand-region
   :bind (("C-=" . er/expand-region)
          ("C--" . er/contract-region)
          ("C-c m '" . er/mark-inside-quotes)
          ("C-c m [" . er/mark-inside-pairs)))
 
 ;; Smartly select region, rectangle, multi cursors
-(leaf smart-region
-  :ensure t
+(use-package smart-region
   :commands smart-region-on
-  :hook ((after-init-hook . smart-region-on)))
+  :hook (after-init . smart-region-on))
 
-(leaf anzu
-  :ensure t
-  :custom (global-anzu-mode . t)
+(use-package anzu
   :bind
   ([remap query-replace] . anzu-query-replace)
   ([remap query-replace-regexp] . anzu-query-replace-regexp))
 
-(leaf wgrep
-  :ensure t)
+;; Writable grep buffer
+(use-package wgrep
+  :defer t)
 
-(leaf hl-todo
-  :ensure t
+(use-package hl-todo
   :config
   (global-hl-todo-mode))
 
 ;; 显示截断竖线
-(leaf fill-column-indicator
-  :ensure t
+(use-package fill-column-indicator
   :commands fci-mode)
 
 ;; 高亮删除插入操作
-;; (leaf volatile-highlights
-;;   :ensure t
+;; (use-package volatile-highlights
 ;;   :config (volatile-highlights-mode t))
 
 ;; rainbow 颜色代码显色 #00FF00
-(leaf rainbow-mode
-  :ensure t
+(use-package rainbow-mode
   :commands rainbow-mode)
 
 ;; rainbow-delimiters  彩虹括号
-(leaf rainbow-delimiters
-  :ensure t
-  :blackout t
-  :hook (prog-mode-hook))
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; same as beacon
-(leaf scrollkeeper
-  :ensure t
+(use-package scrollkeeper
   :bind
   (([remap scroll-up-command] . scrollkeeper-contents-up)
    ([remap scroll-down-command] . scrollkeeper-contents-down)))
 
-;; (leaf beacon
-;;   :ensure t
-;;   :blackout t
-;;   :hook (prog-mode-hook)
-;;   :custom ((beacon-color . "#77fffa")
-;;            (beacon-blink-duration . 0.7)
-;;            (beacon-size . 100)))
+;; (use-package beacon
+;;   :custom
+;;   (beacon-color "#aa3400")
+;;   ;; (beacon-size  64)
+;;   (beacon-blink-when-focused t)
+;;   :custom-face
+;;   (beacon-fallback-background ((t (:background "#556b2f"))))
+;;   :config
+;;   (beacon-mode 1))
 
 ;; Narrow/Widen
-(leaf fancy-narrow
-  :ensure t
-  :diminish fancy-narrow-mode
-  :init
-  (fancy-narrow-mode 1))
+;; (use-package fancy-narrow
+;;   :diminish fancy-narrow-mode
+;;   :init
+;;   (fancy-narrow-mode 1))
 
-(leaf goto-last-change
-  :ensure t
+(use-package goto-last-change
   :bind (("C-c m l" . goto-last-change)))
 
 ;; Bookmark
-(leaf bm
-  :ensure t
+(use-package bm
   :bind
   (("C-c m m" . bm-toggle)
    ;; ("C-c m p" . bm-previous)
@@ -211,53 +171,45 @@
    ("C-c m 0" . bm-remove-all-current-buffer)))
 
 ;; avy
-(leaf avy
-  :ensure t
+(use-package avy
   :bind (("M-s" . avy-goto-char)))
 
 ;; avy-zap
-(leaf avy-zap
-  :ensure t
+(use-package avy-zap
   :bind (("M-z" . avy-zap-up-to-char-dwim)))
 
 ;; ace-window
-(leaf ace-window
-  :ensure t
+(use-package ace-window
   :bind
   (([remap other-window] . ace-window)
    ("C-x 4 x" . ace-swap-window)
    ("C-c w x" . ace-swap-window)))
 
 ;; rotate
-(leaf rotate
-  :ensure t
+(use-package rotate
   :bind (("C-c w v" . rotate-layout)))
 
-(leaf ialign
-  :ensure t
+(use-package ialign
   :bind (("C-x l" . ialign)))
 
-(leaf fanyi
-  :ensure t
+(use-package fanyi
   :bind (("C-c y" . fanyi-dwim2)))
 
-;; (leaf auto-sudoedit
-;;   :ensure t
-;;   :blackout t
-;;   :hook (after-init-hook))
+;; (use-package auto-sudoedit
+;;   :delight
+;;   :commands auto-sudoedit-sudoedit
+;;   :init (defalias 'sudoedit #'auto-sudoedit-sudoedit))
 
-(leaf doom-modeline
-    :ensure t
-    :hook (after-init-hook)
-    :custom ((doom-modeline-buffer-file-name-style quote relative-to-project)
-             (doom-modeline-icon . t)
-             (doom-modeline-major-mode-icon . t)
-             (doom-modeline-major-mode-color-icon . t)
-             (line-number-mode . 1)
-             (column-number-mode . 1)))
+(use-package doom-modeline
+    :init (doom-modeline-mode 1)
+    :custom ((doom-modeline-buffer-file-name-style 'relative-to-project)
+             (doom-modeline-icon t)
+             (doom-modeline-major-mode-icon t)
+             (doom-modeline-major-mode-color-icon t)
+             (line-number-mode 1)
+             (column-number-mode 1)))
 
-;; (leaf centaur-tabs
-;;   :ensure t
+;; (use-package centaur-tabs
 ;;   :custom ((centaur-tabs-height . 28)
 ;;            (centaur-tabs-style . "wave")
 ;;            (centaur-tabs-set-icons . t)
@@ -269,13 +221,15 @@
 ;;   (centaur-tabs-mode t))
 
 ;; Garbage Collector Magic Hack
-(leaf gcmh
-  :ensure t
+(use-package gcmh
   :diminish gcmh-mode
-  :hook (emacs-startup-hook)
-  :setq ((gcmh-idle-delay quote auto)
-         (gcmh-auto-idle-delay-factor . 10)
-         (gcmh-high-cons-threshold . 16777216)))
+  :hook (emacs-startup . gcmh-mode)
+  :init (setq gcmh-idle-delay 'auto
+         gcmh-auto-idle-delay-factor  10
+         gcmh-high-cons-threshold  16777216))
+
+(use-package restart-emacs
+  :commands restart-emacs)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

@@ -2,23 +2,29 @@
 ;;; Commentary:
 ;;; Code:
 
-(leaf cc-mode
-  :defvar c-mode-base-map
-  :hook
-  ((c-mode-hook . lsp)
-   (c++-mode-hook . lsp))
-  :config
-  (leaf ccls :ensure t)
-  (leaf clang-format
-    :ensure t
-    :init
-    (defun set-hook-after-save-clang-format ()
-      (add-hook 'after-save-hook 'clang-format-buffer t t))
-    :hook ((c-mode-hook . set-hook-after-save-clang-format)
-           (c++-mode-hook . set-hook-after-save-clang-format))
-    :bind ((:c-mode-map ([remap indent-whole-buffer] . clang-format-buffer))
-           (:c++-mode-map ([remap indent-whole-buffer] . clang-format-buffer))))
-  (dvorak-set-key-prog c-mode-base-map))
+(use-package cc-mode
+  :ensure nil
+  :bind (:map c-mode-base-map
+              ("<f12>" . compile))
+  :init (setq-default c-basic-offset 4))
+
+;; (leaf cc-mode
+;;       :defvar c-mode-base-map
+;;       :hook
+;;       ((c-mode-hook . lsp)
+;;        (c++-mode-hook . lsp))
+;;       :config
+;;       (leaf ccls :ensure t)
+;;       (leaf clang-format
+;;             :ensure t
+;;             :init
+;;             (defun set-hook-after-save-clang-format ()
+;;               (add-hook 'after-save-hook 'clang-format-buffer t t))
+;;             :hook ((c-mode-hook . set-hook-after-save-clang-format)
+;;                    (c++-mode-hook . set-hook-after-save-clang-format))
+;;             :bind ((:c-mode-map ([remap indent-whole-buffer] . clang-format-buffer))
+;;                    (:c++-mode-map ([remap indent-whole-buffer] . clang-format-buffer))))
+;;       (dvorak-set-key-prog c-mode-base-map))
 
 ;; (leaf c-mode
 
