@@ -79,7 +79,8 @@
 (require 'init-project)
 (require 'init-keybindings)
 
-(require 'lang-programs)
+(require 'lang-main)
+(require 'lang-lsp)
 (require 'lang-org)
 ;; (require 'lang-web)
 (require 'lang-c-cpp-java)

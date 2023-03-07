@@ -42,9 +42,8 @@
          ([remap apropos-command] . consult-apropos) ; C-h a
          ([remap find-file-read-only-other-window] . consult-buffer-other-window)
          ([remap yank-pop] . consult-yank-pop) ; M-y
-         ("C-s" . consult-line)
+         ;; ("C-c C-s" . consult-line)
          ("C-x C-r" . consult-recent-file)
-         ("C-c r" . consult-ripgrep)
          ("C-c b" . consult-bookmark)
          ("M-." . consult-imenu)
          ("M-m" . consult-mark)))

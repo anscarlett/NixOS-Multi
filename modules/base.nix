@@ -21,7 +21,7 @@
     acpid.enable = true;
 
     journald.extraConfig = ''
-      SystemMaxUse=500M
+      SystemMaxUse=50M
     '';
   };
 
@@ -39,9 +39,8 @@
     # efitools
   ];
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1"; # Electron wayland support
-  };
+  # environment.sessionVariables = {
+  # };
 
   programs.gnupg.agent = {
     enable = true;

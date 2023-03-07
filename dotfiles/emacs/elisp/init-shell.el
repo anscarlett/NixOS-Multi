@@ -24,6 +24,21 @@
 ;;   :init
 ;;   (exec-path-from-shell-initialize))
 
+;; eshell
+(use-package eshell
+  :ensure nil
+  :functions eshell/alias
+  :config
+  (defalias 'eshell/ee 'find-file)
+  (defalias 'eshell/ff 'find-file)
+  (defalias 'eshell/d 'dired)
+  ;; 交互式进入目录
+  (defun eshell/z ()
+    "cd to directory with completion."
+    (let ((dir (completing-read "Directory: " (ring-elements eshell-last-dir-ring) nil t)))
+      (eshell/cd dir)))
+  )
+
 ;; vterm
 (use-package vterm
   :defer t
@@ -43,6 +58,9 @@
               ((eq system-type 'windows-nt) '("eshell" "*eshell*" #'eshell))
               (t '("terminal" "*terminal*"
                    (lambda () (term shell-pop-term-shell)))))))
+
+(use-package journalctl-mode
+  :defer t)
 
 (provide 'init-shell)
 ;;; init-shell.el ends here

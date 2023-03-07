@@ -158,6 +158,7 @@ in {
   ##  Desktop Environment
   #######################################################################
   home.sessionVariables = {
+    NIXOS_OZONE_WL = 1; # Electron wayland support
     _JAVA_OPTIONS = lib.optionalString hidpiEnable "-Dsun.java2d.uiScale=2";
   };
 
@@ -169,24 +170,21 @@ in {
     '';
   };
 
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+
+    # mimeApps.enable = true;
+
+    # desktopEntries.spotify = lib.options gnomeEnable {
+    #   name = "Spotify";
+    #   genericName = "Music Player";
+    #   icon = "spotify-client";
+    #   exec = "spotify %U --force-device-scale-factor=2";
+    #   terminal = false;
+    #   categories = ["Application" "Music"];
+    # };
   };
-
-  # xdg.mimeApps = {
-  #   enable = true;
-  #   defaultApplications = {
-  #     "text/html" = "re.sonny.Junction.desktop";
-  #   };
-  # };
-
-  # xdg.desktopEntries.spotify = lib.options gnomeEnable {
-  #   name = "Spotify";
-  #   genericName = "Music Player";
-  #   icon = "spotify-client";
-  #   exec = "spotify %U --force-device-scale-factor=2";
-  #   terminal = false;
-  #   categories = ["Application" "Music"];
-  # };
 }

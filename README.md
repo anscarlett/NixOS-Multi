@@ -40,8 +40,6 @@ curl -fsSL https://git.io/rime-install | rime_dir="$HOME/.local/share/fcitx5/rim
 
 <!-- <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg" align="right" alt="Nix logo" width="150"> -->
 
-[Nix Builtins](https://devdocs.io/nix/)
-
 [Nix one pager](https://github.com/tazjin/nix-1p)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)

@@ -6,17 +6,15 @@
   services = {
     xserver = {
       enable = true;
-      excludePackages = [pkgs.xterm];
-
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
+      excludePackages = [pkgs.xterm];
     };
 
-    gnome.sushi.enable = true;
-
     packagekit.enable = false;
-    gnome.tracker.enable = false;
-    gnome.tracker-miners.enable = false;
+    gnome.sushi.enable = true;
+    # gnome.tracker.enable = false;
+    # gnome.tracker-miners.enable = false;
   };
 
   environment.gnome.excludePackages = with pkgs; [
@@ -35,7 +33,6 @@
       gthumb
       # authenticator
       gparted
-      dconf2nix
       gnome-randr
 
       gnome.gnome-tweaks

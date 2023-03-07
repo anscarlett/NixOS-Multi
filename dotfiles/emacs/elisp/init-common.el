@@ -39,7 +39,6 @@
 (unless (eq system-type 'windows-nt)
   (set-selection-coding-system 'utf-8))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;; Editor ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -66,18 +65,10 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default frame-title-format "%b (%f)") ;标题栏显示正在编辑的文件名
 
-;; 编码 encoding, last is highest priority.
-;; (prefer-coding-system 'cp950)
-;; (prefer-coding-system 'gb2312)
-;; (prefer-coding-system 'cp936)
-;; (prefer-coding-system 'gb18030)
-;; (prefer-coding-system 'utf-16)
-;; (prefer-coding-system 'utf-8-dos)
-;; (prefer-coding-system 'utf-8-unix)
-
 ;; Tab and Space
 (setq-default tab-width        4
               indent-tabs-mode nil ;indent with spaces, never with TABs
+              ompletion-cycle-threshold 3  ;TAB cycle if there are only few candidates
               tab-always-indent 'complete) ;Tab key indent first then completion.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -139,6 +130,15 @@
                               cl-functions
                               interactive-only
                               make-local))
+
+;; disable prompt
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'erase-buffer 'disabled nil)
+(put 'scroll-left 'disabled nil)
 
 (provide 'init-common)
 ;;; config.el ends here

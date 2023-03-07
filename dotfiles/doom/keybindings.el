@@ -36,12 +36,16 @@
 (use-package! smart-region
   :hook (after-init . smart-region-on))
 
+(use-package! ctrlf
+  :config (ctrlf-mode t))
+
 (map!
  "C-\\" #'align-regexp
  "M-s" #'avy-goto-word-1 ;默认 isearch 被覆盖
  "<f1>" #'+treemacs/toggle
 
- "C-s" #'consult-line
+ "C-c s r" #'deadgrep
+ "C-c C-s" #'deadgrep
  "C-x C-r" #'consult-recent-file
  "C-x C-b" #'consult-buffer
  "M-y" #'consult-yank-pop
@@ -113,6 +117,7 @@
    "SPC" #'just-one-space
    "z" #'avy-zap-to-char
    :prefix ("m" . "multiple-cursors")
+   "l" #'goto-last-change
    "'" #'er/mark-inside-quotes
    "[" #'er/mark-inside-pairs
    :prefix ("w" . "window")

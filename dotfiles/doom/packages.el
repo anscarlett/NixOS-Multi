@@ -38,6 +38,10 @@
 (package! goto-last-change)
   ;; :recipe (:host github :repo "camdez/goto-last-change"))
 
+(package! ctrlf)
+
+(package! deadgrep)
+
 (package! nixpkgs-fmt
   :recipe (:host github :repo "purcell/emacs-nixpkgs-fmt"))
 

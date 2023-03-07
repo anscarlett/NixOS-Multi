@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+;; use-package manual
+;; https://github.com/Pavomuticus/pavomuticus.github.io/blob/main/use-pacakge-zh.md
 
 (require 'package)
 
@@ -13,24 +15,17 @@
   (setq package-enable-at-startup nil)          ; To prevent initializing twice
   (package-initialize))
 
-;; ;; Bootstrap `use-package` remove after emacs 29
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
-
 ;; use-package setting
 (setq use-package-always-ensure t
       ;; use-package-always-defer t
       ;; use-package-verbose t
       use-package-enable-imenu-support t)
 (require 'use-package)
-
 (require 'cl-lib)
 
 ;; (use-package dash)
 (use-package s) ;string manipulation
 (use-package f) ;file manipulation
-
 (use-package bind-key)
 (use-package diminish)
 (diminish 'visual-line-mode)
@@ -45,17 +40,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Theme
 (use-package doom-themes)
+(load-theme 'doom-tomorrow-night t)
+;; (load-theme 'doom-badger t)
+
 ;; (use-package ef-themes)
+;; (load-theme 'ef-frost t)
+
 ;; (use-package tangonov-theme)
 ;; (use-package monokai-theme)
 ;; (use-package vscode-dark-plus-theme)
 ;; (use-package zenburn)
 ;; (use-package eclipse-theme)
-(load-theme 'doom-tomorrow-night t)
-;; (load-theme 'ef-frost t)
-
-(use-package nyan-mode
-  :commands nyan-mode)
 
 (use-package all-the-icons)
 
@@ -68,12 +63,6 @@
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)))
-
-(use-package macrostep
-  :bind (:map emacs-lisp-mode-map
-         ("C-c e" . macrostep-expand)
-         :map lisp-interaction-mode-map
-         ("C-c e" . macrostep-expand)))
 
 ;; mwim ;moving to the beginning/end code
 (use-package mwim
@@ -89,19 +78,29 @@
   :init
   (move-text-default-bindings))
 
+;; easy-kill
+(use-package easy-kill
+  :bind (([remap mark-sexp] . easy-mark)
+         ([remap kill-ring-save] . easy-kill)))
+
+;; crux
+(use-package crux
+  :bind (("C-k" . crux-smart-kill-line)
+         ("C-<return>" . crux-smart-open-line)
+         ("C-S-<return>" . crux-smart-open-line-above)))
+
 (use-package iedit
   :defer t)
 
 (use-package multiple-cursors
   :bind (("C-}" . mc/mark-next-like-this)
          ("C-{" . mc/mark-previous-like-this)
-         ("C-|" . mc/mark-all-like-this-dwim)))
+         ("C-|" . mc/mark-all-like-this-dwim)
+         ("s-<mouse-1>" . mc/add-cursor-on-click)))
 
 (use-package expand-region
   :bind (("C-=" . er/expand-region)
-         ("C--" . er/contract-region)
-         ("C-c m '" . er/mark-inside-quotes)
-         ("C-c m [" . er/mark-inside-pairs)))
+         ("C--" . er/contract-region)))
 
 ;; Smartly select region, rectangle, multi cursors
 (use-package smart-region
@@ -112,6 +111,20 @@
   :bind
   ([remap query-replace] . anzu-query-replace)
   ([remap query-replace-regexp] . anzu-query-replace-regexp))
+
+(use-package ctrlf
+  :config
+  (ctrlf-mode t))
+
+;; (use-package rg
+;;   :bind (("C-c s" . rg-menu))
+;;   :config
+;;   (setq rg-show-columns t)
+;;   (setq rg-default-alias-fallback "everything"))
+
+;; better than rg
+(use-package deadgrep
+  :bind ("C-c C-s" . deadgrep))
 
 ;; Writable grep buffer
 (use-package wgrep
@@ -160,15 +173,11 @@
 ;;   (fancy-narrow-mode 1))
 
 (use-package goto-last-change
-  :bind (("C-c m l" . goto-last-change)))
+  :defer t)
 
 ;; Bookmark
 (use-package bm
-  :bind
-  (("C-c m m" . bm-toggle)
-   ;; ("C-c m p" . bm-previous)
-   ;; ("C-c m n" . bm-next)
-   ("C-c m 0" . bm-remove-all-current-buffer)))
+  :defer t)
 
 ;; avy
 (use-package avy
@@ -200,6 +209,9 @@
 ;;   :commands auto-sudoedit-sudoedit
 ;;   :init (defalias 'sudoedit #'auto-sudoedit-sudoedit))
 
+(use-package nyan-mode
+  :commands nyan-mode)
+
 (use-package doom-modeline
     :init (doom-modeline-mode 1)
     :custom ((doom-modeline-buffer-file-name-style 'relative-to-project)
@@ -210,13 +222,13 @@
              (column-number-mode 1)))
 
 ;; (use-package centaur-tabs
-;;   :custom ((centaur-tabs-height . 28)
-;;            (centaur-tabs-style . "wave")
-;;            (centaur-tabs-set-icons . t)
-;;            (centaur-tabs-set-bar . 'over)
-;;            (centaur-tabs-set-close-button . nil)
-;;            (centaur-tabs-set-modified-marker . t)
-;;            (centaur-tabs-modified-marker . "●"))
+;;   :custom ((centaur-tabs-height 28)
+;;            (centaur-tabs-style "wave")
+;;            (centaur-tabs-set-icons t)
+;;            (centaur-tabs-set-bar 'over)
+;;            (centaur-tabs-set-close-button nil)
+;;            (centaur-tabs-set-modified-marker t)
+;;            (centaur-tabs-modified-marker "●"))
 ;;   :config
 ;;   (centaur-tabs-mode t))
 
@@ -230,6 +242,9 @@
 
 (use-package restart-emacs
   :commands restart-emacs)
+
+(use-package disk-usage
+  :commands (disk-usage))
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

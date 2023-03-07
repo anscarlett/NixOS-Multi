@@ -61,9 +61,10 @@
 
 ;; undo-fu-session
 (use-package undo-fu-session
+  :custom
+  (undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
   :config
-  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
-(global-undo-fu-session-mode)
+  (global-undo-fu-session-mode 1))
 
 ;; undo-tree C-x u
 (use-package vundo
