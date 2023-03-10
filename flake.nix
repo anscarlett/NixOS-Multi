@@ -13,7 +13,7 @@
     };
 
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/8f8c03401b8ce5c6a98790dd2ec4add9db5ef633";
+      url = "github:nix-community/emacs-overlay/c8421fbdb7d831296ecb735c8a7f60964809c857";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

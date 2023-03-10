@@ -112,9 +112,9 @@
   ([remap query-replace] . anzu-query-replace)
   ([remap query-replace-regexp] . anzu-query-replace-regexp))
 
-(use-package ctrlf
-  :config
-  (ctrlf-mode t))
+;; (use-package ctrlf
+;;   :config
+;;   (ctrlf-mode t))
 
 ;; (use-package rg
 ;;   :bind (("C-c s" . rg-menu))
@@ -236,9 +236,13 @@
 (use-package gcmh
   :diminish gcmh-mode
   :hook (emacs-startup . gcmh-mode)
-  :init (setq gcmh-idle-delay 'auto
-         gcmh-auto-idle-delay-factor  10
-         gcmh-high-cons-threshold  16777216))
+  :config
+  (setq gcmh-verbose nil
+        gcmh-idle-delay 'auto
+
+        gc-cons-percentage 1.0
+        garbage-collection-messages nil
+        gcmh-high-cons-threshold (* 32 1024 1024)))
 
 (use-package restart-emacs
   :commands restart-emacs)

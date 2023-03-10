@@ -56,6 +56,9 @@
 ;; Modeline
 (column-number-mode t)      ;显示列数
 (size-indication-mode t)    ;显示文件大小
+;; (display-time-mode 1)       ;显示时间
+;; (unless (string-match-p "^Power N/A" (battery))
+;;   (display-battery-mode 1))
 
 (show-paren-mode 1)                         ;括号匹配 parens
 (electric-pair-mode t)                      ;自动补全括号

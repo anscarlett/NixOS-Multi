@@ -39,8 +39,8 @@ in {
     "starship.toml".source = ../dotfiles/starship.toml;
 
     "emacs/elisp".source = mkOOSL hmDots + "/emacs/elisp";
-    "emacs/init.el".source = mkOOSL hmDots + "/emacs/init.el";
-    "emacs/early-init.el".source = mkOOSL hmDots + "/emacs/early-init.el";
+    "emacs/init.el".source = ../dotfiles/emacs/init.el;
+    "emacs/early-init.el".source = ../dotfiles/emacs/early-init.el;
 
     "lf".source = mkOOSL hmDots + "/lf";
     "mako".source = mkOOSL hmDots + "/mako";
