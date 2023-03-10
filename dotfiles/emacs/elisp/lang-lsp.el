@@ -57,28 +57,38 @@
 ;; corfu https://github.com/minad/corfu
 (use-package corfu
   ;; :disabled t
-  :hook
-  (emacs-startup . global-corfu-mode)
   :bind
   (:map corfu-map
         ("<escape>" . corfu-quit)
+        ;; ("<tab>" . corfu-next)
         ("C-d" . corfu-info-documentation)
         ("M-." . corfu-info-location))
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
-  (corfu-auto-delay 0.0)
   (corfu-auto-prefix 1)
+  (corfu-auto-delay 0.0)
   ;; (corfu-separator ?\s)          ;; Orderless field separator
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  (corfu-quit-at-boundary 'separator)   ;; completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  (corfu-preselect 'prompt)      ;; Preselect the prompt
+  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
   ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
   (corfu-max-width 110)
   (corfu-preview-current nil)
-  (corfu-echo-documentation t))
+  (corfu-echo-documentation t)
+  :init
+  (global-corfu-mode)
+  (corfu-history-mode) ; save completion history for better sorting
+  ;; (corfu-popupinfo-mode) ; Popup completion info
+  :config
+  (add-hook 'eshell-mode-hook
+            (lambda () (setq-local corfu-quit-at-boundary t
+                               corfu-quit-no-match t
+                               corfu-auto nil)
+              (corfu-mode))))
+
 
 ;; Corfu backend
 (use-package cape
@@ -90,8 +100,8 @@
   (add-to-list 'completion-at-point-functions #'cape-ispell)
   ;; (add-to-list 'completion-at-point-functions #'cape-dict)
   ;; (add-to-list 'completion-at-point-functions #'cape-line)
-  ;; (add-to-list 'completion-at-point-functions #'cape-abbrev)
-  ;; (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-hook 'completion-at-point-functions #'cape-dabbrev 90)
   (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'prog-mode-hook

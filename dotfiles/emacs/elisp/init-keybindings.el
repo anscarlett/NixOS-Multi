@@ -68,7 +68,7 @@
 
  :prefix-map search-map
  :prefix "C-c s"
- ("r" . deadgrep)
+ ("s" . deadgrep)
  ("l" . consult-line)
 
  :prefix-map mark-map

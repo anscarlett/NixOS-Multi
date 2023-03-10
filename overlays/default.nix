@@ -27,7 +27,6 @@ final: prev: {
   xmind = prev.callPackage ./xmind {};
   clash-verge-source = prev.callPackage ./clash-verge-source {};
   clash-for-windows = prev.callPackage ./clash-for-windows {};
-  clash-meta = prev.callPackage ./clash-meta {};
   clash-premium = prev.callPackage ./clash-premium {};
 
   # C
