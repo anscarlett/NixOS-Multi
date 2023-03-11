@@ -27,9 +27,9 @@ in {
     # })
     (google-chrome.override {
       commandLineArgs = [
-        "--enable-features=VaapiVideoDecoder"
         "--use-gl=egl"
         "--gtk-version=4"
+        "--enable-features=VaapiVideoDecoder"
       ];
     })
     # (vivaldi.override {
@@ -69,7 +69,7 @@ in {
     # Image manipulation
     # shutter
     # pinta
-    yacreader
+    # yacreader
     contrast
     # font-manager # (webkitgtk)
     # gcolor3

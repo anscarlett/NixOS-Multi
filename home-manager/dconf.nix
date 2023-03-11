@@ -60,7 +60,7 @@
         "org.gnome.Nautilus.desktop"
         "emacs.desktop"
         "firefox.desktop"
-        "org.telegram.desktop.desktop"
+        # "org.telegram.desktop.desktop"
       ];
     };
 

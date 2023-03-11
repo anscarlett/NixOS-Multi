@@ -29,7 +29,7 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "clash-for-windows";
-  version = "0.20.16";
+  version = "0.20.18";
 
   src = fetchurl {
     url = "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.16/Clash.for.Windows-0.20.16-x64-linux.tar.gz";
