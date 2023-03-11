@@ -2,6 +2,28 @@
 ;;; Commentary:
 ;;; Code:
 
+;; use-package manual
+;; https://github.com/Pavomuticus/pavomuticus.github.io/blob/main/use-pacakge-zh.md
+
+(require 'package)
+
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
+;; Initialize packages
+(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
+  (setq package-enable-at-startup nil)          ; To prevent initializing twice
+  (package-initialize))
+
+;; use-package setting
+(setq use-package-always-ensure t
+      ;; use-package-always-defer t
+      ;; use-package-verbose t
+      use-package-enable-imenu-support t)
+(require 'use-package)
+(require 'cl-lib)
+
+;; elpaca
 (defvar elpaca-installer-version 0.2)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -34,26 +56,12 @@
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
 
-;; use-package manual
-;; https://github.com/Pavomuticus/pavomuticus.github.io/blob/main/use-pacakge-zh.md
-
-(require 'package)
-
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-
-;; Initialize packages
-(unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
-  (setq package-enable-at-startup nil)          ; To prevent initializing twice
-  (package-initialize))
-
-;; use-package setting
-(setq use-package-always-ensure t
-      ;; use-package-always-defer t
-      ;; use-package-verbose t
-      use-package-enable-imenu-support t)
-(require 'use-package)
-(require 'cl-lib)
+;; Install use-package support
+(elpaca elpaca-use-package
+  ;; Enable :elpaca use-package keyword.
+  (elpaca-use-package-mode)
+  ;; Assume :elpaca t unless otherwise specified.
+  (setq elpaca-use-package-by-default t))
 
 ;; (use-package dash)
 (use-package s) ;string manipulation
