@@ -61,12 +61,12 @@
   (:map corfu-map
         ("<escape>" . corfu-quit)
         ;; ("<tab>" . corfu-next)
-        ("C-d" . corfu-info-documentation)
-        ("M-." . corfu-info-location))
+        ("M-d" . corfu-info-documentation)
+        ("M-l" . corfu-info-location))
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
-  (corfu-auto-prefix 1)
+  (corfu-auto-prefix 2)
   (corfu-auto-delay 0.0)
   ;; (corfu-separator ?\s)          ;; Orderless field separator
   (corfu-quit-at-boundary 'separator)   ;; completion boundary

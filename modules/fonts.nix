@@ -12,10 +12,11 @@
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      # sarasa-gothic
-      # lxgw-wenkai
       # source-han-sans
       # source-han-serif
+      # sarasa-gothic
+      # lxgw-wenkai
+
       source-code-pro
       # comic-relief
       font-awesome

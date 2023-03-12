@@ -105,6 +105,9 @@
 (use-package lua-mode
   :mode ("\\.lua'"))
 
+(use-package license-templates
+  :defer t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; rustic https://github.com/brotzeit/rustic

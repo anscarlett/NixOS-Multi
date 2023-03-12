@@ -3,17 +3,14 @@
 , fetchFromGitLab
 , cmake
 , extra-cmake-modules
+, wrapQtAppsHook
+, kio
+, ki18n
+, kconfig
+, kcoreaddons
 , kirigami2
-, qtwebkit
 , qtwebengine
 , qtquickcontrols2
-, wrapQtAppsHook
-, qtbase
-, qttools
-, kcoreaddons
-, pkg-config
-, kconfig
-, ki18n
 }:
 
 stdenv.mkDerivation rec {
@@ -23,8 +20,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitLab {
     owner = "schul9louis";
     repo = "klever";
-    rev = "7f4faab29cc5f9faaaa275ed320dac0c8ef01c5a";
-    hash = "sha256-XU7HfP89M7IdAqOONUUh1Any4RzxY6yuLyG5F7gLV9A=";
+    rev = "17982ed13ef84a2bcbe9717e2c51db30121ab87f";
+    hash = "sha256-8fw9TNiuq7R8liO8tQTqycNM3uiIcZxFlwoM9ufFlSs=";
   };
 
   nativeBuildInputs = [
@@ -35,6 +32,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     # qtbase
+    kio
     ki18n
     kconfig
     kcoreaddons
