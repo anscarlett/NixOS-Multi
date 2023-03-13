@@ -7,7 +7,6 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
-
   # Data
   nixos-helper = prev.callPackage ./nixos-helper {};
   sddm-theme-astronaut = prev.callPackage ./sddm-theme-astronaut {};
@@ -100,8 +99,8 @@ final: prev: {
 
   logseq-wayland = prev.symlinkJoin {
     name = "logseq";
-    paths = [ prev.logseq ];
-    nativeBuildInputs = [ prev.makeWrapper ];
+    paths = [prev.logseq];
+    nativeBuildInputs = [prev.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/logseq \
         --add-flags "--socket=wayland --enable-features=UseOzonePlatform --ozone-platform=wayland"
