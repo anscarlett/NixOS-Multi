@@ -21,6 +21,7 @@ ns:
 - git-fetch-merge
 - pr-run
 - pr-shell
+- pr-pull
 - impure-run
 - impure-shell
 - hash2sri

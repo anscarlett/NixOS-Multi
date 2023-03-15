@@ -13,7 +13,7 @@
     };
 
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/c8421fbdb7d831296ecb735c8a7f60964809c857";
+      url = "github:nix-community/emacs-overlay/2e45b7cbdc64c3e56655cc097b17d8bdb3fbc1a7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -178,7 +178,9 @@
             };
         };
 
-        ## Home-Manager Standalone
+        #######################################################################
+        ##  Home-Manager Standalone
+        #######################################################################
         homeConfigurations = {
           iab = lib.mkHome {
             username = "iab";
@@ -191,7 +193,7 @@
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         hm = self.nixosConfigurations.yoga.config.home-manager.users.iab;
 
-        # for easy build
+        # for easily build
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
         livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
         # or

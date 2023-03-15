@@ -11,6 +11,7 @@
   (setq project-switch-commands
         '((project-find-file "Find file" f)
           (project-dired "Dired" d)
+          ;; (deadgrep "rg" r) # TODO
           (project-vc-dir "VC-Dir" v)
           (project-shell "Shell" s)
           (project-eshell "Eshell" e)
