@@ -71,7 +71,6 @@
     ...
   }: {
     imports = [
-      ./services/wob.nix
       ./services/polkit.nix
     ];
 
@@ -96,7 +95,6 @@
       bluetuith
       blueberry
       wlopm
-      # wob
       wev # wayland event view
       wvkbd # on-screen keyboard
       # waypipe # proxy ?
@@ -135,10 +133,10 @@
     ];
 
     services = {
+      avizo.enable = true;
       udiskie.enable = true;
       gnome-keyring.enable = true;
       # playerctld.enable = true;
-      wob.enable = true;
       polkit.enable = true;
 
       wlsunset = {
