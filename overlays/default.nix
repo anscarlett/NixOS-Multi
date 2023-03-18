@@ -39,11 +39,8 @@ final: prev: {
 
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};
-  klever = prev.libsForQt5.callPackage ./klever {};
-  efibooteditor = prev.qt6Packages.callPackage ./efibooteditor {};
 
   # Python
-  gestures-gtk = prev.callPackage ./gestures-gtk {}; #WIP!!
 
   # Python Module Overlays
   pythonPackagesOverlays =
@@ -63,7 +60,6 @@ final: prev: {
   python3Packages = final.python3.pkgs;
 
   # Java
-  spotiflyer = prev.callPackage ./spotiflyer {};
 
   # Ruby
   bashly = prev.callPackage ./bashly {};
