@@ -7,11 +7,8 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
-  clash-verge = prev.callPackage ./clash-verge {};
-
   # Data
   nixos-helper = prev.callPackage ./nixos-helper {};
-  sddm-theme-astronaut = prev.callPackage ./sddm-theme-astronaut {};
   fcitx5-breeze = prev.callPackage ./fcitx5-breeze {};
   rime-ice = prev.callPackage ./rime-ice {};
 
