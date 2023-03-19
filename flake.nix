@@ -2,10 +2,10 @@
   description = "NIX SAVE THE WORLD";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    # nixpkgs.url = "git+file:///home/iab/devs/nixpkgs/?ref=ibus-rime-data";
+    nixpkgs.url = "git+file:///home/iab/devs/nixpkgs/?ref=v2raya-test";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -199,6 +199,8 @@
         # or
         # nixos-generate -f iso -c ~/nsworld/hosts/livecd/vanilla-iso.nix
       };
+
+      debug = true;
 
       systems = ["x86_64-linux" "aarch64-linux"];
 

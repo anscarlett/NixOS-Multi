@@ -13,7 +13,7 @@
   };
 
   programs.starship = {
-    enable = false;
+    enable = true;
     enableBashIntegration = false;
     enableZshIntegration = true;
   };
@@ -58,7 +58,7 @@
       # PURE_PROMPT_VICMD_SYMBOL=‹
       # prompt pure
       # source minimal.zsh
-      source ${../dotfiles/zsh/oxide.zsh-theme}
+      # source ${../dotfiles/zsh/oxide.zsh-theme}
 
       # Compatibility bash completion
       autoload -U bashcompinit && bashcompinit

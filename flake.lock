@@ -362,11 +362,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1679075297,
-        "narHash": "sha256-8TwS7NPQWW9iPejBwWzmjLnK8bQhdOMPpsj3KPAL6x8=",
+        "lastModified": 1679224149,
+        "narHash": "sha256-TSY37Zv0icF/aijR3/KWGLVBlnKKHlG9QTj7vHbF/UU=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "994584bb26ffa1deeaf56099601ef4bcc487273e",
+        "rev": "a4bc66709604ab78abc575b60baa6d23ae027a59",
         "type": "github"
       },
       "original": {
@@ -484,18 +484,18 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1679070947,
-        "narHash": "sha256-0da0x/w+QmfrRwCtV2pf1MRM1Zhaic5lKnQ6xH9zV6A=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "518d5f094122e73f001204c57b37c9e4d27fd34f",
-        "type": "github"
+        "lastModified": 1679226670,
+        "narHash": "sha256-nd/mfH0YGW0FZLOClHIBzYTDfdSkQdxo32/9fIa6fbg=",
+        "ref": "v2raya-test",
+        "rev": "ece5b6ebf2bf1ac60fd7efd3e91e8b57d2e9df45",
+        "revCount": 465760,
+        "type": "git",
+        "url": "file:///home/iab/devs/nixpkgs/"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable-small",
-        "repo": "nixpkgs",
-        "type": "github"
+        "ref": "v2raya-test",
+        "type": "git",
+        "url": "file:///home/iab/devs/nixpkgs/"
       }
     },
     "plasma-manager": {
