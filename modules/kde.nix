@@ -49,10 +49,17 @@ in {
       # korganizer
     ]);
 
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    # elisa
+    # oxygen
+    # khelpcenter
+    # print-manager
+    plasma-browser-integration
+  ];
+
   services.xserver = {
     enable = true;
     excludePackages = [pkgs.xterm];
-
     displayManager = {
       defaultSession = "plasmawayland";
 
@@ -87,15 +94,7 @@ in {
 
     desktopManager.plasma5 = {
       enable = true;
-      supportDDC = true;
       # useQtScaling = true;
-      excludePackages = with pkgs.libsForQt5; [
-        # elisa
-        # oxygen
-        # khelpcenter
-        # print-manager
-        plasma-browser-integration
-      ];
     };
   };
 }

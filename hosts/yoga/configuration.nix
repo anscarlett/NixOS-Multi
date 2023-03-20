@@ -19,6 +19,13 @@
   # amdvlk || opengl
   hardware.amdgpu.amdvlk = true;
 
+  # still need for hidpi ?
+  fonts.fontconfig = {
+    antialias = true;
+    hinting.enable = true;
+    subpixel.rgba = "none";
+  };
+
   #######################################################################
   ## Kernel
   #######################################################################
