@@ -36,8 +36,8 @@
 (use-package! smart-region
   :hook (after-init . smart-region-on))
 
-(use-package! ctrlf
-  :config (ctrlf-mode t))
+;; (use-package! ctrlf
+;;   :config (ctrlf-mode t))
 
 (map!
  "C-\\" #'align-regexp
@@ -46,6 +46,7 @@
 
  "C-c s r" #'deadgrep
  "C-c C-s" #'deadgrep
+ "C-s" #'consult-line
  "C-x C-r" #'consult-recent-file
  "C-x C-b" #'consult-buffer
  "M-y" #'consult-yank-pop

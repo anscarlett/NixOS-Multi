@@ -64,8 +64,8 @@
 
     firewall = {
       # enable = false; # true by default
-      # allowedUDPPorts = [ 32345 ];
-      # allowedTCPPorts = [ 32345 ];
+      # allowedUDPPorts = [ 53317 ];
+      # allowedTCPPorts = [ 53317 ];
     };
   };
 

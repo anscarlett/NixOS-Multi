@@ -7,7 +7,7 @@
     # tmpOnTmpfs = true;
     cleanTmpDir = true;
     plymouth.enable = true;
-    supportedFilesystems = ["ntfs-3g"];
+    supportedFilesystems = ["ntfs"];
 
     # Silent boot at initrd.systemd
     kernelParams = ["systemd.show_status=false"];

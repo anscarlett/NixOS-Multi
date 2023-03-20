@@ -2,10 +2,10 @@
   description = "NIX SAVE THE WORLD";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    nixpkgs.url = "git+file:///home/iab/devs/nixpkgs/?ref=v2raya-test";
+    # nixpkgs.url = "git+file:///home/iab/devs/nixpkgs/?ref=fix/localsend";
 
     home-manager = {
       url = "github:nix-community/home-manager";
