@@ -5,7 +5,6 @@
   nixosConfig,
   ...
 }: let
-  hidpiEnable = nixosConfig.hardware.video.hidpi.enable;
   gnomeEnable = nixosConfig.services.xserver.desktopManager.gnome.enable;
 in {
   home.packages = with pkgs; [
@@ -158,8 +157,8 @@ in {
   ##  Desktop Environment
   #######################################################################
   home.sessionVariables = {
-    NIXOS_OZONE_WL = 1; # Electron wayland support
-    _JAVA_OPTIONS = lib.optionalString hidpiEnable "-Dsun.java2d.uiScale=2";
+    NIXOS_OZONE_WL = 1; # Electron wayland native
+    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 
   home.file = {

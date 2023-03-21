@@ -19,13 +19,6 @@
   # amdvlk || opengl
   hardware.amdgpu.amdvlk = true;
 
-  # still need for hidpi ?
-  fonts.fontconfig = {
-    antialias = true;
-    hinting.enable = true;
-    subpixel.rgba = "none";
-  };
-
   #######################################################################
   ## Kernel
   #######################################################################
@@ -105,6 +98,11 @@
     #   "/home".options = [ "compress=zstd" ];
     #   "/nix".options = [ "compress=zstd" "noatime" ];
     #   "/swap".options = [ "noatime" ];
+    "/run/media/iab/Win" = {
+      device = "/dev/nvme0n1p3";
+      fsType = "ntfs-3g";
+      # options = ["rw" "uid=${username}"]; # default was enough
+    };
   };
 
   # Swapfile

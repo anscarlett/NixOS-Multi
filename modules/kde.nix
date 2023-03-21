@@ -3,9 +3,7 @@
   pkgs,
   lib,
   ...
-}: let
-  hidpiEnable = config.hardware.video.hidpi.enable;
-in {
+}: {
   services = {
     colord.enable = true;
     geoclue2.enable = true;
@@ -67,13 +65,13 @@ in {
         enable = true;
         settings = {
           General.InputMethod = ""; # fix giant virtual keyboard
-          X11.ServerArguments = lib.optionalString hidpiEnable "-dpi 144";
+          X11.ServerArguments = "-dpi 144";
         };
       };
 
       lightdm = {
         enable = false;
-        greeters.gtk = lib.optionalAttrs hidpiEnable {
+        greeters.gtk = {
           cursorTheme.size = 48;
           extraConfig = ''
             xft-dpi=261
