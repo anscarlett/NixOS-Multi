@@ -7,7 +7,7 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
-  clash-verge = prev.callPackage ./clash-verge {};
+  # clash-verge = prev.callPackage ./clash-verge {};
 
   # Data
   nixos-helper = prev.callPackage ./nixos-helper {};
@@ -110,10 +110,14 @@ final: prev: {
       src = prev.fetchFromGitHub {
         owner = "sddm";
         repo = "sddm";
-        rev = "bf69d7badacdbef9ff4de203b8d08ee1dd796e30";
-        hash = "sha256-raszEq/GkCH8rSFGBzj5rMXWwSR3w8NlJbveY57grUE=";
+        rev = "e07e805c21310572b4fecc810fd5610b1d3d03fd";
+        sha256 = "sha256-CcUN2XnrJYDPYIiOJtU8QzQg4TniSJG686BHoCF1mfQ=";
       };
       patches = [];
+      cmakeFlags = oldAttrs.cmakeFlags ++ [
+        "-DSYSTEMD_SYSUSERS_DIR=${placeholder "out"}/lib/sysusers.d"
+        "-DSYSTEMD_TMPFILES_DIR=${placeholder "out"}/lib/tmpfiles.d"
+      ];
     });
   });
 
