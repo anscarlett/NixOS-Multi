@@ -55,6 +55,8 @@
     enable = true;
     configurationLimit = 8;
     pkiBundle = "/etc/secureboot";
+    # settings = {
+    # };
   };
 
   boot.loader = {

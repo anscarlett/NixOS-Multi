@@ -41,6 +41,7 @@ final: prev: {
 
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};
+  qcm = prev.qt6Packages.callPackage ./qcm {};
 
   # Python
 
