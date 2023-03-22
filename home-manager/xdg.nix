@@ -19,7 +19,6 @@ in {
   };
 
   home.file = {
-    ".doom.d".source = mkOOSL hmDots + "/doom";
     ".proxychains/proxychains.conf".source = ../dotfiles/proxychains.conf;
   };
 
@@ -36,8 +35,8 @@ in {
     "nix-init".source = ../dotfiles/nix-init;
     "alacritty".source = ../dotfiles/alacritty;
     "radioboat".source = ../dotfiles/radioboat;
-    "starship.toml".source = ../dotfiles/starship.toml;
 
+    "doom".source = mkOOSL hmDots + "/doom";
     "emacs/elisp".source = mkOOSL hmDots + "/emacs/elisp";
     "emacs/init.el".source = ../dotfiles/emacs/init.el;
     "emacs/early-init.el".source = ../dotfiles/emacs/early-init.el;
@@ -46,6 +45,7 @@ in {
     "mako".source = mkOOSL hmDots + "/mako";
     "waybar".source = mkOOSL hmDots + "/waybar";
     "wayfire.ini".source = mkOOSL hmDots + "/wayfire.ini";
+    "starship.toml".source = mkOOSL hmDots + "/starship.toml";
     "sway/custom.conf".source = mkOOSL hmDots + "/sway/custom.conf";
     "hypr/custom.conf".source = mkOOSL hmDots + "/hypr/custom.conf";
   };

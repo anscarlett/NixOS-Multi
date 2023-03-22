@@ -98,11 +98,11 @@
     #   "/home".options = [ "compress=zstd" ];
     #   "/nix".options = [ "compress=zstd" "noatime" ];
     #   "/swap".options = [ "noatime" ];
-    "/run/media/iab/Win" = {
-      device = "/dev/nvme0n1p3";
-      fsType = "ntfs-3g";
-      # options = ["rw" "uid=${username}"]; # default was enough
-    };
+    # "/run/media/iab/Win" = {  # too dangerous
+    #   device = "/dev/nvme0n1p3";
+    #   fsType = "ntfs-3g";
+    #   # options = ["rw" "uid=${username}"]; # default was enough
+    # };
   };
 
   # Swapfile

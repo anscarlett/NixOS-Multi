@@ -91,7 +91,6 @@ in {
     # rnote # handwritten note
     # foliate # (webkitgtk)
     # standardnotes
-    iotas
     # paper-note
     # endeavour
     ghostwriter

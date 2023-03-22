@@ -11,5 +11,9 @@ command_timeout = 1000
 # disable "It took xxs"
 # cmd_duration.disabled = true;
 
+# [character]
+# success_symbol = '[>](bold green)'
+# error_symbol = '[✗](bold red)'
+
 # [nix_shell]
 # format = 'via [☃️ $state( \($name\))](bold blue) '

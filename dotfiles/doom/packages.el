@@ -29,9 +29,6 @@
 (package! fanyi
   :recipe (:host github :repo "condy0919/fanyi.el"))
 
-(package! vundo
-  :recipe (:host github :repo "casouri/vundo"))
-
 (package! ialign
   :recipe (:host github :repo "mkcms/interactive-align"))
 
