@@ -2,8 +2,6 @@
 ns:
 - which
 - log
-- run
-- shell
 - boot
 - switch
 - upgrade
@@ -21,6 +19,7 @@ ns:
 - git-fetch-merge
 - pr-run
 - pr-shell
+- pr-build
 - pr-pull
 - impure-run
 - impure-shell

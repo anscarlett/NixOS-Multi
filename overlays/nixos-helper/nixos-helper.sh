@@ -8,7 +8,6 @@ usage() {
     printf "\n Usage:
      \t which log references depends
      \t boot switch upgrade diff
-     \t run search shell index-up
      \t profiles generations source installed
      \t pr-run pr-shell pr-pull git-fm
      \t hmswitch hmsource hmprofiles hmdiff
@@ -30,14 +29,6 @@ while [[ $# -gt 0 ]]; do
 
         log)
             nix log "$(ns which "$2")"
-            shift ;;
-
-        run)
-            nix run nixpkgs#"$2"
-            shift ;;
-
-        shell)
-            nix shell nixpkgs#"$2"
             shift ;;
 
         boot)
@@ -121,11 +112,11 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         impure-run)
-            NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#"$2" --impure
+            NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#"$2"
             shift ;;
 
         impure-shell)
-            NIXPKGS_ALLOW_UNFREE=1 nix shell nixpkgs#"$2" --impure
+            NIXPKGS_ALLOW_UNFREE=1 nix shell --impure nixpkgs#"$2"
             shift ;;
 
         hash2sri)

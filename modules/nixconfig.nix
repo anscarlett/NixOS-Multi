@@ -8,7 +8,11 @@
 
   nix = {
     # nix registry list
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
+    registry =
+      lib.mapAttrs (_: value: {flake = value;}) inputs
+      // {
+        n.flake = inputs.nixpkgs;
+      };
 
     # compatible for old nix
     # echo $NIX_PATH | tr ":" "\n"

@@ -44,7 +44,6 @@
     ouch
     # patool
     # atool
-    trash-cli
 
     # FileManager
     fd
