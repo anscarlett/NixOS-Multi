@@ -103,6 +103,7 @@ bootctl / efibootmgr
 #+end_src
 
 * Bash Basic
+https://github.com/skywind3000/awesome-cheatsheets/blob/master/languages/bash.sh
 
 #+begin_src bash
   cat < input > output

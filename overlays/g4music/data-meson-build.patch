@@ -1,0 +1,13 @@
+diff --git a/data/meson.build b/data/meson.build
+index 6856c7d..0c7beef 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -64,7 +64,7 @@ gschema_file = configure_file(
+ )
+ 
+ install_data(
+-  gschema_file,
++  'com.github.neithern.g4music.appdata.xml',
+   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
+ )
+ 

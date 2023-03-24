@@ -8,9 +8,12 @@
     cat = "${lib.getExe pkgs.bat} -p";
     l = "${lib.getExe pkgs.exa} -l --icons";
     "la." = "ls -d .*";
-    rm = "${pkgs.trash-cli}/bin/trash-put";
-    rm-empty = "${pkgs.trash-cli}/bin/trash-empty";
-    rm-restore = "${pkgs.trash-cli}/bin/trash-restore";
+    # rm = "${pkgs.trash-cli}/bin/trash-put";
+    # rm-empty = "${pkgs.trash-cli}/bin/trash-empty";
+    # rm-restore = "${pkgs.trash-cli}/bin/trash-restore";
+    rm = "${lib.getExe pkgs.conceal} put";
+    rm-empty = "${lib.getExe pkgs.conceal} empty";
+    rm-restore = "${lib.getExe pkgs.conceal} restore";
     free = "free -h";
     tree = "${lib.getExe pkgs.erdtree}";
     bc = "${lib.getExe pkgs.libqalculate}";

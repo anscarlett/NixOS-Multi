@@ -151,26 +151,26 @@
   # z: autojump directory
   programs.zoxide = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+    enableBashIntegration = config.programs.bash.enable;
+    enableZshIntegration = config.programs.zsh.enable;
   };
 
   programs.fzf = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+    enableBashIntegration = config.programs.bash.enable;
+    enableZshIntegration = config.programs.zsh.enable;
   };
 
   programs.skim = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+    enableBashIntegration = config.programs.bash.enable;
+    enableZshIntegration = config.programs.zsh.enable;
   };
 
   programs.nix-index = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+    enableBashIntegration = config.programs.bash.enable;
+    enableZshIntegration = config.programs.zsh.enable;
   };
 
   #######################################################################

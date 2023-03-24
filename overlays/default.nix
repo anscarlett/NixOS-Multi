@@ -34,10 +34,12 @@ final: prev: {
 
   # Rust
   sniffnet = prev.callPackage ./sniffnet {}; # iced
+  conceal = prev.callPackage ./conceal {};
 
   # Go
 
   # Gtk
+  g4music = prev.callPackage ./g4music {};
 
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};
