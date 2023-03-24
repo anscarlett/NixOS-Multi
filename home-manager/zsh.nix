@@ -18,6 +18,11 @@
     enableZshIntegration = true;
   };
 
+  programs.zellij = {
+    enable = true;
+    # settings = {};
+  };
+
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -63,9 +68,6 @@
       # Compatibility bash completion
       autoload -U bashcompinit && bashcompinit
       source ${../overlays/nixos-helper/ns.bash}
-
-      # allow using nix-shell with zsh
-      ${lib.getExe pkgs.any-nix-shell} zsh --info-right | source /dev/stdin
 
       # Completions
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive tab completion
