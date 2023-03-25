@@ -4,8 +4,7 @@
   pkgs,
   ...
 }: let
-  mkOOSL = config.lib.file.mkOutOfStoreSymlink;
-  hmDots = config.home.homeDirectory + "/nsworld/dotfiles";
+  lnDots = config.lib.file.mkOutOfStoreSymlink config.home.homeDirectory + "/nsworld/dotfiles";
 in {
   home.sessionPath = [
     "${../dotfiles/bin}"
@@ -36,18 +35,18 @@ in {
     "alacritty".source = ../dotfiles/alacritty;
     "radioboat".source = ../dotfiles/radioboat;
 
-    "doom".source = mkOOSL hmDots + "/doom";
-    "emacs/elisp".source = mkOOSL hmDots + "/emacs/elisp";
+    "doom".source = "${lnDots}/doom";
+    "emacs/elisp".source = "${lnDots}/emacs/elisp";
     "emacs/init.el".source = ../dotfiles/emacs/init.el;
     "emacs/early-init.el".source = ../dotfiles/emacs/early-init.el;
 
-    "lf".source = mkOOSL hmDots + "/lf";
-    "mako".source = mkOOSL hmDots + "/mako";
-    "waybar".source = mkOOSL hmDots + "/waybar";
-    "wayfire.ini".source = mkOOSL hmDots + "/wayfire.ini";
-    "starship.toml".source = mkOOSL hmDots + "/starship.toml";
-    "sway/custom.conf".source = mkOOSL hmDots + "/sway/custom.conf";
-    "hypr/custom.conf".source = mkOOSL hmDots + "/hypr/custom.conf";
+    "lf".source = "${lnDots}/lf";
+    "mako".source = "${lnDots}/mako";
+    "waybar".source = "${lnDots}/waybar";
+    "wayfire.ini".source = "${lnDots}/wayfire.ini";
+    "starship.toml".source = "${lnDots}/starship.toml";
+    "sway/custom.conf".source = "${lnDots}/sway/custom.conf";
+    "hypr/custom.conf".source = "${lnDots}/hypr/custom.conf";
   };
 
   xdg.dataFile = {
