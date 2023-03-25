@@ -123,7 +123,8 @@ in {
   ];
 
   services = {
-    easyeffects.enable = true;
+    # diabsle in wm
+    easyeffects.enable = !config.services.wlsunset.enable;
   };
 
   programs.mpv = {
@@ -157,7 +158,7 @@ in {
   ##  Desktop Environment
   #######################################################################
   home.sessionVariables = {
-    NIXOS_OZONE_WL = 1; # Electron wayland native
+    NIXOS_OZONE_WL = lib.mkDefault 1; # Electron wayland native
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 

@@ -31,6 +31,7 @@ final: prev: {
 
   # C
   azcomicv = prev.callPackage ./azcomicv {};
+  ctpv = prev.callPackage ./ctpv {};
 
   # Rust
   sniffnet = prev.callPackage ./sniffnet {}; # iced
