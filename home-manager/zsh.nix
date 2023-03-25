@@ -69,6 +69,9 @@
       autoload -U bashcompinit && bashcompinit
       source ${../overlays/nixos-helper/ns.bash}
 
+      # Using nix-shell on zsh
+      ${lib.getExe pkgs.any-nix-shell} zsh --info-right | source /dev/stdin
+
       # Completions
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive tab completion
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" # Colored completion (different colors for dirs/files/etc)

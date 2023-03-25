@@ -47,6 +47,8 @@
     enableSSHSupport = true;
   };
 
+  programs.zsh.enable = true;
+
   programs.command-not-found.enable = false;
 
   documentation.enable = false;

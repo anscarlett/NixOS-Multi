@@ -6,16 +6,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "conceal";
-  version = "0.1.5";
+  version = "0.2.0";
 
   src = fetchFromGitHub {
     owner = "TD-Sky";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-ANsJqADYihAidGLJm3KCCxbqw8xTdPRNI7qlY4EzQxw=";
+    hash = "sha256-+ChJjn3LCUUr8k0gcil/phNbN7qKgcgp6ti4BUURXR0=";
   };
 
-  cargoHash = "sha256-/V5+fCwn+99w/vtJyx+3lvYNQ58HtUsjwPc0O++NEow=";
+  cargoHash = "sha256-FJnjuOSyZVWf1Wol7R19c/IC1YHMEkVFID8o2Zqr6t8=";
 
   # cargoLock = {
   #   lockFile = ./Cargo.lock;
@@ -28,14 +28,15 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ installShellFiles ];
 
   postInstall = ''
-    installShellCompletion --bash completions/cnc.bash
-    installShellCompletion --fish completions/cnc.fish
+    # installShellCompletion --zsh completions/conceal/_conceal
+    installShellCompletion --bash completions/conceal/conceal.bash
+    installShellCompletion --fish completions/conceal/conceal.fish
   '';
 
   meta = with lib; {
-    description = "A trash collector";
+    description = "Command line tool based on trash-rs which implements FreeDesktop.org Trash specification";
     homepage = "https://github.com/TD-Sky/conceal";
-    mainProgram = "cnc";
+    # mainProgram = "cnc";
     license = licenses.mit;
     maintainers = with maintainers; [ zendo ];
   };

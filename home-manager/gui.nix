@@ -11,6 +11,7 @@ in {
     # nightpdf
     # azcomicv
     conceal
+    ohmymd
 
     foot
     kitty
