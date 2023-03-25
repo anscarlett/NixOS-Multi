@@ -10,7 +10,6 @@ in {
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv
-    conceal
     ohmymd
 
     foot

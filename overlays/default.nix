@@ -36,7 +36,6 @@ final: prev: {
 
   # Rust
   sniffnet = prev.callPackage ./sniffnet {}; # iced
-  conceal = prev.callPackage ./conceal {};
 
   # Go
 

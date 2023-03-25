@@ -18,11 +18,6 @@
     enableZshIntegration = true;
   };
 
-  programs.zellij = {
-    enable = true;
-    # settings = {};
-  };
-
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
