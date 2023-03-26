@@ -95,9 +95,9 @@
             hostname = "yoga";
             inherit overlays;
             extraModules = [
-              ./nixos/gnome.nix
+              # ./nixos/gnome.nix
               # ./nixos/kde.nix
-              # ./nixos/wm-sway.nix
+              ./nixos/wm-sway.nix
               # ./nixos/wm-hyprland.nix
 
               ({
@@ -137,9 +137,6 @@
             # hmEnable = false;
             inherit overlays;
             # nixpkgs = inputs.nixpkgs-pr;
-            extraModules = [
-              {programs.my-virt.enable = false;}
-            ];
           };
 
           # nix build .#livecd-iso

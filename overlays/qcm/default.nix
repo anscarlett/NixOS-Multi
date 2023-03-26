@@ -2,7 +2,6 @@
 , stdenv
 , fetchFromGitHub
 , cmake
-, pkg-config
 , wrapQtAppsHook
 , openssl
 , curl
@@ -10,8 +9,9 @@
 , qtbase
 , qttools
 , qtmultimedia
+, qtwayland
+, gst_all_1
 }:
-
 stdenv.mkDerivation rec {
   pname = "qcm";
   version = "unstable-2023-03-22";
@@ -20,13 +20,12 @@ stdenv.mkDerivation rec {
     owner = "hypengw";
     repo = "Qcm";
     fetchSubmodules = true;
-    rev = "07b8fddee508bb65f1235c37238abc109d072fcb";
-    hash = "sha256-q8TBYGAVhRJnP+w5oWPZrScv7KeuGc9/oqievI7Zbx4=";
+    rev = "935070cabe38b91bdaf7a0ca93ca7e2a91d47556";
+    hash = "sha256-UDn9e2fVIEy7tzaqPK4ecZhVniUHMwH8KFomHFIZ75s=";
   };
 
   nativeBuildInputs = [
     cmake
-    # pkg-config
     wrapQtAppsHook
   ];
 
@@ -37,6 +36,7 @@ stdenv.mkDerivation rec {
     qtbase
     qttools
     qtmultimedia
+    qtwayland
   ];
 
   meta = with lib; {

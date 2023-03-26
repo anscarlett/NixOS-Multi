@@ -13,6 +13,7 @@
       ./tmux.nix
       ./alias.nix
       ./xdg.nix
+      ./modules/polkit.nix
     ]
     ++ lib.optionals nixosConfig.services.xserver.enable [
       ./gui.nix

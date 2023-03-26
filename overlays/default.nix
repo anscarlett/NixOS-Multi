@@ -8,6 +8,7 @@ final: prev: {
   */
 
   # clash-verge = prev.callPackage ./clash-verge {};
+  trash-cli = prev.callPackage ./trash-cli {};
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};

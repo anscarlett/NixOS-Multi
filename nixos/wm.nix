@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    # ./services/gtklock.nix
+    # ./modules/gtklock.nix
   ];
 
   services = {
@@ -70,10 +70,6 @@
     pkgs,
     ...
   }: {
-    imports = [
-      ./services/polkit.nix
-    ];
-
     home.packages = with pkgs; [
       swappy # screenshot annotation editor
       swaybg # wallpaper tool
