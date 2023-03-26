@@ -16,19 +16,11 @@ in
       specialArgs = {inherit inputs username;};
       modules =
         [
-          ../modules/base.nix
-          ../modules/user.nix
-          ../modules/networking.nix
-          ../modules/nixconfig.nix
-          ../modules/sound.nix
-          ../modules/fonts.nix
           ../hosts/${hostname}
 
-          {
-            imports = [
-              ../modules/services/fcitx.nix
-            ];
+          self.nixosModules.default
 
+          {
             nixpkgs.overlays = overlays;
 
             networking.hostName = "${hostname}";

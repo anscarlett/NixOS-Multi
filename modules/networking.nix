@@ -3,11 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./services/clash-verge.nix
-    ./services/clash-for-windows.nix
-  ];
-
   programs.clash-verge = {
     enable = true;
     tunMode = true;

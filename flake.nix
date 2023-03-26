@@ -87,6 +87,8 @@
       flake = {
         overlays.default = import ./overlays;
 
+        nixosModules = import ./modules;
+
         nixosConfigurations = {
           yoga = lib.mkHost {
             username = "iab";
@@ -191,7 +193,6 @@
         # for repl
         inherit lib inputs;
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        hm = self.nixosConfigurations.yoga.config.home-manager.users.iab;
 
         # for easily build
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
