@@ -6,6 +6,13 @@
 }: {
   programs.nix-ld.enable = true;
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    # allowBroken = true;
+    # allowInsecure = true;
+    # allowUnsupportedSystem = true;
+  };
+
   nix = {
     # nix registry list
     registry =

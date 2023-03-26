@@ -30,8 +30,6 @@
     cloc # count code lines
     sqlite
     openssl
-    gitui
-    # onefetch
     discount # markdown
     efm-langserver # markdown lsp
     gnumake
@@ -42,7 +40,7 @@
     unzip
     unrar
     ouch
-    # patool
+    patool
     # atool
 
     # FileManager

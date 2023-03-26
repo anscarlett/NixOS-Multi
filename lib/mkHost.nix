@@ -30,14 +30,6 @@ in
             ];
 
             nixpkgs.overlays = overlays;
-            nixpkgs.config = {
-              allowUnfree = true;
-              # allowBroken = true;
-              # allowInsecure = true;
-              # allowUnsupportedSystem = true;
-            };
-
-            hardware.enableRedistributableFirmware = true;
 
             networking.hostName = "${hostname}";
 

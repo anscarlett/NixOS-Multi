@@ -14,6 +14,8 @@
     initrd.systemd.enable = true;
   };
 
+  hardware.enableRedistributableFirmware = true;
+
   zramSwap.enable = true;
 
   services = {
