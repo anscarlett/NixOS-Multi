@@ -32,7 +32,7 @@ in
           }
         ]
         ++ nixpkgs.lib.optionals virtEnable [
-          ../modules/virtualisation.nix
+          ../nixos/virtualisation.nix
         ]
         ++ nixpkgs.lib.optionals hmEnable [
           home-manager.nixosModules.home-manager

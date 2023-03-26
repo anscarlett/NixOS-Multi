@@ -87,7 +87,7 @@
       flake = {
         overlays.default = import ./overlays;
 
-        nixosModules = import ./modules;
+        nixosModules = import ./nixos;
 
         nixosConfigurations = {
           yoga = lib.mkHost {
@@ -95,10 +95,10 @@
             hostname = "yoga";
             inherit overlays;
             extraModules = [
-              ./modules/gnome.nix
-              # ./modules/kde.nix
-              # ./modules/wm-sway.nix
-              # ./modules/wm-hyprland.nix
+              ./nixos/gnome.nix
+              # ./nixos/kde.nix
+              # ./nixos/wm-sway.nix
+              # ./nixos/wm-hyprland.nix
 
               ({
                 config,
@@ -124,9 +124,9 @@
             # nixpkgs = inputs.nixpkgs-stable;
             inherit overlays;
             extraModules = [
-              ./modules/gnome.nix
-              # ./modules/kde.nix
-              # ./modules/wm-sway.nix
+              ./nixos/gnome.nix
+              # ./nixos/kde.nix
+              # ./nixos/wm-sway.nix
             ];
           };
 
@@ -160,8 +160,8 @@
               specialArgs = {inherit inputs username;};
               modules = [
                 ./hosts/wsl
-                ./modules/nixconfig.nix
-                ./modules/fonts.nix
+                ./nixos/nixconfig.nix
+                ./nixos/fonts.nix
 
                 nixos-wsl.nixosModules.wsl
                 {
