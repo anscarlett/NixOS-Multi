@@ -22,7 +22,6 @@ in
           ../home-manager/xdg.nix
           ../home-manager/tmux.nix
           ../home-manager/alias.nix
-          ../home-manager/non-nixos.nix
 
           {
             home.stateVersion = "22.05";
