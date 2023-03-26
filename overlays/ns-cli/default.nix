@@ -1,9 +1,9 @@
 { stdenvNoCC, lib }:
 
 stdenvNoCC.mkDerivation rec {
-  name = "nixos-helper";
+  name = "ns";
 
-  src = ./nixos-helper.sh;
+  src = ./ns.sh;
 
   bashComp = ./ns.bash;
 
@@ -17,7 +17,6 @@ stdenvNoCC.mkDerivation rec {
   meta = with lib; {
     description = "My nixos helper";
     homepage = "https://github.com/zendo/nsworld";
-    mainProgram = "ns";
     license = licenses.mit;
     platforms = platforms.all;
     maintainers = with maintainers; [ zendo ];

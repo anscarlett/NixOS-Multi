@@ -227,7 +227,7 @@
         formatter = pkgs.alejandra;
 
         # nix run . -- run
-        packages.default = pkgs.nixos-helper;
+        packages.default = pkgs.ns-cli;
 
         # nix develop .#rust
         devShells = import ./devshells.nix {inherit pkgs;};

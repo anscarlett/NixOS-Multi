@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     # Nix Tools
-    nixos-helper
+    ns-cli
     nixpkgs-fmt
     alejandra
     nil
