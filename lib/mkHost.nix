@@ -7,7 +7,6 @@ in
     nixpkgs ? inputs.nixpkgs,
     system ? "x86_64-linux",
     hmEnable ? true,
-    virtEnable ? true,
     overlays ? [],
     extraModules ? [],
   }:
@@ -30,9 +29,6 @@ in
             systemd.services."getty@tty1".enable = false;
             systemd.services."autovt@tty1".enable = false;
           }
-        ]
-        ++ nixpkgs.lib.optionals virtEnable [
-          ../nixos/virtualisation.nix
         ]
         ++ nixpkgs.lib.optionals hmEnable [
           home-manager.nixosModules.home-manager

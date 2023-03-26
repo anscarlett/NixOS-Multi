@@ -135,17 +135,21 @@
             username = "test";
             hostname = "vmtest";
             # hmEnable = false;
-            virtEnable = false;
             inherit overlays;
             # nixpkgs = inputs.nixpkgs-pr;
+            extraModules = [
+              {programs.my-virt.enable = false;}
+            ];
           };
 
           # nix build .#livecd-iso
           livecd = lib.mkHost {
             username = "livecd";
             hostname = "livecd";
-            virtEnable = false;
             inherit overlays;
+            extraModules = [
+              {programs.my-virt.enable = false;}
+            ];
           };
 
           #####################################################################

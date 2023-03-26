@@ -7,6 +7,7 @@
       ./nixconfig.nix
       ./sound.nix
       ./fonts.nix
+      ./virtualisation.nix
       ./services/fcitx.nix
       ./services/clash-verge.nix
       ./services/clash-for-windows.nix
