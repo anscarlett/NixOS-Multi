@@ -48,9 +48,6 @@
 
   # boot.initrd.kernelModules = ["virtio" "virtio_pci" "virtio_net" "virtio_rng" "virtio_blk" "virtio_console"];
 
-  # latest or zen or xanmod_latest
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   # Clipboard shared for NixOS@Guest
   services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;

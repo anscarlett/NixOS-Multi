@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   boot = {
@@ -9,6 +10,7 @@
     plymouth.enable = true;
     supportedFilesystems = ["ntfs"];
 
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     # Silent boot at initrd.systemd
     kernelParams = ["systemd.show_status=false"];
     initrd.systemd.enable = true;

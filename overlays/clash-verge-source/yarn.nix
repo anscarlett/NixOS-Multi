@@ -898,6 +898,22 @@
       };
     }
     {
+      name = "_types_lodash_es___lodash_es_4.17.7.tgz";
+      path = fetchurl {
+        name = "_types_lodash_es___lodash_es_4.17.7.tgz";
+        url  = "https://registry.npmmirror.com/@types/lodash-es/-/lodash-es-4.17.7.tgz";
+        sha512 = "z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==";
+      };
+    }
+    {
+      name = "_types_lodash___lodash_4.14.191.tgz";
+      path = fetchurl {
+        name = "_types_lodash___lodash_4.14.191.tgz";
+        url  = "https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.191.tgz";
+        sha512 = "BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==";
+      };
+    }
+    {
       name = "_types_lodash___lodash_4.14.180.tgz";
       path = fetchurl {
         name = "_types_lodash___lodash_4.14.180.tgz";
@@ -1967,6 +1983,14 @@
         name = "locate_path___locate_path_5.0.0.tgz";
         url  = "https://registry.yarnpkg.com/locate-path/-/locate-path-5.0.0.tgz";
         sha512 = "t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==";
+      };
+    }
+    {
+      name = "lodash_es___lodash_es_4.17.21.tgz";
+      path = fetchurl {
+        name = "lodash_es___lodash_es_4.17.21.tgz";
+        url  = "https://registry.npmmirror.com/lodash-es/-/lodash-es-4.17.21.tgz";
+        sha512 = "mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==";
       };
     }
     {

@@ -10,22 +10,24 @@
 , pkg-config
 , webkitgtk
 , libcap
-, libappindicator-gtk3
 , libayatana-appindicator
 , clash-premium
+, clash-meta
+, clash-geoip
+, cargo-tauri
 }:
 
 # WIP!!!
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=clash-verge
 let
   pname = "clash-verge";
-  version = "1.2.3";
+  version = "1.3.0";
 
   src = fetchFromGitHub {
     owner = "zzzgydi";
     repo = "clash-verge";
-    rev = "v1.2.3";
-    hash = "sha256-epeC5rUq8V3m/8UgvqBfTmfkzsoEDJ3u0SauWZfrsa8=";
+    rev = "v1.3.0";
+    hash = "sha256-1dE7MSZfeYK7cD5B55byhRMU2p0RJWno4GJFMVsIEpQ=";
   };
 
   frontend-build = mkYarnPackage {
@@ -34,31 +36,32 @@ let
 
     # offlineCache = fetchYarnDeps {
     #   yarnLock = src + "/yarn.lock";
-    #   hash = "sha256-SesccsQa9f7KVlZcVss2sGIuTbz5+xy/sHdwaufEuek=";
+    #   hash = "sha256-SesccsQa9f7KVlZcsss2sGIuTbz5+xy/sHdwaufEuek=";
     # };
 
     packageJSON = ./package.json;
     yarnLock = ./yarn.lock;
     yarnNix = ./yarn.nix;
 
-    buildPhase = ''
-      runHook preBuild
+    # buildPhase = ''
+    #   runHook preBuild
 
-      # export HOME=$(mktemp -d)
-      # yarn run check
-      # yarn --offline build
-      yarn tauri build
-      # cp -r deps/clash-verge $out
+    #   # export HOME=$(mktemp -d)
+    #   # yarn run check
+    #   # yarn --offline build
+    #   # yarn tauri build
+    #   # cp -r deps/clash-verge $out
 
-      runHook postBuild
-    '';
+    #   runHook postBuild
+    # '';
 
     distPhase = "true";
     # dontInstall = true;
 
-    postBuild = ''
+    preBuild = ''
        mkdir -p src-tauri/sidecar
        cp ${lib.getExe clash-premium} src-tauri/sidecar/clash-x86_64-unknown-linux-gnu
+       cp ${lib.getExe clash-meta} src-tauri/sidecar/clash-meta-x86_64-unknown-linux-gnu
     '';
   };
 in
@@ -67,20 +70,20 @@ rustPlatform.buildRustPackage rec {
 
   sourceRoot = "source/src-tauri";
 
-  cargoHash = "sha256-BhFGGUxLFhAB8WuZJmUuGOWRs3DnkVPCGbWdMBCdCYA=";
+  cargoHash = "sha256-loY+D27icpawHRM6bLRnsEBlEpdMAAw/W7SFOQED9AQ=";
 
   # Copy the frontend static resources to final build directory
   # Also modify tauri.conf.json so that it expects the resources at the new location
-  # postPatch = ''
-  #   mkdir -p frontend-build
-  #   cp -R ${frontend-build}/src frontend-build
-  #   substituteInPlace tauri.conf.json --replace '"distDir": "../out/src",' '"distDir": "frontend-build/src",'
+  postPatch = ''
+    mkdir -p frontend-build
+    cp -R ${frontend-build}/src frontend-build
+    # substituteInPlace tauri.conf.json --replace '"distDir": "../out/src",' '"distDir": "frontend-build/src",'
 
-  #   mkdir -p src-tauri/sidecar
-  #   cp ${lib.getExe clash-premium} src-tauri/sidecar/clash-x86_64-unknown-linux-gnu
-  # '';
+    # mkdir -p src-tauri/sidecar
+    # cp ${lib.getExe clash-premium} src-tauri/sidecar/clash-x86_64-unknown-linux-gnu
+  '';
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [ pkg-config cargo-tauri ];
 
   buildInputs = [
     dbus
@@ -88,6 +91,10 @@ rustPlatform.buildRustPackage rec {
     freetype
     webkitgtk
   ];
+
+  buildPhase = ''
+    cargo-tauri build
+  '';
 
   # Skip one test that fails ( tries to mutate the parent directory )
   # checkFlags = [ "--skip=test_file_operation" ];

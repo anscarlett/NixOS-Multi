@@ -8,7 +8,7 @@ final: prev: {
   */
 
   ctpv = prev.callPackage ./ctpv {};
-  clash-verge = prev.callPackage ./clash-verge {};
+  # clash-verge = prev.callPackage ./clash-verge {};
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};
@@ -117,10 +117,12 @@ final: prev: {
         sha256 = "sha256-CcUN2XnrJYDPYIiOJtU8QzQg4TniSJG686BHoCF1mfQ=";
       };
       patches = [];
-      cmakeFlags = oldAttrs.cmakeFlags ++ [
-        "-DSYSTEMD_SYSUSERS_DIR=${placeholder "out"}/lib/sysusers.d"
-        "-DSYSTEMD_TMPFILES_DIR=${placeholder "out"}/lib/tmpfiles.d"
-      ];
+      cmakeFlags =
+        oldAttrs.cmakeFlags
+        ++ [
+          "-DSYSTEMD_SYSUSERS_DIR=${placeholder "out"}/lib/sysusers.d"
+          "-DSYSTEMD_TMPFILES_DIR=${placeholder "out"}/lib/tmpfiles.d"
+        ];
     });
   });
 

@@ -23,7 +23,7 @@
   ## Kernel
   #######################################################################
   # latest or zen or xanmod_latest
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # boot.kernelParams = ["quite"];
 
