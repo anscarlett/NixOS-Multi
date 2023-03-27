@@ -95,9 +95,9 @@
             hostname = "yoga";
             inherit overlays;
             extraModules = [
-              # ./nixos/gnome.nix
+              ./nixos/gnome.nix
               # ./nixos/kde.nix
-              ./nixos/wm-sway.nix
+              # ./nixos/wm-sway.nix
               # ./nixos/wm-hyprland.nix
 
               ({
@@ -227,7 +227,7 @@
         # nix fmt
         formatter = pkgs.alejandra;
 
-        # nix run . -- run
+        # nix run . -- diff
         packages.default = pkgs.ns-cli;
 
         # nix develop .#rust

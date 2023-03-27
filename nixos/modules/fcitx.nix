@@ -10,20 +10,17 @@
     '');
   };
 
-  config = let
-    cfg = config.programs.my-fcitx;
-  in
-    lib.mkIf cfg.enable {
-      i18n.inputMethod = lib.mkIf cfg.enable {
-        enabled = "fcitx5";
-        fcitx5.enableRimeData = true;
-        # rime.packages = [ pkgs.rime-ice ];
-        fcitx5.addons = with pkgs; [
-          fcitx5-rime
-          fcitx5-breeze
-          rime-ice
-          # fcitx5-chinese-addons
-        ];
-      };
+  config = lib.mkIf config.programs.my-fcitx.enable {
+    i18n.inputMethod = {
+      enabled = "fcitx5";
+      fcitx5.enableRimeData = true;
+      # rime.packages = [ pkgs.rime-ice ];
+      fcitx5.addons = with pkgs; [
+        fcitx5-rime
+        fcitx5-breeze
+        rime-ice
+        # fcitx5-chinese-addons
+      ];
     };
+  };
 }

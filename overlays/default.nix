@@ -7,8 +7,8 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
+  ctpv = prev.callPackage ./ctpv {};
   # clash-verge = prev.callPackage ./clash-verge {};
-  trash-cli = prev.callPackage ./trash-cli {};
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};
@@ -33,10 +33,8 @@ final: prev: {
 
   # C
   azcomicv = prev.callPackage ./azcomicv {};
-  ctpv = prev.callPackage ./ctpv {};
 
   # Rust
-  sniffnet = prev.callPackage ./sniffnet {}; # iced
 
   # Go
 

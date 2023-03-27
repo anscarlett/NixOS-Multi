@@ -9,6 +9,7 @@
       ./nixconfig.nix
       ./virtualisation.nix
       ./modules/fcitx.nix
+      ./modules/flatpak.nix
       ./modules/clash-verge.nix
       ./modules/clash-for-windows.nix
     ];
