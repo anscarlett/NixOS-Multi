@@ -53,7 +53,7 @@
   */
   boot.lanzaboote = {
     enable = true;
-    configurationLimit = 8;
+    configurationLimit = 5;
     pkiBundle = "/etc/secureboot";
     # settings = {
     # };

@@ -83,7 +83,7 @@
         lib = final;
       });
   in
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+    flake-parts.lib.mkFlake {inherit inputs;} {
       flake = {
         overlays.default = import ./overlays;
 
@@ -154,7 +154,6 @@
           #####################################################################
           wsl = let
             username = "iab";
-            # nixpkgs = inputs.nixpkgs-stable;
           in
             nixpkgs.lib.nixosSystem {
               system = "x86_64-linux";
@@ -191,15 +190,13 @@
           };
         };
 
-        # for repl
+        # for easily repl
         inherit lib inputs;
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 
         # for easily build
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
         livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
-        # or
-        # nixos-generate -f iso -c ~/nsworld/hosts/livecd/vanilla-iso.nix
       };
 
       debug = true;

@@ -12,6 +12,7 @@
 , qtwayland
 , gst_all_1
 }:
+# WIP!!!
 stdenv.mkDerivation rec {
   pname = "qcm";
   version = "unstable-2023-03-22";

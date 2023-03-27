@@ -9,19 +9,12 @@
     autoStart = lib.mkEnableOption (lib.mdDoc ''
       clash-verge Autostart.
 
-      Note that `Auto Launch` in app will not working, please don't select it.
+      Note that `Auto Launch` in app will not working, please don't enable it.
     '');
 
     tunMode = lib.mkEnableOption (lib.mdDoc ''
       clash-verge Tun Mode.
     '');
-
-    # example
-    # autoStart = lib.mkOption {
-    #   default = false;
-    #   type = lib.types.bool;
-    #   description = lib.mdDoc "Whether rog-control-center should be started automatically.";
-    # };
   };
 
   config =

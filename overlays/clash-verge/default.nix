@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/bin
-    mv usr/* $out
+    cp -r usr $out
+    mv $out/usr/share $out
+    ln -s $out/usr/bin/clash-verge $out/bin
 
     runHook postInstall
   '';

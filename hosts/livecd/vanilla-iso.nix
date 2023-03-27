@@ -1,3 +1,4 @@
+# nixos-generate -f iso -c ~/nsworld/hosts/livecd/vanilla-iso.nix
 {
   lib,
   pkgs,

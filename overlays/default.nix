@@ -8,7 +8,7 @@ final: prev: {
   */
 
   ctpv = prev.callPackage ./ctpv {};
-  # clash-verge = prev.callPackage ./clash-verge {};
+  clash-verge = prev.callPackage ./clash-verge {};
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};
