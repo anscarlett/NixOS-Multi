@@ -69,14 +69,8 @@ final: prev: {
   bashly = prev.callPackage ./bashly {};
 
   # flutter
-  spotube = prev.callPackage ./spotube {}; # WIP!!!
   fclash = prev.callPackage ./fclash {};
   # https://github.com/ferraridamiano/ConverterNOW
-
-  # Libraries
-  # lib = prev.lib.extend (finalLib: prevLib:
-  #   (import ../lib { inherit (prev) lib; })
-  # );
 
   ############# Override ###################
   # fix .desktop missing
@@ -86,15 +80,6 @@ final: prev: {
       postFixup = ''
         cp -r $out/usr/share $out/share '';
     });
-
-  # fix duplicate desktop shortcut in kde
-  # emacs = prev.symlinkJoin {
-  #   name = "emacs";
-  #   paths = [ prev.emacs ];
-  #   postBuild = ''
-  #     rm $out/share/applications/emacsclient.desktop
-  #   '';
-  # };
 
   logseq-wayland = prev.symlinkJoin {
     name = "logseq";
