@@ -12,8 +12,8 @@ final: prev: {
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};
-  fcitx5-breeze = prev.callPackage ./fcitx5-breeze {};
   rime-ice = prev.callPackage ./rime-ice {};
+  fcitx5-breeze = prev.callPackage ./fcitx5-breeze {};
 
   # electron ALL WIP!!!
   listen1 = prev.callPackage ./listen1 {};

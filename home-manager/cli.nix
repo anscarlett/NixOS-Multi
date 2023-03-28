@@ -5,18 +5,17 @@
 }: {
   home.packages = with pkgs; [
     # Nix Tools
-    ns-cli
-    nixpkgs-fmt
-    alejandra
     nil
-    lorri
+    ns-cli
+    alejandra
+    nixpkgs-fmt
+    # lorri
     # cachix
     nixos-generators
     # nix-template
+    # nix-update
     nixpkgs-review
-    nix-update
     nix-prefetch
-    nix-index
     nix-tree
     nix-top
     nix-init
