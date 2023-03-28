@@ -43,6 +43,7 @@ final: prev: {
   # Qt
   nekoray = prev.libsForQt5.callPackage ./nekoray {};
   qcm = prev.qt6Packages.callPackage ./qcm {};
+  notes = prev.qt6Packages.callPackage ./notes {};
 
   # Python
 
@@ -70,7 +71,6 @@ final: prev: {
 
   # flutter
   fclash = prev.callPackage ./fclash {};
-  # https://github.com/ferraridamiano/ConverterNOW
 
   ############# Override ###################
   # fix .desktop missing
