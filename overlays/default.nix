@@ -26,7 +26,6 @@ final: prev: {
   # deb / autoPatchelf
   he3 = prev.callPackage ./he3 {};
   xmind = prev.callPackage ./xmind {};
-  ohmymd = prev.callPackage ./ohmymd {};
   clash-verge-source = prev.callPackage ./clash-verge-source {};
   clash-for-windows = prev.callPackage ./clash-for-windows {};
   clash-premium = prev.callPackage ./clash-premium {};

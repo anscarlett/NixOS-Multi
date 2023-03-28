@@ -10,8 +10,6 @@ in {
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv
-    # ohmymd
-    # clash-meta
 
     foot
     kitty

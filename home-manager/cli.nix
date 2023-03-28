@@ -60,6 +60,7 @@
     # imagemagick
     exiftool
     ffmpegthumbnailer
+    trash-cli
     eget
     zssh # SSH and Telnet client
     termscp
