@@ -8,7 +8,6 @@
 
     autoStart = lib.mkEnableOption (lib.mdDoc ''
       clash-for-windows Autostart.
-
       Note that `Auto Launch` in app will not working, please don't select it.
     '');
 

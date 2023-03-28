@@ -10,7 +10,7 @@
   };
 
   programs.clash-for-windows = {
-    enable = false;
+    # enable = true;
     tunMode = true;
     autoStart = true;
   };

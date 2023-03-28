@@ -1,43 +1,61 @@
 { lib
 , stdenv
 , fetchFromGitHub
+, makeWrapper
 , file
 , openssl
+, atool
+, bat
+, chafa
+, delta
 , ffmpeg
 , ffmpegthumbnailer
-, waylandSupport ? stdenv.isLinux
-, x11Support ? stdenv.isLinux
-, chafa
+, fontforge
+, glow
+, imagemagick
+, jq
 , ueberzug
 }:
 
 stdenv.mkDerivation rec {
   pname = "ctpv";
-  version = "1.0";
+  version = "1.1";
 
   src = fetchFromGitHub {
     owner = "NikitaIvanovV";
     repo = pname;
-    rev = "f1f649fd9cc05abd6a243d938a5edda832ba1a5b";
-    hash = "sha256-yE7sU+HxJ29rAt46HB/f53dO8Jxnh8I9DklNUa3nk8w=";
+    rev = "v${version}";
+    hash = "sha256-3BQi4m44hBmPkJBFNCg6d9YKRbDZwLxdzBb/NDWTQP4=";
   };
+
+  nativeBuildInputs = [ makeWrapper ];
 
   buildInputs = [
     file # libmagic
     openssl
-    ffmpeg
-    ffmpegthumbnailer
-  ] ++ lib.optionals waylandSupport [
-    chafa
-  ]
-  ++ lib.optionals x11Support [
-    ueberzug
   ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 
+  preFixup = ''
+    wrapProgram $out/bin/ctpv \
+      --prefix PATH ":" "${lib.makeBinPath [
+        atool # for archive files
+        bat
+        chafa # for image files on Wayland
+        delta
+        ffmpeg
+        ffmpegthumbnailer
+        fontforge
+        glow # for markdown files
+        imagemagick
+        jq # for json files
+        ueberzug # for image files on X11
+      ]}";
+  '';
+
   meta = with lib; {
-    description = "Image previews for lf (list files) file manager";
+    description = "File previewer for a terminal";
     homepage = "https://github.com/NikitaIvanovV/ctpv";
     license = licenses.mit;
     platforms = platforms.linux;

@@ -1,39 +1,53 @@
 { lib
-, buildNpmPackage
-, fetchFromGitHub
-, electron
+, stdenv
+, fetchurl
+, dpkg
+, autoPatchelfHook
+, wrapGAppsHook
+, openssl
+, webkitgtk
+, udev
+, libayatana-appindicator
 }:
 # WIP!!!
-buildNpmPackage rec {
+stdenv.mkDerivation rec {
   pname = "music-you";
-  version = "2.0.9";
+  version = "2.1.0";
 
-  src = fetchFromGitHub {
-    owner = "GuMengYu";
-    repo = pname;
-    rev = "v${version}";
-    hash = "sha256-isG3r4CU/pAiWzbYLIHt7rs3Y+Pwei215EJn8NrL2vk=";
+  src = fetchurl {
+    url = "https://github.com/GuMengYu/music-you/releases/download/tauri-alpha-2/music-you-tauri_${version}_amd64.deb";
+    hash = "sha256-7iBE4+A2og2P9hurfcVvLUrHRNFtl1TgJhaUQE2uX60=";
   };
 
-  npmDepsHash = "sha256-nx6+jnQJL/DgTXV71AJJw1GtnFrhE9bFQscrz7e4TH4=";
+  unpackPhase = "dpkg-deb -x $src .";
 
-  # dontNpmBuild = true;
+  nativeBuildInputs = [
+    dpkg
+    wrapGAppsHook
+    # makeWrapper
+    autoPatchelfHook
+  ];
 
-  # makeCacheWritable = true;
-  # npmFlags = [ "--legacy-peer-deps" ];
+  buildInputs = [
+    openssl
+    webkitgtk
+    stdenv.cc.cc
+  ];
 
-  # The prepack script runs the build script, which we'd rather do in the build phase.
-  npmPackFlags = [ "--ignore-scripts" ];
+  runtimeDependencies = [
+    (lib.getLib udev)
+    libayatana-appindicator
+  ];
 
-  NODE_OPTIONS = "--openssl-legacy-provider";
+  installPhase = ''
+    runHook preInstall
 
-  ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
+    mkdir -p $out/bin
+    cp usr/bin/music-you-tauri $out/bin
+    cp -r usr/share $out
 
-  # nativeBuildInputs = [
-  # ];
-
-  # buildInputs = [
-  # ];
+    runHook postInstall
+  '';
 
   meta = with lib; {
     description = "一个美观简约的Material Design 3 (Material You) 风格网易云音乐播放器pc客户端";
