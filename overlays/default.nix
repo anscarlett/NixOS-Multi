@@ -66,9 +66,6 @@ final: prev: {
 
   # Java
 
-  # Ruby
-  bashly = prev.callPackage ./bashly {};
-
   # flutter
   fclash = prev.callPackage ./fclash {};
 
