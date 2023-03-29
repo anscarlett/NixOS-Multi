@@ -27,10 +27,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lanzaboote = {
+    #   url = "github:nix-community/lanzaboote";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     plasma-manager = {
       url = "github:pjones/plasma-manager";
@@ -160,8 +160,8 @@
               specialArgs = {inherit inputs username;};
               modules = [
                 ./hosts/wsl
-                ./nixos/nixconfig.nix
                 ./nixos/fonts.nix
+                ./nixos/nixconfig.nix
 
                 nixos-wsl.nixosModules.wsl
                 {

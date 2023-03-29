@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote # Secure Boot
+    # inputs.lanzaboote.nixosModules.lanzaboote # Secure Boot
 
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-amd
@@ -51,13 +51,13 @@
   sbctl create-keys
   sbctl enroll-keys --microsoft
   */
-  boot.lanzaboote = {
-    # enable = true;
-    configurationLimit = 5;
-    pkiBundle = "/etc/secureboot";
-    # settings = {
-    # };
-  };
+  # boot.lanzaboote = {
+  #   enable = true;
+  #   configurationLimit = 5;
+  #   pkiBundle = "/etc/secureboot";
+  #   # settings = {
+  #   # };
+  # };
 
   boot.loader = {
     efi = {

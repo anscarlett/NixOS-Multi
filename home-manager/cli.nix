@@ -53,7 +53,7 @@
     # rage # age encrypt RIIR
     lf
     ctpv
-    chafa
+    chafa # image viewer
     viu # image viewer
     graphviz
     # imagemagick

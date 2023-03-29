@@ -16,7 +16,8 @@
   };
 
   services = {
-    v2raya.enable = true;
+    # v2raya.enable = true;
+    resolved.enable = true;
     openssh.enable = true;
     # opensnitch.enable = true;
 
