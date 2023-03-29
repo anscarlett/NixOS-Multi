@@ -20,13 +20,14 @@
 
 ;; Treemacs
 (use-package treemacs
-  :custom (setq treemacs-follow-after-init t
-                treemacs-project-follow-mode t
-                treemacs-git-commit-diff-mode t
-                treemacs-file-follow-delay 2
-                treemacs-show-cursor nil
-                treemacs-silent-filewatch t
-                treemacs-silent-refresh t)
+  :init
+  (setq treemacs-follow-after-init t
+        treemacs-project-follow-mode t
+        treemacs-git-commit-diff-mode t
+        treemacs-file-follow-delay 2
+        treemacs-show-cursor nil
+        treemacs-silent-filewatch t
+        treemacs-silent-refresh t)
   :bind (("<f1>" . treemacs)
          (:map treemacs-mode-map
                ("<mouse-1>" . treemacs-single-click-expand-action))))

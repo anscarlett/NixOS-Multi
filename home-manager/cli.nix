@@ -122,11 +122,6 @@
 
   manual.manpages.enable = false;
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
   programs.exa = {
     enable = true;
     # ll, la, lla, lt ...
@@ -173,6 +168,11 @@
   #######################################################################
   ##  CLI EDITOR
   #######################################################################
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.micro = {
     enable = true;
     settings = {
@@ -194,6 +194,8 @@
     viAlias = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
+      lazy-nvim
+      LazyVim
       neogit
       vim-nix
       vim-lsp

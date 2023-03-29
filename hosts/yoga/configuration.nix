@@ -108,7 +108,6 @@
   };
 
   # Swapfile
-  # https://github.com/NixOS/nixpkgs/pull/194343
   swapDevices = [
     {
       device = "/var/swapfile";
