@@ -244,9 +244,6 @@
         garbage-collection-messages nil
         gcmh-high-cons-threshold (* 32 1024 1024)))
 
-(use-package restart-emacs
-  :commands restart-emacs)
-
 (use-package disk-usage
   :commands (disk-usage))
 

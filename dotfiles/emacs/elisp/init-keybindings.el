@@ -56,7 +56,7 @@
  ("s" . save-some-buffers)
  ("S" . crux-sudo-edit)
  ("D" . crux-delete-file-and-buffer)
- ("<f2>" . crux-rename-file-and-buffer)
+ ("<f2>" . rename-visited-file)
 
  :prefix-map file-map
  :prefix "C-c f"
@@ -64,7 +64,7 @@
  ("s" . save-some-buffers)
  ("S" . crux-sudo-edit)
  ("D" . crux-delete-file-and-buffer)
- ("<f2>" . crux-rename-file-and-buffer)
+ ("<f2>" . rename-visited-file)
 
  :prefix-map search-map
  :prefix "C-c s"
