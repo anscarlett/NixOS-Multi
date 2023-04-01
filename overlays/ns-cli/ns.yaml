@@ -1,4 +1,4 @@
-# completely generate ns.yaml
+# nix run nixpkgs#completely generate ns.yaml
 ns:
 - which
 - log

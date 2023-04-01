@@ -89,7 +89,6 @@
     ydict
     typos
     shellcheck
-    completely
     translate-shell
     aspellDicts.en
     asciinema # record the terminal
@@ -200,6 +199,7 @@
       vim-nix
       vim-lsp
       vim-markdown
+      editorconfig-vim
     ];
   };
 }

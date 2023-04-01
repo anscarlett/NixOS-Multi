@@ -42,6 +42,7 @@
       golang.go
       mattn.lisp
       eamodio.gitlens
+      ms-vscode.cmake-tools
     ];
     userSettings = {
       "files.autoSave" = "onFocusChange";

@@ -28,12 +28,12 @@
     ];
 
     fontconfig = {
-      # antialias = true; # true default
-      # hinting.enable = false; # true default
-      subpixel = {
-        rgba = "none"; # rgb default
-        lcdfilter = "none"; # 'default' default
-      };
+      # antialias = true; # default true
+      # hinting.enable = false; # default true
+      # subpixel = {
+      #   rgba = "none"; # default rgb
+      #   lcdfilter = "none"; # default 'default'
+      # };
 
       defaultFonts = {
         emoji = ["Noto Color Emoji"];

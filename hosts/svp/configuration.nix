@@ -28,12 +28,12 @@
       # Because this machine's efivars can't touch
       # It just move grubx64.efi -> Boot/bootx64.efi
       efiInstallAsRemovable = true;
-      extraEntries = ''
-        menuentry "Arch Linux" {
-         search --file --no-floppy --set=root /EFI/arch/grubx64.efi
-         chainloader (''${root})/EFI/arch/grubx64.efi
-        }
-      '';
+      # extraEntries = ''
+      #   menuentry "Arch Linux" {
+      #    search --file --no-floppy --set=root /EFI/arch/grubx64.efi
+      #    chainloader (''${root})/EFI/arch/grubx64.efi
+      #   }
+      # '';
     };
   };
 

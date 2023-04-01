@@ -13,7 +13,7 @@
       patch = "format-patch --stdout HEAD~1";
       rank = "shortlog -s -n --no-merges";
       lg = "log --graph --decorate --all --oneline";
-      ll = "log --pretty=format:'%Cred%h%Creset %Cblue%as%Creset %Cgreen%an%Creset %s %d'";
+      ll = "log --graph --pretty='%Cred%h%Creset - %C(bold blue)<%an>%Creset %s%C(yellow)%d%Creset %Cgreen(%cr)' --abbrev-commit --date=relative";
     };
     extraConfig = {
       init.defaultBranch = "main";
