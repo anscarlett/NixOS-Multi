@@ -7,7 +7,6 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
-  ctpv = prev.callPackage ./ctpv {};
   # clash-verge = prev.callPackage ./clash-verge {};
 
   # Data
