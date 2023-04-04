@@ -10,6 +10,7 @@ in {
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv
+    moonfm
 
     foot
     kitty

@@ -7,12 +7,14 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
-  # clash-verge = prev.callPackage ./clash-verge {};
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};
   rime-ice = prev.callPackage ./rime-ice {};
   fcitx5-breeze = prev.callPackage ./fcitx5-breeze {};
+
+  # AppImage
+  moonfm = prev.callPackage ./moonfm {};
 
   # electron ALL WIP!!!
   listen1 = prev.callPackage ./listen1 {};
@@ -25,6 +27,7 @@ final: prev: {
   # deb / autoPatchelf
   he3 = prev.callPackage ./he3 {};
   xmind = prev.callPackage ./xmind {};
+  # clash-verge = prev.callPackage ./clash-verge {};
   clash-verge-source = prev.callPackage ./clash-verge-source {};
   clash-for-windows = prev.callPackage ./clash-for-windows {};
   clash-premium = prev.callPackage ./clash-premium {};

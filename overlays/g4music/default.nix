@@ -20,14 +20,14 @@
 
 stdenv.mkDerivation rec {
   pname = "g4music";
-  version = "1.9";
+  version = "1.9.2";
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";
     owner = "neithern";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-UwVtA8mxbaa+/ljnzcDZLTPCw8rl9vMYq8FMJ9sFoHk=";
+    hash = "sha256-alpXEj48JZTQUVf1zUKgazFbqISEqyDZrjtRS8S7Fbc=";
   };
 
   # patches = [ ./data-meson-build.patch ];
