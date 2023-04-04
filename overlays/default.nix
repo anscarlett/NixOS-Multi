@@ -7,6 +7,7 @@ final: prev: {
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */
 
+  spotify = prev.callPackage ./spotify {};
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};

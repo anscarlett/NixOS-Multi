@@ -35,7 +35,7 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
   };
 
   config = lib.mkIf config.programs.my-virt.enable {
-    services.my-flatpak.enable = true;
+    # services.my-flatpak.enable = true;
 
     # programs.adb.enable = true;
 
