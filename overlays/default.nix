@@ -44,7 +44,6 @@ final: prev: {
   g4music = prev.callPackage ./g4music {};
 
   # Qt
-  nekoray = prev.libsForQt5.callPackage ./nekoray {};
   qcm = prev.qt6Packages.callPackage ./qcm {};
   notes = prev.qt6Packages.callPackage ./notes {};
 
