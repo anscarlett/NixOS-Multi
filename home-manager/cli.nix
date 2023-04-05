@@ -11,17 +11,17 @@
     nixpkgs-fmt
     # lorri
     # cachix
-    nixos-generators
-    # nix-template
-    # nix-update
-    nixpkgs-review
-    nix-prefetch
-    nix-tree
-    nix-top
-    nix-init
     nurl
     comma # ,
-    # nix-output-monitor
+    nix-init
+    nix-top
+    nix-tree
+    nix-prefetch
+    # nix-update
+    # nix-template
+    nixpkgs-review
+    nixos-generators
+    nix-output-monitor
 
     # Developing
     jq

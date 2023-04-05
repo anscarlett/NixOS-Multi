@@ -45,6 +45,7 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
 
     environment.systemPackages = with pkgs; [
       virt-manager
+      libguestfs
       bridge-utils
       nix-alien # Run binaries
       (appimage-run.override {
@@ -62,7 +63,7 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
       spiceUSBRedirection.enable = true; # USB passthrough
       libvirtd = {
         enable = true;
-        # allowedBridges = ["virbr0"];
+        # allowedBridges = ["br0"];
         qemu = {
           # runAsRoot = false;
           ovmf.enable = true; # UEFI

@@ -27,7 +27,6 @@ in {
     "wofi".source = ../dotfiles/wofi;
     "foot".source = ../dotfiles/foot;
     "kitty".source = ../dotfiles/kitty;
-    "helix".source = ../dotfiles/helix;
     "wezterm".source = ../dotfiles/wezterm;
     "gtklock".source = ../dotfiles/gtklock;
     "swaylock".source = ../dotfiles/swaylock;
@@ -42,6 +41,7 @@ in {
 
     "lf".source = "${lnDots}/lf";
     "mako".source = "${lnDots}/mako";
+    "helix".source = "${lnDots}/helix";
     "waybar".source = "${lnDots}/waybar";
     "wayfire.ini".source = "${lnDots}/wayfire.ini";
     "starship.toml".source = "${lnDots}/starship.toml";

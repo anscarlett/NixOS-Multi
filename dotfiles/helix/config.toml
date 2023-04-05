@@ -4,6 +4,7 @@ theme = "everforest_dark"
 [editor]
 completion-trigger-len = 1
 # file-picker.hidden = true
+cursorline = true # highlight current line
 
 [editor.cursor-shape]
 insert = "bar"
@@ -20,6 +21,10 @@ hidden = false
 '"' = '"'
 '`' = '`'
 '<' = '>'
+
+[editor.statusline]
+left = ["mode", "file-name", "file-encoding"]
+right = ["spinner", "diagnostics", "workspace-diagnostics", "selections", "position", "position-percentage", "file-type"]
 
 [keys.normal]
 C-s = ":w"
