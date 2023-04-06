@@ -43,6 +43,8 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
 
     # programs.java.enable = true;
 
+    programs.nix-ld.enable = true;
+
     environment.systemPackages = with pkgs; [
       virt-manager
       libguestfs

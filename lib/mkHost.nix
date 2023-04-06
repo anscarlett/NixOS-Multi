@@ -20,9 +20,18 @@ in
           self.nixosModules.default
 
           {
+            networking.hostName = "${hostname}";
+
             nixpkgs.overlays = overlays;
 
-            networking.hostName = "${hostname}";
+            nixpkgs.config = {
+              allowUnfree = true;
+              # allowBroken = true;
+              # allowInsecure = true;
+              # allowUnsupportedSystem = true;
+            };
+
+            hardware.enableRedistributableFirmware = true;
 
             services.xserver.displayManager.autoLogin.user = "${username}";
             # Fix: https://nixos.wiki/wiki/GNOME

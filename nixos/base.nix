@@ -58,6 +58,4 @@
   time.timeZone = "Asia/Shanghai";
 
   system.stateVersion = "22.05";
-
-  hardware.enableRedistributableFirmware = true;
 }

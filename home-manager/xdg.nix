@@ -43,7 +43,7 @@ in {
     "mako".source = "${lnDots}/mako";
     "helix".source = "${lnDots}/helix";
     "waybar".source = "${lnDots}/waybar";
-    "wayfire.ini".source = "${lnDots}/wayfire.ini";
+    # "wayfire.ini".source = "${lnDots}/wayfire.ini";
     "starship.toml".source = "${lnDots}/starship.toml";
     "sway/custom.conf".source = "${lnDots}/sway/custom.conf";
     "hypr/custom.conf".source = "${lnDots}/hypr/custom.conf";
