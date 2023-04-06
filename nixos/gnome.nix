@@ -73,15 +73,18 @@
     package = pkgs.gnomeExtensions.gsconnect;
   };
 
-  programs.my-fcitx.enable = true;
+  # programs.my-fcitx.enable = true;
 
-  # i18n.inputMethod = {
-  #   enabled = "ibus";
-  #   rime.packages = [ pkgs.rime-ice ];
-  #   ibus.engines = with pkgs.ibus-engines; [
-  #     rime
-  #     # libpinyin
-  #     # typing-booster
-  #   ];
-  # };
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [
+      # libpinyin
+      (rime.override {
+        rimeDataPkgs = with pkgs; [
+          rime-data
+          rime-ice
+        ];
+      })
+    ];
+  };
 }

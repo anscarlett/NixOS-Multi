@@ -13,13 +13,15 @@
   config = lib.mkIf config.programs.my-fcitx.enable {
     i18n.inputMethod = {
       enabled = "fcitx5";
-      fcitx5.enableRimeData = true;
-      # rime.packages = [ pkgs.rime-ice ];
       fcitx5.addons = with pkgs; [
-        fcitx5-rime
         fcitx5-breeze
-        rime-ice
         # fcitx5-chinese-addons
+        (fcitx5-rime.override {
+          rimeDataPkgs = with pkgs; [
+            rime-data
+            rime-ice
+          ];
+        })
       ];
     };
   };

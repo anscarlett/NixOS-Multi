@@ -29,7 +29,7 @@ in {
       commandLineArgs = [
         "--use-gl=egl"
         "--gtk-version=4"
-        "--enable-features=VaapiVideoDecoder"
+        "--enable-features=VaapiVideoDecoder,TouchpadOverscrollHistoryNavigation"
       ];
     })
     # (vivaldi.override {
