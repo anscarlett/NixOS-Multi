@@ -95,8 +95,8 @@ final: prev: {
       src = prev.fetchFromGitHub {
         owner = "sddm";
         repo = "sddm";
-        rev = "e07e805c21310572b4fecc810fd5610b1d3d03fd";
-        sha256 = "sha256-CcUN2XnrJYDPYIiOJtU8QzQg4TniSJG686BHoCF1mfQ=";
+        rev = "b923eccba2b8a3b8f6bf63fca10b4ff88b4b5f7a";
+        sha256 = "sha256-zbTr3IXVvtZqEFimG6GBjxLyPi2UoyIFKaqiaefCPTo=";
       };
       patches = [];
       cmakeFlags =

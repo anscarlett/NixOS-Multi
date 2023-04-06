@@ -31,8 +31,6 @@
     openssl
     discount # markdown
     efm-langserver # markdown lsp
-    gnumake
-    # python3
 
     # Compressor / Archiver
     p7zip

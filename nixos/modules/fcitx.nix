@@ -17,10 +17,7 @@
         fcitx5-breeze
         # fcitx5-chinese-addons
         (fcitx5-rime.override {
-          rimeDataPkgs = with pkgs; [
-            rime-data
-            rime-ice
-          ];
+          rimeDataPkgs = [pkgs.rime-ice];
         })
       ];
     };

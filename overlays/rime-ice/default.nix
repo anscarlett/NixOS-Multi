@@ -19,6 +19,7 @@ stdenvNoCC.mkDerivation rec {
 
     install -Dm644 *.{schema,dict}.yaml   $out/share/rime-data
     install -Dm644 symbols_custom.yaml    $out/share/rime-data
+    install -Dm644 default.yaml           $out/share/rime-data
     # install -Dm644 *.{lua,gram}           $out/share/rime-data
 
     mv opencc    $out/share/rime-data
