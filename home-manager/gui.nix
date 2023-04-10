@@ -105,6 +105,7 @@ in {
     inxi
     lm_sensors
     lshw
+    kmon # kernel modules
     hwinfo
     cpufetch
     usbutils
