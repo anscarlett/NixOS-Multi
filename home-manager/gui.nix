@@ -164,14 +164,6 @@ in {
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 
-  home.file = {
-    # Fix qt tiny cursor on gnome
-    ".icons/default/index.theme".text = lib.optionalString gnomeEnable ''
-      [icon theme]
-      Inherits=Adwaita
-    '';
-  };
-
   xdg = {
     userDirs = {
       enable = true;
