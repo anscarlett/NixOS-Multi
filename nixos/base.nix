@@ -34,6 +34,7 @@
     wget
     parted
     gptfdisk
+    micro
     sniffglue
     nix-bash-completions
     sbctl

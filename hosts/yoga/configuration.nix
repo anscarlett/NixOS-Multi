@@ -65,12 +65,12 @@
       efiSysMountPoint = "/boot/efi"; # default /boot
     };
     systemd-boot = {
-      enable = true;
+      enable = false;
       configurationLimit = 5; # bootmenu items
       consoleMode = "max";
     };
     grub = {
-      # enable = true;
+      enable = true;
       device = "nodev";
       efiSupport = true;
       gfxmodeEfi = "1024x768";

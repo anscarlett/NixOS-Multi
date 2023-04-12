@@ -18,7 +18,6 @@
       lib.mapAttrsToList (name: path: "${name}=${path}") inputs
       ++ [
         "nixos-config=${inputs.self}"
-        "/nix/var/nix/profiles/per-user/root/channels"
       ];
 
     gc = {
@@ -49,10 +48,11 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
-      experimental-features = ["nix-command" "flakes" "repl-flake" "auto-allocate-uids" "cgroups"];
-      auto-allocate-uids = true; # Nix 2.12.0
-      use-cgroups = true; # Nix 2.12.0
+      experimental-features = [
+        "flakes"
+        "repl-flake"
+        "nix-command"
+      ];
     };
-    nrBuildUsers = 0; # Nix 2.12.0
   };
 }
