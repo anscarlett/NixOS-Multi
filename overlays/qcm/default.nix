@@ -21,8 +21,8 @@ stdenv.mkDerivation rec {
     owner = "hypengw";
     repo = "Qcm";
     fetchSubmodules = true;
-    rev = "935070cabe38b91bdaf7a0ca93ca7e2a91d47556";
-    hash = "sha256-UDn9e2fVIEy7tzaqPK4ecZhVniUHMwH8KFomHFIZ75s=";
+    rev = "dc1927f2de090202f714ce9a660879a20e039a84";
+    hash = "sha256-XOkGDWrSQxfOjhuWx82fNhoxuL0WpNF/iarFrFvuuJo=";
   };
 
   nativeBuildInputs = [
@@ -37,7 +37,7 @@ stdenv.mkDerivation rec {
     qtbase
     qttools
     qtmultimedia
-    qtwayland
+    # qtwayland
   ];
 
   meta = with lib; {

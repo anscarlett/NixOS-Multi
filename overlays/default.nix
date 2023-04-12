@@ -17,6 +17,13 @@ final: prev: {
   # AppImage
   moonfm = prev.callPackage ./moonfm {};
 
+  # deb / autoPatchelf
+  he3 = prev.callPackage ./he3 {};
+  xmind = prev.callPackage ./xmind {};
+  clash-verge-source = prev.callPackage ./clash-verge-source {};
+  clash-for-windows = prev.callPackage ./clash-for-windows {};
+  clash-premium = prev.callPackage ./clash-premium {};
+
   # electron ALL WIP!!!
   listen1 = prev.callPackage ./listen1 {};
   koodo-reader = prev.callPackage ./koodo-reader {};
@@ -24,13 +31,6 @@ final: prev: {
   nightpdf = prev.callPackage ./nightpdf {};
   music-you = prev.callPackage ./music-you {};
   weektodo = prev.callPackage ./weektodo {};
-
-  # deb / autoPatchelf
-  he3 = prev.callPackage ./he3 {};
-  xmind = prev.callPackage ./xmind {};
-  clash-verge-source = prev.callPackage ./clash-verge-source {};
-  clash-for-windows = prev.callPackage ./clash-for-windows {};
-  clash-premium = prev.callPackage ./clash-premium {};
 
   # C
   azcomicv = prev.callPackage ./azcomicv {};

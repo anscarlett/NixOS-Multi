@@ -10,7 +10,7 @@ in {
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv
-    moonfm
+    # moonfm
 
     foot
     kitty
@@ -143,7 +143,7 @@ in {
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-bin;
+    # package = pkgs.firefox-bin;
     # profiles."default".extraConfig = ''
     #   # drm
     #   "media.eme.enabled" = true;
