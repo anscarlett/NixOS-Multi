@@ -93,7 +93,6 @@ in {
     # foliate # (webkitgtk)
     # standardnotes
     # paper-note
-    # iotas
     notes
     # endeavour
     ghostwriter
