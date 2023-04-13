@@ -10,23 +10,25 @@
 # cat pkgs/servers/web-apps/hedgedoc/default.nix
 mkYarnPackage rec {
   pname = "koodo-reader";
-  version = "1.5.1";
+  version = "1.5.3";
 
   src = fetchFromGitHub {
     owner = "troyeguo";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-5H43kLxtjUvn4vwhdy3oCA8Iw+yQ+KBocQLemXiVhUA=";
+    hash = "sha256-VroILY6KiuuaRlZBvES2JffEllVkeRchFi8UxBgQjjw=";
   };
 
   # offlineCache = fetchYarnDeps {
   #   yarnLock = src + "/yarn.lock";
-  #   hash = "sha256-Qrn99eOKndbg+8zH5YEog0DwL5Jh18hCCEzVCg1uHu8=";
+  #   hash = "sha256-Qrn99eOKndbg+8zH5ssog0DwL5Jh18hCCEzVCg1uHu8=";
   # };
 
+  # ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
+
   yarnNix = ./yarn.nix;
-  packageJSON = ./package.json;
   yarnLock = ./yarn.lock;
+  packageJSON = ./package.json;
 
   nativeBuildInputs = [ makeWrapper ];
 

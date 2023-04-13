@@ -12,13 +12,13 @@
 # WIP!!!
 buildNpmPackage rec {
   pname = "listen1";
-  version = "2.27.0";
+  version = "2.28.0";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = "listen1_desktop";
     rev = "v${version}";
-    hash = "sha256-E42snHx7tO//5fbKJ+LcIwkO9fSGj5dYJfawkctmw54=";
+    hash = "sha256-xPEOOtWrCdpOE1piZX8ncNTxW6FnPc7yEzk/RbpytJc=";
   };
 
   npmDepsHash = "sha256-/exiIPirhMZAag30jDrF196u+ZmI61oQc6ZjOVbJPR4=";

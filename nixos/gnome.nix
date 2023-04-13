@@ -34,6 +34,7 @@
       # authenticator
       gparted
       gnome-randr
+      valent
 
       gnome.gnome-tweaks
       gnome.dconf-editor
@@ -50,8 +51,8 @@
       app-icons-taskbar
       # rocketbar
       dash-to-dock
-      dash-to-panel
-      dock-from-dash
+      # dash-to-panel
+      # dock-from-dash
       night-theme-switcher
       clipboard-history
       # clipboard-indicator
@@ -62,10 +63,10 @@
       # proxy-switcher
       # just-perfection
       space-bar
-      dotspaces
+      # dotspaces
       runcat
       caffeine
-      ddterm
+      # ddterm
     ]);
 
   programs.kdeconnect = {
