@@ -9,11 +9,12 @@
     userEmail = "linzway@qq.com";
     aliases = {
       st = "status -sb";
+      ds = "diff --stat";
       undo = "reset --hard HEAD~1";
       patch = "format-patch --stdout HEAD~1";
       rank = "shortlog -s -n --no-merges";
       lg = "log --graph --decorate --all --oneline";
-      ll = "log --graph --pretty='%Cred%h%Creset - %C(bold blue)<%an>%Creset %s%C(yellow)%d%Creset %Cgreen(%cr)' --abbrev-commit --date=relative";
+      ll = "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative";
     };
     extraConfig = {
       init.defaultBranch = "main";

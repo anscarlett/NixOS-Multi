@@ -4,20 +4,22 @@ set -euo pipefail
 
 dotConfig=~/nsworld
 
-usage() {
-    printf "\n Usage:
-     \t which log references depends
-     \t boot switch upgrade diff
-     \t profiles generations source installed
-     \t pr-run pr-shell pr-pull git-fm
-     \t hmswitch hmsource hmprofiles hmdiff
-     "
+ns_usage() {
+    cat <<EOF
+
+Usage:
+ which log references depends
+ boot switch upgrade diff
+ profiles generations source installed
+ pr-run pr-shell pr-pull git-fm
+ hmswitch hmsource hmprofiles hmdiff
+EOF
 }
 
-if [ $# -eq 0 ]
-then
-    usage
-    exit 0
+# Check for arguments
+if [ $# -eq 0 ]; then
+    ns_usage
+    exit 1
 fi
 
 while [[ $# -gt 0 ]]; do
@@ -133,7 +135,7 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         *)
-           shift ;;
+            shift ;;
 
     esac
 done

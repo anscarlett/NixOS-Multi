@@ -2,11 +2,8 @@
   config,
   pkgs,
   lib,
-  nixosConfig,
   ...
-}: let
-  gnomeEnable = nixosConfig.services.xserver.desktopManager.gnome.enable;
-in {
+}: {
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv
@@ -172,7 +169,7 @@ in {
 
     # mimeApps.enable = true;
 
-    # desktopEntries.spotify = lib.options gnomeEnable {
+    # desktopEntries.spotify = {
     #   name = "Spotify";
     #   genericName = "Music Player";
     #   icon = "spotify-client";
