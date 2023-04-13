@@ -34,8 +34,8 @@
     nix-bash-completions
 
     # Gui
-    foot
-    kitty
+    # foot
+    # kitty
     alacritty
     emacs
     goodvibes

@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    # nixpkgs.url = "git+file:///home/iab/devs/nixpkgs/?ref=qt6-vf-test";
+    # nixpkgs.url = "git+file:///home/iab/codes/nixpkgs/?ref=gnome44Extensions";
 
     home-manager = {
       url = "github:nix-community/home-manager";

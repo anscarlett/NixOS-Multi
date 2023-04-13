@@ -49,6 +49,17 @@
   :config
   (dashboard-setup-startup-hook))
 
+(use-package centaur-tabs
+  :custom ((centaur-tabs-height 28)
+           (centaur-tabs-style "wave")
+           (centaur-tabs-set-icons t)
+           (centaur-tabs-set-bar 'over)
+           (centaur-tabs-set-close-button nil)
+           (centaur-tabs-set-modified-marker t)
+           (centaur-tabs-modified-marker "●"))
+  :config
+  (centaur-tabs-mode t))
+
 ;; Persp-mode
 (use-package persp-mode
   :init (setq persp-keymap-prefix (kbd "C-c w"))

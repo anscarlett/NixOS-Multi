@@ -53,7 +53,6 @@
     # rhythmbox
     goodvibes
     go-musicfox
-    # netease-cloud-music-gtk
     mousai
     # eartag
     # tagger
@@ -74,7 +73,7 @@
 
     # motrix
     qbittorrent
-    # gnome-decoder
+    gnome-decoder
     # deja-dup
     # rclone
     # rclone-browser
@@ -122,7 +121,7 @@
   ];
 
   services = {
-    # diabsle in wm
+    # diabsle on wm
     easyeffects.enable = !config.services.wlsunset.enable;
   };
 

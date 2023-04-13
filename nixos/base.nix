@@ -5,8 +5,8 @@
   ...
 }: {
   boot = {
-    # tmpOnTmpfs = true;
-    cleanTmpDir = true;
+    # tmp.useTmpfs = true;
+    tmp.cleanOnBoot = true;
     plymouth.enable = true;
     supportedFilesystems = ["ntfs"];
 
