@@ -8,6 +8,7 @@ final: prev: {
   */
 
   spotify = prev.callPackage ./spotify {};
+  notes = prev.qt6Packages.callPackage ./notes {};
 
   # Data
   ns-cli = prev.callPackage ./ns-cli {};
@@ -43,8 +44,6 @@ final: prev: {
   g4music = prev.callPackage ./g4music {};
 
   # Qt
-  qcm = prev.qt6Packages.callPackage ./qcm {};
-  notes = prev.qt6Packages.callPackage ./notes {};
 
   # Python
 

@@ -73,7 +73,7 @@
 
     # motrix
     qbittorrent
-    gnome-decoder
+    # gnome-decoder
     # deja-dup
     # rclone
     # rclone-browser
