@@ -129,7 +129,7 @@
          (go-mode . eglot-ensure)
          (python-mode . eglot-ensure)
          (rust-mode . eglot-ensure)
-         ;; (nix-mode . eglot-ensure)
+         (nix-mode . eglot-ensure)
          (markdown-mode . eglot-ensure)
          )
   :config

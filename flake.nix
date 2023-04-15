@@ -109,14 +109,14 @@
                 # imports = [
                 #   "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
                 # ];
-                environment.systemPackages = with pkgs; [
-                  # nixpkgs-pr.legacyPackages.${system}.gnomeExtensions.pano
-                ];
+                # environment.systemPackages = with pkgs; [
+                #   # nixpkgs-pr.legacyPackages.${system}.gnomeExtensions.pano
+                # ];
               })
             ];
           };
 
-          # nixos-rebuild --target-host zendo@192.168.2.197 --use-remote-sudo --flake .#svp switch
+          # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
           svp = lib.mkHost {
             username = "zendo";
             hostname = "svp";
