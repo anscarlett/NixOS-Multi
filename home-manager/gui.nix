@@ -49,6 +49,9 @@
     # ffmpeg
     kooha
     qmmp
+    # (deadbeef-with-plugins.override {
+    #   plugins = with deadbeefPlugins; [mpris2];
+    # })
     # audacious
     # rhythmbox
     goodvibes

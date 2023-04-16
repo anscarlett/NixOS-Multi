@@ -51,7 +51,11 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
       bridge-utils
       nix-alien # Run binaries
       (appimage-run.override {
-        extraPkgs = pkgs: with pkgs; [libthai];
+        extraPkgs = pkgs:
+          with pkgs; [
+            libthai
+            # libsecret
+          ];
       })
       # scrcpy # android
       # distrobox

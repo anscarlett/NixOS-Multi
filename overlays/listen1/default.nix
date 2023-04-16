@@ -18,42 +18,29 @@ buildNpmPackage rec {
     owner = pname;
     repo = "listen1_desktop";
     rev = "v${version}";
-    hash = "sha256-xPEOOtWrCdpOE1piZX8ncNTxW6FnPc7yEzk/RbpytJc=";
+    fetchSubmodules = true;
+    hash = "sha256-Ch74V+GLNOeaYaJn3I1Ttv48DBc2abSjS6dfbxw9qRQ=";
   };
 
-  npmDepsHash = "sha256-/exiIPirhMZAag30jDrF196u+ZmI61oQc6ZjOVbJPR4=";
-
-  # dontNpmBuild = true;
-
-  # postPatch = ''
-  #   substituteInPlace package.json --replace '"version": "0.0.0"' '"version": "${version}"'
-  # '';
+  npmDepsHash = "sha256-cDBYz0m3EVVYABLU5wb0NJkcZDC+YqMHBdiCSPdWLBo=";
 
   # nativeBuildInputs = [ pkg-config python3 ];
 
-  buildInputs = [ libsecret electron nodejs];
+  # buildInputs = [ libsecret electron nodejs];
 
   makeCacheWritable = true;
   npmFlags = [
     "--legacy-peer-deps"
-    "--ignore-scripts"
+    # "--ignore-scripts"
   ];
 
-  npmBuild = ''
-    npm run dist:linux64
-  '';
-
-  # The prepack script runs the build script, which we'd rather do in the build phase.
-  # npmPackFlags = [ "--ignore-scripts" ];
-
-  NODE_OPTIONS = "--openssl-legacy-provider";
+  # NODE_OPTIONS = "--openssl-legacy-provider";
 
   ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
 
-  # ESBUILD_BINARY_PATH = "${esbuild}/bin/esbuild";
-  USE_SYSTEM_LIBDELTACHAT = "true";
+  # npmBuildScript = "build:production";
 
-  dontNpmBuild = true;
+  # dontNpmBuild = true;
 
   # installPhase = ''
   #     mkdir -p $out
