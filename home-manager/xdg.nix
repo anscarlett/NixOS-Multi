@@ -22,7 +22,6 @@ in {
   };
 
   xdg.configFile = {
-    "mpv".source = ../dotfiles/mpv;
     "cava".source = ../dotfiles/cava;
     "wofi".source = ../dotfiles/wofi;
     "foot".source = ../dotfiles/foot;
@@ -40,6 +39,7 @@ in {
     "emacs/early-init.el".source = ../dotfiles/emacs/early-init.el;
 
     "lf".source = "${lnDots}/lf";
+    "mpv".source = "${lnDots}/mpv";
     "mako".source = "${lnDots}/mako";
     "helix".source = "${lnDots}/helix";
     "waybar".source = "${lnDots}/waybar";

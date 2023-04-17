@@ -44,6 +44,7 @@
 
     "org/gnome/shell" = {
       enabled-extensions = [
+        "app-hider@lynith.dev"
         "gsconnect@andyholmes.github.io"
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-history@alexsaveau.dev"

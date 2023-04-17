@@ -47,6 +47,7 @@
       # gnome-firmware-updater
     ]
     ++ (with gnomeExtensions; [
+      app-hider
       appindicator
       app-icons-taskbar
       # rocketbar
