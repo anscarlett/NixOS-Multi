@@ -107,6 +107,10 @@ final: prev: {
     });
   });
 
+  gnomeExtensions = prev.gnomeExtensions // {
+    night-theme-switcher = prev.callPackage ./night-theme-switcher {};
+  };
+
   /*
   # node override
   nodePackages = nodePackages.extend (final: prev: { });

@@ -22,6 +22,7 @@
 
 rsync -avhpL "$HOME"/.ssh "$HOME"/Documents/homeBackups/
 rsync -avhpL "$HOME"/.mozilla "$HOME"/Documents/homeBackups/
+rsync -avhpL "$HOME"/.config/google-chrome "$HOME"/Documents/homeBackups/
 rsync -avhpL "$HOME"/.config/fcitx5/conf "$HOME"/Documents/homeBackups/
 
 if test "$XDG_CURRENT_DESKTOP" = "GNOME"; then
