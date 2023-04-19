@@ -68,6 +68,7 @@
       runcat
       caffeine
       # ddterm
+      improved-osk
     ]);
 
   programs.kdeconnect = {

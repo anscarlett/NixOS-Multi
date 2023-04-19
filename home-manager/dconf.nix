@@ -60,7 +60,8 @@
         "kitty.desktop"
         "org.gnome.Nautilus.desktop"
         "emacs.desktop"
-        "firefox.desktop"
+        # "firefox.desktop"
+        "google-chrome.desktop"
         "org.telegram.desktop.desktop"
       ];
     };

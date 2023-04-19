@@ -19,25 +19,6 @@ in {
     whatip
     remmina # (webkitgtk)
 
-    # Browsers
-    # (chromium.override {
-    #   commandLineArgs = [
-    #     "--gtk-version=4"
-    #   ];
-    # })
-    (google-chrome.override {
-      commandLineArgs = [
-        "--use-gl=egl"
-        "--gtk-version=4"
-        "--enable-features=VaapiVideoDecoder,TouchpadOverscrollHistoryNavigation"
-      ];
-    })
-    # (vivaldi.override {
-    #   proprietaryCodecs = true;
-    #   enableWidevine = true; # drm
-    # })
-    # (opera.override { proprietaryCodecs = true; })
-    # microsoft-edge-beta
     # nheko
     # fractal-next
     # discord
@@ -142,21 +123,6 @@ in {
   # programs.obs-studio = {
   #   enable = true;
   # };
-
-  programs.firefox = {
-    enable = true;
-    # package = pkgs.firefox-bin;
-    # profiles."default".extraConfig = ''
-    #   # drm
-    #   "media.eme.enabled" = true;
-
-    #   # Hide bookmarks
-    #   "browser.toolbars.bookmarks.visibility" = "never";
-
-    #   # Dont show warning when accessing about:config
-    #   "browser.aboutConfig.showWarning" = false;
-    # '';
-  };
 
   #######################################################################
   ##  Desktop Environment

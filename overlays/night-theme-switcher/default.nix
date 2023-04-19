@@ -25,9 +25,9 @@ stdenv.mkDerivation rec {
     glib
   ];
 
-  mesonFlags = [
-    "--datadir=${placeholder "out"}/share"
-  ];
+  # mesonFlags = [
+  #   "--datadir=${placeholder "out"}/share"
+  # ];
 
   meta = with lib; {
     description = "A GNOME Shell extension to make your desktop easy on the eye, day and night";
