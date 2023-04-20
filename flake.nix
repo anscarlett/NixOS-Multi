@@ -17,11 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-alien = {
-      url = "github:thiagokokada/nix-alien";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,7 +64,6 @@
   }: let
     overlays = [
       # inputs.nur.overlay
-      inputs.nix-alien.overlay
       inputs.emacs-overlay.overlay
       self.overlays.default
       # (final: prev: {

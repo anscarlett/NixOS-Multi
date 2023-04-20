@@ -49,7 +49,6 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
       virt-manager
       libguestfs
       bridge-utils
-      nix-alien # Run binaries
       (appimage-run.override {
         extraPkgs = pkgs:
           with pkgs; [
