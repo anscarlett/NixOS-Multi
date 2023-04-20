@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -34,7 +33,6 @@
       # authenticator
       gparted
       gnome-randr
-      valent
 
       gnome.gnome-tweaks
       gnome.dconf-editor
@@ -73,7 +71,8 @@
 
   programs.kdeconnect = {
     enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
+    package = pkgs.valent;
+    # package = pkgs.gnomeExtensions.gsconnect;
   };
 
   # programs.my-fcitx.enable = true;

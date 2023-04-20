@@ -45,7 +45,6 @@
     "org/gnome/shell" = {
       enabled-extensions = [
         "app-hider@lynith.dev"
-        "gsconnect@andyholmes.github.io"
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-history@alexsaveau.dev"
         "space-bar@luchrioh"
@@ -54,14 +53,15 @@
         "caffeine@patapon.info"
         "appindicatorsupport@rgcjonas.gmail.com"
         "runcat@kolesnikov.se"
+        # "gsconnect@andyholmes.github.io"
       ];
       favorite-apps = [
         # "foot.desktop"
         "kitty.desktop"
         "org.gnome.Nautilus.desktop"
         "emacs.desktop"
-        # "firefox.desktop"
-        "google-chrome.desktop"
+        "firefox.desktop"
+        # "google-chrome.desktop"
         "org.telegram.desktop.desktop"
       ];
     };

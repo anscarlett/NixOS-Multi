@@ -1,9 +1,10 @@
 {
-  config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }: {
+  zramSwap.enable = true;
+
   boot = {
     # tmp.useTmpfs = true;
     tmp.cleanOnBoot = true;
@@ -11,12 +12,10 @@
     supportedFilesystems = ["ntfs"];
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    # Silent boot at initrd.systemd
+    # Silent boot on `initrd.systemd`
     kernelParams = ["systemd.show_status=false"];
     initrd.systemd.enable = true;
   };
-
-  zramSwap.enable = true;
 
   services = {
     fwupd.enable = true;
@@ -42,18 +41,18 @@
     # efitools
   ];
 
-  # environment.sessionVariables = {
-  # };
-
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
 
+  # zsh@hm needs this
   programs.zsh.enable = true;
 
+  # broken in flake
   programs.command-not-found.enable = false;
 
+  # slow down in nixos-rebuild
   documentation.enable = false;
 
   time.timeZone = "Asia/Shanghai";

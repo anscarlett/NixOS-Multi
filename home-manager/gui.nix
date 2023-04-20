@@ -109,7 +109,7 @@ in {
 
   services = {
     # diabsle on wm
-    easyeffects.enable = !config.services.wlsunset.enable;
+    # easyeffects.enable = !config.services.wlsunset.enable;
   };
 
   programs.mpv = {
@@ -138,13 +138,13 @@ in {
       createDirectories = true;
     };
 
-    # dataFile = {
-    #   # Fix qt tiny cursor on gnome
-    #   "icons/default/index.theme".text = lib.optionalString gnomeEnable ''
-    #     [icon theme]
-    #     Inherits=Adwaita
-    #   '';
-    # };
+    dataFile = {
+      # Fix qt tiny cursor on gnome
+      "icons/default/index.theme".text = lib.optionalString gnomeEnable ''
+        [icon theme]
+        Inherits=Adwaita
+      '';
+    };
 
     # mimeApps.enable = true;
 

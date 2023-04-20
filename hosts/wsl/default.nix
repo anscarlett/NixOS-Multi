@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   username,
   ...
@@ -8,8 +7,7 @@
     enable = true;
     defaultUser = "${username}";
     startMenuLaunchers = true;
-    nativeSystemd = true; # Not working at first boot
-    # wslConf.automount.root = "/mnt"; # defult
+    nativeSystemd = true;
 
     # Enable native Docker support
     # docker-native.enable = true;
@@ -19,10 +17,6 @@
   };
 
   networking.hostName = "wsl";
-
-  programs.zsh.enable = true;
-
-  users.defaultUserShell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
     binutils
@@ -46,8 +40,12 @@
     enableSSHSupport = true;
   };
 
+  users.defaultUserShell = pkgs.zsh;
+
   # for zsh completion in home-manager
   environment.pathsToLink = ["/share/zsh"];
+
+  programs.zsh.enable = true;
 
   documentation.enable = false;
 

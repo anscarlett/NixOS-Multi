@@ -1,7 +1,7 @@
 { fetchurl, lib, stdenv, squashfsTools, xorg, alsa-lib, makeWrapper, wrapGAppsHook, openssl, freetype
 , glib, pango, cairo, atk, gdk-pixbuf, gtk3, cups, nspr, nss, libpng, libnotify
 , libgcrypt, systemd, fontconfig, dbus, expat, ffmpeg, curlWithGnuTls, zlib, gnome
-, at-spi2-atk, at-spi2-core, libpulseaudio, libdrm, mesa, libxkbcommon
+, at-spi2-atk, at-spi2-core, libpulseaudio, libdrm, mesa, libxkbcommon, harfbuzz
   # High-DPI support: Spotify's --force-device-scale-factor argument
   # not added if `null`, otherwise, should be a number.
 , deviceScaleFactor ? null
@@ -13,14 +13,14 @@ let
   # If an update breaks things, one of those might have valuable info:
   # https://aur.archlinux.org/packages/spotify/
   # https://community.spotify.com/t5/Desktop-Linux
-  version = "1.2.8.923.g4f94bf0d";
+  version = "1.2.9.743.g85d9593d";
   # To get the latest stable revision:
   # curl -H 'X-Ubuntu-Series: 16' 'https://api.snapcraft.io/api/v1/snaps/details/spotify?channel=stable' | jq '.download_url,.version,.last_updated'
   # To get general information:
   # curl -H 'Snap-Device-Series: 16' 'https://api.snapcraft.io/v2/snaps/info/spotify' | jq '.'
   # More examples of api usage:
   # https://github.com/canonical-websites/snapcraft.io/blob/master/webapp/publisher/snaps/views.py
-  rev = "63";
+  rev = "64";
 
   deps = [
     alsa-lib
@@ -38,6 +38,7 @@ let
     gdk-pixbuf
     glib
     gtk3
+    harfbuzz
     libdrm
     libgcrypt
     libnotify
@@ -83,7 +84,7 @@ stdenv.mkDerivation {
   # https://community.spotify.com/t5/Desktop-Linux/Redistribute-Spotify-on-Linux-Distributions/td-p/1695334
   src = fetchurl {
     url = "https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_${rev}.snap";
-    sha512 = "570eca456f740677455b51a5ee72173385107a9f1cc305d69559fe4bc9d48966663440223235259524dc87f7ea6367a5a01568087c0fd1896a5323bebd79e814";
+    hash = "sha256-jIpuEyq+fmB4pTXITT/DFkLOcGp2cE+4rfsUT6ANvKk=";
   };
 
   nativeBuildInputs = [ makeWrapper wrapGAppsHook squashfsTools ];
