@@ -17,11 +17,10 @@ ns:
 - references
 - depends
 - git-fetch-merge
-- pr-run
-- pr-shell
-- pr-build
 - pr-pull
-- impure-run
-- impure-shell
+- pr-build
+- pr-build-impure
+- run-impure
+- shell-impure
 - hash2sri
 - indexdb-update

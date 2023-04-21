@@ -97,27 +97,23 @@ while [[ $# -gt 0 ]]; do
             git fetch upstream master && git merge "$(nixos-version --revision)"
             shift ;;
 
-        pr-run)
-            nix run github:NixOS/nixpkgs/pull/"$2"/merge#"$3"
-            shift ;;
-
-        pr-shell)
-            nix shell github:NixOS/nixpkgs/pull/"$2"/merge#"$3"
+        pr-pull)
+            gh pr checkout -R NixOS/nixpkgs "$2"
             shift ;;
 
         pr-build)
             nix build github:NixOS/nixpkgs/pull/"$2"/merge#"$3"
             shift ;;
 
-        pr-pull)
-            gh pr checkout -R NixOS/nixpkgs "$2"
+        pr-build-impure)
+            NIXPKGS_ALLOW_UNFREE=1 nix build github:NixOS/nixpkgs/pull/"$2"/merge#"$3" --impure
             shift ;;
 
-        impure-run)
+        run-impure)
             NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#"$2"
             shift ;;
 
-        impure-shell)
+        shell-impure)
             NIXPKGS_ALLOW_UNFREE=1 nix shell --impure nixpkgs#"$2"
             shift ;;
 
