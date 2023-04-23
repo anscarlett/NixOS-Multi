@@ -3,11 +3,14 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # https://wiki.archlinux.org/title/Chromium
     (google-chrome.override {
       commandLineArgs = [
-        "--use-gl=egl"
+        "--ignore-gpu-blocklist"
+        "--enable-gpu-rasterization"
+        "--enable-zero-copy"
         "--gtk-version=4"
-        "--enable-features=VaapiVideoDecoder,TouchpadOverscrollHistoryNavigation"
+        "--enable-features=TouchpadOverscrollHistoryNavigation"
       ];
     })
     # (vivaldi.override {
@@ -22,9 +25,11 @@
     # enable = true;
     package = pkgs.chromiumDev;
     commandLineArgs = [
-      "--use-gl=egl"
+      "--ignore-gpu-blocklist"
+      "--enable-gpu-rasterization"
+      "--enable-zero-copy"
       "--gtk-version=4"
-      "--enable-features=VaapiVideoDecoder,TouchpadOverscrollHistoryNavigation"
+      "--enable-features=TouchpadOverscrollHistoryNavigation"
     ];
     extensions = [
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
