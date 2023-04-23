@@ -20,6 +20,7 @@
 
   programs.chromium = {
     # enable = true;
+    package = pkgs.chromiumDev;
     commandLineArgs = [
       "--use-gl=egl"
       "--gtk-version=4"

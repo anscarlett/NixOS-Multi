@@ -208,7 +208,8 @@
           config = {
             allowUnfree = true;
             # allowBroken = true;
-            # allowUnsupportedSystem = true;}
+            # allowInsecure = true;
+            # allowUnsupportedSystem = true;
           };
         };
       in {

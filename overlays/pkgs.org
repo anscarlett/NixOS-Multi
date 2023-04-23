@@ -1,32 +1,6 @@
 #+STARTUP: show2levels indent hidestars
 
 * buildRustPackage
-** cargo.lock script
-
-cargoPatches = [ ./cargo-lock.patch ];
-
-#+begin_src nix
-#!nix-shell
-#!nix-shell -i bash -p coreutils gnugrep git cargo
-
-# Copy from pkgs/applications/audio/netease-music-tui/update-cargo-lock.sh
-
-set -eu -o verbose
-
-here=$PWD
-version=$(cat < default.nix | grep '^  version = "' | cut -d '"' -f 2)
-checkout=$(mktemp -d)
-git clone -b "$version" --depth=1 https://github.com/betta-cyber/netease-music-tui "$checkout"
-cd "$checkout"
-
-cargo generate-lockfile
-git add -f Cargo.lock
-git diff HEAD -- Cargo.lock > "$here"/cargo-lock.patch
-
-cd "$here"
-rm -rf "$checkout"
-#+end_src>
-
 * buildPythonApplication
 ** notes
 #+begin_src nix
@@ -153,36 +127,6 @@ python3.pkgs.buildPythonApplication rec {
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
     maintainers = with maintainers; [ zendo ];
-  };
-}
-#+end_src
-
-* buildNimPackage
-#+begin_src nix
-{ lib, nimPackages, fetchFromGitHub, }:
-
-nimPackages.buildNimPackage rec {
-  pname = "nitch";
-  version = "0.1.6";
-
-  nimBinOnly = true;
-
-  src = fetchFromGitHub {
-    owner = "unxsh";
-    repo = "nitch";
-    rev = version;
-    hash = "sha256-m4UG5oVZ+/7jk1f7rOe8wP97Jt0yIFcAPU+doeMe2Hw=";
-  };
-
-  # buildInputs = [ termbox pcre ]
-  #   ++ (with nimPackages; [ noise nimbox lscolors ]);
-
-  meta = with lib; {
-    description = "Incredibly fast system fetch written in nim";
-    homepage = "https://github.com/unxsh/nitch";
-    license = licenses.mit;
-    platforms = platforms.unix;
-    maintainers = [ maintainers.zendo ];
   };
 }
 #+end_src

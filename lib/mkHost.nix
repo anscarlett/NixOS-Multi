@@ -15,9 +15,9 @@ in
       specialArgs = {inherit inputs username;};
       modules =
         [
-          ../hosts/${hostname}
-
           self.nixosModules.default
+
+          ../hosts/${hostname}
 
           {
             networking.hostName = "${hostname}";
@@ -30,8 +30,6 @@ in
               # allowInsecure = true;
               # allowUnsupportedSystem = true;
             };
-
-            hardware.enableRedistributableFirmware = true;
 
             services.xserver.displayManager.autoLogin.user = "${username}";
             # Fix: https://nixos.wiki/wiki/GNOME
