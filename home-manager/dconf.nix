@@ -8,40 +8,15 @@
       night-light-enabled = true;
     };
 
-    "org/gnome/desktop/peripherals/touchpad" = {
-      tap-to-click = true;
-      click-method = "areas";
-    };
-
     "org/gnome/desktop/interface" = {
+      clock-show-date = false;
       cursor-theme = "Adwaita";
       icon-theme = "Adwaita";
     };
 
-    "org/gnome/desktop/input-sources" = {
-      xkb-options = ["terminate:ctrl_alt_bksp" "ctrl:swapcaps"];
-    };
-
-    "org/gnome/desktop/wm/keybindings" = {
-      activate-window-menu = [];
-      close = ["<Super>q"];
-      switch-to-workspace-1 = ["<Super>1"];
-      switch-to-workspace-2 = ["<Super>2"];
-      switch-to-workspace-3 = ["<Super>3"];
-      switch-to-workspace-4 = ["<Super>4"];
-      move-to-workspace-1 = ["<Alt>1"];
-      move-to-workspace-2 = ["<Alt>2"];
-      move-to-workspace-3 = ["<Alt>3"];
-      move-to-workspace-4 = ["<Alt>4"];
-    };
-
-    "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [];
-      switch-to-application-2 = [];
-      switch-to-application-3 = [];
-      switch-to-application-4 = [];
-    };
-
+    ##############################################################
+    ##  Extensions
+    ##############################################################
     "org/gnome/shell" = {
       enabled-extensions = [
         "app-hider@lynith.dev"
@@ -76,6 +51,67 @@
 
     "org/gnome/shell/extensions/space-bar/behavior" = {
       show-empty-workspaces = false;
+    };
+
+    ##############################################################
+    ##  Keybindings
+    ##############################################################
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
+      click-method = "areas";
+    };
+
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = ["terminate:ctrl_alt_bksp" "ctrl:swapcaps"];
+    };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      activate-window-menu = [];
+      close = ["<Super>q"];
+      switch-to-workspace-1 = ["<Super>1"];
+      switch-to-workspace-2 = ["<Super>2"];
+      switch-to-workspace-3 = ["<Super>3"];
+      switch-to-workspace-4 = ["<Super>4"];
+      move-to-workspace-1 = ["<Alt>1"];
+      move-to-workspace-2 = ["<Alt>2"];
+      move-to-workspace-3 = ["<Alt>3"];
+      move-to-workspace-4 = ["<Alt>4"];
+    };
+
+    "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>Return";
+      command = "kitty";
+      name = "open-terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>e";
+      command = "emacs";
+      name = "open-editor";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = "<Super>f";
+      command = "nautilus";
+      name = "open-file-browser";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      binding = "<Super>w";
+      command = "firefox";
+      name = "open-web-browser";
     };
   };
 }
