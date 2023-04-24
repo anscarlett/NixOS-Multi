@@ -5,13 +5,13 @@
   services = {
     xserver = {
       enable = true;
+      excludePackages = [pkgs.xterm];
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
-      excludePackages = [pkgs.xterm];
     };
 
     packagekit.enable = false;
-    gnome.sushi.enable = true;
+    # gnome.sushi.enable = true;
     # gnome.tracker.enable = false;
     # gnome.tracker-miners.enable = false;
   };
@@ -40,7 +40,7 @@
       gnome.gnome-sound-recorder
       # gnome.pomodoro
       # gnome.gnome-boxes
-      # gnome-network-displays  # miracast
+      # gnome-network-displays
       # gnome-builder
       # gnome-firmware-updater
     ]
@@ -51,15 +51,12 @@
       # rocketbar
       dash-to-dock
       # dash-to-panel
-      # dock-from-dash
       night-theme-switcher
       clipboard-history
       # clipboard-indicator
       # blur-my-shell
       gradient-top-bar
       top-bar-organizer
-      # weather-oclock
-      # proxy-switcher
       # just-perfection
       space-bar
       # dotspaces

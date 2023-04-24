@@ -1,5 +1,5 @@
 inputs: let
-  inherit (inputs) self nixpkgs nixpkgs-stable home-manager;
+  inherit (inputs) home-manager;
 in
   {
     username,
@@ -22,6 +22,7 @@ in
           ../home-manager/xdg.nix
           ../home-manager/tmux.nix
           ../home-manager/alias.nix
+          ../home-manager/dconf.nix
           ../home-manager/non-nixos.nix
 
           {
