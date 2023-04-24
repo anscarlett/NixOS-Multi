@@ -41,12 +41,14 @@ in {
     goodvibes
     go-musicfox
     mousai
+    songrec
+    # yt-dlp
+    # media-downloader
     # eartag
     # tagger
     # jamesdsp
     # ciano
     # video-trimmer
-    # media-downloader
     # spotiflyer
 
     # Image manipulation

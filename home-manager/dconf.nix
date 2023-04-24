@@ -53,6 +53,10 @@
       show-empty-workspaces = false;
     };
 
+    "org/gnome/shell/extensions/space-bar/shortcuts" = {
+      open-menu = [];
+    };
+
     ##############################################################
     ##  Keybindings
     ##############################################################
