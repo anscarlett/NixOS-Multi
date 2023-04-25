@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }: {
   programs.clash-verge = {
@@ -67,6 +66,7 @@
 
     hosts = {
       "20.205.243.166" = ["github.com"];
+      # "20.205.243.168" = ["api.github.com"];
     };
   };
 

@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   username,
   ...
 }: {
@@ -79,8 +77,6 @@
       # mako  # , notify-send "sth"
       libnotify # notify-send
       wlogout
-
-      # hyprpicker
 
       wofi # quick run
       wofi-emoji

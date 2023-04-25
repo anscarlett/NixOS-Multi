@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -23,11 +22,6 @@
   # programs.hyprland.enable = true;
 
   home-manager.users.${username} = {
-    inputs,
-    config,
-    pkgs,
-    ...
-  }: {
     imports = [inputs.hyprland.homeManagerModules.default];
 
     wayland.windowManager.hyprland = {
@@ -39,10 +33,13 @@
 
     home.packages = with pkgs; [
       # hyprpaper # wallpaper
+      hyprpicker
       (waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
         # fix for workspace
-        postPatch = (oldAttrs.postPatch or "") + ''
+        postPatch =
+          (oldAttrs.postPatch or "")
+          + ''
             sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp'';
       }))
     ];

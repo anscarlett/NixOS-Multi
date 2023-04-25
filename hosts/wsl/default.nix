@@ -59,10 +59,6 @@
   ##  Home Manager
   #######################################################################
   home-manager.users.${username} = {
-    config,
-    pkgs,
-    ...
-  }: {
     home.packages = with pkgs; [
       wslu
       wsl-open

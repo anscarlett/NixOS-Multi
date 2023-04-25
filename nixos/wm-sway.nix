@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   username,
@@ -19,10 +18,6 @@
   };
 
   home-manager.users.${username} = {
-    config,
-    pkgs,
-    ...
-  }: {
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
