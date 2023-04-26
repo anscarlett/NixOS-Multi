@@ -36,11 +36,12 @@ in {
     # (deadbeef-with-plugins.override {
     #   plugins = with deadbeefPlugins; [mpris2];
     # })
+    # amberol
     # audacious
     # rhythmbox
     goodvibes
     go-musicfox
-    mousai
+    # mousai
     songrec
     # yt-dlp
     # media-downloader

@@ -27,6 +27,11 @@
 
   # boot.kernelParams = ["quite"];
 
+  # https://fedoraproject.org/wiki/Changes/IncreaseVmMaxMapCount
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 2147483642;
+  };
+
   # boot.plymouth = {
   #   theme = "double";
   #   themePackages = [pkgs.adi1090x-plymouth-themes];

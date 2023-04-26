@@ -78,6 +78,7 @@ final: prev: {
         cp -r $out/usr/share $out/share '';
     });
 
+  # wrapProgram $out/bin/telegram-desktop --set QT_QPA_PLATFORM xcb
   logseq-wayland = prev.symlinkJoin {
     name = "logseq";
     paths = [prev.logseq];
