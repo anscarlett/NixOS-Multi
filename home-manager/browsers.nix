@@ -22,8 +22,8 @@
   ];
 
   programs.chromium = {
-    # enable = true;
-    package = pkgs.chromiumDev;
+    enable = true;
+    # package = pkgs.chromiumDev;
     commandLineArgs = [
       "--ignore-gpu-blocklist"
       "--enable-gpu-rasterization"

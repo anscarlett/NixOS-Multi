@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    # nixpkgs.url = "git+file:///home/iab/codes/nixpkgs/?ref=gnome44Extensions";
+    # nixpkgs.url = "git+file:///home/iab/codes/nixpkgs/?ref=tmux-catppuccin";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,7 +13,7 @@
     };
 
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/3b1a5a9427c666f196aa7be5b8d4a5838e42a92a";
+      url = "github:nix-community/emacs-overlay/b9f58617837bb55201c526a8c37976d0ff25aebd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
