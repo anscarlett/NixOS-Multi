@@ -24,7 +24,7 @@
       fira-code
       mononoki
       jetbrains-mono
-      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+      # (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];
 
     fontconfig = {

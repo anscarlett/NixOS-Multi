@@ -219,7 +219,7 @@
         # nix fmt
         formatter = pkgs.alejandra;
 
-        # nix run . -- diff
+        # nix run . -- hmswitch
         packages.default = pkgs.ns-cli;
 
         # nix develop .#rust
