@@ -35,7 +35,8 @@
     # Compressor / Archiver
     p7zip
     unzip
-    unrar
+    # unar # free but oversize
+    unrar # unfree
     ouch
     patool
     # atool

@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -26,10 +25,11 @@
     disableConfirmationPrompt = true;
     plugins = with pkgs.tmuxPlugins; [
       yank
-      urlview
+      urlview # prefix - u
       fuzzback # ?
       extrakto # tab
-      catppuccin # theme
+      tmux-fzf # prefix - F
+      # catppuccin # theme
       # continuum # automatically save 15m BUG!!!
       resurrect # manually save C-s/C-r
       # onedark-theme
@@ -61,48 +61,47 @@
       set -g visual-activity off
       set -g visual-bell off
       set -g visual-silence off
-      setw -g monitor-activity off
+      set -g monitor-activity off
       set -g bell-action none
 
       ######################
       ###  DESIGN THEME  ###
       ######################
 
-      # Custom theme
-      # setw -g clock-mode-colour colour5
-      # setw -g mode-style 'fg=colour1 bg=colour18 bold'
+      ## #H[ost] #W #T #I #{b:pane_current_path}
 
-      # # Title bar
-      # # #H[ost] #W #T #I #{b:pane_current_path}
-      # set -g set-titles on
-      # set -g set-titles-string '#H: #W #I'
+      # Title bar
+      set -g set-titles on
+      set -g set-titles-string ' #H : #W'
 
-      # # Pane borders
-      # set -g pane-border-style fg=colour235 #fg=base02
-      # set -g pane-active-border-style fg=colour240 #fg=base01
+      # Pane borders
+      set -g pane-border-style fg=colour235 #fg=base02
+      set -g pane-active-border-style fg=colour240 #fg=base01
 
-      # # Command line
-      # set -g message-style bright,bg=white,fg=black
+      # Command line
+      set -g message-style bright,bg=white,fg=black
 
-      # # Status bar
+      # Status bar
       # set -g status-position top
       # set -g status-justify left
+      set -g status-style fg=white,bold,bg=default
+      set -g status-right-style fg=color0,bold,bg=color4
+      set -g status-right " %m/%d #[bg=color15,fg=color0] %H:%M "
+
+      # default window title colors
+      set -g window-status-style bg=color0,dim
+      set -g window-status-format "#I: #{b:pane_current_path} "
+
+      # active window title colors
+      set -g window-status-current-style fg=color0,bold,bg=brightgreen
+      set -g window-status-current-format "#I: #{b:pane_current_path} "
+
       # set -g status-style 'bg=#282c34 fg=#aab2bf dim'
       # # set -g status-style 'bg=terminal'
       # set -g status-left ' '
       # set -g status-right '#[bg=#282c34,fg=#aab2bf] %m/%d #[fg=colour233,bg=colour8] %H:%M '
       # set -g status-right-length 50
       # set -g status-left-length 20
-
-      # # default window title colors
-      # setw -g window-status-style 'fg=white,bg=default,dim'
-      # setw -g window-status-format '[#S]:#I: #W '
-
-      # # active window title colors
-      # setw -g window-status-current-style 'fg=black bg=brightgreen bold'
-      # setw -g window-status-current-format '[#S]:#I: #W '
-
-      # setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
     '';
   };
 }
