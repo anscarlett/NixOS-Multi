@@ -29,8 +29,8 @@
 
     # Gui
     # foot
-    # kitty
-    alacritty
+    kitty
+    # alacritty
     emacs
     goodvibes
   ];
@@ -40,16 +40,13 @@
     enableSSHSupport = true;
   };
 
+  # zsh
+  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # for zsh completion in home-manager
-  environment.pathsToLink = ["/share/zsh"];
-
-  programs.zsh.enable = true;
+  programs.command-not-found.enable = false;
 
   documentation.enable = false;
-
-  programs.command-not-found.enable = false;
 
   time.timeZone = "Asia/Shanghai";
 

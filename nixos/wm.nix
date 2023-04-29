@@ -46,7 +46,6 @@
   programs.xwayland.enable = true;
 
   environment.pathsToLink = [
-    "/share/zsh" # for zsh completion with hm
     "/share/fcitx5" # for fxitx skins
   ];
 
