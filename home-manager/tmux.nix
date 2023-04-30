@@ -29,9 +29,9 @@
       fuzzback # ?
       extrakto # tab
       tmux-fzf # prefix - F
-      # catppuccin # theme
+      resurrect # environment save : prefix - C-s/C-r
       # continuum # automatically save 15m BUG!!!
-      resurrect # manually save C-s/C-r
+      # catppuccin # theme
       # onedark-theme
     ];
     extraConfig = ''
@@ -57,7 +57,7 @@
       bind Up switch-client -p
       bind Down switch-client -n
 
-      # loud or quiet?
+      # silence
       set -g visual-activity off
       set -g visual-bell off
       set -g visual-silence off
@@ -77,6 +77,8 @@
       # Pane borders
       set -g pane-border-style fg=colour235 #fg=base02
       set -g pane-active-border-style fg=colour240 #fg=base01
+      # set -g pane-border-status bottom
+      # set -g pane-border-format ' #{pane_current_command} '
 
       # Command line
       set -g message-style bright,bg=white,fg=black
