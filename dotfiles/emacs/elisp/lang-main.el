@@ -37,8 +37,8 @@
 ;; tree-sitter
 (use-package treesit-auto
   :when (eq system-type 'gnu/linux)
-  :hook (after-init . global-treesit-auto-mode)
-  :init (setq treesit-auto-install 'prompt))
+  :config
+  (global-treesit-auto-mode))
 
 ;; conf-mode
 (use-package conf-mode

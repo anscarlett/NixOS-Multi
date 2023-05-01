@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   nixosConfig,
   ...
 }: let
@@ -26,7 +25,7 @@ in {
 
     # Multi-media
     (spotify.override {
-      deviceScaleFactor = 2;
+      callPackage = p: attrs: pkgs.callPackage p (attrs // {deviceScaleFactor = 2.0;});
     })
     # spot # Premium accounts!
     # vlc

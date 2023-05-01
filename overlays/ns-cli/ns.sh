@@ -109,12 +109,16 @@ while [[ $# -gt 0 ]]; do
             NIXPKGS_ALLOW_UNFREE=1 nix build github:NixOS/nixpkgs/pull/"$2"/merge#"$3" --impure
             shift ;;
 
-        run-impure)
+        impure-run)
             NIXPKGS_ALLOW_UNFREE=1 nix run --impure nixpkgs#"$2"
             shift ;;
 
-        shell-impure)
+        impure-shell)
             NIXPKGS_ALLOW_UNFREE=1 nix shell --impure nixpkgs#"$2"
+            shift ;;
+
+        impure-build)
+            NIXPKGS_ALLOW_UNFREE=1 nix build --impure nixpkgs#"$2"
             shift ;;
 
         hash2sri)

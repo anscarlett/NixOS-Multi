@@ -20,7 +20,8 @@ ns:
 - pr-pull
 - pr-build
 - pr-build-impure
-- run-impure
-- shell-impure
+- impure-run
+- impure-shell
+- impure-build
 - hash2sri
 - indexdb-update
