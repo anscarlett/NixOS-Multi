@@ -23,7 +23,7 @@
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-history@alexsaveau.dev"
         "space-bar@luchrioh"
-        "gradienttopbar@pshow.org"
+        # "gradienttopbar@pshow.org"
         "nightthemeswitcher@romainvigier.fr"
         "caffeine@patapon.info"
         "appindicatorsupport@rgcjonas.gmail.com"

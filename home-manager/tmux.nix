@@ -84,7 +84,7 @@
       set -g message-style bright,bg=white,fg=black
 
       # Status bar
-      # set -g status-position top
+      set -g status-position top
       # set -g status-justify left
       set -g status-style fg=white,bold,bg=default
       set -g status-right-style fg=color0,bold,bg=color4
