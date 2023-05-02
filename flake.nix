@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    # nixpkgs.url = "git+file:///home/iab/codes/nixpkgs/?ref=tmux-catppuccin";
+    # nixpkgs.url = "git+file:///home/iab/codes/nixpkgs/?ref=fix/colord-kde";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,7 +13,7 @@
     };
 
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/405d1e75811d96bb177dabfe6d813e921866b014";
+      url = "github:nix-community/emacs-overlay/92fde9649b26dce1bd29924086360987cc8c7b2b";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -91,11 +91,11 @@
             extraModules = [
               ./nixos/gnome.nix
               # ./nixos/kde.nix
-              # ./nixos/deepin.nix
               # ./nixos/wm-sway.nix
               # ./nixos/wm-hyprland.nix
 
               ({
+                inpouts,
                 config,
                 pkgs,
                 ...
