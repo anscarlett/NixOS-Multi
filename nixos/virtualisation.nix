@@ -21,6 +21,10 @@ edit xml (nixos bug):
 mkdir shared (Guest)
 sudo mount -t shared /home/iab/shared (Guest)
 
+# Windows
+add tpm: tpm-crb、emulator、2.0
+https://www.spice-space.org/download.html  spice-guest-tools
+
 # qemu iso
 qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
 */
@@ -52,8 +56,8 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
     environment.systemPackages = with pkgs; [
       virt-manager
       virtiofsd
-      libguestfs
-      bridge-utils
+      bridge-utils # brctl: network bridge
+      win-virtio # needs ?
       (appimage-run.override {
         extraPkgs = pkgs:
           with pkgs; [
@@ -64,9 +68,9 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
       # scrcpy # android
       # distrobox
       # bottles # wine manager
-      # yuzu
       # gnome.gnome-boxes
       # steam-run
+      # yuzu
     ];
 
     virtualisation = {
@@ -76,17 +80,18 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
         # allowedBridges = ["br0"];
         qemu = {
           # runAsRoot = false;
-          ovmf.enable = true; # UEFI
-          # https://adamsimpson.net/writing/windows-11-as-kvm-guest
           package = pkgs.qemu_kvm; # emulate only host architectures
-          # swtpm.enable = true;   # emulated TPM
-          # ovmf.packages = [
-          #   (pkgs.OVMFFull.override
-          #     {
-          #       secureBoot = true;
-          #       tpmSupport = true;
-          #     })
-          # ];
+          # swtpm.enable = true; # emulated TPM
+          ovmf = {
+            enable = true; # UEFI
+            # packages = [
+            #   (pkgs.OVMFFull.override
+            #     {
+            #       secureBoot = true;
+            #       tpmSupport = true;
+            #     })
+            # ];
+          };
         };
       };
 

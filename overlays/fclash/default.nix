@@ -12,25 +12,24 @@
 , orc
 , gst_all_1
 , makeWrapper
-  , libappindicator-gtk3
+, libappindicator-gtk3
 }:
 
-# WIP!!!
-# https://nixos.wiki/wiki/Flutter
-flutter.mkFlutterApp rec {
+flutter.buildFlutterApplication rec {
   pname = "fclash";
-  version = "1.3.9";
+  version = "1.4.0";
 
   src = fetchFromGitHub {
     owner = "kingtous";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-iPV0FTeM7m179rtQAz/ad/nSg2pWPZq5t47srjXIMdU=";
+    hash = "sha256-gtYH0HdtoTS5vpb1PADc5uD3Noi+KaC9ZIOKWBc8fKc=";
   };
 
-  vendorHash = "sha256-+Lbiwg8Gy6n0v9OzisjmklcY/Zy/fQFhgzs8WL0yxOM=";
+  depsListFile = ./deps.json;
+  vendorHash = "sha256-SPw2AnYv+yhcdAIpBKTA8507QSW/q3xi2psHrdGODz8=";
 
-  sourceRoot = "source/linux";
+  # sourceRoot = "source/linux";
 
   # preBuild = ''
   #   export HOME=$(mktemp -d)

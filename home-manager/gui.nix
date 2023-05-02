@@ -14,9 +14,6 @@ in {
     foot
     kitty
     alacritty
-    warp
-    whatip
-    remmina # (webkitgtk)
 
     # nheko
     # fractal-next
@@ -60,9 +57,12 @@ in {
     # gcolor3
     # wl-color-picker
 
+    warp
+    whatip
+    remmina # (webkitgtk)
+    gnome-decoder
     # motrix
     qbittorrent
-    gnome-decoder
     # deja-dup
     # rclone
     # rclone-browser

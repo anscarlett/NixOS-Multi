@@ -91,6 +91,7 @@
             extraModules = [
               ./nixos/gnome.nix
               # ./nixos/kde.nix
+              # ./nixos/deepin.nix
               # ./nixos/wm-sway.nix
               # ./nixos/wm-hyprland.nix
 
