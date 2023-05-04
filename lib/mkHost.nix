@@ -1,5 +1,5 @@
 inputs: let
-  inherit (inputs) self nixpkgs nixpkgs-stable home-manager;
+  inherit (inputs) self home-manager;
 in
   {
     hostname,

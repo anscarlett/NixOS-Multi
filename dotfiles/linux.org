@@ -356,6 +356,14 @@ nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'
 #+end_src
 
 #+begin_src nix
+.overrideAttrs (o: {
+    patches = (o.patches or [ ]) ++ [
+      ./patches/locked-text.patch
+    ];
+  }
+#+end_src
+
+#+begin_src nix
   tlp = {
     enable = false;
     settings = {
@@ -371,6 +379,11 @@ nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'
 
 tree-sitter
 https://olddeuteronomy.github.io/post/a-tree-sitter-config-that-works/
+
+* NixOS
+
+nix build
+
 * Links
 
 emacs theme

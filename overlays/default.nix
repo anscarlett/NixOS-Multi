@@ -1,8 +1,8 @@
 final: prev: {
   /*
-  nix build --impure --expr 'with import <nixpkgs> {}; callPackage ./default.nix {}' -L
-  nix build --impure --expr 'with import <nixpkgs> {}; callPackage ./default.nix {}' -L \
-  -I $HOME/nsworld # ???
+  nix build --impure --expr "(import <nixpkgs> {}).callPackage ./. {}" -L
+  nix build --impure --expr "(import <nixpkgs> {}).callPackage ./. {}" -L \
+  -I $HOME/nsworld # works?
   -I nixpkgs=flake:github:NixOS/nixpkgs/nixos-22.05
   -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
   */

@@ -8,7 +8,7 @@
 in {
   home.packages = with pkgs; [
     # nightpdf
-    # azcomicv
+    azcomicv
     # moonfm
 
     foot
@@ -85,6 +85,7 @@ in {
     meld
 
     # HARDWARE TEST
+    amdgpu_top
     nvtop-amd
     inxi
     lm_sensors

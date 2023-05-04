@@ -39,6 +39,9 @@
 
       bind m copy-mode
 
+      # Increase scrollback buffer size from 2000 to 50000 lines
+      set -g history-limit 50000
+
       unbind '"'
       bind 2 splitw -v -c '#{pane_current_path}'
       unbind %

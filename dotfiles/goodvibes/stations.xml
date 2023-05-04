@@ -44,6 +44,16 @@
     <uri>http://lizeradio.com:8080/;&amp;type=mp3</uri>
     <name>栗子的輕音樂</name>
   </Station>
+
+  <Station>
+    <uri>https://play.streamafrica.net/lofiradio</uri>
+    <name>Lofi Radio</name>
+  </Station>
+
+  <Station>
+    <uri>https://live.hunter.fm/lofi_high</uri>
+    <name>Hunter FM - LOFI</name>
+  </Station>
   
   <Station>
     <uri>http://stream-uk1.radioparadise.com/aac-320</uri>
@@ -65,4 +75,4 @@
     <name>deep</name>
   </Station>
   
-<Stations>
+  <Stations>

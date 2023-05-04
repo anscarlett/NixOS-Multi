@@ -4,26 +4,26 @@
 , ninja
 , pkg-config
 , wrapGAppsHook
-, libX11
-, libXext
-, libXcursor
+, fontconfig
+, freetype
 , libpng
 , libwebp
 , libheif
 , libtiff
-, freetype
-, fontconfig
+, libX11
+, libXext
+, libXcursor
 }:
 
 stdenv.mkDerivation rec {
   pname = "azcomicv";
-  version = "2.0.5";
+  version = "2.0.6";
 
   src = fetchFromGitLab {
     owner = "azelpg";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-bVxwW867pBqM8s1fX54MrnGQTKXKRTLGqJltg8k+8o8=";
+    hash = "sha256-ChcR8Gf3AdM4YuSt2ip7SUdsd7l3lgCXmnPXGul5rIg=";
   };
 
   nativeBuildInputs = [
@@ -33,25 +33,21 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    libX11
-    libXext
-    libXcursor
+    fontconfig
+    freetype
     libpng
     libwebp
     libheif
     libtiff
-    freetype
-    fontconfig
+    libX11
+    libXext
+    libXcursor
   ];
 
   buildPhase = ''
     cd build
     ninja
     ninja install
-  '';
-
-  postInstall = ''
-    rm $out/share/icons/hicolor/icon-theme.cache
   '';
 
   meta = with lib; {
