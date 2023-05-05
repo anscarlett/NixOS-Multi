@@ -21,9 +21,8 @@ in {
     # discord
     tdesktop # (webkitgtk)
 
-    # Multi-media
+    # Multimedia
     spotify
-    # spot # Premium accounts!
     # vlc
     # ffmpeg
     kooha

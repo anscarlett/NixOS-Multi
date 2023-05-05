@@ -77,7 +77,7 @@ final: prev: {
         cp -r $out/usr/share $out/share '';
     });
 
-  # xwayland env for inputMethod and native CSD
+  # xwayland env for inputMethod & native CSD
   spotify =
     prev.spotify.overrideAttrs
     (oldAttrs: {
@@ -104,6 +104,7 @@ final: prev: {
 
   # libsForQt5 override
   libsForQt5 = prev.libsForQt5.overrideScope' (finay: prevy: {
+    # sddm-git
     sddm = prevy.sddm.overrideAttrs (oldAttrs: {
       src = prev.fetchFromGitHub {
         owner = "sddm";
