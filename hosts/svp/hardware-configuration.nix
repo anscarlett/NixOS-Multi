@@ -22,7 +22,7 @@
     fsType = "btrfs";
   };
 
-  fileSystems."/boot/efi" = {
+  fileSystems."/efi" = {
     device = "/dev/disk/by-uuid/EFAC-0D1F";
     fsType = "vfat";
   };

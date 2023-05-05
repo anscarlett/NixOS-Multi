@@ -20,7 +20,7 @@
 
   boot.loader = {
     # efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot/efi"; # default /boot
+    efi.efiSysMountPoint = "/efi"; # default /boot
     grub = {
       enable = true;
       device = "nodev";

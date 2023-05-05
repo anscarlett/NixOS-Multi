@@ -67,7 +67,7 @@
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi"; # default /boot
+      efiSysMountPoint = "/efi"; # default /boot
     };
     systemd-boot = {
       enable = false;
