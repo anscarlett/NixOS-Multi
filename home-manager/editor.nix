@@ -26,6 +26,7 @@
         vterm
         emojify
         emacsql-sqlite
+        # lsp-bridge
         # tree-sitter
         # pdf-tools
         # telega

@@ -41,7 +41,6 @@
     # agenix.url = github:ryantm/agenix;
     # sops-nix.url = github:Mic92/sops-nix;
     # nur.url = "github:nix-community/NUR";
-    musnix.url = "github:musnix/musnix";
     templates.url = "github:NixOS/templates";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";

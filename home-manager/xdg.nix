@@ -1,7 +1,5 @@
 {
   config,
-  lib,
-  pkgs,
   ...
 }: let
   lnDots = config.lib.file.mkOutOfStoreSymlink config.home.homeDirectory + "/nsworld/dotfiles";

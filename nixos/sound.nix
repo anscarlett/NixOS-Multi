@@ -1,16 +1,8 @@
 {
-  config,
   lib,
-  inputs,
+  config,
   ...
 }: {
-  imports = [
-    inputs.musnix.nixosModules.musnix
-  ];
-
-  # Musnix enhence
-  musnix.enable = true;
-
   # Bluetooth
   hardware.bluetooth.enable = true;
 

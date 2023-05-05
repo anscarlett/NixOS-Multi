@@ -4,15 +4,15 @@
 }: {
   home.packages = with pkgs; [
     # https://wiki.archlinux.org/title/Chromium
-    (google-chrome.override {
-      commandLineArgs = [
-        "--ignore-gpu-blocklist"
-        "--enable-gpu-rasterization"
-        "--enable-zero-copy"
-        "--gtk-version=4"
-        "--enable-features=TouchpadOverscrollHistoryNavigation"
-      ];
-    })
+    # (google-chrome.override {
+    #   commandLineArgs = [
+    #     "--ignore-gpu-blocklist"
+    #     "--enable-gpu-rasterization"
+    #     "--enable-zero-copy"
+    #     "--gtk-version=4"
+    #     "--enable-features=TouchpadOverscrollHistoryNavigation"
+    #   ];
+    # })
     # (vivaldi.override {
     #   proprietaryCodecs = true;
     #   enableWidevine = true; # drm

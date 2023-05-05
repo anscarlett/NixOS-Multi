@@ -118,6 +118,7 @@
 
 ;; eglot
 (use-package eglot
+  :when (eq system-type 'gnu/linux)
   :defer t
   :custom
   (eglot-autoshutdown t) ; shutdown after closing the last managed buffer
@@ -142,6 +143,11 @@
   (add-to-list 'eglot-server-programs '(markdown-mode . ("efm-langserver")))
   )
 
+;; lsp-bridge
+;; (use-package lsp-bridge
+;;   :ensure nil
+;;   :config
+;;   (global-lsp-bridge-mode))
 
 
 ;; lsp-mode https://github.com/kira-bruneau/home-config/blob/main/package/emacs/config/setup/minor-modes/lsp.el

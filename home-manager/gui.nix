@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   nixosConfig,
   ...
 }: let
@@ -8,7 +9,7 @@
 in {
   home.packages = with pkgs; [
     # nightpdf
-    azcomicv
+    # azcomicv
     # moonfm
 
     foot
@@ -21,9 +22,10 @@ in {
     tdesktop # (webkitgtk)
 
     # Multi-media
-    (spotify.override {
-      callPackage = p: attrs: pkgs.callPackage p (attrs // {deviceScaleFactor = 2.0;});
-    })
+    spotify
+    # (spotify.override {
+    #   callPackage = p: attrs: pkgs.callPackage p (attrs // {deviceScaleFactor = 2.0;});
+    # })
     # spot # Premium accounts!
     # vlc
     # ffmpeg
@@ -43,7 +45,7 @@ in {
     # media-downloader
     # eartag
     # tagger
-    # jamesdsp
+    jamesdsp
     # ciano
     # video-trimmer
     # spotiflyer
@@ -112,7 +114,7 @@ in {
 
   services = {
     # diabsle on wm
-    # easyeffects.enable = !config.services.wlsunset.enable;
+    easyeffects.enable = !config.services.wlsunset.enable;
   };
 
   programs.mpv = {
@@ -151,13 +153,16 @@ in {
 
     # mimeApps.enable = true;
 
-    # desktopEntries.spotify = {
-    #   name = "Spotify";
-    #   genericName = "Music Player";
-    #   icon = "spotify-client";
-    #   exec = "spotify %U --force-device-scale-factor=2";
-    #   terminal = false;
-    #   categories = ["Application" "Music"];
-    # };
+    desktopEntries = {
+      spotify = {
+        name = "Spotify";
+        genericName = "Music Player";
+        icon = "spotify-client";
+        # env xwayland
+        exec = "env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2";
+        terminal = false;
+        categories = ["Application" "Music"];
+      };
+    };
   };
 }
