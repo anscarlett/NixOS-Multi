@@ -77,6 +77,20 @@ final: prev: {
         cp -r $out/usr/share $out/share '';
     });
 
+  # xwayland env for inputMethod and native CSD
+  spotify =
+    prev.spotify.overrideAttrs
+    (oldAttrs: {
+      postFixup = ''
+        substituteInPlace $out/share/applications/spotify.desktop \
+          --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2"
+      '';
+    });
+
+  # spotify = prev.spotify.override {
+  #   callPackage = p: attrs: prev.pkgs.callPackage p (attrs // {deviceScaleFactor = 2.0;});
+  # };
+
   # wrapProgram $out/bin/telegram-desktop --set QT_QPA_PLATFORM xcb
   logseq-wayland = prev.symlinkJoin {
     name = "logseq";
@@ -107,9 +121,11 @@ final: prev: {
     });
   });
 
-  gnomeExtensions = prev.gnomeExtensions // {
-    night-theme-switcher = prev.callPackage ./night-theme-switcher {};
-  };
+  gnomeExtensions =
+    prev.gnomeExtensions
+    // {
+      night-theme-switcher = prev.callPackage ./night-theme-switcher {};
+    };
 
   /*
   # node override

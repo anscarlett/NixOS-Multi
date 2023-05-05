@@ -16,7 +16,7 @@
   services = {
     # v2raya.enable = true;
     resolved.enable = true;
-    nextdns.enable = true; # DNS over Https
+    # nextdns.enable = true; # DNS over Https
     openssh.enable = true;
     # opensnitch.enable = true;
 

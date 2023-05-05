@@ -1,17 +1,16 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: let
+  chromeEnv = [
+    "--ignore-gpu-blocklist"
+    "--enable-gpu-rasterization"
+    "--enable-zero-copy"
+    "--gtk-version=4"
+    "--enable-features=TouchpadOverscrollHistoryNavigation"
+  ];
+in {
   home.packages = with pkgs; [
     # https://wiki.archlinux.org/title/Chromium
     # (google-chrome.override {
-    #   commandLineArgs = [
-    #     "--ignore-gpu-blocklist"
-    #     "--enable-gpu-rasterization"
-    #     "--enable-zero-copy"
-    #     "--gtk-version=4"
-    #     "--enable-features=TouchpadOverscrollHistoryNavigation"
-    #   ];
+    #   commandLineArgs = chromeEnv;
     # })
     # (vivaldi.override {
     #   proprietaryCodecs = true;
@@ -24,13 +23,7 @@
   programs.chromium = {
     # enable = true;
     # package = pkgs.chromiumDev;
-    commandLineArgs = [
-      "--ignore-gpu-blocklist"
-      "--enable-gpu-rasterization"
-      "--enable-zero-copy"
-      "--gtk-version=4"
-      "--enable-features=TouchpadOverscrollHistoryNavigation"
-    ];
+    commandLineArgs = chromeEnv;
     extensions = [
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin

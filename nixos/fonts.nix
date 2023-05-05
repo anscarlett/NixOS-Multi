@@ -29,10 +29,10 @@
     fontconfig = {
       # antialias = true; # default true
       # hinting.enable = false; # default true
-      subpixel = {
-        rgba = "none"; # default rgb
-        lcdfilter = "none"; # default 'default'
-      };
+      # subpixel = {
+      #   rgba = "none"; # default rgb
+      #   lcdfilter = "none"; # default 'default'
+      # };
 
       defaultFonts = {
         emoji = ["Noto Color Emoji"];
