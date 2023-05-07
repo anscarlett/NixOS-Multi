@@ -117,6 +117,7 @@ in {
     enable = true;
     scripts = with pkgs.mpvScripts; [
       mpris
+      # uosc
       inhibit-gnome
     ];
   };

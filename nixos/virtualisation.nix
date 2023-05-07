@@ -1,17 +1,16 @@
 /*
-
-# check hardwave virtual supports
+## check hardwave virtual supports
 LC_ALL=C lscpu | grep Virtualization
 dmesg | grep IOMMU
 
-# fix network `default` inactive
+## fix network `default` inactive
 sudo virsh net-start default
 sudo virsh net-autostart default
 
-# clipboard share
+## clipboard share
 spice-vdagent (Guest)
 
-# shared folders
+## shared folders
 Memory —— enable the shared memory
 Add filesystem: virtiofs ~/Downloads shared
 
@@ -19,13 +18,13 @@ edit xml (nixos bug):
 <binary path="/run/current-system/sw/bin/virtiofsd"/>
 
 mkdir shared (Guest)
-sudo mount -t shared /home/iab/shared (Guest)
+sudo mount -t virtiofs shared /home/iab/shared (Guest)
 
-# Windows
+## Windows
 add tpm: tpm-crb、emulator、2.0
 https://www.spice-space.org/download.html  spice-guest-tools
 
-# qemu iso
+## qemu iso
 qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
 */
 {

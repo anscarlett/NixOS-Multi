@@ -204,6 +204,10 @@
 (use-package fanyi
   :bind (("C-c y" . fanyi-dwim2)))
 
+;; C-x SPC, ?
+(use-package speedrect
+  :ensure nil)
+
 ;; (use-package auto-sudoedit
 ;;   :delight
 ;;   :commands auto-sudoedit-sudoedit

@@ -116,6 +116,7 @@
     # pipes-rs
     # cbonsai
     # hollywood
+    # nyancat
   ];
 
   manual.manpages.enable = false;
