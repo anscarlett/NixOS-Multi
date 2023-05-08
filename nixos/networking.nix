@@ -64,9 +64,10 @@
       # allowedTCPPorts = [ 53317 ];
     };
 
-    # hosts = {
-    #   "20.205.243.166" = ["github.com"];
-    # };
+    # ping github.com
+    hosts = {
+      "20.205.243.166" = ["github.com"];
+    };
   };
 
   # systemd.services.nix-daemon.environment = {

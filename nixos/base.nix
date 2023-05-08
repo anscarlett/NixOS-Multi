@@ -33,6 +33,7 @@
     tree
     file
     wget
+    curl
     parted
     gptfdisk
     micro
