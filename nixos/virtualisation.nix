@@ -3,7 +3,7 @@
 LC_ALL=C lscpu | grep Virtualization
 dmesg | grep IOMMU
 
-## fix network `default` inactive
+## network `default` inactive
 sudo virsh net-start default
 sudo virsh net-autostart default
 
@@ -22,7 +22,7 @@ sudo mount -t virtiofs shared /home/iab/shared (Guest)
 
 ## Windows
 add tpm: tpm-crb、emulator、2.0
-https://www.spice-space.org/download.html  spice-guest-tools
+https://www.spice-space.org/download.html  # spice-guest-tools
 
 ## qemu iso
 qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso

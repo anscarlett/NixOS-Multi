@@ -16,6 +16,11 @@
 (global-set-key (kbd "C-z") 'nil) ;unbind C-z
 (global-set-key [remap kill-buffer] #'kill-this-buffer)
 
+;; (use-package devil
+;;   :config
+;;   (global-devil-mode)
+;;   (global-set-key (kbd "C-,") 'global-devil-mode))
+
 (bind-keys*
  ("M-+" . text-scale-increase)
  ("M-_" . text-scale-decrease)

@@ -48,8 +48,8 @@
   # boot.initrd.kernelModules = ["virtio" "virtio_pci" "virtio_net" "virtio_rng" "virtio_blk" "virtio_console"];
 
   # Clipboard shared for NixOS@Guest
-  services.spice-vdagentd.enable = true;
   services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
 
   virtualisation = {
     memorySize = 1024 * 3;

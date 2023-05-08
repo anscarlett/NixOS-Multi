@@ -1,13 +1,15 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
   zramSwap.enable = true;
 
   boot = {
     # tmp.useTmpfs = true;
-    tmp.cleanOnBoot = true;
+    # manual cleaning /tmp, if not using tmpfs
+    tmp.cleanOnBoot = !config.boot.tmp.useTmpfs;
     plymouth.enable = true;
     supportedFilesystems = ["ntfs"];
 

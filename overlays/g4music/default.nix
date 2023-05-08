@@ -26,8 +26,9 @@ stdenv.mkDerivation rec {
     domain = "gitlab.gnome.org";
     owner = "neithern";
     repo = pname;
-    rev = "v${version}";
-    hash = "sha256-alpXEj48JZTQUVf1zUKgazFbqISEqyDZrjtRS8S7Fbc=";
+    # rev = "v${version}";
+    rev = "196722f2629606a0c2410fe745dd8016547d0de5";
+    hash = "sha256-sFYanYH4YCxeAUhbYuxStEyJlwxES4txHuzxxG4WL3E=";
   };
 
   # patches = [ ./data-meson-build.patch ];
