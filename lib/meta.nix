@@ -11,6 +11,14 @@ in rec {
       inherit system overlays;
     });
 
+  # Filter files that have the .nix suffix
+  filterNixFiles = k: v: v == "regular" && lib.hasSuffix ".nix" k;
+  # Import files that are selected by filterNixFiles
+  importNixFiles = path:
+    (lib.lists.forEach (lib.mapAttrsToList (name: _: path + ("/" + name))
+      (lib.filterAttrs filterNixFiles (builtins.readDir path))))
+      import;
+
   # TODO
   btrfsInInitrd = lib.any (fs: fs == "btrfs") builtins.config.boot.initrd.supportedFilesystems;
   btrfsInSystem = lib.any (fs: fs == "btrfs") builtins.config.boot.supportedFilesystems;

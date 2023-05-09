@@ -227,15 +227,9 @@
 
 ;; Garbage Collector Magic Hack
 (use-package gcmh
-  :diminish gcmh-mode
-  :hook (emacs-startup . gcmh-mode)
-  :config
-  (setq gcmh-verbose nil
-        gcmh-idle-delay 'auto
-
-        gc-cons-percentage 1.0
-        garbage-collection-messages nil
-        gcmh-high-cons-threshold (* 32 1024 1024)))
+  :diminish
+  :init (setq gc-cons-threshold (* 80 1024 1024))
+  :hook (emacs-startup . gcmh-mode))
 
 (use-package disk-usage
   :commands (disk-usage))
