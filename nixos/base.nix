@@ -14,9 +14,9 @@
     supportedFilesystems = ["ntfs"];
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    initrd.systemd.enable = lib.mkDefault true;
     # Silent boot on `initrd.systemd`
-    kernelParams = ["systemd.show_status=false"];
-    initrd.systemd.enable = true;
+    kernelParams = lib.optionals config.boot.initrd.systemd.enable ["systemd.show_status=false"];
   };
 
   services = {

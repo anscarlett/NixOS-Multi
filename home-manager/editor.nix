@@ -13,7 +13,7 @@
   ##  EMACS
   #######################################################################
   programs.emacs = {
-    enable = true;
+    # enable = true;
     package =
       pkgs.emacsPgtk;
     # fix duplicate desktop shortcut in kde

@@ -22,7 +22,7 @@
   boot = {
     # kernelParams = ["quite"];
     supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];
-    initrd.systemd.enable = lib.mkForce false;
+    initrd.systemd.enable = false;
   };
 
   services.xserver = {
