@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    # inputs.lanzaboote.nixosModules.lanzaboote # Secure Boot
+    inputs.lanzaboote.nixosModules.lanzaboote # Secure Boot
 
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-amd
@@ -18,6 +18,8 @@
 
   # amdvlk || opengl
   hardware.amdgpu.amdvlk = true;
+
+  security.sudo.wheelNeedsPassword = false;
 
   #######################################################################
   ## Kernel
@@ -56,13 +58,13 @@
   sbctl create-keys
   sbctl enroll-keys --microsoft
   */
-  # boot.lanzaboote = {
-  #   enable = true;
-  #   configurationLimit = 5;
-  #   pkiBundle = "/etc/secureboot";
-  #   # settings = {
-  #   # };
-  # };
+  boot.lanzaboote = {
+    enable = true;
+    configurationLimit = 5;
+    pkiBundle = "/etc/secureboot";
+    # settings = {
+    # };
+  };
 
   boot.loader = {
     efi = {
@@ -70,7 +72,7 @@
       efiSysMountPoint = "/efi"; # default /boot
     };
     systemd-boot = {
-      enable = true;
+      # enable = true;
       configurationLimit = 5; # bootmenu items
       consoleMode = "max";
     };

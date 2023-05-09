@@ -13,10 +13,10 @@ inputs.home-manager.lib.homeManagerConfiguration {
 
   modules =
     [
-      ../home-manager/cli.nix
       ../home-manager/git.nix
-      ../home-manager/zsh.nix
+      ../home-manager/cli.nix
       ../home-manager/xdg.nix
+      ../home-manager/zsh.nix
       ../home-manager/tmux.nix
       ../home-manager/alias.nix
       ../home-manager/dconf.nix

@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    # nixpkgs.url = "git+file:///home/iab/codes/nixpkgs/?ref=fix/colord-kde";
+    # nixpkgs.url = "git+file:///home/iab/dev/nixpkgs/?ref=fix/colord-kde";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -22,10 +22,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # lanzaboote = {
-    #   url = "github:nix-community/lanzaboote";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     plasma-manager = {
       url = "github:pjones/plasma-manager";
@@ -181,6 +181,16 @@
           iab = lib.mkHome {
             username = "iab";
             inherit overlays;
+          };
+          guest = lib.mkHome {
+            username = "guest";
+            inherit overlays;
+            extraModules = [
+              ./home-manager/bash.nix
+              ./home-manager/gui.nix
+              ./home-manager/editor.nix
+              ./home-manager/browsers.nix
+            ];
           };
         };
 

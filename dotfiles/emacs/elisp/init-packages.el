@@ -216,15 +216,6 @@
 (use-package nyan-mode
   :commands nyan-mode)
 
-(use-package doom-modeline
-    :init (doom-modeline-mode 1)
-    :custom ((doom-modeline-buffer-file-name-style 'relative-to-project)
-             (doom-modeline-icon t)
-             (doom-modeline-major-mode-icon t)
-             (doom-modeline-major-mode-color-icon t)
-             (line-number-mode 1)
-             (column-number-mode 1)))
-
 ;; Garbage Collector Magic Hack
 (use-package gcmh
   :diminish

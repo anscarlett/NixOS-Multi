@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  zramSwap.enable = true;
+  zramSwap.enable = lib.mkDefault true;
 
   boot = {
     # tmp.useTmpfs = true;
@@ -15,7 +15,7 @@
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     initrd.systemd.enable = lib.mkDefault true;
-    # Silent boot on `initrd.systemd`
+    # Silent boot when using `initrd.systemd`
     kernelParams = lib.optionals config.boot.initrd.systemd.enable ["systemd.show_status=false"];
   };
 

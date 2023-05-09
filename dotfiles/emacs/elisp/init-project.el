@@ -18,6 +18,17 @@
           (magit-project-status "Magit" ?m)))
   )
 
+;; (use-package doom-modeline
+;;     :init (doom-modeline-mode 1)
+;;     :custom ((doom-modeline-buffer-file-name-style 'relative-to-project)
+;;              (doom-modeline-icon nil)
+;;              (line-number-mode 1)
+;;              (column-number-mode 1)))
+
+(use-package mood-line
+  :config
+  (mood-line-mode))
+
 ;; Treemacs
 (use-package treemacs
   :init
@@ -41,6 +52,7 @@
   (dashboard-set-file-icons t)
   (dashboard-set-footer nil)
   (dashboard-center-content t)
+  (dashboard-icon-type 'all-the-icons)
   (dashboard-projects-backend 'project-el)
   (dashboard-banner-logo-title nil) ; "Welcome to Emacs!"
   (dashboard-items  '((recents  . 12)
