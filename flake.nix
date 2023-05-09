@@ -118,8 +118,8 @@
             # nixpkgs = inputs.nixpkgs-stable;
             inherit overlays;
             extraModules = [
-              ./nixos/gnome.nix
-              # ./nixos/kde.nix
+              # ./nixos/gnome.nix
+              ./nixos/kde.nix
               # ./nixos/wm-sway.nix
             ];
           };
@@ -186,8 +186,8 @@
             username = "guest";
             inherit overlays;
             extraModules = [
-              ./home-manager/bash.nix
               ./home-manager/gui.nix
+              ./home-manager/bash.nix
               ./home-manager/editor.nix
               ./home-manager/browsers.nix
             ];

@@ -2,11 +2,8 @@
   lib,
   pkgs,
   config,
-  nixosConfig,
   ...
-}: let
-  gnomeEnable = nixosConfig.services.xserver.desktopManager.gnome.enable;
-in {
+}: {
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv
@@ -142,7 +139,7 @@ in {
 
     dataFile = {
       # Fix qt tiny cursor on gnome
-      "icons/default/index.theme".text = lib.optionalString gnomeEnable ''
+      "icons/default/index.theme".text = ''
         [icon theme]
         Inherits=Adwaita
       '';
