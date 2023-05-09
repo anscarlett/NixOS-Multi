@@ -178,10 +178,15 @@
         ##  Home-Manager Standalone
         #######################################################################
         homeConfigurations = {
+          #  non-nixos
           iab = lib.mkHome {
             username = "iab";
             inherit overlays;
+            extraModules = [
+              ./home-manager/non-nixos.nix
+            ];
           };
+          # other user at nixos
           guest = lib.mkHome {
             username = "guest";
             inherit overlays;

@@ -20,12 +20,11 @@ inputs.home-manager.lib.homeManagerConfiguration {
       ../home-manager/tmux.nix
       ../home-manager/alias.nix
       ../home-manager/dconf.nix
-      ../home-manager/non-nixos.nix
 
       {
-        home.stateVersion = "22.05";
         home.username = "${username}";
         home.homeDirectory = "/home/${username}";
+        home.stateVersion = "22.05";
       }
     ]
     ++ extraModules;

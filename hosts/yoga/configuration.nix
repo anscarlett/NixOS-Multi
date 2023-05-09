@@ -19,8 +19,6 @@
   # amdvlk || opengl
   hardware.amdgpu.amdvlk = true;
 
-  security.sudo.wheelNeedsPassword = false;
-
   #######################################################################
   ## Kernel
   #######################################################################
@@ -60,7 +58,7 @@
   */
   boot.lanzaboote = {
     enable = true;
-    configurationLimit = 5;
+    configurationLimit = 3;
     pkiBundle = "/etc/secureboot";
     # settings = {
     # };

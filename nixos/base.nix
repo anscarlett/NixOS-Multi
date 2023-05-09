@@ -30,6 +30,7 @@
 
   environment.systemPackages = with pkgs; [
     binutils
+    git
     tree
     file
     wget

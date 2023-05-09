@@ -9,8 +9,6 @@
     inputs.nixos-hardware.nixosModules.common-gpu-intel
   ];
 
-  security.sudo.wheelNeedsPassword = false;
-
   #######################################################################
   ## Bootloader
   #######################################################################

@@ -23,6 +23,8 @@
     nload = "${lib.getExe pkgs.nload} devices wlp1s0";
 
     wttr = "curl \"wttr.in/Huadu\?0\&lang=zh\"";
+    where-am-i = "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/where-am-i";
+    my-location = ''curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"' '';
     paste-ixio = "curl -F 'f:1=<-' ix.io";
     paste-gcg = ''curl -F "file=@-" gcg.sh'';
     paste-termbin = "nc termbin.com 9999";

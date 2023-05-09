@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-
   users = {
     mutableUsers = false;
     # defaultUserShell = pkgs.zsh;
@@ -33,7 +32,7 @@
   users.users.guest = {
     isNormalUser = true;
     # mkpasswd -m sha-512
-    hashedPassword = "$6$OQAkLagK6F4cEAEd$yvAo2bcDs1dOt5F.IFsxh.IDM6mR7k./knHTQz4/EO4z.UXfnTaHphdPY1v.BPPO4CYNBGUQmPRsgyn9XN3Ym/";
+    hashedPassword = "$6$7LRbX.zmB4lDy/AS$Hi8rzhlSgCTpKsUS/TtdYKNq4ZQfLMMOYmc7jqyD86qK0sL5BWb1FnvzDzMfbzlXg41I76c7/C/g8aBBakSIL0";
     extraGroups = [
       "wheel"
       "audio"
@@ -47,4 +46,18 @@
       "adbusers"
     ];
   };
+
+  # security.sudo.wheelNeedsPassword = false;
+  # or
+  security.sudo.extraRules = [
+    {
+      users = ["${username}"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
 }
