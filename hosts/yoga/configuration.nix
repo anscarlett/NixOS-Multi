@@ -16,7 +16,7 @@
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
   ];
 
-  # amdvlk || opengl
+  # amdvlk or opengl default
   hardware.amdgpu.amdvlk = true;
 
   #######################################################################
@@ -51,7 +51,7 @@
   ## Bootloader
   #######################################################################
   /*
-  Disable Secure Boot & reset to Setup Mode
+  disable Secure-Boot and reset to Setup-Mode
   sudo -i
   sbctl create-keys
   sbctl enroll-keys --microsoft
