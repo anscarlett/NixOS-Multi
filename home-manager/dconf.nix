@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   dconf.settings = {
     "org/gnome/system/location" = {
       enabled = true;
@@ -17,6 +17,10 @@
     "org/gnome/mutter" = {
       edge-tiling = true; # 多任务 - 激活屏幕边缘
       dynamic-workspaces = true; # 多任务 - 动态工作空间
+    };
+
+    "org/gnome/desktop/session" = {
+      idle-delay = lib.hm.gvariant.mkUint32 600; # 电源 - 10分钟熄屏
     };
 
     ##############################################################
@@ -60,6 +64,10 @@
 
     "org/gnome/shell/extensions/space-bar/shortcuts" = {
       open-menu = [];
+    };
+
+    "org/gnome/shell/extensions/caffeine" = {
+      enable-fullscreen = false;
     };
 
     ##############################################################

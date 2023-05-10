@@ -31,6 +31,8 @@
     openssl
     discount # markdown
     efm-langserver # markdown lsp
+    strace
+    lurk # strace alternative
 
     # Compressor / Archiver
     p7zip
