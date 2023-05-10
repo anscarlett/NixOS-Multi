@@ -9,7 +9,7 @@ mkfs.fat -F32 /dev/nvme0n1p3
 mkswap /dev/nvme0n1p4
 swapon /dev/nvme0n1p4
 mkfs.btrfs /dev/nvme0n1p5
-mkdir -p /mnt/efi
+mkdir /mnt/efi
 
 nixos-generate-config --root /mnt
 nixos-install --no-root-passwd --flake .#host

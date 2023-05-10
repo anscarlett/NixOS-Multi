@@ -19,6 +19,10 @@
   # faster but bigger size
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 
+  # Clipboard shared for NixOS@Guest
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
+
   boot = {
     # kernelParams = ["quite"];
     supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];

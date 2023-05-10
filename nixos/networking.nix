@@ -14,10 +14,12 @@
   };
 
   services = {
-    # v2raya.enable = true;
-    resolved.enable = true;
-    # nextdns.enable = true; # DNS over Https
     openssh.enable = true;
+    # v2raya.enable = true;
+
+    resolved.enable = true;
+    # nextdns.enable = true; # DNS over HTTPS
+
     # opensnitch.enable = true;
 
     # Proxy
@@ -44,6 +46,7 @@
 
   networking = {
     networkmanager.enable = true; # conflict with networking.wireless
+    # networkmanager.dns = "none";
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # defaultGateway = "192.168.2.1";
     #interfaces.eno1.useDHCP = true;
@@ -65,9 +68,9 @@
     };
 
     # ping github.com
-    hosts = {
-      "20.205.243.166" = ["github.com"];
-    };
+    # hosts = {
+    #   "20.205.243.166" = ["github.com"];
+    # };
   };
 
   # systemd.services.nix-daemon.environment = {
