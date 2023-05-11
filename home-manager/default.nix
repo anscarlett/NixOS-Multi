@@ -26,7 +26,5 @@
       ./kderc.nix
     ];
 
-  programs.home-manager.enable = true;
-
   home.stateVersion = nixosConfig.system.stateVersion;
 }

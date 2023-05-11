@@ -19,4 +19,6 @@ sudo rm /nix/var/nix/profiles/per-user/iab/profile-*-link
 
   home.packages = with pkgs; [
   ];
+
+  programs.home-manager.enable = true;
 }
