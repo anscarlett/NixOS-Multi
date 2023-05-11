@@ -103,6 +103,8 @@
     wallutils # lsmon getdpi wayinfo
     wayland-utils
     # wdisplays # wlr
+
+    (writeScriptBin "nsearch" ''nix search nixpkgs "$@"'')
   ];
 
   services = {

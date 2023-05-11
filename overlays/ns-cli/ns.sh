@@ -4,6 +4,11 @@ set -euo pipefail
 
 dotConfig=~/nsworld
 
+# getUser=$(id -u -n)
+getUser=$(loginctl --no-legend list-users | awk '{print $2;}')
+
+getHost=$(hostname)
+
 ns_usage() {
     cat <<EOF
 
@@ -34,34 +39,34 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         boot)
-            nixos-rebuild --use-remote-sudo --flake $dotConfig#"$(hostname)" boot
+            nixos-rebuild --use-remote-sudo --flake $dotConfig#"$getHost" boot
             shift ;;
 
         switch)
-            nixos-rebuild --use-remote-sudo --flake $dotConfig#"$(hostname)" switch
+            nixos-rebuild --use-remote-sudo --flake $dotConfig#"$getHost" switch
             shift ;;
 
         upgrade)
-            nixos-rebuild --use-remote-sudo --flake $dotConfig#"$(hostname)" boot \
+            nixos-rebuild --use-remote-sudo --flake $dotConfig#"$getHost" boot \
                 --recreate-lock-file
             shift ;;
 
         hmswitch)
             nix run nixpkgs#home-manager switch -- \
-                --flake $dotConfig#"$(id -u -n)"
+                --flake $dotConfig#"$getUser"
             shift ;;
 
         hmsource)
-            readlink -f /nix/var/nix/profiles/per-user/"$(id -u -n)"/home-manager
+            readlink -f /nix/var/nix/profiles/per-user/"$getUser"/home-manager
             shift ;;
 
         hmprofiles)
-            ls -la /nix/var/nix/profiles/per-user/"$(id -u -n)"
+            ls -la /nix/var/nix/profiles/per-user/"$getUser"
             shift ;;
 
         hmdiff)
             nix profile diff-closures --profile \
-                /nix/var/nix/profiles/per-user/"$(id -u -n)"/home-manager
+                /nix/var/nix/profiles/per-user/"$getUser"/home-manager
             shift ;;
 
         diff)
@@ -132,6 +137,7 @@ while [[ $# -gt 0 ]]; do
             wget -q -N https://github.com/Mic92/nix-index-database/releases/latest/download/"$filename"
             ln -f "$filename" files
             popd > /dev/null
+            ls -l ~/.cache/nix-index
             shift ;;
 
         *)
