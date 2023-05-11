@@ -7,7 +7,7 @@ dotConfig=~/nsworld
 # getUser=$(id -u -n)
 getUser=$(loginctl --no-legend list-users | awk '{print $2;}')
 
-getHost=$(hostname)
+getHost=$(uname -n)
 
 ns_usage() {
     cat <<EOF
@@ -35,7 +35,7 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         log)
-            nix log "$(ns which "$2")"
+            nix log "$(readlink -f "$(which "$2")")"
             shift ;;
 
         boot)

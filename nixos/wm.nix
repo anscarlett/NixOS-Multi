@@ -11,7 +11,6 @@
     xserver = {
       # for X11
       enable = true;
-      libinput.enable = true;
       xkbOptions = "ctrl:swapcaps";
       # use greetd
       displayManager.lightdm.enable = false;
