@@ -2,6 +2,8 @@
   pkgs,
   ...
 }: {
+  home-manager.sharedModules = [./hm-kderc.nix];
+
   services = {
     colord.enable = true;
     geoclue2.enable = true;

@@ -8,9 +8,7 @@
   imports = [
     "${inputs.nixpkgs}/nixos/modules/virtualisation/qemu-vm.nix"
     # "${inputs.pkgsReview}/nixos/modules/services/desktops/pipewire/pipewire.nix"
-    # ../../modules/gnome.nix
-    # ../../modules/kde.nix
-    # ../../modules/wm-sway.nix
+    ../../nixos/desktop/gnome.nix
   ];
 
   disabledModules = [
@@ -32,7 +30,7 @@
     enable = true;
     desktopManager = {
       # plasma5.enable = true;
-      gnome.enable = true;
+      # gnome.enable = true;
       # xfce.enable = true;
       # cinnamon.enable = true;
       # pantheon.enable = true;
@@ -69,7 +67,7 @@
   };
 
   users.users.root.password = "root";
-  users.users.${username}.initialPassword = "test";
+  users.users.${username}.password = lib.mkForce "test";
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

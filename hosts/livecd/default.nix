@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   config,
   username,
   modulesPath,
@@ -8,7 +9,7 @@
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-base.nix"
-    ../../nixos/gnome.nix
+    ../../nixos/desktop/gnome.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -31,7 +32,7 @@
   # services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
 
   # password: livecd
-  users.users.${username}.initialPassword = "livecd";
+  users.users.${username}.password = lib.mkForce "livecd";
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

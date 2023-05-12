@@ -88,10 +88,7 @@
             hostname = "yoga";
             inherit overlays;
             extraModules = [
-              ./nixos/gnome.nix
-              # ./nixos/kde.nix
-              # ./nixos/wm-sway.nix
-              # ./nixos/wm-hyprland.nix
+              ./nixos/desktop/gnome.nix
 
               ({
                 inpouts,
@@ -117,9 +114,7 @@
             # nixpkgs = inputs.nixpkgs-stable;
             inherit overlays;
             extraModules = [
-              ./nixos/gnome.nix
-              # ./nixos/kde.nix
-              # ./nixos/wm-sway.nix
+              ./nixos/desktop/gnome.nix
             ];
           };
 
@@ -184,7 +179,7 @@
             username = "iab";
             inherit overlays;
             extraModules = [
-              ./home-manager/non-nixos.nix
+              ./nixos/desktop/hm-dconf.nix
             ];
           };
           # other user at nixos

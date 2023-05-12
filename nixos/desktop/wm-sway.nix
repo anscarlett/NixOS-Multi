@@ -4,9 +4,7 @@
   username,
   ...
 }: {
-  imports = [
-    ./wm.nix
-  ];
+  imports = [./wm.nix];
 
   services.greetd.settings = {
     default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd sway";

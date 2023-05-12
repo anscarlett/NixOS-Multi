@@ -21,7 +21,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       ../home-manager/zsh.nix
       ../home-manager/tmux.nix
       ../home-manager/alias.nix
-      ../home-manager/dconf.nix
+      ../home-manager/non-nixos.nix
 
       {
         home.username = "${username}";
