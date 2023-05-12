@@ -52,12 +52,4 @@
 
   # zsh@hm needs this
   programs.zsh.enable = true;
-
-  # broken in flake
-  programs.command-not-found.enable = false;
-
-  # slow down in nixos-rebuild
-  documentation.enable = false;
-
-  time.timeZone = "Asia/Shanghai";
 }

@@ -118,7 +118,7 @@
             ];
           };
 
-          # nix build .#nixosConfigurations.wsl.config.system.build.installer
+          # nix build .#wsl-installer
           wsl = lib.mkHost {
             username = "iab";
             hostname = "wsl";
@@ -181,10 +181,10 @@
         # for easily repl
         inherit lib inputs;
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
+        hm = self.nixosConfigurations.yoga.config.home-manager.users;
 
         # for easily build
-        hm = self.nixosConfigurations.yoga.config.home-manager.users;
+        livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
       };
 

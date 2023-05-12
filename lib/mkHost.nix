@@ -32,8 +32,14 @@ nixpkgs.lib.nixosSystem {
       ../hosts/${hostname}
 
       {
-        system.stateVersion = "22.05";
+        services.xserver.displayManager.autoLogin.user = "${username}";
         networking.hostName = "${hostname}";
+
+        documentation.enable = false;
+        programs.command-not-found.enable = false;
+
+        time.timeZone = "Asia/Shanghai";
+        system.stateVersion = "22.05";
       }
 
       home-manager.nixosModules.home-manager
@@ -45,9 +51,6 @@ nixpkgs.lib.nixosSystem {
       }
     ]
     ++ nixpkgs.lib.optionals defaultModules [
-      {
-        services.xserver.displayManager.autoLogin.user = "${username}";
-      }
       self.nixosModules.default
     ]
     ++ extraModules;
