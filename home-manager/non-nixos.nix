@@ -28,6 +28,8 @@ sudo sed -i '$aexport XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG
     settings = {
       warn-dirty = false;
       experimental-features = [
+        "nix-command"
+        "flakes"
         "repl-flake"
       ];
     };
