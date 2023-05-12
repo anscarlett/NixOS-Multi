@@ -114,7 +114,6 @@
           svp = lib.mkHost {
             username = "zendo";
             hostname = "svp";
-            # hmEnable = false;
             # nixpkgs = inputs.nixpkgs-stable;
             inherit overlays;
             extraModules = [
@@ -128,7 +127,6 @@
           vmtest = lib.mkHost {
             username = "test";
             hostname = "vmtest";
-            # hmEnable = false;
             inherit overlays;
             # nixpkgs = inputs.nixpkgs-pr;
             extraModules = [

@@ -8,10 +8,10 @@
     xclip
   ];
 
-  programs.zellij = {
-    enable = true;
-    # settings = {};
-  };
+  # programs.zellij = {
+  #   enable = true;
+  #   settings = {};
+  # };
 
   programs.tmux = {
     enable = true;

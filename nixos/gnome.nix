@@ -16,6 +16,10 @@
     # gnome.tracker-miners.enable = false;
   };
 
+  # Fix autologin failed: https://nixos.wiki/wiki/GNOME
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome.yelp
