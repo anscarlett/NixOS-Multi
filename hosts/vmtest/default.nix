@@ -69,8 +69,6 @@
   users.users.root.password = "root";
   users.users.${username}.password = lib.mkForce "test";
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
   home-manager.users.${username} = {
   };
 }

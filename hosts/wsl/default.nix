@@ -16,8 +16,6 @@
     # docker-desktop.enable = true;
   };
 
-  networking.hostName = "wsl";
-
   environment.systemPackages = with pkgs; [
     binutils
     tree

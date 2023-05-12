@@ -118,6 +118,19 @@
             ];
           };
 
+          # nix build .#nixosConfigurations.wsl.config.system.build.installer
+          wsl = lib.mkHost {
+            username = "iab";
+            hostname = "wsl";
+            inherit overlays;
+            defaultModules = false;
+            extraModules = [
+              nixos-wsl.nixosModules.wsl
+              ./nixos/fonts.nix
+              ./nixos/nixconfig.nix
+            ];
+          };
+
           # nixos-rebuild build-vm --flake .#vmtest
           vmtest = lib.mkHost {
             username = "test";
@@ -138,36 +151,6 @@
               {programs.my-virt.enable = false;}
             ];
           };
-
-          #####################################################################
-          ##  WSL
-          #####################################################################
-          wsl = let
-            username = "iab";
-          in
-            nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-              specialArgs = {inherit inputs username;};
-              modules = [
-                ./hosts/wsl
-                ./nixos/fonts.nix
-                ./nixos/nixconfig.nix
-
-                nixos-wsl.nixosModules.wsl
-                {
-                  nixpkgs.overlays = overlays;
-                  nixpkgs.config.allowUnfree = true;
-                }
-
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.extraSpecialArgs = {inherit inputs;};
-                  home-manager.users.${username} = import ./home-manager;
-                }
-              ];
-            };
         };
 
         #######################################################################

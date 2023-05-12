@@ -34,8 +34,6 @@
   # password: livecd
   users.users.${username}.password = lib.mkForce "livecd";
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
   # faster but bigger size
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }

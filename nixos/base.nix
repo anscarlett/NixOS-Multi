@@ -60,6 +60,4 @@
   documentation.enable = false;
 
   time.timeZone = "Asia/Shanghai";
-
-  system.stateVersion = "22.05";
 }

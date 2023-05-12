@@ -9,9 +9,12 @@ inputs @ {
   nixpkgs ? inputs.nixpkgs,
   system ? "x86_64-linux",
   overlays ? [],
+  defaultModules ? true,
   extraModules ? [],
 }:
 nixpkgs.lib.nixosSystem {
+  inherit system;
+
   pkgs = import nixpkgs {
     inherit system overlays;
     config = {
@@ -26,13 +29,11 @@ nixpkgs.lib.nixosSystem {
 
   modules =
     [
-      self.nixosModules.default
-
       ../hosts/${hostname}
 
       {
+        system.stateVersion = "22.05";
         networking.hostName = "${hostname}";
-        services.xserver.displayManager.autoLogin.user = "${username}";
       }
 
       home-manager.nixosModules.home-manager
@@ -42,6 +43,12 @@ nixpkgs.lib.nixosSystem {
         home-manager.extraSpecialArgs = {inherit hostname inputs;};
         home-manager.users.${username} = import ../home-manager;
       }
+    ]
+    ++ nixpkgs.lib.optionals defaultModules [
+      {
+        services.xserver.displayManager.autoLogin.user = "${username}";
+      }
+      self.nixosModules.default
     ]
     ++ extraModules;
 }
