@@ -179,7 +179,7 @@
         ##  Home-Manager Standalone
         #######################################################################
         homeConfigurations = {
-          #  non-nixos
+          # non-nixos
           iab = lib.mkHome {
             username = "iab";
             inherit overlays;
@@ -203,11 +203,11 @@
         # for easily repl
         inherit lib inputs;
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
 
         # for easily build
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
-        livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
       };
 
       debug = true;
