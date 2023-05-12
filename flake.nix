@@ -83,6 +83,7 @@
         nixosModules = import ./nixos;
 
         nixosConfigurations = {
+          # nixos-rebuild --use-remote-sudo --flake .#yoga
           yoga = lib.mkHost {
             username = "iab";
             hostname = "yoga";
@@ -137,9 +138,6 @@
             hostname = "vmtest";
             inherit overlays;
             # nixpkgs = inputs.nixpkgs-pr;
-            extraModules = [
-              {programs.my-virt.enable = false;}
-            ];
           };
 
           # nix build .#livecd-iso
@@ -147,9 +145,6 @@
             username = "livecd";
             hostname = "livecd";
             inherit overlays;
-            extraModules = [
-              {programs.my-virt.enable = false;}
-            ];
           };
         };
 

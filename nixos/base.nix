@@ -4,8 +4,6 @@
   config,
   ...
 }: {
-  zramSwap.enable = lib.mkDefault true;
-
   boot = {
     # tmp.useTmpfs = true;
     # manual cleaning /tmp, if not using tmpfs
@@ -18,6 +16,8 @@
     # Silent boot when using `initrd.systemd`
     kernelParams = lib.optionals config.boot.initrd.systemd.enable ["systemd.show_status=false"];
   };
+
+  zramSwap.enable = lib.mkDefault true;
 
   services = {
     fwupd.enable = true;
@@ -50,6 +50,6 @@
     enableSSHSupport = true;
   };
 
-  # zsh@hm needs this
+  # zsh on hm also need this
   programs.zsh.enable = true;
 }
