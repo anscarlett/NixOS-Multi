@@ -118,8 +118,8 @@
             # nixpkgs = inputs.nixpkgs-stable;
             inherit overlays;
             extraModules = [
-              # ./nixos/gnome.nix
-              ./nixos/kde.nix
+              ./nixos/gnome.nix
+              # ./nixos/kde.nix
               # ./nixos/wm-sway.nix
             ];
           };
@@ -131,6 +131,9 @@
             # hmEnable = false;
             inherit overlays;
             # nixpkgs = inputs.nixpkgs-pr;
+            extraModules = [
+              {programs.my-virt.enable = false;}
+            ];
           };
 
           # nix build .#livecd-iso
