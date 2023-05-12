@@ -11,6 +11,8 @@ inputs.home-manager.lib.homeManagerConfiguration {
     config.allowUnfree = true;
   };
 
+  extraSpecialArgs = {inherit inputs;};
+
   modules =
     [
       ../home-manager/git.nix

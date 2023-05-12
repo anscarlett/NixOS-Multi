@@ -204,6 +204,7 @@
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 
         # for easily build
+        hm = self.nixosConfigurations.yoga.config.home-manager.users;
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
         livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
       };
