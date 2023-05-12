@@ -68,9 +68,9 @@
     };
 
     # ping github.com
-    hosts = {
-      "20.205.243.166" = ["github.com"];
-    };
+    # hosts = {
+    #   "20.205.243.166" = ["github.com"];
+    # };
   };
 
   # systemd.services.nix-daemon.environment = {

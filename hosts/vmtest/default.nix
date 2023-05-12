@@ -18,12 +18,11 @@
   ];
 
   programs.my-virt.enable = false;
-  programs.my-fcitx.enable = true;
+  # programs.my-fcitx.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
     firefox
-    goodvibes
     gnomeExtensions.appindicator
   ];
 
@@ -41,7 +40,8 @@
       # mate.enable = true;
       # lxqt.enable = true;
     };
-    displayManager.autoLogin.user = lib.mkForce "${username}";
+    # or ${username}
+    displayManager.autoLogin.user = lib.mkForce "guest";
     xkbOptions = "ctrl:swapcaps"; # Xorg Layout
   };
 
@@ -68,12 +68,10 @@
     };
   };
 
-  users.users.root = {
-    password = "root";
-  };
+  users.users.root.password = "root";
+  users.users.${username}.initialPassword = "test";
 
-  # Password: test
-  users.users.${username}.hashedPassword = lib.mkForce "$6$HFoXsNJNYZ.lVv0r$vxau6GLUcGMmPctb135ZFYzRO7p0Y0JXDeqSASudCbSSa917.7I4Vi1A/AOjWAWkT2DguOB0VMf0.HW4cy5zp0";
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   home-manager.users.${username} = {
   };
