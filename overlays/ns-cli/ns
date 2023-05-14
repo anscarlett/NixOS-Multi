@@ -3,12 +3,12 @@
 set -euo pipefail
 
 dotConfig=$HOME/nsworld
-
+sudo=doas
 # getUser=$(id -u -n)
 getUser=$(loginctl --no-legend list-users | awk '{print $2;}')
-
 getHost=$(uname -n)
 
+# Main
 ns_usage() {
     cat <<EOF
 
@@ -41,15 +41,15 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         boot)
-            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" boot
+            "$sudo" nixos-rebuild --flake "$dotConfig"#"$getHost" boot
             shift ;;
 
         switch)
-            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" switch
+            "$sudo" nixos-rebuild --flake "$dotConfig"#"$getHost" switch
             shift ;;
 
         upgrade)
-            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" boot \
+            "$sudo" nixos-rebuild --flake "$dotConfig"#"$getHost" boot \
                 --recreate-lock-file
                 shift ;;
 

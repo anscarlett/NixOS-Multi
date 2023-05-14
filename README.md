@@ -21,6 +21,8 @@ nixos-install --no-root-passwd --flake .#host
 
 [More Example](https://github.com/foo-dogsquared/nixos-config)
 
+[Plus Ultra](https://github.com/jakehamilton/config)
+
 # Nix Commands
 
 ``` shell
