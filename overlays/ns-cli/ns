@@ -143,8 +143,8 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         *)
-            echo
-            echo "Error: Unknown option: $1" >&2
+            # echo
+            # echo "Error: Unknown option: $1" >&2
             shift ;;
 
     esac
