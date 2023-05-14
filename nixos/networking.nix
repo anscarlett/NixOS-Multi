@@ -56,6 +56,8 @@
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     # nameservers = [
+    #   "127.0.0.1"
+    #   "8.8.8.8"
     #   "223.5.5.5"
     #   "223.6.6.6"
     #   "119.29.29.29"

@@ -3,7 +3,7 @@
 stdenvNoCC.mkDerivation rec {
   name = "ns";
 
-  src = ./ns.sh;
+  src = ./ns;
 
   bashComp = ./ns.bash;
 
