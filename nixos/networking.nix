@@ -45,8 +45,8 @@
   };
 
   networking = {
-    networkmanager.enable = true; # conflict with networking.wireless
     # networkmanager.dns = "none";
+    networkmanager.enable = true; # conflict with networking.wireless
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # defaultGateway = "192.168.2.1";
     #interfaces.eno1.useDHCP = true;
@@ -57,6 +57,7 @@
 
     # nameservers = [
     #   "127.0.0.1"
+    #   "::1"
     #   "8.8.8.8"
     #   "223.5.5.5"
     #   "223.6.6.6"
@@ -70,9 +71,9 @@
     };
 
     # ping github.com
-    hosts = {
-      "20.205.243.166" = ["github.com"];
-    };
+    # hosts = {
+    #   "20.205.243.166" = ["github.com"];
+    # };
   };
 
   # systemd.services.nix-daemon.environment = {
