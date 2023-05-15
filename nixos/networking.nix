@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }: {
   programs.clash-verge = {
@@ -18,6 +19,7 @@
     # v2raya.enable = true;
 
     resolved.enable = true;
+    resolved.fallbackDns = config.networking.nameservers;
     # nextdns.enable = true; # DNS over HTTPS
 
     # opensnitch.enable = true;
@@ -55,14 +57,15 @@
     # proxy.default = "http://127.0.0.1:7890";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    # nameservers = [
+    nameservers = [
     #   "127.0.0.1"
     #   "::1"
-    #   "8.8.8.8"
+      "8.8.8.8"
+      "1.1.1.1"
     #   "223.5.5.5"
     #   "223.6.6.6"
     #   "119.29.29.29"
-    # ];
+    ];
 
     firewall = {
       # enable = false; # true by default

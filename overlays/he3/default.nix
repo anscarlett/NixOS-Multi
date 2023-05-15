@@ -15,11 +15,11 @@
 
 stdenv.mkDerivation rec {
   pname = "he3";
-  version = "1.3.2";
+  version = "1.3.7";
 
   src = fetchurl {
     url = "https://he3-1309519128.cos.accelerate.myqcloud.com/${version}/He3_linux_amd64_${version}.deb";
-    hash = "sha256-v6sUh/aSV8tTdAXNe2+GN6KDa8unK3rS9Myhu2cEfdQ=";
+    hash = "sha256-iSOmsWqnVVqjsjJpmQfCv45PrJvVyjUDx4l5Qzu3CoU=";
   };
 
   unpackPhase = "dpkg-deb -x $src .";

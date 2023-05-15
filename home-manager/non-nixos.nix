@@ -12,7 +12,9 @@ sudo sed -i '$aexport XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG
   inputs,
   ...
 }: {
-  home.shellAliases = {};
+  home.shellAliases = {
+    nixgl = "nix run --impure github:guibou/nixGL";
+  };
 
   home.packages = with pkgs; [
   ];

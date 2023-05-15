@@ -24,6 +24,7 @@
         emacsql-sqlite
         # lsp-bridge
         # tree-sitter
+        # tree-sitter-langs
         # pdf-tools
         # telega
       ];
