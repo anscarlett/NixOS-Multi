@@ -77,6 +77,8 @@ final: prev: {
         cp -r $out/usr/share $out/share '';
     });
 
+  spotify = prev.callPackage ./spotify {};
+
   # xwayland env for inputMethod & native CSD
   # spotify =
   #   prev.spotify.overrideAttrs
@@ -87,9 +89,9 @@ final: prev: {
   #     '';
   #   });
 
-  spotify = prev.spotify.override {
-    callPackage = p: attrs: prev.pkgs.callPackage p (attrs // {deviceScaleFactor = 2.0;});
-  };
+  # spotify = prev.spotify.override {
+  #   callPackage = p: attrs: prev.pkgs.callPackage p (attrs // {deviceScaleFactor = 2.0;});
+  # };
 
   # wrapProgram $out/bin/telegram-desktop --set QT_QPA_PLATFORM xcb
   logseq-wayland = prev.symlinkJoin {
