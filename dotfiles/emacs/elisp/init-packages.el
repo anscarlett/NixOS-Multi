@@ -206,7 +206,8 @@
 
 ;; C-x SPC, ?
 (use-package speedrect
-  :ensure nil)
+  :vc (:url "https://github.com/jdtsmith/speedrect"
+            :rev :newest))
 
 ;; (use-package auto-sudoedit
 ;;   :delight
