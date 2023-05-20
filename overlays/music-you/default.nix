@@ -19,8 +19,6 @@ stdenv.mkDerivation rec {
     hash = "sha256-7iBE4+A2og2P9hurfcVvLUrHRNFtl1TgJhaUQE2uX60=";
   };
 
-  unpackPhase = "dpkg-deb -x $src .";
-
   nativeBuildInputs = [
     dpkg
     wrapGAppsHook

@@ -18,8 +18,8 @@
     openssh.enable = true;
     # v2raya.enable = true;
 
-    resolved.enable = true;
-    resolved.fallbackDns = config.networking.nameservers;
+    # resolved.enable = true;
+    # resolved.fallbackDns = config.networking.nameservers;
     # nextdns.enable = true; # DNS over HTTPS
 
     # opensnitch.enable = true;
@@ -47,8 +47,8 @@
   };
 
   networking = {
-    # networkmanager.dns = "none";
     networkmanager.enable = true; # conflict with networking.wireless
+    networkmanager.dns = "none";
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # defaultGateway = "192.168.2.1";
     #interfaces.eno1.useDHCP = true;

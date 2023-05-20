@@ -30,11 +30,6 @@ stdenv.mkDerivation rec {
     # StartupWMClass= "Xmind";
   };
 
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontWrapGApps = true;
-
   nativeBuildInputs = [
     autoPatchelfHook
     dpkg
@@ -43,8 +38,6 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = atomEnv.packages;
-
-  unpackPhase = "dpkg-deb -x $src .";
 
   installPhase = ''
     mkdir -p "$out/bin"
