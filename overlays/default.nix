@@ -77,7 +77,7 @@ final: prev: {
         cp -r $out/usr/share $out/share '';
     });
 
-  # spotify = prev.callPackage ./spotify {};
+  spotify = prev.callPackage ./spotify {};
 
   # xwayland env for inputMethod & native CSD
   # spotify =
