@@ -113,7 +113,8 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         pr-pull)
-            gh pr checkout -R NixOS/nixpkgs "$2"
+            git fetch git@github.com:NixOS/nixpkgs pull/"$2"/head:pr-"$2"; git checkout pr-"$2"
+            # gh pr checkout -R NixOS/nixpkgs "$2"
             shift ;;
 
         pr-build)

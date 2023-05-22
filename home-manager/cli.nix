@@ -187,7 +187,7 @@
   };
 
   programs.helix = {
-    enable = true;
+    enable = false;
   };
 
   programs.neovim = {

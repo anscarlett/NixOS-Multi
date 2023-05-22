@@ -75,7 +75,7 @@
     # paper-note
     notes
     # endeavour
-    ghostwriter
+    # ghostwriter # (qtwebengine)
     # textpieces
     meld
 

@@ -2,11 +2,11 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "clash-premium";
-  version = "2023.01.29";
+  version = "2023.05.19";
 
   src = fetchurl {
-    url = "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2023.01.29.gz";
-    hash = "sha256-LCN9HNBZZ1oAIeLxm/NnMdnD5Hrw1STgisXOUdSYPaY=";
+    url = "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-${version}.gz";
+    hash = "sha256-ekCTdX0h5Anyyxb/SkhhEQLqyl5nMb9UKtUUKWZl8AE=";
   };
 
   phases = [ "installPhase" ];
@@ -19,7 +19,7 @@ stdenvNoCC.mkDerivation rec {
   '';
 
   meta = with lib; {
-    homepage = https://github.com/Dreamacro/clash;
+    homepage = "https://github.com/Dreamacro/clash";
     description = "Close-sourced pre-built Clash binary with TUN support and more";
     # license = licenses.unfree;
     license = licenses.mit;
