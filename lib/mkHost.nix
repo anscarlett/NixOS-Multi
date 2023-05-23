@@ -46,7 +46,7 @@ nixpkgs.lib.nixosSystem {
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {inherit hostname inputs;};
+        home-manager.extraSpecialArgs = {inherit hostname username inputs;};
         home-manager.users.${username} = import ../home-manager;
       }
     ]
