@@ -12,7 +12,7 @@
     ../../nixos/desktop/gnome.nix
   ];
 
-  programs.my-virt.enable = false;
+  mods.virt.enable = false;
 
   environment.systemPackages = with pkgs; [
   ];

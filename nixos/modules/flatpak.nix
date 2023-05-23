@@ -3,14 +3,16 @@
   pkgs,
   config,
   ...
-}: {
-  options.services.my-flatpak = {
+}: let
+  cfg = config.mods.flatpak;
+in {
+  options.mods.flatpak = {
     enable = lib.mkEnableOption (lib.mdDoc ''
       my flatpak customize.
     '');
   };
 
-  config = lib.mkIf config.services.my-flatpak.enable {
+  config = lib.mkIf cfg.enable {
     services.flatpak.enable = true;
 
     # Fix flatpak tofu and icons.

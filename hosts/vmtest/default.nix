@@ -15,8 +15,8 @@
     # "services/desktops/pipewire/pipewire.nix"
   ];
 
-  programs.my-virt.enable = false;
-  # programs.my-fcitx.enable = true;
+  mods.virt.enable = false;
+  # mods.fcitx.enable = true;
 
   environment.systemPackages = with pkgs; [
     git

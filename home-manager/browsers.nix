@@ -70,6 +70,9 @@ in {
         # https://pandasauce.org/get-fonts-done/
         # "gfx.text.subpixel-position.force-enabled" = true;
         # "gfx.webrender.quality.force-subpixel-aa-where-possible" = true;
+        # Enable some helpful features in urlbar
+        "browser.urlbar.suggest.calculator" = true;
+        "browser.urlbar.unitConversion.enabled" = true;
       };
     };
   };

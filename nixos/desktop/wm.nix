@@ -7,6 +7,8 @@
     # ./modules/gtklock.nix
   ];
 
+  mods.fcitx.enable = true;
+
   services = {
     xserver = {
       # for X11
@@ -28,7 +30,6 @@
     # gtklock.enable = true;
     evince.enable = true;
     file-roller.enable = true;
-    my-fcitx.enable = true;
 
     thunar = {
       enable = true;

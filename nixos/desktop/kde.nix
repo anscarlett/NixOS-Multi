@@ -4,6 +4,8 @@
 }: {
   home-manager.sharedModules = [./hm-kderc.nix];
 
+  mods.fcitx.enable = true;
+
   services = {
     colord.enable = true;
     geoclue2.enable = true;
@@ -13,7 +15,6 @@
     dconf.enable = true;
     kdeconnect.enable = true;
     partition-manager.enable = true;
-    my-fcitx.enable = true;
   };
 
   # services.gnome.gnome-keyring.enable = true;

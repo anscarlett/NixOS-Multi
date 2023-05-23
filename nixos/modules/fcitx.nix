@@ -3,14 +3,16 @@
   pkgs,
   config,
   ...
-}: {
-  options.programs.my-fcitx = {
+}: let
+  cfg = config.mods.fcitx;
+in {
+  options.mods.fcitx = {
     enable = lib.mkEnableOption (lib.mdDoc ''
       my fcitx5 customize.
     '');
   };
 
-  config = lib.mkIf config.programs.my-fcitx.enable {
+  config = lib.mkIf cfg.enable {
     i18n.inputMethod = {
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [

@@ -28,17 +28,17 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
   pkgs,
   lib,
   ...
-}: {
-  options.programs.my-virt = {
-    enable =
-      lib.mkEnableOption (lib.mdDoc ''
-        my virt customize.
-      '')
-      // {default = true;};
-  };
+}: let
+  cfg = config.mods.virt;
+in {
+  options.mods.virt.enable =
+    lib.mkEnableOption (lib.mdDoc ''
+      my virt customize.
+    '')
+    // {default = true;};
 
-  config = lib.mkIf config.programs.my-virt.enable {
-    # services.my-flatpak.enable = true;
+  config = lib.mkIf cfg.enable {
+    # mods.flatpak.enable = true;
 
     # programs.adb.enable = true;
 
