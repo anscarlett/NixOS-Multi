@@ -22,6 +22,11 @@ https://www.spice-space.org/download.html  # spice-guest-tools
 
 ## qemu iso emulator
 qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
+
+## waydroid
+nix shell n\#android-tools
+adb connect 192.168.240.112:5555
+adb shell wm set-fix-to-user-rotation enabled  # force vertical
 */
 {
   config,
@@ -120,7 +125,7 @@ in {
       #   ];
       # };
 
-      # waydroid.enable = true;
+      waydroid.enable = true;
     };
 
     # Cross compile

@@ -103,24 +103,21 @@ final: prev: {
     '';
   };
 
-  # libsForQt5 override
-  libsForQt5 = prev.libsForQt5.overrideScope' (finay: prevy: {
-    # sddm-git
-    sddm = prevy.sddm.overrideAttrs (oldAttrs: {
-      src = prev.fetchFromGitHub {
-        owner = "sddm";
-        repo = "sddm";
-        rev = "b923eccba2b8a3b8f6bf63fca10b4ff88b4b5f7a";
-        sha256 = "sha256-zbTr3IXVvtZqEFimG6GBjxLyPi2UoyIFKaqiaefCPTo=";
-      };
-      patches = [];
-      cmakeFlags =
-        oldAttrs.cmakeFlags
-        ++ [
-          "-DSYSTEMD_SYSUSERS_DIR=${placeholder "out"}/lib/sysusers.d"
-          "-DSYSTEMD_TMPFILES_DIR=${placeholder "out"}/lib/tmpfiles.d"
-        ];
-    });
+  # sddm-git
+  sddm = prev.sddm.overrideAttrs (oldAttrs: {
+    src = prev.fetchFromGitHub {
+      owner = "sddm";
+      repo = "sddm";
+      rev = "58a35178b75aada974088350f9b89db45f5c3800";
+      sha256 = "sha256-lTfsMUnYu3E25FSrMDkh9gB5X2fC0a5rvpMnPph4k=";
+    };
+    patches = [];
+    cmakeFlags =
+      oldAttrs.cmakeFlags
+      ++ [
+        "-DSYSTEMD_SYSUSERS_DIR=${placeholder "out"}/lib/sysusers.d"
+        "-DSYSTEMD_TMPFILES_DIR=${placeholder "out"}/lib/tmpfiles.d"
+      ];
   });
 
   gnomeExtensions =

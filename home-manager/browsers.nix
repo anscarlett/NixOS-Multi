@@ -7,15 +7,15 @@
     "--ignore-gpu-blocklist"
     "--enable-gpu-rasterization"
     "--enable-zero-copy"
-    "--gtk-version=4"
+    # "--gtk-version=4"
     "--enable-features=TouchpadOverscrollHistoryNavigation"
   ];
 in {
   home.packages = with pkgs; [
     # https://wiki.archlinux.org/title/Chromium
-    # (google-chrome.override {
-    #   commandLineArgs = chromeEnv;
-    # })
+    (google-chrome.override {
+      commandLineArgs = chromeEnv;
+    })
     # (vivaldi.override {
     #   proprietaryCodecs = true;
     #   enableWidevine = true; # drm
