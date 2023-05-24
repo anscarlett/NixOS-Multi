@@ -66,7 +66,6 @@ final: prev: {
   # Java
 
   # flutter
-  fclash = prev.callPackage ./fclash {};
 
   ############# Override ###################
   # fix .desktop missing
