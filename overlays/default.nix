@@ -144,16 +144,5 @@ final: prev: {
     outputHash = "sha256-YJ4Qva4keOk9aBPFwztkTpvS7uv7zl6TOHqYZzZEGAs=";
   });
   });
-
-  # gnome override
-  gnome = prev.gnome.overrideScope' (gfinal: gprev: {
-  mutter = gprev.mutter.overrideAttrs (oldAttrs: rec {
-    dynamic-buffering = prev.fetchurl {
-      url = "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2487.patch";
-      sha256 = "sha256-KVerFwEgLaEpp5lFofX7VnbBPP4dIVm3+odVUZ8clYA=";
-    };
-    patches = dynamic-buffering;
-  });
-  });
   */
 }
