@@ -104,21 +104,21 @@ final: prev: {
   };
 
   # sddm-git
-  sddm = prev.sddm.overrideAttrs (oldAttrs: {
-    src = prev.fetchFromGitHub {
-      owner = "sddm";
-      repo = "sddm";
-      rev = "58a35178b75aada974088350f9b89db45f5c3800";
-      sha256 = "sha256-lTfsMUnYu3E25FSrMDkh9gB5X2fC0a5rvpMnPph4k=";
-    };
-    patches = [];
-    cmakeFlags =
-      oldAttrs.cmakeFlags
-      ++ [
-        "-DSYSTEMD_SYSUSERS_DIR=${placeholder "out"}/lib/sysusers.d"
-        "-DSYSTEMD_TMPFILES_DIR=${placeholder "out"}/lib/tmpfiles.d"
-      ];
-  });
+  # sddm = prev.sddm.overrideAttrs (oldAttrs: {
+  #   src = prev.fetchFromGitHub {
+  #     owner = "sddm";
+  #     repo = "sddm";
+  #     rev = "58a35178b75aada974088350f9b89db45f5c3800";
+  #     sha256 = "sha256-lTfsMUnYu3E25FSrMDkh9gB5X2fC0a5rvpMnPph4k=";
+  #   };
+  #   patches = [];
+  #   cmakeFlags =
+  #     oldAttrs.cmakeFlags
+  #     ++ [
+  #       "-DSYSTEMD_SYSUSERS_DIR=${placeholder "out"}/lib/sysusers.d"
+  #       "-DSYSTEMD_TMPFILES_DIR=${placeholder "out"}/lib/tmpfiles.d"
+  #     ];
+  # });
 
   gnomeExtensions =
     prev.gnomeExtensions
