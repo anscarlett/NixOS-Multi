@@ -53,39 +53,39 @@
 
   # security.sudo.wheelNeedsPassword = false;
   # or
-  # security.sudo.extraRules = [
-  #   {
-  #     users = ["${username}"];
-  #     commands = [
-  #       {
-  #         command = "ALL";
-  #         options = ["NOPASSWD"];
-  #       }
-  #     ];
-  #   }
-  # ];
+  security.sudo.extraRules = [
+    {
+      users = ["${username}"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
 
   #######################################################################
   ## doas
   #######################################################################
-  security.sudo.enable = false;
+  # security.sudo.enable = false;
 
-  # security.doas.wheelNeedsPassword = false;
+  # # security.doas.wheelNeedsPassword = false;
 
-  security.doas = {
-    enable = true;
-    extraRules = [
-      {
-        users = ["${username}"];
-        noPass = true;
-        keepEnv = true;
-      }
-    ];
-  };
+  # security.doas = {
+  #   enable = true;
+  #   extraRules = [
+  #     {
+  #       users = ["${username}"];
+  #       noPass = true;
+  #       keepEnv = true;
+  #     }
+  #   ];
+  # };
 
-  # Add an alias
-  environment.shellAliases = {
-    sudo = "doas";
-    sudoedit = "doas micro";
-  };
+  # # Add an alias
+  # environment.shellAliases = {
+  #   sudo = "doas";
+  #   sudoedit = "doas micro";
+  # };
 }

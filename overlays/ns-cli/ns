@@ -49,15 +49,15 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         boot)
-            suid nixos-rebuild --flake "$dotConfig"#"$getHost" boot
+            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" boot
             shift ;;
 
         switch)
-            suid nixos-rebuild --flake "$dotConfig"#"$getHost" switch
+            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" switch
             shift ;;
 
         upgrade)
-            suid nixos-rebuild --flake "$dotConfig"#"$getHost" boot \
+            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" boot \
                 --recreate-lock-file
                 shift ;;
 
