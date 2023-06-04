@@ -12,11 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay/04f25058fbe3ae1aadd435aba49b66493e939f83";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,7 +58,6 @@
   }: let
     overlays = [
       # inputs.nur.overlay
-      inputs.emacs-overlay.overlay
       self.overlays.default
       # (final: prev: {
       #   stable = nixpkgs-stable.legacyPackages.${prev.system};

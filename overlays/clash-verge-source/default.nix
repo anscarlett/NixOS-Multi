@@ -40,9 +40,16 @@ stdenv.mkDerivation rec {
 
     pushd $cargoDepsCopy/libappindicator-sys
     oldHash=$(sha256sum src/lib.rs | cut -d " " -f 1)
-    substituteInPlace $cargoDepsCopy/libappindicator-sys/src/lib.rs \
+    substituteInPlace src/lib.rs \
       --replace "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
     newHash=$(sha256sum src/lib.rs | cut -d " " -f 1)
+    substituteInPlace .cargo-checksum.json --replace "$oldHash" "$newHash"
+    popd
+
+    pushd $cargoDepsCopy/tauri-utils
+    oldHash=$(sha256sum src/platform.rs | cut -d " " -f 1)
+    substituteInPlace src/platform.rs --replace "\"/usr" "\"$out"
+    newHash=$(sha256sum src/platform.rs | cut -d " " -f 1)
     substituteInPlace .cargo-checksum.json --replace "$oldHash" "$newHash"
     popd
   '';
@@ -93,9 +100,9 @@ stdenv.mkDerivation rec {
   preInstall = ''
     mv src-tauri/target/release/bundle/deb/*/data/usr/ $out
     mkdir -p $out/lib/clash-verge/resources/
-    # ln -s ${clash-geoip}/etc/clash/Country.mmdb $out/lib/clash-verge/resources/
-    # ln -s ${v2ray-geoip}/share/v2ray/geoip.dat $out/lib/clash-verge/resources/
-    # ln -s ${v2ray-domain-list-community}/share/v2ray/geosite.dat $out/lib/clash-verge/resources/
+    ln -s ${clash-geoip}/etc/clash/Country.mmdb $out/lib/clash-verge/resources/
+    ln -s ${v2ray-geoip}/share/v2ray/geoip.dat $out/lib/clash-verge/resources/
+    ln -s ${v2ray-domain-list-community}/share/v2ray/geosite.dat $out/lib/clash-verge/resources/
   '';
 
   postFixup = ''
@@ -108,6 +115,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/zzzgydi/clash-verge";
     platforms = [ "x86_64-linux" ];
     license = licenses.gpl3Plus;
+    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     maintainers = with maintainers; [ zendo ];
   };
 }
