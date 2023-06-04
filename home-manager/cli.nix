@@ -185,23 +185,4 @@
       diffgutter = true;
     };
   };
-
-  programs.helix = {
-    enable = false;
-  };
-
-  programs.neovim = {
-    enable = false;
-    viAlias = true;
-    vimAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-      LazyVim
-      neogit
-      vim-nix
-      vim-lsp
-      vim-markdown
-      editorconfig-vim
-    ];
-  };
 }
