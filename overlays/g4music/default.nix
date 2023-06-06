@@ -27,8 +27,8 @@ stdenv.mkDerivation rec {
     owner = "neithern";
     repo = pname;
     # rev = "v${version}";
-    rev = "6517331605cc6fcf3ebbba3f2492cfc52bd29b69";
-    hash = "sha256-6z72WvbATJr92IghurZ6kyZQX0Xjnn6lTPhc7+33RHw=";
+    rev = "669d048c314a4f86e9072dc6cd95d644a122f5d6";
+    hash = "sha256-NXbFQQxxocJY/5uBVPiXreRRMBS4TO5gVWMJW2D9Xfk=";
   };
 
   # patches = [ ./data-meson-build.patch ];
