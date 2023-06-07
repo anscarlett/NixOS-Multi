@@ -120,11 +120,11 @@ final: prev: {
   #     ];
   # });
 
-  gnomeExtensions =
-    prev.gnomeExtensions
-    // {
-      night-theme-switcher = prev.callPackage ./night-theme-switcher {};
-    };
+  # gnomeExtensions =
+  #   prev.gnomeExtensions
+  #   // {
+  #     night-theme-switcher = prev.callPackage ./night-theme-switcher {};
+  #   };
 
   /*
   # node override
