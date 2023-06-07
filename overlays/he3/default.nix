@@ -15,11 +15,11 @@
 
 stdenv.mkDerivation rec {
   pname = "he3";
-  version = "1.3.7";
+  version = "1.3.17";
 
   src = fetchurl {
     url = "https://he3-1309519128.cos.accelerate.myqcloud.com/${version}/He3_linux_amd64_${version}.deb";
-    hash = "sha256-iSOmsWqnVVqjsjJpmQfCv45PrJvVyjUDx4l5Qzu3CoU=";
+    hash = "sha256-1Eon7fv1EUA5l1KsdyshJAPTtRay6ey1u3FDE/8RHpY=";
   };
 
   nativeBuildInputs = [

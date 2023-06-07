@@ -45,7 +45,6 @@
 
     # FileManager
     fd
-    ripgrep
     f2
     sd
     choose
@@ -130,6 +129,10 @@
   };
 
   programs.bat = {
+    enable = true;
+  };
+
+  programs.ripgrep = {
     enable = true;
   };
 

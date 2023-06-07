@@ -36,6 +36,7 @@
       yarn
       nodejs
       electron
+      python3
 
       ## cargo-tauri
       # cargo
