@@ -58,6 +58,7 @@ in {
       virtiofsd
       bridge-utils # brctl: network bridge
       # win-virtio # needs ?
+      wl-clipboard # waydroid clipborad
       (appimage-run.override {
         extraPkgs = pkgs:
           with pkgs; [

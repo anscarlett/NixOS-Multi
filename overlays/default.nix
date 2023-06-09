@@ -76,17 +76,17 @@ final: prev: {
         cp -r $out/usr/share $out/share '';
     });
 
-  spotify = prev.callPackage ./spotify {};
+  # spotify = prev.callPackage ./spotify {};
 
   # xwayland env for inputMethod & native CSD
-  # spotify =
-  #   prev.spotify.overrideAttrs
-  #   (oldAttrs: {
-  #     postFixup = ''
-  #       substituteInPlace $out/share/applications/spotify.desktop \
-  #         --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2"
-  #     '';
-  #   });
+  spotify =
+    prev.spotify.overrideAttrs
+    (oldAttrs: {
+      postFixup = ''
+        substituteInPlace $out/share/applications/spotify.desktop \
+          --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2"
+      '';
+    });
 
   # spotify = prev.spotify.override {
   #   deviceScaleFactor = 2.0;
