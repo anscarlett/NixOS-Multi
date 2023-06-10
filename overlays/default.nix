@@ -47,21 +47,21 @@ final: prev: {
   # Python
 
   # Python Module Overlays
-  pythonPackagesOverlays =
-    (prev.pythonPackagesOverlays or [])
-    ++ [
-      (python-final: python-prev: {
-        pyjokes = python-final.callPackage ./python-modules/pyjokes {};
-      })
-    ];
-  python3 = let
-    self = prev.python3.override {
-      inherit self;
-      packageOverrides = prev.lib.composeManyExtensions final.pythonPackagesOverlays;
-    };
-  in
-    self;
-  python3Packages = final.python3.pkgs;
+  # pythonPackagesOverlays =
+  #   (prev.pythonPackagesOverlays or [])
+  #   ++ [
+  #     (python-final: python-prev: {
+  #       pyjokes = python-final.callPackage ./python-modules/pyjokes {};
+  #     })
+  #   ];
+  # python3 = let
+  #   self = prev.python3.override {
+  #     inherit self;
+  #     packageOverrides = prev.lib.composeManyExtensions final.pythonPackagesOverlays;
+  #   };
+  # in
+  #   self;
+  # python3Packages = final.python3.pkgs;
 
   # Java
 
