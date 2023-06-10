@@ -11,8 +11,7 @@
   #######################################################################
   programs.emacs = {
     enable = true;
-    package =
-      pkgs.emacs29-pgtk;
+    package = pkgs.emacs29-pgtk;
     # fix duplicate desktop shortcut in kde
     # pkgs.emacsPgtk.overrideAttrs (finalAttrs: previoiusAttrs: {
     #   postFixup = ''rm $out/share/applications/emacsclient.desktop'';
@@ -27,6 +26,25 @@
         # tree-sitter-langs
         # pdf-tools
         # telega
+        (treesit-grammars.with-grammars (grammars:
+          with grammars; [
+            tree-sitter-nix
+            tree-sitter-bash
+            tree-sitter-elisp
+            tree-sitter-json
+            tree-sitter-yaml
+            tree-sitter-toml
+            tree-sitter-css
+            tree-sitter-html
+            tree-sitter-tsx
+            tree-sitter-javascript
+            tree-sitter-typescript
+            # tree-sitter-elixir
+            # tree-sitter-dockerfile
+            tree-sitter-ruby
+            tree-sitter-rust
+            tree-sitter-python
+          ]))
       ];
     extraConfig = ''
       (setq treemacs-python-executable "${pkgs.python3}/bin/python")

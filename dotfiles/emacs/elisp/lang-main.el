@@ -35,10 +35,10 @@
   )
 
 ;; tree-sitter
-;; (use-package treesit-auto
-;;   :when (eq system-type 'gnu/linux)
-;;   :config
-;;   (global-treesit-auto-mode))
+(use-package treesit-auto
+  :when (eq system-type 'gnu/linux)
+  :config
+  (global-treesit-auto-mode))
 
 ;; conf-mode
 (use-package conf-mode
