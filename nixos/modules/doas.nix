@@ -1,8 +1,7 @@
 {
   lib,
-  pkgs,
-  username,
   config,
+  username,
   ...
 }: let
   cfg = config.mods.doas;
@@ -26,14 +25,9 @@ in {
       }
     ];
 
-    # Add an alias
     environment.shellAliases = {
-      # sudo = "doas";
+      sudo = "doas";
       sudoedit = "doas micro";
     };
-
-    environment.systemPackages = [
-      (pkgs.writeScriptBin "sudo" ''exec doas "$@"'')
-    ];
   };
 }

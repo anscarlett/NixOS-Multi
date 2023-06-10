@@ -33,6 +33,11 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # agenix.url = github:ryantm/agenix;
     # sops-nix.url = github:Mic92/sops-nix;
     # nur.url = "github:nix-community/NUR";
@@ -164,6 +169,23 @@
               ./home-manager/editor.nix
               ./home-manager/browsers.nix
             ];
+          };
+        };
+
+        # nix run github:serokell/deploy-rs -- -s .
+        deploy = {
+          sudo = "doas -u";
+          autoRollback = false;
+          magicRollback = false;
+          nodes = {
+            "svp" = {
+              hostname = "192.168.2.198";
+              profiles.system = {
+                user = "root";
+                sshUser = "zendo";
+                path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."svp";
+              };
+            };
           };
         };
 

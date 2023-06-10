@@ -1,8 +1,7 @@
 {
-  username,
-  pkgs,
   lib,
   config,
+  username,
   ...
 }: {
   users = {

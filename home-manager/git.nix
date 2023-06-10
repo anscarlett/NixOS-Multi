@@ -39,6 +39,10 @@
     enableGitCredentialHelper = true;
   };
 
+  # programs.lazygit = {
+  #   enable = true;
+  # };
+
   # programs.ssh = {
   #   enable = true;
   #   # extraConfig = ''
