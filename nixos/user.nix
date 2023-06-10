@@ -51,6 +51,8 @@
       ++ lib.optionals config.programs.adb.enable ["adbusers"];
   };
 
+  mods.doas.enable = true;
+
   # security.sudo.wheelNeedsPassword = false;
   # or
   security.sudo.extraRules = [
@@ -64,28 +66,4 @@
       ];
     }
   ];
-
-  #######################################################################
-  ## doas
-  #######################################################################
-  # security.sudo.enable = false;
-
-  # # security.doas.wheelNeedsPassword = false;
-
-  # security.doas = {
-  #   enable = true;
-  #   extraRules = [
-  #     {
-  #       users = ["${username}"];
-  #       noPass = true;
-  #       keepEnv = true;
-  #     }
-  #   ];
-  # };
-
-  # # Add an alias
-  # environment.shellAliases = {
-  #   sudo = "doas";
-  #   sudoedit = "doas micro";
-  # };
 }
