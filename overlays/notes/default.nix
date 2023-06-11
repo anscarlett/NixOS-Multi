@@ -4,9 +4,10 @@
 , cmake
 , wrapQtAppsHook
 , qtbase
+, qtdeclarative
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "notes";
   version = "2.1.0";
 
@@ -14,7 +15,8 @@ stdenv.mkDerivation rec {
     owner = "nuttyartist";
     repo = "notes";
     fetchSubmodules = true;
-    rev = "v${version}";
+    rev = "v${finalAttrs.version}";
+    # rev = "5b76489d2f8bb5d4feb782e7049645e7676c8572";
     hash = "sha256-pTRcXVwtH4gxxFIkJaqbuk6SOiC879oYxFgQyFBaQAc=";
   };
 
@@ -27,13 +29,15 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     qtbase
+    qtdeclarative
   ];
 
   meta = with lib; {
-    description = "Fast and beautiful note-taking app, Write down your thoughts";
+    description = "A fast and beautiful note-taking app";
     homepage = "https://www.get-notes.com";
+    downloadPage = "https://github.com/nuttyartist/notes";
     license = licenses.mpl20;
-    platforms = platforms.linux;
+    platforms = platforms.unix;
     maintainers = with maintainers; [ zendo ];
   };
-}
+})

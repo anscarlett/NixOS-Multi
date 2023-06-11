@@ -17,6 +17,7 @@
     nix-top
     nix-tree
     nix-prefetch
+    deploy-rs
     # nix-update
     # nix-template
     nixpkgs-review
