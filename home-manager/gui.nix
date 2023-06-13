@@ -20,6 +20,7 @@
 
     # Multimedia
     spotify
+    muzika
     # vlc
     # ffmpeg
     kooha

@@ -6,14 +6,13 @@
 }: {
   boot = {
     # tmp.useTmpfs = true;
-    # manual cleaning /tmp, if not using tmpfs
     tmp.cleanOnBoot = !config.boot.tmp.useTmpfs;
     plymouth.enable = true;
     supportedFilesystems = ["ntfs"];
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     initrd.systemd.enable = lib.mkDefault true;
-    # Silent boot when using `initrd.systemd`
+    # Silent boot when `initrd.systemd` enable
     kernelParams = lib.optionals config.boot.initrd.systemd.enable ["systemd.show_status=false"];
   };
 
@@ -50,6 +49,6 @@
     enableSSHSupport = true;
   };
 
-  # zsh on hm also need this
+  # zsh@hm need this
   programs.zsh.enable = true;
 }

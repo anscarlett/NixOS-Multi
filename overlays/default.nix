@@ -20,17 +20,17 @@ final: prev: {
   # deb / autoPatchelf
   he3 = prev.callPackage ./he3 {};
   xmind = prev.callPackage ./xmind {};
-  clash-verge-source = prev.callPackage ./clash-verge-source {};
   clash-for-windows = prev.callPackage ./clash-for-windows {};
   clash-premium = prev.callPackage ./clash-premium {};
 
   # electron ALL WIP!!!
   listen1 = prev.callPackage ./listen1 {};
+  nightpdf = prev.callPackage ./nightpdf {};
+  weektodo = prev.callPackage ./weektodo {};
+  music-you = prev.callPackage ./music-you {};
   koodo-reader = prev.callPackage ./koodo-reader {};
   thorium-reader = prev.callPackage ./thorium-reader {};
-  nightpdf = prev.callPackage ./nightpdf {};
-  music-you = prev.callPackage ./music-you {};
-  weektodo = prev.callPackage ./weektodo {};
+  clash-verge-source = prev.callPackage ./clash-verge-source {};
 
   # C
   azcomicv = prev.callPackage ./azcomicv {};

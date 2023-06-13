@@ -45,8 +45,9 @@
     # atool
 
     # FileManager
-    fd
     f2
+    fd
+    ripgrep
     sd
     choose
     sops
@@ -133,9 +134,9 @@
     enable = true;
   };
 
-  programs.ripgrep = {
-    enable = true;
-  };
+  # programs.ripgrep = {
+  #   enable = true;
+  # };
 
   programs.aria2 = {
     enable = true;
