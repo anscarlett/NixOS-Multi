@@ -1,6 +1,5 @@
 {
   pkgs,
-  username,
   ...
 }: let
   chromeEnv = [
@@ -44,7 +43,7 @@ in {
   programs.firefox = {
     enable = true;
     # package = pkgs.firefox-bin;
-    profiles.${username} = {
+    profiles.default = {
       settings = {
         "browser.aboutwelcome.enabled" = false;
         # 双击关闭标签

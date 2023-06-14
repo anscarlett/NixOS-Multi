@@ -134,10 +134,6 @@
     enable = true;
   };
 
-  # programs.ripgrep = {
-  #   enable = true;
-  # };
-
   programs.aria2 = {
     enable = true;
   };
