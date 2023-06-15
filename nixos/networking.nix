@@ -58,8 +58,8 @@
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     nameservers = [
-      "8.8.8.8"
       "1.1.1.1"
+      "8.8.8.8"
     ];
 
     firewall = {
