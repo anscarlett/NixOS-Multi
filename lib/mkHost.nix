@@ -49,6 +49,8 @@ nixpkgs.lib.nixosSystem {
         home-manager.extraSpecialArgs = {inherit hostname username inputs;};
         home-manager.users.${username} = import ../home-manager;
       }
+
+      inputs.disko.nixosModules.disko
     ]
     ++ nixpkgs.lib.optionals defaultModules [
       self.nixosModules.default

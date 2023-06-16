@@ -101,7 +101,7 @@
   #######################################################################
   services.btrfs.autoScrub.enable = true;
   fileSystems = {
-    "/".options = ["compress=zstd" "autodefrag" "noatime"];
+    "/".options = ["compress=zstd" "noatime"];
     #   "/home".options = [ "compress=zstd" ];
     #   "/nix".options = [ "compress=zstd" "noatime" ];
     #   "/swap".options = [ "noatime" ];

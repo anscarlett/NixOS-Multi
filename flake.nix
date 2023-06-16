@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # agenix.url = github:ryantm/agenix;
     # sops-nix.url = github:Mic92/sops-nix;
     # nur.url = "github:nix-community/NUR";

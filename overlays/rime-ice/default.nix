@@ -10,8 +10,8 @@ stdenvNoCC.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "iDvel";
     repo = pname;
-    rev = "1eed724c8dfe2107999f27818005f491feb1655f";
-    hash = "sha256-pF1buPnUfCKNd+KcFo2012jegTrz6WWRlI4e4SHDC74=";
+    rev = "921305ccfa247a8b58845c9927f4aedc37e61672";
+    hash = "sha256-n02ONM5MWZhO6jLl097SfCfwpgtUugH46lR1uQnW99w=";
   };
 
   installPhase = ''

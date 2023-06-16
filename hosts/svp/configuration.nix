@@ -40,7 +40,8 @@
   #######################################################################
   ## FileSystem
   #######################################################################
-  # fileSystems."/".options = ["noatime" "nodiratime"];
+  _module.args.disks = [ "/dev/sda" ];
   services.btrfs.autoScrub.enable = true;
-  fileSystems."/".options = ["compress=zstd" "autodefrag" "noatime"];
+  # fileSystems."/".options = ["noatime" "nodiratime"];
+  # fileSystems."/".options = ["compress=zstd" "noatime"];
 }

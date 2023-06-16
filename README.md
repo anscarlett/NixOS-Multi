@@ -10,6 +10,7 @@ mkswap /dev/nvme0n1p4
 swapon /dev/nvme0n1p4
 mkfs.btrfs /dev/nvme0n1p5
 mkdir /mnt/efi
+nix run github:nix-community/disko -- --mode disko ~/nsworld/hosts/svp/disk.nix --arg disks '[ "/dev/sda" ]'
 
 nixos-generate-config --root /mnt
 nixos-install --no-root-passwd --flake .#host
