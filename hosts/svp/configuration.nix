@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-intel
@@ -40,8 +35,6 @@
   #######################################################################
   ## FileSystem
   #######################################################################
-  _module.args.disks = [ "/dev/sda" ];
+  _module.args.disks = ["/dev/sda"];
   services.btrfs.autoScrub.enable = true;
-  # fileSystems."/".options = ["noatime" "nodiratime"];
-  # fileSystems."/".options = ["compress=zstd" "noatime"];
 }

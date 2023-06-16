@@ -1,3 +1,4 @@
+# https://github.com/nix-community/disko/tree/master/example
 {disks ? ["/dev/sda"], ...}: {
   disko.devices = {
     disk = {

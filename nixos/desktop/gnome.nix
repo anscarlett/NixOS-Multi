@@ -58,6 +58,7 @@
       dash-to-dock
       # dash-to-panel
       night-theme-switcher
+      gnome-clipboard
       clipboard-history
       # clipboard-indicator
       # blur-my-shell
