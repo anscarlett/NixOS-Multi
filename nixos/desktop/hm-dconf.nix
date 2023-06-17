@@ -71,6 +71,10 @@
       enable-fullscreen = false;
     };
 
+    "org/gnome/shell/extensions/gnome-clipboard" = {
+      history-size = lib.hm.gvariant.mkUint32 800;
+    };
+
     ##############################################################
     ##  Keybindings
     ##############################################################
