@@ -59,7 +59,7 @@
       # dash-to-panel
       night-theme-switcher
       gnome-clipboard
-      clipboard-history
+      # clipboard-history
       # clipboard-indicator
       # blur-my-shell
       gradient-top-bar
