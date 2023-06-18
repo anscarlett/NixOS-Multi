@@ -42,6 +42,11 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  programs.command-not-found.enable = false;
+  documentation.enable = false;
+  time.timeZone = "Asia/Shanghai";
+  system.stateVersion = "23.11";
+
   #######################################################################
   ##  Home Manager
   #######################################################################

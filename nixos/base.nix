@@ -51,4 +51,9 @@
 
   # zsh@hm need this
   programs.zsh.enable = true;
+
+  programs.command-not-found.enable = false;
+  documentation.enable = false;
+  time.timeZone = "Asia/Shanghai";
+  system.stateVersion = "23.11";
 }

@@ -87,6 +87,7 @@
             inherit overlays;
             extraModules = [
               ./nixos/desktop/gnome.nix
+              ./hosts/yoga
 
               ({
                 inpouts,
@@ -112,6 +113,7 @@
             inherit overlays;
             extraModules = [
               ./nixos/desktop/gnome.nix
+              ./hosts/svp
             ];
           };
 
@@ -122,9 +124,10 @@
             inherit overlays;
             defaultModules = false;
             extraModules = [
-              nixos-wsl.nixosModules.wsl
+              ./hosts/wsl
               ./nixos/fonts.nix
               ./nixos/nixconfig.nix
+              nixos-wsl.nixosModules.wsl
             ];
           };
 
@@ -133,7 +136,9 @@
             username = "test";
             hostname = "vmtest";
             inherit overlays;
-            # nixpkgs = inputs.nixpkgs-pr;
+            extraModules = [
+              ./hosts/vmtest
+            ];
           };
 
           # nix build .#livecd-iso
@@ -141,6 +146,9 @@
             username = "livecd";
             hostname = "livecd";
             inherit overlays;
+            extraModules = [
+              ./hosts/livecd
+            ];
           };
         };
 

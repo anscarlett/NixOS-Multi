@@ -29,17 +29,9 @@ nixpkgs.lib.nixosSystem {
 
   modules =
     [
-      ../hosts/${hostname}
-
       {
         services.xserver.displayManager.autoLogin.user = "${username}";
         networking.hostName = "${hostname}";
-
-        documentation.enable = false;
-        programs.command-not-found.enable = false;
-
-        time.timeZone = "Asia/Shanghai";
-        system.stateVersion = "23.11";
       }
 
       home-manager.nixosModules.home-manager
