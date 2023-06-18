@@ -1,12 +1,12 @@
 { lib, fetchurl, appimageTools }:
 
 let
-  pname = "moonfm";
-  version = "4.0.25";
+  pname = "gitfiend";
+  version = "0.42.0";
 
   src = fetchurl {
-    url = "https://moon.fm/dist/MoonFM-${version}-x86_64.AppImage";
-    hash = "sha256-clQzfrfJRHwt5yb9x2reBHGVWkbyMzH0e5BipfbzDlA=";
+    url = "https://gitfiend.com/resources/GitFiend-${version}.AppImage";
+    hash = "sha256-gZrzRvcmHobQTTsaSZo3ve60nKzlkWCesQDvP/DZ57g=";
   };
 
   appimageContents = appimageTools.extractType2 {
@@ -29,9 +29,10 @@ appimageTools.wrapType2 {
   '';
 
   meta = with lib; {
-    description = "A modern, fully featured audio podcast player in a simple, intuitive interface";
-    homepage = "https://moon.fm";
+    description = "A Git client designed for humans";
+    homepage = "https://gitfiend.com";
     license = licenses.mit;
+    # license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     maintainers = with maintainers; [ zendo ];
