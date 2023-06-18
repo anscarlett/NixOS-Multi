@@ -20,7 +20,6 @@
 
     # resolved.enable = true;
     # resolved.fallbackDns = config.networking.nameservers;
-    # nextdns.enable = true; # DNS over HTTPS
 
     # opensnitch.enable = true;
 
