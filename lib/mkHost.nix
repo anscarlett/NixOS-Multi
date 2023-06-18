@@ -15,24 +15,18 @@ inputs @ {
 nixpkgs.lib.nixosSystem {
   inherit system;
 
-  pkgs = import nixpkgs {
-    inherit system overlays;
-    config = {
-      allowUnfree = true;
-      # allowBroken = true;
-      # allowInsecure = true;
-      # allowUnsupportedSystem = true;
-    };
-  };
-
   specialArgs = {inherit inputs username;};
 
   modules =
     [
       {
-        services.xserver.displayManager.autoLogin.user = "${username}";
+        nixpkgs.overlays = overlays;
+        nixpkgs.config.allowUnfree = true;
         networking.hostName = "${hostname}";
+        services.xserver.displayManager.autoLogin.user = "${username}";
       }
+
+      inputs.disko.nixosModules.disko
 
       home-manager.nixosModules.home-manager
       {
@@ -41,8 +35,6 @@ nixpkgs.lib.nixosSystem {
         home-manager.extraSpecialArgs = {inherit hostname username inputs;};
         home-manager.users.${username} = import ../home-manager;
       }
-
-      inputs.disko.nixosModules.disko
     ]
     ++ nixpkgs.lib.optionals defaultModules [
       self.nixosModules.default

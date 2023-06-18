@@ -60,8 +60,8 @@
     ...
   }: let
     overlays = [
-      # inputs.nur.overlay
       self.overlays.default
+      # inputs.nur.overlay
       # (final: prev: {
       #   stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
       # })
@@ -86,8 +86,8 @@
             hostname = "yoga";
             inherit overlays;
             extraModules = [
-              ./nixos/desktop/gnome.nix
               ./hosts/yoga
+              ./nixos/desktop/gnome.nix
 
               ({
                 inpouts,
@@ -112,22 +112,8 @@
             # nixpkgs = inputs.nixpkgs-stable;
             inherit overlays;
             extraModules = [
-              ./nixos/desktop/gnome.nix
               ./hosts/svp
-            ];
-          };
-
-          # nix build .#wsl-installer
-          wsl = lib.mkHost {
-            username = "iab";
-            hostname = "wsl";
-            inherit overlays;
-            defaultModules = false;
-            extraModules = [
-              ./hosts/wsl
-              ./nixos/fonts.nix
-              ./nixos/nixconfig.nix
-              nixos-wsl.nixosModules.wsl
+              ./nixos/desktop/gnome.nix
             ];
           };
 
@@ -149,6 +135,38 @@
             extraModules = [
               ./hosts/livecd
             ];
+          };
+
+          # nix build .#wsl-installer
+          wsl = lib.mkHost {
+            username = "iab";
+            hostname = "wsl";
+            inherit overlays;
+            defaultModules = false;
+            extraModules = [
+              ./hosts/wsl
+              ./nixos/fonts.nix
+              ./nixos/nixconfig.nix
+              nixos-wsl.nixosModules.wsl
+            ];
+          };
+        };
+
+        # deploy -s .#svp
+        # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
+        deploy = {
+          sudo = "doas -u";
+          autoRollback = false;
+          magicRollback = false;
+          nodes = {
+            "svp" = {
+              hostname = "192.168.2.198";
+              profiles.system = {
+                user = "root";
+                sshUser = "zendo";
+                path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."svp";
+              };
+            };
           };
         };
 
@@ -177,27 +195,9 @@
           };
         };
 
-        # deploy -s .#svp
-        # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
-        deploy = {
-          sudo = "doas -u";
-          autoRollback = false;
-          magicRollback = false;
-          nodes = {
-            "svp" = {
-              hostname = "192.168.2.198";
-              profiles.system = {
-                user = "root";
-                sshUser = "zendo";
-                path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."svp";
-              };
-            };
-          };
-        };
-
         # for easily repl
         inherit lib inputs;
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        n = inputs.nixpkgs.legacyPackages.x86_64-linux;
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
 
         # for easily build
