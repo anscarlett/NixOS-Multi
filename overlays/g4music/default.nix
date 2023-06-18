@@ -20,18 +20,15 @@
 
 stdenv.mkDerivation rec {
   pname = "g4music";
-  version = "2.0";
+  version = "2.1";
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";
     owner = "neithern";
     repo = pname;
     rev = "v${version}";
-    # rev = "669d048c314a4f86e9072dc6cd95d644a122f5d6";
-    hash = "sha256-94rPCfzz6RsjKfI6vR+P6d1ZOrHM+uQde8RvYxejWnw=";
+    hash = "sha256-SvmB29OrdEwPYJu5f/4w7fWCErV9lrgO286xbVn10ZE=";
   };
-
-  # patches = [ ./data-meson-build.patch ];
 
   nativeBuildInputs = [
     vala
