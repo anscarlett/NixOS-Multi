@@ -39,7 +39,7 @@ nixpkgs.lib.nixosSystem {
         programs.command-not-found.enable = false;
 
         time.timeZone = "Asia/Shanghai";
-        system.stateVersion = "22.05";
+        system.stateVersion = "23.11";
       }
 
       home-manager.nixosModules.home-manager

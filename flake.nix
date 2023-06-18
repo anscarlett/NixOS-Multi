@@ -49,18 +49,11 @@
     templates.url = "github:NixOS/templates";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # dream2nix.url = "github:nix-community/dream2nix";
-    # dream2nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    # nix-npm-buildpackage.url = "github:serokell/nix-npm-buildpackage";
-    # nix-npm-buildpackage.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
-    # nixpkgs-stable,
     nixos-wsl,
     home-manager,
     flake-parts,
@@ -70,7 +63,7 @@
       # inputs.nur.overlay
       self.overlays.default
       # (final: prev: {
-      #   stable = nixpkgs-stable.legacyPackages.${prev.system};
+      #   stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
       # })
     ];
 
@@ -112,7 +105,6 @@
             ];
           };
 
-          # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
           svp = lib.mkHost {
             username = "zendo";
             hostname = "svp";
@@ -177,7 +169,8 @@
           };
         };
 
-        # nix run github:serokell/deploy-rs -- -s .
+        # deploy -s .#svp
+        # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
         deploy = {
           sudo = "doas -u";
           autoRollback = false;

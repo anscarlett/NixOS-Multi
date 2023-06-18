@@ -26,7 +26,7 @@ inputs.home-manager.lib.homeManagerConfiguration {
       {
         home.username = "${username}";
         home.homeDirectory = "/home/${username}";
-        home.stateVersion = "22.05";
+        home.stateVersion = "23.11";
       }
     ]
     ++ extraModules;
