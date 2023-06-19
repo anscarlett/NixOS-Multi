@@ -8,6 +8,7 @@
     # nightpdf
     # azcomicv
     # moonfm
+    gitfiend
 
     foot
     kitty
