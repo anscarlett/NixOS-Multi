@@ -3,6 +3,22 @@
   username,
   ...
 }: {
+  home-manager.users.${username} = {
+    home.packages = with pkgs; [
+      wslu
+      wsl-open
+      # GUI
+      kitty
+      emacs
+      goodvibes
+    ];
+
+    home.shellAliases = {
+      wsl-proxy = "export {http,https,ftp}_proxy=192.168.2.118:7890 ; \\
+        export {HTTP,HTTPS,FTP}_PROXY=192.168.2.118:7890";
+    };
+  };
+
   wsl = {
     enable = true;
     defaultUser = "${username}";
@@ -20,14 +36,8 @@
     binutils
     tree
     file
-    parted
-    gptfdisk
     wget
     nix-bash-completions
-
-    kitty
-    emacs
-    goodvibes
   ];
 
   programs.gnupg.agent = {
@@ -43,22 +53,4 @@
   documentation.enable = false;
   time.timeZone = "Asia/Shanghai";
   system.stateVersion = "23.11";
-
-  #######################################################################
-  ##  Home Manager
-  #######################################################################
-  home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      wslu
-      wsl-open
-      whatip
-      dippi
-      alacritty
-    ];
-
-    home.shellAliases = {
-      wsl-proxy = "export {http,https,ftp}_proxy=192.168.2.118:7890 ; \\
-        export {HTTP,HTTPS,FTP}_PROXY=192.168.2.118:7890";
-    };
-  };
 }
