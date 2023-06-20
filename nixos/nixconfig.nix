@@ -11,7 +11,7 @@
         n.flake = inputs.nixpkgs;
       };
 
-    # compatible for old nix
+    # Backwards compatibility for older nix
     # echo $NIX_PATH | tr ":" "\n"
     nixPath =
       lib.mapAttrsToList (name: path: "${name}=${path}") inputs

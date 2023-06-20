@@ -25,10 +25,7 @@
     wget
     nix-bash-completions
 
-    # Gui
-    # foot
     kitty
-    # alacritty
     emacs
     goodvibes
   ];
@@ -54,6 +51,9 @@
     home.packages = with pkgs; [
       wslu
       wsl-open
+      whatip
+      dippi
+      alacritty
     ];
 
     home.shellAliases = {
