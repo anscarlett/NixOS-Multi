@@ -9,8 +9,8 @@
       wsl-open
       # GUI
       kitty
-      emacs
       goodvibes
+      # emacs29-pgtk
     ];
 
     home.shellAliases = {
