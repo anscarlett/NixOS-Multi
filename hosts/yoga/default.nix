@@ -30,9 +30,9 @@
   # boot.kernelParams = ["quite"];
 
   # https://fedoraproject.org/wiki/Changes/IncreaseVmMaxMapCount
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 2147483642;
-  };
+  # boot.kernel.sysctl = {
+  #   "vm.max_map_count" = 2147483642;  # default: 1048576
+  # };
 
   # boot.plymouth = {
   #   theme = "double";
