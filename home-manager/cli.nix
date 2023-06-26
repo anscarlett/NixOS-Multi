@@ -77,6 +77,7 @@
     powertop
     bottom # btm
     psmisc # pstree
+    procs
     ikill
     gdu
     duf
