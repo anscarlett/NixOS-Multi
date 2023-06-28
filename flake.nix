@@ -54,8 +54,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixos-wsl,
-    home-manager,
     flake-parts,
     ...
   }: let
@@ -67,11 +65,11 @@
       # })
     ];
 
-    lib = nixpkgs.lib.extend (final: prev:
-      import ./lib {
-        inherit inputs;
-        lib = final;
-      });
+    # lib = nixpkgs.lib.extend (final: prev:
+    #   import ./lib {
+    #     inherit inputs;
+    #     lib = final;
+    #   });
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
       flake = {
@@ -79,78 +77,9 @@
 
         nixosModules = import ./nixos;
 
-        nixosConfigurations = {
-          # nixos-rebuild --use-remote-sudo --flake .#yoga
-          yoga = lib.mkHost {
-            username = "iab";
-            hostname = "yoga";
-            inherit overlays;
-            extraModules = [
-              ./hosts/yoga
-              ./nixos/desktop/gnome.nix
+        nixosConfigurations = import ./hosts {inherit inputs overlays;};
 
-              ({
-                inpouts,
-                config,
-                pkgs,
-                ...
-              }: {
-                # disabledModules = ["config/swap.nix"];
-                # imports = [
-                #   "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
-                # ];
-                # environment.systemPackages = with pkgs; [
-                #   # nixpkgs-pr.legacyPackages.${system}.gnomeExtensions.pano
-                # ];
-              })
-            ];
-          };
-
-          svp = lib.mkHost {
-            username = "zendo";
-            hostname = "svp";
-            # nixpkgs = inputs.nixpkgs-stable;
-            inherit overlays;
-            extraModules = [
-              ./hosts/svp
-              ./nixos/desktop/gnome.nix
-            ];
-          };
-
-          # nixos-rebuild build-vm --flake .#vmtest
-          vmtest = lib.mkHost {
-            username = "test";
-            hostname = "vmtest";
-            inherit overlays;
-            extraModules = [
-              ./hosts/vmtest
-            ];
-          };
-
-          # nix build .#livecd-iso
-          livecd = lib.mkHost {
-            username = "livecd";
-            hostname = "livecd";
-            inherit overlays;
-            extraModules = [
-              ./hosts/livecd
-            ];
-          };
-
-          # nix build .#wsl-installer
-          wsl = lib.mkHost {
-            username = "iab";
-            hostname = "wsl";
-            inherit overlays;
-            defaultModules = false;
-            extraModules = [
-              ./hosts/wsl
-              ./nixos/fonts.nix
-              ./nixos/nixconfig.nix
-              nixos-wsl.nixosModules.wsl
-            ];
-          };
-        };
+        homeConfigurations = import ./home-manager/hm-standalone.nix {inherit inputs overlays;};
 
         # deploy -s .#svp
         # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
@@ -170,33 +99,9 @@
           };
         };
 
-        #######################################################################
-        ##  Home-Manager Standalone
-        #######################################################################
-        homeConfigurations = {
-          # non-nixos
-          iab = lib.mkHome {
-            username = "iab";
-            inherit overlays;
-            extraModules = [
-              ./nixos/desktop/hm-dconf.nix
-            ];
-          };
-          # other user at nixos
-          guest = lib.mkHome {
-            username = "guest";
-            inherit overlays;
-            extraModules = [
-              ./home-manager/gui.nix
-              ./home-manager/bash.nix
-              ./home-manager/editor.nix
-              ./home-manager/browsers.nix
-            ];
-          };
-        };
-
         # for easily repl
-        inherit lib inputs;
+        inherit inputs;
+        lib = inputs.nixpkgs.lib;
         n = inputs.nixpkgs.legacyPackages.x86_64-linux;
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
 

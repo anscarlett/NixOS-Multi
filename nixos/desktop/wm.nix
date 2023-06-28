@@ -3,10 +3,6 @@
   username,
   ...
 }: {
-  imports = [
-    # ./modules/gtklock.nix
-  ];
-
   mods.fcitx.enable = true;
 
   services = {

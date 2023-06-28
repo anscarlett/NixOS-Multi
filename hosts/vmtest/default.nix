@@ -8,7 +8,7 @@
   imports = [
     "${inputs.nixpkgs}/nixos/modules/virtualisation/qemu-vm.nix"
     # "${inputs.pkgsReview}/nixos/modules/services/desktops/pipewire/pipewire.nix"
-    ../../nixos/desktop/gnome.nix
+    inputs.self.nixosModules.gnome
   ];
 
   disabledModules = [

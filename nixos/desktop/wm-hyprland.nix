@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./wm.nix
     inputs.hyprland.nixosModules.default
   ];
 
