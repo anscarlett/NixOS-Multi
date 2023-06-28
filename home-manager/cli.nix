@@ -18,6 +18,7 @@
     nix-tree
     nix-prefetch
     deploy-rs
+    # colmena
     # nix-update
     # nix-template
     nixpkgs-review
