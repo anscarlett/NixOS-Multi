@@ -64,12 +64,6 @@
       #   stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
       # })
     ];
-
-    # lib = nixpkgs.lib.extend (final: prev:
-    #   import ./lib {
-    #     inherit inputs;
-    #     lib = final;
-    #   });
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
       flake = {
@@ -101,7 +95,7 @@
 
         # for easily repl
         inherit inputs;
-        lib = inputs.nixpkgs.lib;
+        inherit (inputs.nixpkgs) lib;
         n = inputs.nixpkgs.legacyPackages.x86_64-linux;
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
 

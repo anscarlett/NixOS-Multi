@@ -22,7 +22,7 @@
     dotDir = ".config/zsh";
     enableCompletion = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     plugins = [
       # {
       #   name = "zsh-nix-shell";
