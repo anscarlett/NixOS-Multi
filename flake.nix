@@ -75,23 +75,7 @@
 
         homeConfigurations = import ./home-manager/hm-standalone.nix {inherit inputs overlays;};
 
-        # deploy -s .#svp
-        # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
-        deploy = {
-          sudo = "doas -u";
-          autoRollback = false;
-          magicRollback = false;
-          nodes = {
-            "svp" = {
-              hostname = "192.168.2.198";
-              profiles.system = {
-                user = "root";
-                sshUser = "zendo";
-                path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."svp";
-              };
-            };
-          };
-        };
+        deploy = import ./hosts/deployment.nix {inherit inputs;};
 
         # for easily repl
         inherit inputs;
