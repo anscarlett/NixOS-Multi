@@ -19,13 +19,11 @@
 
         deploy = import ./hosts/deployment.nix {inherit inputs;};
 
-        # for easily repl
+        # for easily repl & build
         inherit inputs;
         inherit (inputs.nixpkgs) lib;
         n = inputs.nixpkgs.legacyPackages.x86_64-linux;
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
-
-        # for easily build
         livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
       };

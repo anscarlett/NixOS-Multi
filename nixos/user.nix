@@ -5,13 +5,14 @@
   ...
 }: {
   users = {
+    # Forbid create new user by `useradd`
     mutableUsers = false;
     # defaultUserShell = pkgs.zsh;
   };
 
   users.users.${username} = {
     isNormalUser = true;
-    # mkpasswd
+    # `mkpasswd`
     hashedPassword = "$y$j9T$aNhZV153pAbvGMeFqjGmn.$iH18jxovF5Huof8U4NNPK/EVWHH75o5x8lRzq8IHZO3";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLrQVhdLD9o1Iq17LKFNQ21PaHIAylizOFkvh74FUrz linzway@qq.com"
@@ -33,7 +34,7 @@
 
   users.users.guest = {
     isNormalUser = true;
-    # passwd
+    # `passwd`
     password = "guest";
     extraGroups =
       [
@@ -50,6 +51,7 @@
       ++ lib.optionals config.programs.adb.enable ["adbusers"];
   };
 
+  # sudo or doas
   mods.doas.enable = true;
 
   # security.sudo.wheelNeedsPassword = false;

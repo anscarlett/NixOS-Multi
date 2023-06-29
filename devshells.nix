@@ -9,6 +9,7 @@
       ninja
       pkg-config
       boost
+      home-manager
 
       # qt5.qtbase
       # qt5.qttools

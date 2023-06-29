@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   programs.clash-verge = {
     enable = true;
     tunMode = true;
@@ -15,7 +12,11 @@
   };
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      # Forbid root login through SSH.
+      permitRootLogin = "no";
+    };
     # v2raya.enable = true;
 
     # resolved.enable = true;
