@@ -1,56 +1,6 @@
 {
   description = "NIX SAVE THE WORLD";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
-    # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
-    # nixpkgs.url = "git+file:///home/iab/dev/nixpkgs/?ref=pr-232373";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    plasma-manager = {
-      url = "github:pjones/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # agenix.url = github:ryantm/agenix;
-    # sops-nix.url = github:Mic92/sops-nix;
-    # nur.url = "github:nix-community/NUR";
-    templates.url = "github:NixOS/templates";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-  };
-
   outputs = inputs @ {
     self,
     nixpkgs,
@@ -121,6 +71,56 @@
         devShells = import ./devshells.nix {inherit pkgs;};
       };
     };
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
+    # nixpkgs.url = "github:NixOS/nixpkgs/pull/213619/merge";
+    # nixpkgs.url = "git+file:///home/iab/dev/nixpkgs/?ref=pr-232373";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # agenix.url = github:ryantm/agenix;
+    # sops-nix.url = github:Mic92/sops-nix;
+    # nur.url = "github:nix-community/NUR";
+    templates.url = "github:NixOS/templates";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  };
 
   # auto-fetch deps when `nix run/shell/develop`
   nixConfig = {
