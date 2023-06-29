@@ -23,8 +23,9 @@ sudo sed -i '$aexport XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG
 
   nix = {
     registry = {
-      n.flake = inputs.nixpkgs;
+      self.flake = inputs.self;
       nixpkgs.flake = inputs.nixpkgs;
+      n.flake = inputs.nixpkgs;
     };
     package = pkgs.nix; # need for nix.settings
     settings = {
