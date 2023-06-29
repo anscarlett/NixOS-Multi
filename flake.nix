@@ -6,24 +6,16 @@
     nixpkgs,
     flake-parts,
     ...
-  }: let
-    overlays = [
-      self.overlays.default
-      # inputs.nur.overlay
-      # (final: prev: {
-      #   stable = inputs.nixpkgs-stable.legacyPackages.${prev.system};
-      # })
-    ];
-  in
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       flake = {
-        overlays.default = import ./overlays;
-
         nixosModules = import ./nixos;
 
-        nixosConfigurations = import ./hosts {inherit inputs overlays;};
+        overlays = import ./overlays {inherit inputs;};
 
-        homeConfigurations = import ./home-manager/hm-standalone.nix {inherit inputs overlays;};
+        nixosConfigurations = import ./hosts {inherit inputs self;};
+
+        homeConfigurations = import ./home-manager/hm-standalone.nix {inherit inputs;};
 
         deploy = import ./hosts/deployment.nix {inherit inputs;};
 
@@ -49,7 +41,10 @@
         ...
       }: let
         pkgs = import nixpkgs {
-          inherit system overlays;
+          inherit system;
+          overlays = [
+            self.overlays.default
+          ];
           config = {
             allowUnfree = true;
             # allowBroken = true;

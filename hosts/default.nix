@@ -1,13 +1,12 @@
 {
   inputs,
-  overlays,
+  self,
 }: let
   mkHost = {
     hostname,
     username,
     nixpkgs ? inputs.nixpkgs,
     system ? "x86_64-linux",
-    overlays ? [],
     defaultModules ? true,
     extraModules ? [],
   }:
@@ -19,10 +18,14 @@
       modules =
         [
           {
-            nixpkgs.overlays = overlays;
-            nixpkgs.config.allowUnfree = true;
             networking.hostName = "${hostname}";
             services.xserver.displayManager.autoLogin.user = "${username}";
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [
+              self.overlays.default
+              # self.overlays.nur
+              # self.overlays.stable-packages
+            ];
           }
 
           inputs.disko.nixosModules.disko
@@ -36,7 +39,7 @@
           }
         ]
         ++ nixpkgs.lib.optionals defaultModules [
-          inputs.self.nixosModules.default
+          self.nixosModules.default
         ]
         ++ extraModules;
     };
@@ -45,10 +48,9 @@ in {
   yoga = mkHost {
     username = "iab";
     hostname = "yoga";
-    inherit overlays;
     extraModules = [
       ./yoga
-      inputs.self.nixosModules.gnome
+      self.nixosModules.gnome
       # inputs.self.nixosModules.sway
 
       ({
@@ -73,10 +75,9 @@ in {
     username = "zendo";
     hostname = "svp";
     # nixpkgs = inputs.nixpkgs-stable;
-    inherit overlays;
     extraModules = [
       ./svp
-      inputs.self.nixosModules.gnome
+      self.nixosModules.gnome
     ];
   };
 
@@ -84,7 +85,6 @@ in {
   vmtest = mkHost {
     username = "test";
     hostname = "vmtest";
-    inherit overlays;
     extraModules = [
       ./vmtest
     ];
@@ -94,7 +94,6 @@ in {
   livecd = mkHost {
     username = "livecd";
     hostname = "livecd";
-    inherit overlays;
     extraModules = [
       ./livecd
     ];
@@ -104,7 +103,6 @@ in {
   wsl = mkHost {
     username = "iab";
     hostname = "wsl";
-    inherit overlays;
     defaultModules = false;
     extraModules = [
       ./wsl

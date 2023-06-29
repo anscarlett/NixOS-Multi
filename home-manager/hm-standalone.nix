@@ -1,17 +1,17 @@
-{
-  inputs,
-  overlays,
-}: let
+{inputs}: let
   mkHome = {
     username,
     nixpkgs ? inputs.nixpkgs,
     system ? "x86_64-linux",
-    overlays ? [],
     extraModules ? [],
   }:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
-        inherit system overlays;
+        inherit system;
+        overlays = [
+          inputs.self.overlays.default
+          # inputs.self.overlays.nur
+        ];
         config.allowUnfree = true;
       };
 
@@ -39,7 +39,6 @@ in {
   # non-nixos
   iab = mkHome {
     username = "iab";
-    inherit overlays;
     extraModules = [
       ../nixos/desktop/hm-dconf.nix
     ];
@@ -48,7 +47,6 @@ in {
   # other user at nixos
   guest = mkHome {
     username = "guest";
-    inherit overlays;
     extraModules = [
       ./gui.nix
       ./bash.nix
