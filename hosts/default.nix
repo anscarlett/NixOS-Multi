@@ -90,7 +90,7 @@ in {
     ];
   };
 
-  # nix build .#livecd-iso
+  # nix build .#nixosConfigurations.livecd.config.system.build.isoImage
   livecd = mkHost {
     username = "livecd";
     hostname = "livecd";
@@ -100,7 +100,7 @@ in {
     ];
   };
 
-  # nix build .#wsl-installer
+  # nix build .#nixosConfigurations.wsl.config.system.build.installer
   wsl = mkHost {
     username = "iab";
     hostname = "wsl";
