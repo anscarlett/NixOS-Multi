@@ -21,11 +21,7 @@
             networking.hostName = "${hostname}";
             services.xserver.displayManager.autoLogin.user = "${username}";
             nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = [
-              self.overlays.default
-              # self.overlays.nur
-              # self.overlays.stable-packages
-            ];
+            nixpkgs.overlays = builtins.attrValues self.overlays;
           }
 
           inputs.disko.nixosModules.disko

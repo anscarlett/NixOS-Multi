@@ -1,15 +1,65 @@
 {inputs, ...}: {
+  # nur = inputs.nur.overlay;
+
+  # stable-packages = final: _prev: {
+  #   stable = import inputs.nixpkgs-stable {
+  #     system = final.system;
+  #     config.allowUnfree = true;
+  #   };
+  # };
+
+  modifications = _: prev: {
+    # fix .desktop missing
+    wl-color-picker =
+      prev.wl-color-picker.overrideAttrs
+      (oldAttrs: {
+        postFixup = ''
+          cp -r $out/usr/share $out/share '';
+      });
+
+    # xwayland env for inputMethod & native CSD
+    spotify =
+      prev.spotify.overrideAttrs
+      (oldAttrs: {
+        postFixup = ''
+          substituteInPlace $out/share/applications/spotify.desktop \
+            --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2"
+        '';
+      });
+
+    # spotify = prev.spotify.override {
+    #   deviceScaleFactor = 2.0;
+    # };
+
+    # wrapProgram $out/bin/telegram-desktop --set QT_QPA_PLATFORM xcb
+    logseq-wayland = prev.symlinkJoin {
+      name = "logseq";
+      paths = [prev.logseq];
+      nativeBuildInputs = [prev.makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/logseq \
+          --add-flags "--socket=wayland --enable-features=UseOzonePlatform --ozone-platform=wayland"
+      '';
+    };
+
+    # rust override
+    # shadowsocks-rust = prev.shadowsocks-rust.overrideAttrs (oldAttrs: rec {
+    #   version = "2022-06-27";
+    #   src = prev.fetchFromGitHub {
+    #     owner = "shadowsocks";
+    #     repo = "shadowsocks-rust";
+    #     rev = "a4955a198bdf6ab12e647b04180679dfef53fb0b";
+    #     sha256 = "sha256-sJKuGQH5PBOcFOpks8sUaAWJlfg7aCv6YS9DWaEF3K4=";
+    #   };
+    #   cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
+    #     inherit src;
+    #     outputHash = "sha256-YJ4Qva4keOk9aBPFwztkTpvS7uv7zl6TOHqYZzZEGAs=";
+    #   });
+    # });
+  };
+
   # This one brings our custom packages from the 'pkgs' directory
   # additions = final: _prev: import ../pkgs { pkgs = final; };
-
-  nur = inputs.nur.overlay;
-
-  stable-packages = final: _prev: {
-    stable = import inputs.nixpkgs-stable {
-      system = final.system;
-      config.allowUnfree = true;
-    };
-  };
 
   default = final: prev: {
     /*
@@ -81,67 +131,11 @@
 
     # flutter
 
-    ############# Override ###################
-    # fix .desktop missing
-    wl-color-picker =
-      prev.wl-color-picker.overrideAttrs
-      (oldAttrs: {
-        postFixup = ''
-          cp -r $out/usr/share $out/share '';
-      });
-
-    # spotify = prev.callPackage ./spotify {};
-
-    # xwayland env for inputMethod & native CSD
-    spotify =
-      prev.spotify.overrideAttrs
-      (oldAttrs: {
-        postFixup = ''
-          substituteInPlace $out/share/applications/spotify.desktop \
-            --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2"
-        '';
-      });
-
-    # spotify = prev.spotify.override {
-    #   deviceScaleFactor = 2.0;
-    # };
-
-    # wrapProgram $out/bin/telegram-desktop --set QT_QPA_PLATFORM xcb
-    logseq-wayland = prev.symlinkJoin {
-      name = "logseq";
-      paths = [prev.logseq];
-      nativeBuildInputs = [prev.makeWrapper];
-      postBuild = ''
-        wrapProgram $out/bin/logseq \
-          --add-flags "--socket=wayland --enable-features=UseOzonePlatform --ozone-platform=wayland"
-      '';
-    };
-
-    /*
-    # node override
-    nodePackages = nodePackages.extend (final: prev: { });
-
     # gnome extensions
-    gnomeExtensions =
-      prev.gnomeExtensions
-      // {
-        night-theme-switcher = prev.callPackage ./night-theme-switcher {};
-      };
-
-    # rust override
-    shadowsocks-rust = prev.shadowsocks-rust.overrideAttrs (oldAttrs: rec {
-    version = "2022-06-27";
-    src = prev.fetchFromGitHub {
-      owner = "shadowsocks";
-      repo = "shadowsocks-rust";
-      rev = "a4955a198bdf6ab12e647b04180679dfef53fb0b";
-      sha256 = "sha256-sJKuGQH5PBOcFOpks8sUaAWJlfg7aCv6YS9DWaEF3K4=";
-    };
-    cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
-      inherit src;
-      outputHash = "sha256-YJ4Qva4keOk9aBPFwztkTpvS7uv7zl6TOHqYZzZEGAs=";
-    });
-    });
-    */
+    # gnomeExtensions =
+    #   prev.gnomeExtensions
+    #   // {
+    #     night-theme-switcher = prev.callPackage ./night-theme-switcher {};
+    #   };
   };
 }

@@ -15,7 +15,7 @@
     openssh = {
       enable = true;
       # Forbid root login through SSH.
-      permitRootLogin = "no";
+      settings.PermitRootLogin = "no";
     };
     # v2raya.enable = true;
 

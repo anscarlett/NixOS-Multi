@@ -8,10 +8,7 @@
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [
-          inputs.self.overlays.default
-          # inputs.self.overlays.nur
-        ];
+        overlays = builtins.attrValues inputs.self.overlays;
         config.allowUnfree = true;
       };
 

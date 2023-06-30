@@ -40,9 +40,7 @@
       }: let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [
-            self.overlays.default
-          ];
+          overlays = builtins.attrValues self.overlays;
           config = {
             allowUnfree = true;
             # allowBroken = true;
