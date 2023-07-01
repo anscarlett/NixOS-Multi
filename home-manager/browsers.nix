@@ -6,15 +6,17 @@
     "--ignore-gpu-blocklist"
     "--enable-gpu-rasterization"
     "--enable-zero-copy"
-    "--gtk-version=4"
+    # https://bugs.chromium.org/p/chromium/issues/detail?id=1356014
+    "--disable-features=WaylandFractionalScaleV1"
+    # "--gtk-version=4" # broken
     "--enable-features=TouchpadOverscrollHistoryNavigation"
   ];
 in {
   home.packages = with pkgs; [
     # https://wiki.archlinux.org/title/Chromium
-    # (google-chrome.override {
-    #   commandLineArgs = chromeEnv;
-    # })
+    (google-chrome.override {
+      commandLineArgs = chromeEnv;
+    })
     # (vivaldi.override {
     #   proprietaryCodecs = true;
     #   enableWidevine = true; # drm

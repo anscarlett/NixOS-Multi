@@ -28,8 +28,6 @@
         wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
       };
 
-      debug = true;
-
       systems = ["x86_64-linux" "aarch64-linux"];
 
       perSystem = {

@@ -12,12 +12,12 @@
       ./bash.nix
       ./tmux.nix
       ./alias.nix
-      ./modules/polkit.nix
     ]
     ++ lib.optionals nixosConfig.services.xserver.enable [
       ./gui.nix
       ./editor.nix
       ./browsers.nix
+      ./modules/polkit.nix
     ];
 
   home.stateVersion = nixosConfig.system.stateVersion;
