@@ -19,7 +19,7 @@
   ];
 
   # amdvlk or opengl default
-  hardware.amdgpu.amdvlk = true;
+  # hardware.amdgpu.amdvlk = true;
 
   #######################################################################
   ## Kernel
