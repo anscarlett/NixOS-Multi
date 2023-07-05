@@ -185,6 +185,7 @@
       hlsearch = true;
       saveundo = true;
       scrollbar = true;
+      mkparents = true;
       diffgutter = true;
     };
   };

@@ -1,4 +1,4 @@
-{config, ...}: {
+{config, lib, ...}: {
   programs.clash-verge = {
     enable = true;
     tunMode = true;
@@ -15,7 +15,7 @@
     openssh = {
       enable = true;
       # Forbid root login through SSH.
-      settings.PermitRootLogin = "no";
+      settings.PermitRootLogin = lib.mkDefault "no";
     };
     # v2raya.enable = true;
 
