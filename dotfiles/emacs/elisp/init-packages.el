@@ -52,6 +52,11 @@
 ;; (use-package zenburn)
 ;; (use-package eclipse-theme)
 
+;; (use-package haki-theme
+;;   :config
+;;   (setq haki-region "#2e8b6d")
+;;   (load-theme 'haki t))
+
 (use-package all-the-icons)
 
 (use-package which-key
