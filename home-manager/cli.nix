@@ -79,6 +79,7 @@
     bottom # btm
     psmisc # pstree
     procs
+    erdtree
     ikill
     gdu
     duf

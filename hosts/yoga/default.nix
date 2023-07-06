@@ -19,13 +19,13 @@
   ];
 
   # amdvlk or opengl default
-  # hardware.amdgpu.amdvlk = true;
+  hardware.amdgpu.amdvlk = true;
 
   #######################################################################
   ## Kernel
   #######################################################################
   # latest or zen or xanmod_latest
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   # boot.kernelParams = ["quite"];
 

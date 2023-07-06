@@ -12,7 +12,6 @@
     rm-empty = "${pkgs.trash-cli}/bin/trash-empty";
     rm-restore = "${pkgs.trash-cli}/bin/trash-restore";
     free = "free -h";
-    tree = "${lib.getExe pkgs.erdtree}";
     bc = "${lib.getExe pkgs.libqalculate}";
     psp = "${lib.getExe pkgs.procs} --sortd UsageMem";
     ps-sort = ''ps -ewwo pid,%cpu,%mem,nice,pri,rtprio,args --sort=-pcpu,-pid | awk -v filter="$1" 'NR==1 || tolower($0) ~ tolower(filter)' | less -e --header=1'';
