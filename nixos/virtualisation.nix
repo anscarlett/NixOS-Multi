@@ -59,6 +59,12 @@ in {
       bridge-utils # brctl: network bridge
       # win-virtio # needs ?
       wl-clipboard # waydroid clipborad
+      # scrcpy # android
+      # distrobox
+      # bottles # wine manager
+      # gnome.gnome-boxes
+      # steam-run
+      # yuzu
       (appimage-run.override {
         extraPkgs = pkgs:
           with pkgs; [
@@ -66,12 +72,6 @@ in {
             # libsecret
           ];
       })
-      # scrcpy # android
-      # distrobox
-      # bottles # wine manager
-      # gnome.gnome-boxes
-      # steam-run
-      # yuzu
     ];
 
     virtualisation = {
@@ -126,7 +126,7 @@ in {
       #   ];
       # };
 
-      waydroid.enable = true;
+      # waydroid.enable = true;
     };
 
     # Cross compile

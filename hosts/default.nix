@@ -47,6 +47,7 @@ in {
     extraModules = [
       ./yoga
       self.nixosModules.gnome
+      # self.nixosModules.kde
       # inputs.self.nixosModules.sway
 
       ({
