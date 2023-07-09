@@ -12,26 +12,23 @@
   }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-
       specialArgs = {inherit inputs username;};
-
       modules =
         [
-          {
-            networking.hostName = "${hostname}";
-            services.xserver.displayManager.autoLogin.user = "${username}";
-            nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = builtins.attrValues self.overlays;
-          }
-
           inputs.disko.nixosModules.disko
-
           inputs.home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit hostname username inputs;};
-            home-manager.users.${username} = import ../home-manager/hm-module.nix;
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = builtins.attrValues self.overlays;
+            networking.hostName = "${hostname}";
+            services.xserver.displayManager.autoLogin.user = "${username}";
+
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+              users.${username} = import ../home-manager/hm-module.nix;
+            };
           }
         ]
         ++ nixpkgs.lib.optionals defaultModules [
