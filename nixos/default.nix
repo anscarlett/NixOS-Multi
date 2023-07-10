@@ -5,8 +5,8 @@
       ./user.nix
       ./sound.nix
       ./fonts.nix
-      ./networking.nix
       ./nixconfig.nix
+      ./networking.nix
       ./virtualisation.nix
       ./modules/doas.nix
       ./modules/fcitx.nix
