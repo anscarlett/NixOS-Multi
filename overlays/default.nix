@@ -104,7 +104,6 @@
     # Go
 
     # Gtk
-    g4music = prev.callPackage ./g4music {};
 
     # Qt
 

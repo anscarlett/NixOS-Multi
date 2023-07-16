@@ -8,7 +8,7 @@
     # nightpdf
     # azcomicv
     # moonfm
-    gitfiend
+    # gitfiend
 
     foot
     kitty
@@ -156,7 +156,6 @@
     #     name = "Spotify";
     #     genericName = "Music Player";
     #     icon = "spotify-client";
-    #     # env xwayland
     #     exec = "env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2";
     #     terminal = false;
     #     categories = ["Application" "Music"];
