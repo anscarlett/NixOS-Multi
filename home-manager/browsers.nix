@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   chromeEnv = [
     "--enable-features=VaapiVideoDecodeLinuxGL"
     "--gtk-version=4" # broken! 主题改经典 fix
@@ -19,7 +16,7 @@ in {
     #   enableWidevine = true; # drm
     # })
     # (opera.override { proprietaryCodecs = true; })
-    # microsoft-edge-beta
+    # microsoft-edge
   ];
 
   programs.chromium = {
@@ -44,30 +41,22 @@ in {
     # package = pkgs.firefox-bin;
     profiles.default = {
       settings = {
+        "browser.tabs.closeTabByDblclick" = true;           # 双击关闭标签
+        "browser.tabs.selectOwnerOnClose" = false;          # 关闭标签后选附近标签而不是原始
+        "browser.tabs.closeWindowWithLastTab" = false;      # 关闭最后一个标签不退出界面
+        "browser.tabs.firefox-view" = false;                # disable Firefox View button on tab
+        "browser.toolbars.bookmarks.visibility" = "always"; # Always show bookmarks
         "browser.aboutwelcome.enabled" = false;
-        # 双击关闭标签
-        "browser.tabs.closeTabByDblclick" = true;
-        # 关闭标签后选附近标签而不是原始
-        "browser.tabs.selectOwnerOnClose" = false;
-        # 关闭最后一个标签不退出界面
-        "browser.tabs.closeWindowWithLastTab" = false;
-        # disable Firefox View button on tab
-        "browser.tabs.firefox-view" = false;
-        # DRM
-        "media.eme.enabled" = true;
-        # Always show bookmarks
-        "browser.toolbars.bookmarks.visibility" = "always";
-        # Dont show warning when accessing about:config
-        "browser.aboutConfig.showWarning" = false;
-        # disable annoyinh Ctrl+Q shortcut
-        "browser.quitShortcut.disabled" = true;
-        # 开启极速渲染
-        "gfx.webrender.all" = true;
-        # enable hw video acceleration, if supported
-        "media.ffmpeg.vaapi.enabled" = true;
+        "browser.aboutConfig.showWarning" = false;          # Dont show warning when accessing about:config
+        "browser.quitShortcut.disabled" = true;             # disable annoyinh Ctrl+Q shortcut
+        "media.eme.enabled" = true;                         # DRM
+
+        "gfx.webrender.all" = true; # 开启极速渲染
+        "media.ffmpeg.vaapi.enabled" = true; # enable hw video acceleration, if supported
         # https://pandasauce.org/get-fonts-done/
         # "gfx.text.subpixel-position.force-enabled" = true;
         # "gfx.webrender.quality.force-subpixel-aa-where-possible" = true;
+
         # Enable some helpful features in urlbar
         "browser.urlbar.suggest.calculator" = true;
         "browser.urlbar.unitConversion.enabled" = true;
