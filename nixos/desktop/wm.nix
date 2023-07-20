@@ -49,7 +49,7 @@
     GTK_USE_PORTAL = "1";
     # GDK_BACKEND = "wayland";
     # WLR_DRM_NO_ATOMIC = "1";
-    # WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
 
   xdg.portal = {
@@ -139,16 +139,6 @@
       platformTheme = "gnome";
       style.package = pkgs.adwaita-qt;
       style.name = "adwaita";
-    };
-
-    # Fix tiny cursor
-    home.pointerCursor = {
-      name = "Vanilla-DMZ-AA";
-      package = pkgs.vanilla-dmz;
-      size = 128;
-      # name = "Bibata-Modern-Classic";
-      # package = pkgs.bibata-cursors;
-      # size = 128;
     };
   };
 }

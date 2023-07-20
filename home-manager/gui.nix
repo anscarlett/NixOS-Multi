@@ -151,6 +151,16 @@
 
     # mimeApps.enable = true;
 
+    # Cursor Theme
+    # home.pointerCursor = {
+    #   name = "Vanilla-DMZ-AA";
+    #   package = pkgs.vanilla-dmz;
+    #   size = 128;
+    #   # name = "Bibata-Modern-Classic";
+    #   # package = pkgs.bibata-cursors;
+    #   # size = 128;
+    # };
+
     # desktopEntries = {
     #   spotify = {
     #     name = "Spotify";
