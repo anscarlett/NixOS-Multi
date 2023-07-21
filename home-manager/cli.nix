@@ -48,7 +48,6 @@
     # FileManager
     f2
     fd
-    ripgrep
     sd
     choose
     sops
@@ -70,9 +69,7 @@
     magic-wormhole-rs
 
     # System Monitor
-    btop
     ctop # containers monitor
-    htop
     iotop-c
     dstat
     powertop
@@ -134,6 +131,18 @@
   };
 
   programs.bat = {
+    enable = true;
+  };
+
+  programs.ripgrep = {
+    enable = true;
+  };
+
+  programs.btop = {
+    enable = true;
+  };
+
+  programs.htop = {
     enable = true;
   };
 

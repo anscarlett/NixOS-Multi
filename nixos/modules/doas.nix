@@ -14,16 +14,19 @@ in {
 
   config = lib.mkIf cfg.enable {
     security.sudo.enable = false;
-    security.doas.enable = true;
 
-    # security.doas.wheelNeedsPassword = false;
-    security.doas.extraRules = [
-      {
-        users = ["${username}"];
-        noPass = true;
-        keepEnv = true;
-      }
-    ];
+    security.doas = {
+      enable = true;
+      # sudoShim.enable = true;
+      # wheelNeedsPassword = false;
+      extraRules = [
+        {
+          users = ["${username}"];
+          noPass = true;
+          keepEnv = true;
+        }
+      ];
+    };
 
     environment.shellAliases = {
       sudo = "doas";

@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
@@ -9,6 +13,9 @@
   #######################################################################
   ## Bootloader
   #######################################################################
+  # latest / zen / lqx / xanmod_latest
+  # boot.kernelPackages = pkgs.linuxPackages;
+
   # boot.loader = {
   #   efi.canTouchEfiVariables = true;
   #   efi.efiSysMountPoint = "/boot/efi"; # default /boot

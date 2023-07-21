@@ -10,10 +10,8 @@
       # for X11
       enable = true;
       xkbOptions = "ctrl:swapcaps";
-      # use greetd
-      displayManager.lightdm.enable = false;
+      displayManager.lightdm.enable = false; # greetd instaed
     };
-    greetd.enable = true; # displayManager
 
     gvfs.enable = true; # (webkitgtk)
     upower.enable = true;
@@ -42,7 +40,7 @@
   programs.xwayland.enable = true;
 
   environment.pathsToLink = [
-    "/share/fcitx5" # for fxitx skins
+    "/share/fcitx5" # for fxitx theme
   ];
 
   environment.sessionVariables = {
@@ -137,8 +135,8 @@
     qt = {
       enable = true;
       platformTheme = "gnome";
-      style.package = pkgs.adwaita-qt;
       style.name = "adwaita";
+      style.package = pkgs.adwaita-qt;
     };
   };
 }

@@ -4,12 +4,16 @@
   username,
   ...
 }: {
-  services.greetd.settings = {
-    default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd sway";
-    # Autologin
-    initial_session = {
-      command = "sway";
-      user = "${username}";
+  # DisplayManager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd sway";
+      # Autologin
+      initial_session = {
+        command = "sway";
+        user = "${username}";
+      };
     };
   };
 
