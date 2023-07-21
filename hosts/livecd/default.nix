@@ -9,7 +9,7 @@
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-base.nix"
-    ../../nixos/desktop/gnome.nix
+    inputs.self.nixosModules.gnome
   ];
 
   mods.virt.enable = false;
@@ -18,6 +18,7 @@
   ];
 
   boot = {
+    # kernelPackages = pkgs.linuxPackages; # lts
     # kernelParams = ["quite"];
     supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];
     initrd.systemd.enable = false;
@@ -28,8 +29,8 @@
   };
 
   # Clipboard shared for NixOS@Guest
-  services.qemuGuest.enable = true;
-  services.spice-vdagentd.enable = true;
+  # services.qemuGuest.enable = true;
+  # services.spice-vdagentd.enable = true;
 
   # services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
 
