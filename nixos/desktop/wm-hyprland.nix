@@ -1,14 +1,9 @@
 {
   pkgs,
   lib,
-  inputs,
   username,
   ...
 }: {
-  imports = [
-    inputs.hyprland.nixosModules.default
-  ];
-
   services.greetd.settings = {
     default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd Hyprland";
     # Autologin
@@ -18,11 +13,7 @@
     };
   };
 
-  # programs.hyprland.enable = true;
-
   home-manager.users.${username} = {
-    imports = [inputs.hyprland.homeManagerModules.default];
-
     wayland.windowManager.hyprland = {
       enable = true;
       extraConfig = ''

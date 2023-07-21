@@ -45,7 +45,8 @@ in {
       ./yoga
       self.nixosModules.gnome
       # self.nixosModules.kde
-      # inputs.self.nixosModules.sway
+      # self.nixosModules.sway
+      # self.nixosModules.hyprland
 
       ({
         inpouts,
