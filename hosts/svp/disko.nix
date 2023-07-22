@@ -18,7 +18,7 @@
           };
         };
         root = {
-          # size = "100%";
+          size = "100%";
           name = "root";
           content = {
             type = "btrfs";

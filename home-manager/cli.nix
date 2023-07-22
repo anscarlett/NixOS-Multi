@@ -122,81 +122,80 @@
     # nyancat
   ];
 
-  manual.manpages.enable = false;
+  programs = {
+    exa = {
+      enable = true;
+      # ll, la, lla, lt ...
+      enableAliases = true;
+    };
 
-  programs.exa = {
-    enable = true;
-    # ll, la, lla, lt ...
-    enableAliases = true;
-  };
+    bat = {
+      enable = true;
+    };
 
-  programs.bat = {
-    enable = true;
-  };
+    ripgrep = {
+      enable = true;
+    };
 
-  programs.ripgrep = {
-    enable = true;
-  };
+    btop = {
+      enable = true;
+    };
 
-  programs.btop = {
-    enable = true;
-  };
+    htop = {
+      enable = true;
+    };
 
-  programs.htop = {
-    enable = true;
-  };
+    aria2 = {
+      enable = true;
+    };
 
-  programs.aria2 = {
-    enable = true;
-  };
+    tealdeer = {
+      enable = true;
+    };
 
-  programs.tealdeer = {
-    enable = true;
-  };
+    # z: autojump directory
+    zoxide = {
+      enable = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableZshIntegration = config.programs.zsh.enable;
+    };
 
-  # z: autojump directory
-  programs.zoxide = {
-    enable = true;
-    enableBashIntegration = config.programs.bash.enable;
-    enableZshIntegration = config.programs.zsh.enable;
-  };
+    fzf = {
+      enable = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableZshIntegration = config.programs.zsh.enable;
+    };
 
-  programs.fzf = {
-    enable = true;
-    enableBashIntegration = config.programs.bash.enable;
-    enableZshIntegration = config.programs.zsh.enable;
-  };
+    skim = {
+      enable = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableZshIntegration = config.programs.zsh.enable;
+    };
 
-  programs.skim = {
-    enable = true;
-    enableBashIntegration = config.programs.bash.enable;
-    enableZshIntegration = config.programs.zsh.enable;
-  };
+    nix-index = {
+      enable = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableZshIntegration = config.programs.zsh.enable;
+    };
 
-  programs.nix-index = {
-    enable = true;
-    enableBashIntegration = config.programs.bash.enable;
-    enableZshIntegration = config.programs.zsh.enable;
-  };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
-  #######################################################################
-  ##  CLI EDITOR
-  #######################################################################
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
-  programs.micro = {
-    enable = true;
-    settings = {
-      autosu = true;
-      softwrap = true;
-      hlsearch = true;
-      saveundo = true;
-      scrollbar = true;
-      mkparents = true;
-      diffgutter = true;
+    micro = {
+      enable = true;
+      settings = {
+        autosu = true;
+        softwrap = true;
+        hlsearch = true;
+        saveundo = true;
+        scrollbar = true;
+        mkparents = true;
+        diffgutter = true;
+      };
     };
   };
+
+  manual.manpages.enable = false;
 }

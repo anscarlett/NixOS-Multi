@@ -11,9 +11,8 @@ swapon /dev/nvme0n1p4
 mkfs.btrfs /dev/nvme0n1p5
 mkdir /mnt/efi
 
-nix run disko -- -m disko disko.nix --arg disks '[ "/dev/sda" ]'
+nix run github:nix-community/disko -- -m disko disko.nix --arg disks '[ "/dev/sda" ]'
 nixos-generate-config --no-filesystems --root /mnt
-
 nix run github:numtide/nixos-anywhere -- --flake .#svp root@192.168.2.198
 
 nixos-generate-config --root /mnt
@@ -25,8 +24,6 @@ nixos-install --no-root-passwd --flake .#host
 [Config Example](https://github.com/thiagokokada/nix-configs)
 
 [More Example](https://github.com/foo-dogsquared/nixos-config)
-
-[Plus Ultra](https://github.com/jakehamilton/config)
 
 # Nix Commands
 
