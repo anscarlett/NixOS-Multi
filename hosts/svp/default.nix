@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./disko.nix
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -41,6 +40,14 @@
     };
   };
 
+  #######################################################################
+  ## FileSystem
+  #######################################################################
+  disko.devices.disk = import ./disko.nix;
+
+  # btrfs
+  services.btrfs.autoScrub.enable = true;
+
   # Swapfile
   swapDevices = [
     {
@@ -48,10 +55,4 @@
       size = 1024 * 8;
     }
   ];
-
-  #######################################################################
-  ## FileSystem
-  #######################################################################
-  _module.args.disks = ["/dev/sda"];
-  services.btrfs.autoScrub.enable = true;
 }

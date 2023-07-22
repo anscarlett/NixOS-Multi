@@ -14,6 +14,8 @@ mkdir /mnt/efi
 nix run disko -- -m disko disko.nix --arg disks '[ "/dev/sda" ]'
 nixos-generate-config --no-filesystems --root /mnt
 
+nix run github:numtide/nixos-anywhere -- --flake .#svp root@192.168.2.198
+
 nixos-generate-config --root /mnt
 nixos-install --no-root-passwd --flake .#host
 --option substituters "https://cache.nixos.org"
