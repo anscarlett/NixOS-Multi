@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./disko.nix
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -43,7 +44,7 @@
   #######################################################################
   ## FileSystem
   #######################################################################
-  disko.devices.disk = import ./disko.nix;
+  _module.args.disks = [ "/dev/sda" ];
 
   # btrfs
   services.btrfs.autoScrub.enable = true;

@@ -76,6 +76,16 @@ in {
     ];
   };
 
+  # remote machine test @ qemu
+  rmt = mkHost {
+    username = "aaa";
+    hostname = "rmt";
+    extraModules = [
+      ./rmt
+      self.nixosModules.gnome
+    ];
+  };
+
   # nixos-rebuild build-vm --flake .#vmtest
   vmtest = mkHost {
     username = "test";

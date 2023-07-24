@@ -1,27 +1,36 @@
 {
   disko.devices = {
     disk = {
-      sda = {
+      vda = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/vda";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              priority = 1;
-              name = "ESP";
-              start = "1M";
-              end = "500MiB";
+              label = "ESP";
               type = "EF00";
+              priority = 1;
+              size = "512M";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/efi";
               };
             };
+            swap = {
+              label = "swap";
+              type = "8200";
+              size = "4G";
+              content = {
+                type = "swap";
+                # randomEncryption = true;
+                # resumeDevice = true;  # resume from hiberation from this device
+              };
+            };
             root = {
+              label = "root";
               size = "100%";
-              name = "root";
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"]; # Override existing partition

@@ -11,7 +11,7 @@ swapon /dev/nvme0n1p4
 mkfs.btrfs /dev/nvme0n1p5
 mkdir /mnt/efi
 
-nix run github:nix-community/disko -- -m disko disko.nix --arg disks '[ "/dev/sda" ]'
+nix run github:nix-community/disko -- -m disko hosts/disko.nix --arg disks '[ "/dev/sda" ]'
 nixos-generate-config --no-filesystems --root /mnt
 nix run github:numtide/nixos-anywhere -- --flake .#svp root@192.168.2.198
 
