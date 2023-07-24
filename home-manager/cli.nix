@@ -17,7 +17,6 @@
     nix-top
     nix-tree
     nix-prefetch
-    deploy-rs
     # colmena
     # nix-update
     # nix-template
@@ -63,8 +62,6 @@
     ffmpegthumbnailer
     trash-cli
     eget
-    zssh # SSH and Telnet client
-    termscp
     croc
     magic-wormhole-rs
 

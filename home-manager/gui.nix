@@ -9,10 +9,11 @@
     # azcomicv
     # moonfm
     # gitfiend
+    deploy-rs.deploy-rs
 
-    foot
     kitty
-    alacritty
+    # foot
+    # alacritty
 
     # nheko
     # fractal-next
@@ -55,7 +56,6 @@
     # wl-color-picker
 
     warp
-    whatip
     remmina # (webkitgtk)
     gnome-decoder
     # motrix
