@@ -8,19 +8,22 @@
     ./hardware-configuration.nix
   ];
 
+  # disko
   _module.args.disks = ["/dev/vda"];
 
+  # systemd-boot
   boot.loader = {
     efi.canTouchEfiVariables = true;
     efi.efiSysMountPoint = "/efi";
     systemd-boot.enable = true;
   };
 
-  # latest / zen / lqx / xanmod_latest
+  # kernel: latest / zen / lqx / xanmod_latest
   # boot.kernelPackages = pkgs.linuxPackages;
 
+  # ssh
   services.openssh = {
-    settings.PermitRootLogin = true;
+    settings.PermitRootLogin = "yes";
   };
 
   # Clipboard shared for NixOS@Guest

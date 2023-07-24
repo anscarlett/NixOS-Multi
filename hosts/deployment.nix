@@ -14,5 +14,14 @@
         path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos inputs.self.nixosConfigurations."svp";
       };
     };
+
+    "rmt" = {
+      hostname = "192.168.122.85";
+      profiles.system = {
+        user = "root";
+        sshUser = "aaa";
+        path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos inputs.self.nixosConfigurations."rmt";
+      };
+    };
   };
 }
