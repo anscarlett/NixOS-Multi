@@ -11,9 +11,7 @@
     nixpkgs-fmt
     # lorri
     # cachix
-    nurl
-    comma # ,
-    nix-init
+    # comma # ,
     nix-top
     nix-tree
     nix-prefetch

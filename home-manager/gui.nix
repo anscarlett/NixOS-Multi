@@ -9,11 +9,13 @@
     # azcomicv
     # moonfm
     # gitfiend
-    deploy-rs.deploy-rs
 
     kitty
     # foot
     # alacritty
+    nurl
+    nix-init
+    deploy-rs.deploy-rs
 
     # nheko
     # fractal-next

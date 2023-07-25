@@ -30,8 +30,7 @@
       enabled-extensions = [
         "app-hider@lynith.dev"
         "dash-to-dock@micxgx.gmail.com"
-        # "clipboard-history@alexsaveau.dev"
-        "gnome-clipboard@b00f.github.io"
+        "clipboard-history@alexsaveau.dev"
         "space-bar@luchrioh"
         # "gradienttopbar@pshow.org"
         "nightthemeswitcher@romainvigier.fr"

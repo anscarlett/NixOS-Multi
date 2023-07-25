@@ -18,16 +18,16 @@
                 mountpoint = "/efi";
               };
             };
-            swap = {
-              label = "swap";
-              type = "8200";
-              size = "4G";
-              content = {
-                type = "swap";
-                # randomEncryption = true;
-                # resumeDevice = true;  # resume from hiberation from this device
-              };
-            };
+            # swap = {
+            #   label = "swap";
+            #   type = "8200";
+            #   size = "4G";
+            #   content = {
+            #     type = "swap";
+            #     # randomEncryption = true;
+            #     # resumeDevice = true;  # resume from hiberation from this device
+            #   };
+            # };
             root = {
               label = "root";
               size = "100%";
