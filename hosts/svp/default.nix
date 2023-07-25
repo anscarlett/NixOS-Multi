@@ -44,7 +44,7 @@
   #######################################################################
   ## FileSystem
   #######################################################################
-  _module.args.disks = [ "/dev/sda" ];
+  # _module.args.disks = [ "/dev/sda" ];
 
   # btrfs
   services.btrfs.autoScrub.enable = true;
