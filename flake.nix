@@ -25,7 +25,7 @@
         flake = builtins.getFlake (toString ./.);
         hosts = self.nixosConfigurations;
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
-        n = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        n = nixpkgs.legacyPackages.x86_64-linux;
       };
 
       systems = ["x86_64-linux" "aarch64-linux"];

@@ -30,7 +30,7 @@
   # disabledModules = ["config/swap.nix"];
 
   # environment.systemPackages = with pkgs; [
-  #   # inputs.nixpkgs-pr.legacyPackages.${system}.gnomeExtensions.pano
+  #   # inputs.nixpkgs-pr.legacyPackages.x86_64-linux.apps
   # ];
 
   # amdvlk or opengl default
