@@ -6,33 +6,21 @@
 }: {
   imports = [
     ./disko.nix
-    # ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-
     self.nixosModules.gnome
   ];
 
-  #######################################################################
-  ## Kernel
-  #######################################################################
-  # latest / zen / lqx / xanmod_latest
-  # boot.kernelPackages = pkgs.linuxPackages;
-
   boot.kernelModules = ["kvm-intel"];
 
-  boot.initrd.availableKernelModules = [
-    # "nvme"
-    "ahci" # SATA
-    "xhci_pci" # USB3.0
-    "ehci_pci" # USB2.0
-    "usb_storage"
-    "sd_mod"
-    ## virt
-    # "virtio_pci"
-    # "sr_mod"
-    # "virtio_blk"
-  ];
+  # boot.initrd.availableKernelModules = [
+  #   # "nvme"
+  #   "ahci" # SATA
+  #   "xhci_pci" # USB3.0
+  #   "ehci_pci" # USB2.0
+  #   "usb_storage"
+  #   "sd_mod"
+  # ];
 
   hardware.cpu.intel.updateMicrocode = true;
 
@@ -41,15 +29,8 @@
   #######################################################################
   ## Bootloader
   #######################################################################
-  # boot.loader = {
-  #   efi.canTouchEfiVariables = true;
-  #   efi.efiSysMountPoint = "/boot/efi"; # default /boot
-  #   systemd-boot.enable = true;
-  # };
-
   boot.loader = {
-    # efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/efi"; # default /boot
+    efi.efiSysMountPoint = "/efi";
     grub = {
       enable = true;
       device = "nodev";

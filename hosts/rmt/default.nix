@@ -12,8 +12,7 @@
     # self.nixosModules.kde
   ];
 
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.kernelModules = ["kvm-amd"];
 
   # systemd-boot
   boot.loader = {

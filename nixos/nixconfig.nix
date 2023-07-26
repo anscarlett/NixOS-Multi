@@ -4,7 +4,7 @@
   ...
 }: {
   nix = {
-    # channel.enable = false;
+    channel.enable = false;
 
     # nix registry list
     registry =
