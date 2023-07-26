@@ -8,6 +8,11 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
+
+      imports = [
+        inputs.devenv.flakeModule
+      ];
+
       flake = {
         nixosModules = import ./nixos;
 
@@ -58,6 +63,9 @@
 
         # nix develop .#rust
         devShells = import ./devshells.nix {inherit pkgs;};
+
+        # nix develop --impure .#rust
+        devenv.shells = import ./devenvs.nix {inherit pkgs;};
       };
     };
 
@@ -101,6 +109,7 @@
     # agenix.url = github:ryantm/agenix;
     # sops-nix.url = github:Mic92/sops-nix;
     # nur.url = "github:nix-community/NUR";
+    devenv.url = "github:cachix/devenv";
     templates.url = "github:NixOS/templates";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
