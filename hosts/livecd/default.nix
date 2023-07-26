@@ -1,7 +1,8 @@
 {
-  lib,
-  pkgs,
   inputs,
+  self,
+  pkgs,
+  lib,
   config,
   username,
   modulesPath,
@@ -9,7 +10,7 @@
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-base.nix"
-    inputs.self.nixosModules.gnome
+    self.nixosModules.gnome
   ];
 
   mods.virt.enable = false;
@@ -38,5 +39,5 @@
   users.users.${username}.password = lib.mkForce "livecd";
 
   # faster but bigger size
-  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+  # isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }

@@ -19,15 +19,13 @@
 
         deploy = import ./hosts/deployment.nix {inherit inputs;};
 
-        # for easily repl & build
+        # for easily repl
         inherit inputs;
         inherit (inputs.nixpkgs) lib;
         flake = builtins.getFlake (toString ./.);
         hosts = self.nixosConfigurations;
-        n = inputs.nixpkgs.legacyPackages.x86_64-linux;
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
-        livecd-iso = self.nixosConfigurations.livecd.config.system.build.isoImage;
-        wsl-installer = self.nixosConfigurations.wsl.config.system.build.installer;
+        n = inputs.nixpkgs.legacyPackages.x86_64-linux;
       };
 
       systems = ["x86_64-linux" "aarch64-linux"];

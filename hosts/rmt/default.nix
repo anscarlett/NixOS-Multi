@@ -1,12 +1,14 @@
 {
   inputs,
+  self,
   pkgs,
   ...
 }: {
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
-    inputs.self.nixosModules.kde
+    self.nixosModules.gnome
+    # self.nixosModules.kde
   ];
 
   # systemd-boot

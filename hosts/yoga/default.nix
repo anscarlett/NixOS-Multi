@@ -1,5 +1,6 @@
 {
   inputs,
+  self,
   config,
   pkgs,
   lib,
@@ -20,10 +21,10 @@
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
 
     # "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
-    inputs.self.nixosModules.gnome
-    # inputs.self.nixosModules.kde
-    # inputs.self.nixosModules.sway
-    # inputs.self.nixosModules.hyprland
+    self.nixosModules.gnome
+    # self.nixosModules.kde
+    # self.nixosModules.sway
+    # self.nixosModules.hyprland
   ];
 
   # disabledModules = ["config/swap.nix"];

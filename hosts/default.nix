@@ -12,7 +12,7 @@
   }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {inherit inputs username;};
+      specialArgs = {inherit inputs self username;};
       modules =
         [
           inputs.disko.nixosModules.disko
