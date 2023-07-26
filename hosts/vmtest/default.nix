@@ -31,16 +31,17 @@
   services.xserver = {
     enable = true;
     desktopManager = {
-      # plasma5.enable = true;
       # gnome.enable = true;
+      # plasma5.enable = true;
       # xfce.enable = true;
+      # budgie.enable = true;
+      # deepin.enable = true;
       # cinnamon.enable = true;
       # pantheon.enable = true;
       # enlightenment.enable = true;
       # mate.enable = true;
       # lxqt.enable = true;
     };
-    # or ${username}
     displayManager.autoLogin.user = lib.mkForce "guest";
     xkbOptions = "ctrl:swapcaps"; # Xorg Layout
   };

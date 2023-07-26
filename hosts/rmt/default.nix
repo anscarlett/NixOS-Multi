@@ -2,6 +2,7 @@
   inputs,
   self,
   pkgs,
+  lib,
   modulesPath,
   ...
 }: {
@@ -11,6 +12,24 @@
     self.nixosModules.gnome
     # self.nixosModules.kde
   ];
+
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      # gnome.enable = true;
+      # plasma5.enable = true;
+      # xfce.enable = true;
+      # budgie.enable = true;
+      # deepin.enable = true;
+      # cinnamon.enable = true;
+      # pantheon.enable = true;
+      # enlightenment.enable = true;
+      # mate.enable = true;
+      # lxqt.enable = true;
+    };
+    # displayManager.autoLogin.user = lib.mkForce "guest";
+    xkbOptions = "ctrl:swapcaps"; # Xorg Layout
+  };
 
   boot.kernelModules = ["kvm-amd"];
 
