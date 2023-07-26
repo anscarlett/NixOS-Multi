@@ -1,6 +1,5 @@
 {inputs, ...}: {
   # nur = inputs.nur.overlay;
-  deploy-rs = inputs.deploy-rs.overlay;
 
   # stable-packages = final: _prev: {
   #   stable = import inputs.nixpkgs-stable {

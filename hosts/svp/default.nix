@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    inputs.self.nixosModules.gnome
   ];
 
   #######################################################################

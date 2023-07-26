@@ -8,15 +8,29 @@
   imports = [
     ./hardware-configuration.nix
 
-    inputs.lanzaboote.nixosModules.lanzaboote # Secure Boot
+    # Secure Boot
+    inputs.lanzaboote.nixosModules.lanzaboote
 
+    # nixos-hardware repo
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     # inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     # cpupower frequency-info
     # cat /sys/devices/system/cpu/cpufreq/policy0/scaling_driver
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
+
+    # "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
+    inputs.self.nixosModules.gnome
+    # inputs.self.nixosModules.kde
+    # inputs.self.nixosModules.sway
+    # inputs.self.nixosModules.hyprland
   ];
+
+  # disabledModules = ["config/swap.nix"];
+
+  # environment.systemPackages = with pkgs; [
+  #   # inputs.nixpkgs-pr.legacyPackages.${system}.gnomeExtensions.pano
+  # ];
 
   # amdvlk or opengl default
   hardware.amdgpu.amdvlk = true;

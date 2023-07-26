@@ -6,6 +6,7 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
+    inputs.self.nixosModules.kde
   ];
 
   # systemd-boot

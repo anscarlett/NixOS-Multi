@@ -43,25 +43,6 @@ in {
     hostname = "yoga";
     extraModules = [
       ./yoga
-      self.nixosModules.gnome
-      # self.nixosModules.kde
-      # self.nixosModules.sway
-      # self.nixosModules.hyprland
-
-      ({
-        inpouts,
-        config,
-        pkgs,
-        ...
-      }: {
-        # disabledModules = ["config/swap.nix"];
-        # imports = [
-        #   "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
-        # ];
-        # environment.systemPackages = with pkgs; [
-        #   # nixpkgs-pr.legacyPackages.${system}.gnomeExtensions.pano
-        # ];
-      })
     ];
   };
 
@@ -72,7 +53,6 @@ in {
     # nixpkgs = inputs.nixpkgs-stable;
     extraModules = [
       ./svp
-      self.nixosModules.gnome
     ];
   };
 
@@ -82,7 +62,6 @@ in {
     hostname = "rmt";
     extraModules = [
       ./rmt
-      self.nixosModules.gnome
     ];
   };
 

@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -15,7 +16,7 @@
     # alacritty
     nurl
     nix-init
-    deploy-rs.deploy-rs
+    inputs.deploy-rs.packages.x86_64-linux.deploy-rs
 
     # nheko
     # fractal-next

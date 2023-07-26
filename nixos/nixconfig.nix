@@ -4,6 +4,8 @@
   ...
 }: {
   nix = {
+    # channel.enable = false;
+
     # nix registry list
     registry =
       lib.mapAttrs (_: value: {flake = value;}) inputs
