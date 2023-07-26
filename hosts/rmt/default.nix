@@ -7,12 +7,13 @@
   ...
 }: {
   imports = [
-    ./disko.nix
+    ./disko-btrfs.nix
     (modulesPath + "/profiles/qemu-guest.nix")
     self.nixosModules.gnome
     # self.nixosModules.kde
   ];
 
+  # Desktop Envirment
   services.xserver = {
     enable = true;
     desktopManager = {
@@ -31,16 +32,17 @@
     xkbOptions = "ctrl:swapcaps"; # Xorg Layout
   };
 
+  # Kernel
   boot.kernelModules = ["kvm-amd"];
 
-  # systemd-boot
+  # Systemd-boot
   boot.loader = {
     efi.canTouchEfiVariables = true;
     efi.efiSysMountPoint = "/efi";
     systemd-boot.enable = true;
   };
 
-  # ssh
+  # SSH
   services.openssh = {
     settings.PermitRootLogin = "yes";
   };
