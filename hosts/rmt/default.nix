@@ -2,14 +2,18 @@
   inputs,
   self,
   pkgs,
+  modulesPath,
   ...
 }: {
   imports = [
     ./disko.nix
-    ./hardware-configuration.nix
+    (modulesPath + "/profiles/qemu-guest.nix")
     self.nixosModules.gnome
     # self.nixosModules.kde
   ];
+
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
 
   # systemd-boot
   boot.loader = {
