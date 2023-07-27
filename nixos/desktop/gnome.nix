@@ -2,8 +2,6 @@
   pkgs,
   ...
 }: {
-  home-manager.sharedModules = [./hm-dconf.nix];
-
   services = {
     xserver = {
       enable = true;

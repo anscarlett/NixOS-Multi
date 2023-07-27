@@ -8,6 +8,7 @@
     nixpkgs ? inputs.nixpkgs,
     system ? "x86_64-linux",
     defaultModules ? true,
+    hmEnable ? true,
     extraModules ? [],
   }:
     nixpkgs.lib.nixosSystem {
@@ -16,13 +17,16 @@
       modules =
         [
           inputs.disko.nixosModules.disko
-          inputs.home-manager.nixosModules.home-manager
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = builtins.attrValues self.overlays;
             networking.hostName = "${hostname}";
             services.xserver.displayManager.autoLogin.user = "${username}";
-
+          }
+        ]
+        ++ nixpkgs.lib.optionals hmEnable [
+          inputs.home-manager.nixosModules.home-manager
+          {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -60,6 +64,7 @@ in {
   rmt = mkHost {
     username = "aaa";
     hostname = "rmt";
+    hmEnable = false;
     extraModules = [
       ./rmt
     ];

@@ -14,6 +14,7 @@
     isNormalUser = true;
     # `mkpasswd`
     hashedPassword = "$y$j9T$aNhZV153pAbvGMeFqjGmn.$iH18jxovF5Huof8U4NNPK/EVWHH75o5x8lRzq8IHZO3";
+    # ssh-copy-id -i ~/.ssh/id_ed25519.pub nixos@192.168.122.85
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLrQVhdLD9o1Iq17LKFNQ21PaHIAylizOFkvh74FUrz linzway@qq.com"
     ];

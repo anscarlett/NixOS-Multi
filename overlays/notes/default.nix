@@ -3,21 +3,31 @@
 , fetchFromGitHub
 , cmake
 , wrapQtAppsHook
+, wrapGAppsHook
 , qtbase
 , qtdeclarative
+, libpng
+, appstream-glib
+, wayland
+, qtwayland
+, qtsvg
+, adwaita-qt6
+, adwaita-qt
+, qttools
+, hicolor-icon-theme
+, gnome
 }:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "notes";
-  version = "2.1.0";
+  version = "2.2.0";
 
   src = fetchFromGitHub {
     owner = "nuttyartist";
     repo = "notes";
-    fetchSubmodules = true;
     rev = "v${finalAttrs.version}";
-    # rev = "5b76489d2f8bb5d4feb782e7049645e7676c8572";
-    hash = "sha256-pTRcXVwtH4gxxFIkJaqbuk6SOiC879oYxFgQyFBaQAc=";
+    hash = "sha256-ZfAm77UHyjs2aYOYb+AhKViz6uteb7+KKSedonSiMkY=";
+    fetchSubmodules = true;
   };
 
   cmakeFlags = [ "-DUPDATE_CHECKER=OFF" ];
@@ -25,12 +35,30 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     cmake
     wrapQtAppsHook
+    # wrapGAppsHook
+    # appstream-glib
   ];
 
   buildInputs = [
     qtbase
     qtdeclarative
+    # libpng
+    # hicolor-icon-theme
+    # wayland
+    # qtwayland
+    # qtsvg
+    # adwaita-qt6
+    # adwaita-qt
+    # gnome.adwaita-icon-theme
+    # qttools
+    # qqc2-desktop-style
   ];
+
+  postInstall = ''
+    # fix for gnome
+    substituteInPlace $out/share/applications/io.github.nuttyartist.notes.desktop \
+       --replace 'Exec=notes' 'Exec=env QT_STYLE_OVERRIDE= notes'
+  '';
 
   meta = with lib; {
     description = "A fast and beautiful note-taking app";

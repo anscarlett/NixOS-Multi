@@ -10,15 +10,24 @@
     ./disko-btrfs.nix
     # ./disko-bcachefs.nix
     (modulesPath + "/profiles/qemu-guest.nix")
-    self.nixosModules.gnome
+    # self.nixosModules.gnome
     # self.nixosModules.kde
+  ];
+
+  environment.systemPackages = with pkgs; [
+    notes
+
+    skim
+    ripgrep
+    duf
+    gdu
   ];
 
   # Desktop Envirment
   services.xserver = {
     enable = true;
     desktopManager = {
-      # gnome.enable = true;
+      gnome.enable = true;
       # plasma5.enable = true;
       # xfce.enable = true;
       # budgie.enable = true;

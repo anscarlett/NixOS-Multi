@@ -2,8 +2,6 @@
   pkgs,
   ...
 }: {
-  home-manager.sharedModules = [./hm-kderc.nix];
-
   mods.fcitx.enable = true;
 
   services = {
