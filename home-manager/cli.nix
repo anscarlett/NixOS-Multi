@@ -19,7 +19,6 @@
     # nix-update
     # nix-template
     nixpkgs-review
-    nixos-generators
     nix-output-monitor
 
     # Developing

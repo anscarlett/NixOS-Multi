@@ -74,21 +74,21 @@ in {
     ];
   };
 
-  # nix build .#nixosConfigurations.livecd.config.system.build.isoImage
-  livecd = mkHost {
+  # nix build .#nixosConfigurations.livecd-graphical.config.system.build.isoImage
+  livecd-graphical = mkHost {
     username = "livecd";
     hostname = "livecd";
     extraModules = [
-      ./livecd
+      ./livecd/graphical.nix
     ];
   };
 
-  # nix build .#nixosConfigurations.vanilla.config.system.build.isoImage
-  vanilla = inputs.nixpkgs.lib.nixosSystem {
+  # nix build .#nixosConfigurations.livecd-minimal.config.system.build.isoImage
+  livecd-minimal = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = {inherit inputs;};
     system = "x86_64-linux";
     modules = [
-      ./vanilla
+      ./livecd/minimal.nix
     ];
   };
 
