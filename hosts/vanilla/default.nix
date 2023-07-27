@@ -13,7 +13,7 @@
   ];
 
   boot = {
-    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     supportedFilesystems = lib.mkForce [
       "btrfs"
       "reiserfs"
@@ -22,7 +22,7 @@
       "xfs"
       "ntfs"
       "cifs"
-      "bcachefs"
+      # "bcachefs"
     ];
   };
 
