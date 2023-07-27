@@ -83,6 +83,15 @@ in {
     ];
   };
 
+  # nix build .#nixosConfigurations.vanilla.config.system.build.isoImage
+  vanilla = inputs.nixpkgs.lib.nixosSystem {
+    specialArgs = {inherit inputs;};
+    system = "x86_64-linux";
+    modules = [
+      ./vanilla
+    ];
+  };
+
   # nix build .#nixosConfigurations.wsl.config.system.build.installer
   wsl = mkHost {
     username = "iab";

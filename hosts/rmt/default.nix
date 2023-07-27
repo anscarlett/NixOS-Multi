@@ -7,7 +7,8 @@
   ...
 }: {
   imports = [
-    ./disko-btrfs.nix
+    # ./disko-btrfs.nix
+    ./disko-bcachefs.nix
     (modulesPath + "/profiles/qemu-guest.nix")
     self.nixosModules.gnome
     # self.nixosModules.kde
@@ -34,6 +35,9 @@
 
   # Kernel
   boot.kernelModules = ["kvm-amd"];
+
+  # bcachefs
+  boot.supportedFilesystems = ["bcachefs"];
 
   # Systemd-boot
   boot.loader = {

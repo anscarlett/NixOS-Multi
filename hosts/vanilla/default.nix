@@ -1,4 +1,3 @@
-# nixos-generate -f iso -c ~/nsworld/hosts/livecd/vanilla-iso.nix
 {
   lib,
   pkgs,
@@ -7,28 +6,31 @@
   ...
 }: {
   imports = [
-    # "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-gnome.nix"
     # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-plasma5.nix"
-    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-gnome.nix"
+    # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-gnome.nix"
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest; # latest zen xanmod_latest
-    supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];
+    # kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = lib.mkForce [
+      "btrfs"
+      "reiserfs"
+      "vfat"
+      "f2fs"
+      "xfs"
+      "ntfs"
+      "cifs"
+      "bcachefs"
+    ];
   };
-
-  services.xserver = {
-    xkbOptions = "ctrl:swapcaps"; # Xorg Layout
-  };
-
-  # services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
 
   hardware.enableAllFirmware = true;
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    config.allowBroken = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
   };
 
   nix.settings = {
@@ -39,9 +41,9 @@
     experimental-features = ["nix-command" "flakes" "repl-flake"];
   };
 
-  #######################################################################
+  ###############################################
   ## Essential Apps
-  #######################################################################
+  ###############################################
   environment.systemPackages = with pkgs; [
     binutils
     tree
@@ -72,4 +74,7 @@
   ];
 
   time.timeZone = "Asia/Shanghai";
+
+  # faster but bigger size
+  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }
