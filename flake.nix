@@ -8,6 +8,7 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux"];
 
       imports = [
         inputs.devenv.flakeModule
@@ -33,8 +34,6 @@
         n = nixpkgs.legacyPackages.x86_64-linux;
       };
 
-      systems = ["x86_64-linux" "aarch64-linux"];
-
       perSystem = {
         inputs',
         pkgs,
@@ -52,19 +51,19 @@
           };
         };
       in {
-        # nix build .#apps or self#apps / nix run self#apps
+        # nix build .#apps / self#apps
         legacyPackages = pkgs;
 
         # nix fmt
         formatter = pkgs.alejandra;
 
-        # nix run . -- hmswitch
+        # nix run .
         packages.default = pkgs.ns-cli;
 
         # nix develop .#rust
         devShells = import ./devshells.nix {inherit pkgs;};
 
-        # nix develop --impure .#rust
+        # nix develop --impure .#rust-env
         devenv.shells = import ./devenvs.nix {inherit pkgs;};
       };
     };
