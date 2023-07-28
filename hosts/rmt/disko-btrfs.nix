@@ -34,6 +34,8 @@
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"]; # Override existing partition
+                # Subvolumes must set a mountpoint in order to be mounted,
+                # unless their parent is mounted
                 subvolumes = {
                   # Subvolume name is different from mountpoint
                   "/rootfs" = {
@@ -42,9 +44,11 @@
                   # Mountpoints inferred from subvolume name
                   "/home" = {
                     mountOptions = ["compress=zstd"];
+                    mountpoint = "/home";
                   };
                   "/nix" = {
                     mountOptions = ["compress=zstd" "noatime"];
+                    mountpoint = "/nix";
                   };
                 };
               };

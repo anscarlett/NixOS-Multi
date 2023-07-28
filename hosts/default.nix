@@ -64,7 +64,7 @@ in {
   rmt = mkHost {
     username = "aaa";
     hostname = "rmt";
-    hmEnable = false;
+    # hmEnable = false;
     extraModules = [
       ./rmt
     ];

@@ -3,9 +3,11 @@
 , fetchFromGitHub
 , cmake
 , wrapQtAppsHook
-, wrapGAppsHook
 , qtbase
 , qtdeclarative
+, qtimageformats
+, fontconfig
+, qt5compat
 , libpng
 , appstream-glib
 , wayland
@@ -35,13 +37,14 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     cmake
     wrapQtAppsHook
-    # wrapGAppsHook
-    # appstream-glib
   ];
 
   buildInputs = [
     qtbase
     qtdeclarative
+    # qtimageformats
+    # qt5compat
+    # fontconfig
     # libpng
     # hicolor-icon-theme
     # wayland
