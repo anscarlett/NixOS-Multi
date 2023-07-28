@@ -75,6 +75,7 @@
   ###############################################
   ##  Rust
   ###############################################
+  # https://github.com/BKSalman/ytdlp-gui/blob/main/flake.nix
   rust = pkgs.mkShell {
     doCheck = false;
     buildType = "debug";
