@@ -7,11 +7,11 @@
       ./fonts.nix
       ./nixconfig.nix
       ./networking.nix
-      ./virtualisation.nix
-      ./modules/doas.nix
-      ./modules/fcitx.nix
-      ./modules/flatpak.nix
-      ./modules/clash-for-windows.nix
+      ./mods/virt.nix
+      ./mods/doas.nix
+      ./mods/fcitx.nix
+      ./mods/flatpak.nix
+      ./mods/clash-for-windows.nix
     ];
   };
 

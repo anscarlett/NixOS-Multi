@@ -17,7 +17,7 @@
       ./gui.nix
       ./editor.nix
       ./browsers.nix
-      ./modules/polkit.nix
+      ./mods/polkit.nix
     ]
     ++ lib.optionals nixosConfig.services.xserver.desktopManager.gnome.enable [
       ./dconf.nix

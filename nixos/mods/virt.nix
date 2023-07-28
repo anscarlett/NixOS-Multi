@@ -38,7 +38,7 @@ adb shell wm set-fix-to-user-rotation enabled  # force vertical
 in {
   options.mods.virt.enable =
     lib.mkEnableOption (lib.mdDoc ''
-      my virt customize.
+      my virtualisation customize.
     '')
     // {default = true;};
 
