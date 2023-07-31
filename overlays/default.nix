@@ -102,6 +102,7 @@
     # Rust
 
     # Go
+    trzsz-go = prev.callPackage ./trzsz-go {};
 
     # Gtk
 

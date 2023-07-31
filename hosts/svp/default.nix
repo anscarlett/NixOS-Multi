@@ -6,33 +6,21 @@
 }: {
   imports = [
     ./disko.nix
+    ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     self.nixosModules.gnome
+    # self.nixosModules.kde
   ];
-
-  boot.kernelModules = ["kvm-intel"];
-
-  # boot.initrd.availableKernelModules = [
-  #   # "nvme"
-  #   "ahci" # SATA
-  #   "xhci_pci" # USB3.0
-  #   "ehci_pci" # USB2.0
-  #   "usb_storage"
-  #   "sd_mod"
-  # ];
-
-  hardware.cpu.intel.updateMicrocode = true;
-
-  hardware.enableRedistributableFirmware = true;
 
   ###############################################
   ## Bootloader
   ###############################################
   boot.loader = {
     efi.efiSysMountPoint = "/efi";
+    systemd-boot.enable = true;
     grub = {
-      enable = true;
+      # enable = true;
       device = "nodev";
       efiSupport = true;
       # Because this machine's efivars can't touch

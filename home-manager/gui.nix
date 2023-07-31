@@ -10,6 +10,7 @@
     # azcomicv
     # moonfm
     # gitfiend
+    trzsz-go
 
     kitty
     # foot

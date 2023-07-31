@@ -32,9 +32,11 @@
                   };
                   # Mountpoints inferred from subvolume name
                   "/home" = {
+                    mountpoint = "/home";
                     mountOptions = ["compress=zstd"];
                   };
                   "/nix" = {
+                    mountpoint = "/nix";
                     mountOptions = ["compress=zstd" "noatime"];
                   };
                 };
