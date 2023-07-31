@@ -7,36 +7,36 @@
 , esbuild
 , pkg-config
 , python3
-  , nodejs
+, nodejs
 }:
 # WIP!!!
 buildNpmPackage rec {
   pname = "listen1";
-  version = "2.28.0";
+  version = "2.31.0";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = "listen1_desktop";
     rev = "v${version}";
-    fetchSubmodules = true;
-    hash = "sha256-Ch74V+GLNOeaYaJn3I1Ttv48DBc2abSjS6dfbxw9qRQ=";
+    hash = "sha256-jYJsym4wKwykyylkLcVw5K+SYnoEpb0U4DG3kH1sUqo=";
+    # fetchSubmodules = true;
   };
 
-  npmDepsHash = "sha256-cDBYz0m3EVVYABLU5wb0NJkcZDC+YqMHBdiCSPdWLBo=";
+  npmDepsHash = "sha256-57KV6tZ8Vgpq/DDcuiPBhNMhfQVH1AstXjj1hZUiwFY=";
 
   # nativeBuildInputs = [ pkg-config python3 ];
 
   # buildInputs = [ libsecret electron nodejs];
 
-  makeCacheWritable = true;
-  npmFlags = [
-    "--legacy-peer-deps"
-    # "--ignore-scripts"
-  ];
+  # makeCacheWritable = true;
+  # npmFlags = [
+  #   "--legacy-peer-deps"
+  #   # "--ignore-scripts"
+  # ];
 
   # NODE_OPTIONS = "--openssl-legacy-provider";
 
-  ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
+  # ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
 
   # npmBuildScript = "build:production";
 
@@ -49,11 +49,10 @@ buildNpmPackage rec {
 
 
   meta = with lib; {
-    description = "A simple, clean and cross-platform music player";
+    description = "One for all free music in china";
     homepage = "https://github.com/listen1/listen1_desktop";
     license = licenses.mit;
-    platforms = [ "x86_64-linux" ];
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
+    platforms = platforms.linux;
     maintainers = with maintainers; [ zendo ];
   };
 }

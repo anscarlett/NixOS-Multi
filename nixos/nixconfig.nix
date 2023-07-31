@@ -4,7 +4,7 @@
   ...
 }: {
   nix = {
-    channel.enable = false;
+    # channel.enable = false;
 
     # nix registry list
     registry =
@@ -14,6 +14,7 @@
       };
 
     # Backwards compatibility for older nix
+    # nix show-config nix-path
     # echo $NIX_PATH | tr ":" "\n"
     nixPath =
       lib.mapAttrsToList (name: path: "${name}=${path}") inputs
