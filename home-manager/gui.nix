@@ -9,8 +9,9 @@
     # nightpdf
     # azcomicv
     # moonfm
-    # gitfiend
+    gitfiend
     trzsz-go
+    music-you
 
     kitty
     # foot
@@ -78,7 +79,7 @@
     # rnote # handwritten note
     # foliate # (webkitgtk)
     # standardnotes
-    # notes
+    notes
     # endeavour
     # ghostwriter # (qtwebengine)
     # textpieces
