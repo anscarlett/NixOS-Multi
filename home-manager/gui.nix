@@ -78,8 +78,7 @@
     # rnote # handwritten note
     # foliate # (webkitgtk)
     # standardnotes
-    # paper-note
-    notes
+    # notes
     # endeavour
     # ghostwriter # (qtwebengine)
     # textpieces

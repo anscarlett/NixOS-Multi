@@ -3,19 +3,19 @@
 , rustPlatform
 , fetchFromGitHub
 , fetchYarnDeps
-, wrapGAppsHook
 , cargo
 , rustc
 , yarn
 , nodejs
 , fixup_yarn_lock
 , pkg-config
-, libayatana-appindicator
+, wrapGAppsHook
 , gtk3
-, webkitgtk
 , libsoup
-, openssl
 , xdotool
+, openssl
+, webkitgtk
+, libayatana-appindicator
 , clash-geoip
 , v2ray-geoip
 , v2ray-domain-list-community
@@ -25,13 +25,13 @@
 
 stdenv.mkDerivation rec {
   pname = "clash-verge";
-  version = "1.3.2";
+  version = "1.3.5";
 
   src = fetchFromGitHub {
     owner = "zzzgydi";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-8haJKUIYbVa/p3CtmwWVtbGZ2uan9VvaMgDpaEDH6tE=";
+    hash = "sha256-6gr+XPs8s2fe76Dclx1OZnDSmo+XeZQGRLNsRyFuYwc=";
     postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
   };
 
@@ -56,7 +56,7 @@ stdenv.mkDerivation rec {
 
   yarnDeps = fetchYarnDeps {
     yarnLock = src + "/yarn.lock";
-    hash = "sha256-UQJPa7MRweRH2g72+EGTBv94mive1c4Vq3L2IyHDsJs=";
+    hash = "sha256-80qrq9yolq7r8d+j0SFyr/seVpXefpLpDeAeY2Agphk=";
   };
 
   cargoRoot = "src-tauri";
@@ -64,7 +64,7 @@ stdenv.mkDerivation rec {
     inherit src;
     sourceRoot = "source/src-tauri";
     name = "${pname}-${version}";
-    hash = "sha256-VOpuwPWCWtPXZIIUxO3IR3Bb2bIGogZGlK21jMdxMto=";
+    hash = "sha256-yf0T1f0oHjNTFm36vwBGNCTRnjn+4z19r3xP5YtiA6Y=";
   };
 
   nativeBuildInputs = [
@@ -74,17 +74,17 @@ stdenv.mkDerivation rec {
     yarn
     nodejs
     fixup_yarn_lock
-    wrapGAppsHook
     pkg-config
+    wrapGAppsHook
   ];
 
   buildInputs = [
     gtk3
     libsoup
-    libayatana-appindicator
+    xdotool
     openssl
     webkitgtk
-    xdotool
+    libayatana-appindicator
   ];
 
   preBuild = ''
@@ -110,12 +110,11 @@ stdenv.mkDerivation rec {
     ln -s ${lib.getExe clash-meta} $out/bin/clash-meta
   '';
 
-  meta = with lib; {
+  meta = {
     description = "A Clash GUI based on tauri";
     homepage = "https://github.com/zzzgydi/clash-verge";
-    platforms = [ "x86_64-linux" ];
-    license = licenses.gpl3Plus;
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [ zendo ];
+    license = lib.licenses.gpl3Plus;
+    platforms = lib.platforms.linux;
+    maintainers = with lib.maintainers; [ zendo ];
   };
 }

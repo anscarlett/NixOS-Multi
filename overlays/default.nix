@@ -70,9 +70,7 @@
     -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
     */
 
-    notes = prev.qt6Packages.callPackage ./notes {
-      inherit (prev.darwin.apple_sdk.frameworks) Cocoa;
-    };
+    clash-verge = prev.callPackage ./clash-verge-source {};
 
     # Data
     ns-cli = prev.callPackage ./ns-cli {};
@@ -96,7 +94,6 @@
     music-you = prev.callPackage ./music-you {};
     koodo-reader = prev.callPackage ./koodo-reader {};
     thorium-reader = prev.callPackage ./thorium-reader {};
-    clash-verge-source = prev.callPackage ./clash-verge-source {};
 
     # C
     azcomicv = prev.callPackage ./azcomicv {};

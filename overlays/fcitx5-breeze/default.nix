@@ -14,9 +14,10 @@ stdenvNoCC.mkDerivation {
     ./install.sh $out
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Fcitx5 theme to match KDE's Breeze style";
     homepage = "https://github.com/scratch-er/fcitx5-breeze";
-    license = licenses.gpl3;
+    license = lib.licenses.gpl3;
+    platforms = lib.platforms.all;
   };
 }

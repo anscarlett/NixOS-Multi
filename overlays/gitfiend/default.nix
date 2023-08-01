@@ -2,11 +2,11 @@
 
 let
   pname = "gitfiend";
-  version = "0.42.0";
+  version = "0.42.1";
 
   src = fetchurl {
     url = "https://gitfiend.com/resources/GitFiend-${version}.AppImage";
-    hash = "sha256-gZrzRvcmHobQTTsaSZo3ve60nKzlkWCesQDvP/DZ57g=";
+    hash = "sha256-xYNEogwNH/ozoahZXks3r1hh8M55o+R707pxASxYvmE=";
   };
 
   appimageContents = appimageTools.extractType2 {
@@ -28,13 +28,13 @@ appimageTools.wrapType2 {
       --replace 'Exec=AppRun' 'Exec=${pname}'
   '';
 
-  meta = with lib; {
+  meta = {
     description = "A Git client designed for humans";
     homepage = "https://gitfiend.com";
-    license = licenses.mit;
-    # license = licenses.unfree;
+    license = lib.licenses.mit;
+    # license = lib.licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [ zendo ];
+    sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
+    maintainers = with lib.maintainers; [ zendo ];
   };
 }

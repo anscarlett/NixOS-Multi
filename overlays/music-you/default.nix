@@ -8,21 +8,22 @@
 , webkitgtk
 , udev
 , libayatana-appindicator
+, nss
+, alsa-lib
 }:
 # WIP!!!
 stdenv.mkDerivation rec {
   pname = "music-you";
-  version = "2.1.0";
+  version = "2.0.12";
 
   src = fetchurl {
-    url = "https://github.com/GuMengYu/music-you/releases/download/tauri-alpha-2/music-you-tauri_${version}_amd64.deb";
-    hash = "sha256-7iBE4+A2og2P9hurfcVvLUrHRNFtl1TgJhaUQE2uX60=";
+    url = "https://github.com/GuMengYu/music-you/releases/download/v2.0.12-hotfix/music-you_2.0.12_amd64.deb";
+    hash = "sha256-IAAM8wHMGLxSRFTW/56CiA4MN+pxaacJH7F4UvR7Uzs=";
   };
 
   nativeBuildInputs = [
     dpkg
     wrapGAppsHook
-    # makeWrapper
     autoPatchelfHook
   ];
 
@@ -30,19 +31,22 @@ stdenv.mkDerivation rec {
     openssl
     webkitgtk
     stdenv.cc.cc
+    nss
+    alsa-lib
   ];
 
   runtimeDependencies = [
     (lib.getLib udev)
-    libayatana-appindicator
+    # libayatana-appindicator
   ];
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/bin
-    cp usr/bin/music-you-tauri $out/bin
+    cp -r opt $out
     cp -r usr/share $out
+    ln -s $out/opt/music-you/music-you $out/bin
 
     runHook postInstall
   '';

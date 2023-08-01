@@ -24,10 +24,6 @@ mkYarnPackage rec {
     hash = "sha256-HAq68o0xkRE3a4sGxZssblCm5Zs88N0OMIbYOqF4v/Y=";
   };
 
-  # packageJSON = ./package.json;
-  # yarnLock = ./yarn.lock;
-  # yarnNix = ./yarn.nix;
-
   nativeBuildInputs = [
     copyDesktopItems
     makeWrapper
