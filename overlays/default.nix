@@ -70,7 +70,9 @@
     -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
     */
 
-    notes = prev.qt6Packages.callPackage ./notes {};
+    notes = prev.qt6Packages.callPackage ./notes {
+      inherit (prev.darwin.apple_sdk.frameworks) Cocoa;
+    };
 
     # Data
     ns-cli = prev.callPackage ./ns-cli {};

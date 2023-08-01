@@ -17,7 +17,7 @@
       # lxgw-wenkai
       source-code-pro
       # comic-relief
-      font-awesome
+      # font-awesome
       emacs-all-the-icons-fonts
       hack-font
       fira-code

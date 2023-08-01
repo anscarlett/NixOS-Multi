@@ -10,7 +10,7 @@
   # rm .config/k* .config/plasma* .config/power*
   programs.plasma = {
     enable = true;
-    files = {
+    configFile = {
       "kwalletrc"."Wallet"."Enabled" = false;
       "kwalletrc"."Wallet"."First Use" = false;
 

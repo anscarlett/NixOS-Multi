@@ -36,7 +36,6 @@
 
   programs.gh = {
     enable = true;
-    enableGitCredentialHelper = true;
   };
 
   # programs.lazygit = {

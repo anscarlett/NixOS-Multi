@@ -28,7 +28,7 @@ buildGoModule rec {
   '';
 
   meta = with lib; {
-    description = "A simple file transfer tools similar to lrzsz (go version)";
+    description = "A simple SSH file transfer tools similar to lrzsz written in Go";
     homepage = "https://github.com/trzsz/trzsz-go";
     mainProgram = "trzsz";
     license = licenses.mit;

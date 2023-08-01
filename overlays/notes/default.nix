@@ -5,19 +5,7 @@
 , wrapQtAppsHook
 , qtbase
 , qtdeclarative
-, qtimageformats
-, fontconfig
-, qt5compat
-, libpng
-, appstream-glib
-, wayland
-, qtwayland
-, qtsvg
-, adwaita-qt6
-, adwaita-qt
-, qttools
-, hicolor-icon-theme
-, gnome
+, Cocoa
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -42,33 +30,25 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [
     qtbase
     qtdeclarative
-    # qtimageformats
-    # qt5compat
-    # fontconfig
-    # libpng
-    # hicolor-icon-theme
-    # wayland
-    # qtwayland
-    # qtsvg
-    # adwaita-qt6
-    # adwaita-qt
-    # gnome.adwaita-icon-theme
-    # qttools
-    # qqc2-desktop-style
+  ] ++ lib.optionals stdenv.isDarwin [
+    Cocoa
   ];
 
-  postInstall = ''
-    # fix for gnome
+  postInstall = lib.optionalString stdenv.isLinux ''
+    # temporary fix: https://github.com/nuttyartist/notes/issues/613
     substituteInPlace $out/share/applications/io.github.nuttyartist.notes.desktop \
        --replace 'Exec=notes' 'Exec=env QT_STYLE_OVERRIDE= notes'
+  '' + lib.optionalString stdenv.isDarwin ''
+    mkdir $out/Applications
+    mv $out/bin/Notes.app $out/Applications
   '';
 
-  meta = with lib; {
+  meta = {
     description = "A fast and beautiful note-taking app";
-    homepage = "https://www.get-notes.com";
     downloadPage = "https://github.com/nuttyartist/notes";
-    license = licenses.mpl20;
-    platforms = platforms.unix;
-    maintainers = with maintainers; [ zendo ];
+    homepage = "https://www.get-notes.com";
+    license = lib.licenses.mpl20;
+    maintainers = with lib.maintainers; [ zendo ];
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 })
