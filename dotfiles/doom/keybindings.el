@@ -10,8 +10,7 @@
 (fset 'mouse-save-then-kill 'ignore) ;禁用鼠标右键双击剪切
 
 ;; Scroll
-(when (fboundp 'pixel-scroll-precision-mode)
-  (pixel-scroll-precision-mode t))
+(pixel-scroll-precision-mode t)
 
 (ffap-bindings)
 (global-set-key (kbd "C-z") nil)
