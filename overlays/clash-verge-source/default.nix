@@ -22,7 +22,7 @@
 , clash
 , clash-meta
 }:
-
+# https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/clash-verge/PKGBUILD
 stdenv.mkDerivation rec {
   pname = "clash-verge";
   version = "1.3.5";
@@ -36,8 +36,6 @@ stdenv.mkDerivation rec {
   };
 
   postPatch = ''
-    sed -i -e '/externalBin/d' -e '/resources/d' src-tauri/tauri.conf.json
-
     pushd $cargoDepsCopy/libappindicator-sys
     oldHash=$(sha256sum src/lib.rs | cut -d " " -f 1)
     substituteInPlace src/lib.rs \
@@ -52,6 +50,14 @@ stdenv.mkDerivation rec {
     newHash=$(sha256sum src/platform.rs | cut -d " " -f 1)
     substituteInPlace .cargo-checksum.json --replace "$oldHash" "$newHash"
     popd
+
+    mkdir src-tauri/{sidecar,resources}
+    ln -s ${lib.getExe clash} src-tauri/sidecar/clash-x86_64-unknown-linux-gnu
+    ln -s ${lib.getExe clash-meta} src-tauri/sidecar/clash-meta-x86_64-unknown-linux-gnu
+
+    ln -s ${clash-geoip}/etc/clash/Country.mmdb src-tauri/resources/
+    ln -s ${v2ray-geoip}/share/v2ray/geoip.dat src-tauri/resources/
+    ln -s ${v2ray-domain-list-community}/share/v2ray/geosite.dat src-tauri/resources/
   '';
 
   yarnDeps = fetchYarnDeps {
@@ -97,17 +103,8 @@ stdenv.mkDerivation rec {
     yarn --offline build -b deb
   '';
 
-  preInstall = ''
+  postInstall = ''
     mv src-tauri/target/release/bundle/deb/*/data/usr/ $out
-    mkdir -p $out/lib/clash-verge/resources/
-    ln -s ${clash-geoip}/etc/clash/Country.mmdb $out/lib/clash-verge/resources/
-    ln -s ${v2ray-geoip}/share/v2ray/geoip.dat $out/lib/clash-verge/resources/
-    ln -s ${v2ray-domain-list-community}/share/v2ray/geosite.dat $out/lib/clash-verge/resources/
-  '';
-
-  postFixup = ''
-    ln -s ${lib.getExe clash} $out/bin/clash
-    ln -s ${lib.getExe clash-meta} $out/bin/clash-meta
   '';
 
   meta = {
