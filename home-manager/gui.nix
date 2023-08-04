@@ -9,9 +9,9 @@
     # nightpdf
     # azcomicv
     # moonfm
+    # music-you
     gitfiend
     trzsz-go
-    music-you
 
     kitty
     # foot

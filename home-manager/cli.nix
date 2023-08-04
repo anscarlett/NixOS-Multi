@@ -74,7 +74,7 @@
     ikill
     gdu
     duf
-    neofetch
+    fastfetch
     tokei # count code
 
     # Utils

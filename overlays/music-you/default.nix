@@ -48,6 +48,9 @@ stdenv.mkDerivation rec {
     cp -r usr/share $out
     ln -s $out/opt/music-you/music-you $out/bin
 
+    substituteInPlace $out/share/applications/music-you.desktop \
+       --replace 'Exec=/opt/music-you/music-you %U' 'Exec=music-you %U'
+
     runHook postInstall
   '';
 
