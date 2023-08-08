@@ -52,12 +52,12 @@ stdenv.mkDerivation rec {
       --replace '/opt/He3/he3' 'he3'
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Free, Modern, Productive, Developer Toolbox";
     homepage = "https://he3.app";
-    license = licenses.mit;
+    license = lib.licenses.mit;
     platforms = [ "x86_64-linux" ];
-    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [ zendo ];
+    sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
+    maintainers = with lib.maintainers; [ zendo ];
   };
 }

@@ -15,14 +15,14 @@
 , libXcursor
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "azcomicv";
   version = "2.0.6";
 
   src = fetchFromGitLab {
     owner = "azelpg";
-    repo = pname;
-    rev = "v${version}";
+    repo = "azcomicv";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-ChcR8Gf3AdM4YuSt2ip7SUdsd7l3lgCXmnPXGul5rIg=";
   };
 
@@ -50,11 +50,11 @@ stdenv.mkDerivation rec {
     ninja install
   '';
 
-  meta = with lib; {
+  meta = {
     description = "A simple comic reader";
     homepage = "http://azsky2.html.xdomain.jp/soft/index.html";
-    license = licenses.mit;
-    platforms = platforms.linux;
-    maintainers = with maintainers; [ zendo ];
+    license = lib.licenses.mit;
+    platforms = lib.platforms.linux;
+    maintainers = with lib.maintainers; [ zendo ];
   };
-}
+})

@@ -18,7 +18,6 @@
     # colmena
     # nix-update
     # nix-template
-    nixpkgs-review
     nix-output-monitor
 
     # Developing

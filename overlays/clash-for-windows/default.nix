@@ -29,11 +29,11 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "clash-for-windows";
-  version = "0.20.19";
+  version = "0.20.31";
 
   src = fetchurl {
     url = "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/${version}/Clash.for.Windows-${version}-x64-linux.tar.gz";
-    hash = "sha256-PINN3ufk2feB+od01LKoguHLM0hGFoDgNSxtqvGedXQ=";
+    hash = "sha256-VRtQyzUPE7ZKNY/qpqEPo6Fy6QJgVzMnSLLqZhJHEFQ=";
   };
 
   nativeBuildInputs = [
