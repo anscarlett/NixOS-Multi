@@ -85,9 +85,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    gtk3
-    libsoup
-    xdotool
+    # gtk3
+    # libsoup
+    # xdotool
     openssl
     webkitgtk
     libayatana-appindicator

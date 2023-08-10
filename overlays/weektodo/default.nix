@@ -10,18 +10,18 @@
 # WIP!!!
 mkYarnPackage rec {
   pname = "weektodo";
-  version = "2.0.0";
+  version = "2.1.0";
 
   src = fetchFromGitHub {
     owner = "manuelernestog";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-pg0oaLejR0KeqctVspjfJEbPsT+ygVvQTl3B1yqUnvE=";
+    hash = "sha256-0UV4F8Mg2hbjhWnzZ7c49V59yVWqNT/4laXt9XPdWwI=";
   };
 
   offlineCache = fetchYarnDeps {
     yarnLock = src + "/yarn.lock";
-    hash = "sha256-HAq68o0xkRE3a4sGxZssblCm5Zs88N0OMIbYOqF4v/Y=";
+    hash = "sha256-PURpp3ox4klNSzXoDd6cMG5QOgIdTUW0F+scCbhSfCo=";
   };
 
   nativeBuildInputs = [
@@ -36,10 +36,7 @@ mkYarnPackage rec {
 
     export HOME=$(mktemp -d)
 
-    yarn --offline electron-builder \
-      --dir --linux --x64 \
-      -c.electronDist=${electron}/lib/electron \
-      -c.electronVersion=${electron.version}
+    yarn --offline build
 
     runHook postBuild
   '';
@@ -56,9 +53,9 @@ mkYarnPackage rec {
     #     $out/share/icons/hicolor/''${size}x''${size}/apps/${pname}.png
     # done
 
-    makeWrapper ${electron}/bin/electron $out/bin/${pname} \
-      --argv0 "WeekToDo" \
-      --add-flags "$out/share/${pname}"
+    # makeWrapper ${electron}/bin/electron $out/bin/${pname} \
+    #   --argv0 "WeekToDo" \
+    #   --add-flags "$out/share/${pname}"
 
     runHook postInstall
   '';

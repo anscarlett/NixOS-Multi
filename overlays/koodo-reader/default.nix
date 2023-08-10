@@ -10,21 +10,19 @@
 # cat pkgs/servers/web-apps/hedgedoc/default.nix
 mkYarnPackage rec {
   pname = "koodo-reader";
-  version = "1.5.5";
+  version = "1.5.7";
 
   src = fetchFromGitHub {
     owner = "troyeguo";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-YPvs+uRHqxtq+nQYuJ0bLy9Kf6s0Df3PjzraxnVvAo8=";
+    hash = "sha256-PIE0BBcrWJRAazzzBmIKZcTfUBicWMigYL5uMF8dbFY=";
   };
 
   offlineCache = fetchYarnDeps {
     yarnLock = src + "/yarn.lock";
-    hash = "sha256-FNAfsoZmzJG7jFs3zBdgNjp4hvmVi1l3DWG6H8y8ucA=";
+    hash = "sha256-YV3WphP2pC1xeBuFmBiORyzHx8Qy4e6q45x8fTaW75o=";
   };
-
-  # ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -51,13 +49,16 @@ mkYarnPackage rec {
   installPhase = ''
     runHook preInstall
 
+    mkdir -p $out/bin
     mkdir -p $out/share/{applications,koodo-reader}
     cp -r build/* $out/share/koodo-reader
     # cp -r ./* $out/share/koodo-reader
 
-    makeWrapper ${electron}/bin/electron $out/bin/${pname} \
-      --argv0 "koodo-reader" \
-      --add-flags "$out/share/koodo-reader"
+    # ln -s $out/share/koodo-reader/index.html $out/bin/${pname}
+
+    # makeWrapper ${electron}/bin/electron $out/bin/${pname} \
+    #   --argv0 "koodo-reader" \
+    #   --add-flags "$out/share/koodo-reader"
 
     runHook postInstall
   '';
