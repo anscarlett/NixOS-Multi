@@ -53,21 +53,19 @@
     ripgrep
     gdu
     duf
-    neofetch
+    fastfetch
     parted
     gptfdisk
     wget
     bind
     git
     nix-bash-completions
-    bcachefs-tools
+    # bcachefs-tools
 
     vim
     micro
     fish
     btop
-    ydict
-    unp
     unrar
     ouch
     ipinfo
