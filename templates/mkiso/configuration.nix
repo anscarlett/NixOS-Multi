@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [
-    "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
-    # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+    # "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-gnome.nix"
     # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-plasma5.nix"
     # "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-gnome.nix"
   ];
@@ -26,24 +26,6 @@
     ];
   };
 
-  hardware.enableAllFirmware = true;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-  };
-
-  nix.settings = {
-    substituters = lib.mkForce [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-    ];
-    trusted-users = ["@wheel"];
-    experimental-features = ["nix-command" "flakes" "repl-flake"];
-  };
-
-  ###############################################
-  ## Essential Apps
-  ###############################################
   environment.systemPackages = with pkgs; [
     binutils
     tree
@@ -72,6 +54,21 @@
     ouch
     ipinfo
   ];
+
+  hardware.enableAllFirmware = true;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+  };
+
+  nix.settings = {
+    substituters = lib.mkForce [
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+    ];
+    trusted-users = ["@wheel"];
+    experimental-features = ["nix-command" "flakes" "repl-flake"];
+  };
 
   time.timeZone = "Asia/Shanghai";
 

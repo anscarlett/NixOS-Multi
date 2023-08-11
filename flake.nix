@@ -25,6 +25,8 @@
 
         deploy = import ./hosts/deployment.nix {inherit inputs;};
 
+        templates = import ./templates;
+
         # for easily repl
         inherit inputs;
         inherit (inputs.nixpkgs) lib;
