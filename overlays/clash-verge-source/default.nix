@@ -25,14 +25,14 @@
 # https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/clash-verge/PKGBUILD
 stdenv.mkDerivation rec {
   pname = "clash-verge";
-  version = "1.3.5";
+  version = "1.3.6";
 
   src = fetchFromGitHub {
     owner = "zzzgydi";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-6gr+XPs8s2fe76Dclx1OZnDSmo+XeZQGRLNsRyFuYwc=";
-    postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
+    hash = "sha256-8EFgkxs8DFkLjD2gBFWFoOrdEAEKRvkCZ3gFm52pOJU=";
+    # postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
   };
 
   postPatch = ''
@@ -62,7 +62,7 @@ stdenv.mkDerivation rec {
 
   yarnDeps = fetchYarnDeps {
     yarnLock = src + "/yarn.lock";
-    hash = "sha256-80qrq9yolq7r8d+j0SFyr/seVpXefpLpDeAeY2Agphk=";
+    hash = "sha256-pPw37TpkHjMMgSuEUOlFeb3nDZXOgJdhcyrWJ+dxAkE=";
   };
 
   cargoRoot = "src-tauri";
@@ -70,7 +70,7 @@ stdenv.mkDerivation rec {
     inherit src;
     sourceRoot = "source/src-tauri";
     name = "${pname}-${version}";
-    hash = "sha256-yf0T1f0oHjNTFm36vwBGNCTRnjn+4z19r3xP5YtiA6Y=";
+    hash = "sha256-d58TlaHJMswAe/CJJXQpOYAHJADkQmk9j1hEBKZ1R80=";
   };
 
   nativeBuildInputs = [

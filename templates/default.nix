@@ -6,4 +6,18 @@
     '';
     path = ./mkiso;
   };
+
+  hello = {
+    description = ''
+      Hello world!
+    '';
+    path = ./hello;
+  };
+
+  hello-parts = {
+    description = ''
+      Hello parts!
+    '';
+    path = ./hello-parts;
+  };
 }
