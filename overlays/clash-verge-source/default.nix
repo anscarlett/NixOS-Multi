@@ -10,9 +10,6 @@
 , fixup_yarn_lock
 , pkg-config
 , wrapGAppsHook
-, gtk3
-, libsoup
-, xdotool
 , openssl
 , webkitgtk
 , libayatana-appindicator
@@ -85,9 +82,6 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    # gtk3
-    # libsoup
-    # xdotool
     openssl
     webkitgtk
     libayatana-appindicator
@@ -110,9 +104,9 @@ stdenv.mkDerivation rec {
   meta = {
     description = "A Clash GUI based on tauri";
     homepage = "https://github.com/zzzgydi/clash-verge";
+    mainProgram = "clash-verge";
     license = lib.licenses.gpl3Plus;
     platforms = lib.platforms.linux;
     maintainers = with lib.maintainers; [ zendo ];
-    mainProgram = "clash-verge";
   };
 }

@@ -53,7 +53,8 @@
           };
         };
       in {
-        # nix build .#apps / self#apps
+        # nix build .#apps
+        # access pkgs from self & overlays
         legacyPackages = pkgs;
 
         # nix fmt
