@@ -22,7 +22,7 @@
 (push '(vertical-scroll-bars . nil) default-frame-alist)
 (push '(menu-bar-lines       . nil) default-frame-alist)
 (push '(tool-bar-lines       . nil) default-frame-alist)
-(push '(alpha-background     . 98 ) default-frame-alist)
+;; (push '(alpha-background     . 98 ) default-frame-alist)
 ;; (push '(scroll-bar-mode      . nil) default-frame-alist)
 ;; (push '(blink-cursor-mode    . nil) default-frame-alist)
 ;; (push '(column-number-mode   . nil) default-frame-alist)
