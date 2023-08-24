@@ -20,8 +20,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     install -Dm644 *.{schema,dict}.yaml   $out/share/rime-data
     install -Dm644 symbols*.yaml          $out/share/rime-data
     install -Dm644 default.yaml           $out/share/rime-data
-    # install -Dm644 *.{lua,gram}           $out/share/rime-data
+    install -Dm644 *.{lua,gram}           $out/share/rime-data
 
+    mv lua       $out/share/rime-data
     mv opencc    $out/share/rime-data
     mv cn_dicts  $out/share/rime-data
     mv en_dicts  $out/share/rime-data
