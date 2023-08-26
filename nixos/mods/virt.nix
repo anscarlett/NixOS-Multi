@@ -69,7 +69,7 @@ in {
         extraPkgs = pkgs:
           with pkgs; [
             libthai
-            # libsecret
+            libsecret
           ];
       })
     ];
