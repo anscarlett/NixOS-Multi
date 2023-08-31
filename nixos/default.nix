@@ -11,7 +11,6 @@
       ./mods/doas.nix
       ./mods/fcitx.nix
       ./mods/flatpak.nix
-      ./mods/clash-for-windows.nix
     ];
   };
 

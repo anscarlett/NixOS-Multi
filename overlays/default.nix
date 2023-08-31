@@ -97,8 +97,6 @@
     # deb / autoPatchelf
     he3 = prev.callPackage ./he3 {};
     xmind = prev.callPackage ./xmind {};
-    clash-for-windows = prev.callPackage ./clash-for-windows {};
-    clash-premium = prev.callPackage ./clash-premium {};
 
     # electron ALL WIP!!!
     listen1 = prev.callPackage ./listen1 {};

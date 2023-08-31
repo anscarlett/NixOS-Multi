@@ -1,12 +1,10 @@
-{config, lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs.clash-verge = {
     enable = true;
-    tunMode = true;
-    autoStart = true;
-  };
-
-  programs.clash-for-windows = {
-    # enable = true;
     tunMode = true;
     autoStart = true;
   };

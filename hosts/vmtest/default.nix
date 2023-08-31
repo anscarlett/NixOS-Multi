@@ -23,6 +23,7 @@
   environment.systemPackages = with pkgs; [
     git
     firefox
+    notes
     gnomeExtensions.appindicator
   ];
 
