@@ -8,9 +8,9 @@
   ];
 in {
   home.packages = with pkgs; [
-    # (google-chrome.override {
-    #   commandLineArgs = chromeEnv;
-    # })
+    (google-chrome.override {
+      commandLineArgs = chromeEnv;
+    })
     # (vivaldi.override {
     #   proprietaryCodecs = true;
     #   enableWidevine = true; # drm

@@ -40,9 +40,6 @@
             tree-sitter-python
           ]))
       ];
-    extraConfig = ''
-      (setq treemacs-python-executable "${pkgs.python3}/bin/python")
-    '';
   };
 
   ###############################################

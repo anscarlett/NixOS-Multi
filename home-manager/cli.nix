@@ -116,7 +116,7 @@
   ];
 
   programs = {
-    exa = {
+    eza = {
       enable = true;
       # ll, la, lla, lt ...
       enableAliases = true;
