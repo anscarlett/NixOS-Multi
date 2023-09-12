@@ -22,13 +22,13 @@
 # https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/clash-verge/PKGBUILD
 stdenv.mkDerivation rec {
   pname = "clash-verge";
-  version = "1.3.6";
+  version = "1.3.7";
 
   src = fetchFromGitHub {
     owner = "zzzgydi";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-8EFgkxs8DFkLjD2gBFWFoOrdEAEKRvkCZ3gFm52pOJU=";
+    hash = "sha256-qUAuA3vC+Mu9Sc10k2hGAl+ELhRAu5L+V/b9vKo9tv0=";
     # postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
   };
 
@@ -67,7 +67,7 @@ stdenv.mkDerivation rec {
     inherit src;
     sourceRoot = "source/src-tauri";
     name = "${pname}-${version}";
-    hash = "sha256-d58TlaHJMswAe/CJJXQpOYAHJADkQmk9j1hEBKZ1R80=";
+    hash = "sha256-we8gxx13hqbV3lWSK78eP2pWGA7oVgTAQnFjFNKZ+Q8=";
   };
 
   nativeBuildInputs = [
