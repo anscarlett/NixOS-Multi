@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
 
     # Secure Boot
-    inputs.lanzaboote.nixosModules.lanzaboote
+    # inputs.lanzaboote.nixosModules.lanzaboote
 
     # nixos-hardware repo
     inputs.nixos-hardware.nixosModules.common-gpu-amd
@@ -42,7 +42,8 @@
   # latest / zen / lqx / xanmod_latest
   # boot.kernelPackages = pkgs.linuxPackages;
 
-  # boot.kernelParams = ["quite"];
+  # Disabling Laptop's internal keyboard
+  boot.kernelParams = ["i8042.nokbd"];
 
   # https://fedoraproject.org/wiki/Changes/IncreaseVmMaxMapCount
   # boot.kernel.sysctl = {
@@ -73,13 +74,13 @@
   sbctl create-keys
   sbctl enroll-keys --microsoft
   */
-  boot.lanzaboote = {
-    enable = true;
-    configurationLimit = 3;
-    pkiBundle = "/etc/secureboot";
-    # settings = {
-    # };
-  };
+  # boot.lanzaboote = {
+  #   enable = true;
+  #   configurationLimit = 3;
+  #   pkiBundle = "/etc/secureboot";
+  #   # settings = {
+  #   # };
+  # };
 
   boot.loader = {
     efi = {
@@ -87,7 +88,7 @@
       efiSysMountPoint = "/efi"; # default /boot
     };
     systemd-boot = {
-      # enable = true;
+      enable = true;
       configurationLimit = 5; # bootmenu items
       consoleMode = "max";
     };
