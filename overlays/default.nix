@@ -82,7 +82,7 @@
     -I nixpkgs=flake:github:NixOS/nixpkgs/$(nixos-version --revision)
     */
 
-    clash-verge = prev.callPackage ./clash-verge-source {};
+    # clash-verge = prev.callPackage ./clash-verge-source {};
 
     # Data
     ns-cli = prev.callPackage ./ns-cli {};

@@ -21,8 +21,8 @@
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
 
     # "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
-    self.nixosModules.gnome
-    # self.nixosModules.kde
+    # self.nixosModules.gnome
+    self.nixosModules.kde
     # self.nixosModules.sway
     # self.nixosModules.hyprland
   ];
@@ -88,12 +88,12 @@
       efiSysMountPoint = "/efi"; # default /boot
     };
     systemd-boot = {
-      enable = true;
+      # enable = true;
       configurationLimit = 5; # bootmenu items
       consoleMode = "max";
     };
     grub = {
-      # enable = true;
+      enable = true;
       device = "nodev";
       efiSupport = true;
       gfxmodeEfi = "1024x768";

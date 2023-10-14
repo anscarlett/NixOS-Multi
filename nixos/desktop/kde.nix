@@ -62,13 +62,7 @@
 
       sddm = {
         enable = true;
-        settings = {
-          # FIXME: https://github.com/NixOS/nixpkgs/pull/242009
-          Wayland.CompositorCommand = "${pkgs.weston}/bin/weston --shell=fullscreen-shell.so";
-          General.DisplayServer = "wayland";
-          General.InputMethod = ""; # fix giant virtual keyboard
-          # X11.ServerArguments = "-dpi 144";
-        };
+        wayland.enable = true;
       };
 
       lightdm = {
