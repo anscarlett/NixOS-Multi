@@ -21,8 +21,8 @@
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
 
     # "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
-    # self.nixosModules.gnome
-    self.nixosModules.kde
+    self.nixosModules.gnome
+    # self.nixosModules.kde
     # self.nixosModules.sway
     # self.nixosModules.hyprland
   ];
@@ -43,7 +43,7 @@
   # boot.kernelPackages = pkgs.linuxPackages;
 
   # Disabling Laptop's internal keyboard
-  boot.kernelParams = ["i8042.nokbd"];
+  # boot.kernelParams = ["i8042.nokbd"];
 
   # https://fedoraproject.org/wiki/Changes/IncreaseVmMaxMapCount
   # boot.kernel.sysctl = {
@@ -103,6 +103,12 @@
         menuentry "Windows" {
          search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw.efi
          chainloader (''${root})/EFI/Microsoft/Boot/bootmgfw.efi
+        }
+        menuentry "Firmware" {
+         fwsetup
+        }
+        menuentry "Shutdown" {
+         halt
         }
       '';
       # theme = pkgs.fetchzip {
