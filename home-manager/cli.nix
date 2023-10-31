@@ -60,6 +60,7 @@
     eget
     croc
     magic-wormhole-rs
+    ripdrag
 
     # System Monitor
     ctop # containers monitor
