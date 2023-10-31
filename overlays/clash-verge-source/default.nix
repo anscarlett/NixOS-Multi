@@ -22,14 +22,14 @@
 # https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/clash-verge/PKGBUILD
 stdenv.mkDerivation rec {
   pname = "clash-verge";
-  version = "1.3.7";
+  version = "1.3.8";
 
   src = fetchFromGitHub {
     owner = "zzzgydi";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-qUAuA3vC+Mu9Sc10k2hGAl+ELhRAu5L+V/b9vKo9tv0=";
-    # postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
+    hash = "sha256-iIPi4+AIHVDY69w7agEETuz+m6CzXyfwzUhJFZunmwI=";
+    postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
   };
 
   postPatch = ''
@@ -57,17 +57,17 @@ stdenv.mkDerivation rec {
     ln -s ${v2ray-domain-list-community}/share/v2ray/geosite.dat src-tauri/resources/
   '';
 
-  yarnDeps = fetchYarnDeps {
-    yarnLock = src + "/yarn.lock";
-    hash = "sha256-pPw37TpkHjMMgSuEUOlFeb3nDZXOgJdhcyrWJ+dxAkE=";
-  };
-
   cargoRoot = "src-tauri";
   cargoDeps = rustPlatform.fetchCargoTarball {
     inherit src;
     sourceRoot = "source/src-tauri";
     name = "${pname}-${version}";
-    hash = "sha256-we8gxx13hqbV3lWSK78eP2pWGA7oVgTAQnFjFNKZ+Q8=";
+    hash = "sha256-HlYPqmQggzuuC1cM2y/uvTAPaGiQejwrebktXYbMMUg=";
+  };
+
+  yarnDeps = fetchYarnDeps {
+    yarnLock = src + "/yarn.lock";
+    hash = "sha256-pPw37TpkHjMMgSuEUOlFeb3nDZXOgJdhcyrWJ+dxAkE=";
   };
 
   nativeBuildInputs = [
