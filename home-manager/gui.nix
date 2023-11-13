@@ -154,7 +154,19 @@
       '';
     };
 
-    # mimeApps.enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "video/*" = "mpv.desktop";
+        "audio/mpeg" = "qmmp.desktop";
+        "audio/flac" = "qmmp.desktop";
+        "audio/x-vorbis+ogg" = "qmmp.desktop";
+        "image/*" = "org.gnome.eog.desktop";
+        "text/plain" = "org.gnome.TextEditor.desktop";
+        "text/html" = "firefox.desktop";
+        "application/pdf" = "org.kde.okular.desktop";
+      };
+    };
 
     # Cursor Theme
     # home.pointerCursor = {

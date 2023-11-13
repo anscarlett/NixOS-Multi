@@ -11,6 +11,9 @@
       rank = "shortlog -s -n --no-merges";
       lg = "log --graph --decorate --all --oneline";
       ll = "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative";
+      unstage = "reset HEAD --";
+      quick-rebase = "rebase --interactive --autostash --committer-date-is-author-date";
+      quick-clone = "clone --depth=1 --recurse-submodules --shallow-submodules";
     };
     extraConfig = {
       init.defaultBranch = "main";
