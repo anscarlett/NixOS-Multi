@@ -1,8 +1,9 @@
 {
   lib,
   pkgs,
-  config,
   inputs,
+  config,
+  nixosConfig,
   ...
 }: {
   home.packages = with pkgs; [
@@ -156,16 +157,25 @@
 
     mimeApps = {
       enable = true;
-      defaultApplications = {
-        "video/*" = "mpv.desktop";
-        "audio/mpeg" = "qmmp.desktop";
-        "audio/flac" = "qmmp.desktop";
-        "audio/x-vorbis+ogg" = "qmmp.desktop";
-        "image/*" = "org.gnome.eog.desktop";
-        "text/plain" = "org.gnome.TextEditor.desktop";
-        "text/html" = "firefox.desktop";
-        "application/pdf" = "org.kde.okular.desktop";
-      };
+      defaultApplications = lib.mkMerge [
+        {
+          "video/*" = "mpv.desktop";
+          "audio/mpeg" = "qmmp.desktop";
+          "audio/flac" = "qmmp.desktop";
+          "audio/x-vorbis+ogg" = "qmmp.desktop";
+          "text/html" = "firefox.desktop";
+        }
+        (lib.mkIf nixosConfig.services.xserver.desktopManager.gnome.enable {
+          "image/*" = "org.gnome.eog.desktop";
+          "text/plain" = "org.gnome.TextEditor.desktop";
+          "application/pdf" = "org.gnome.Evince.desktop";
+        })
+        (lib.mkIf nixosConfig.services.xserver.desktopManager.plasma5.enable {
+          "image/*" = "org.kde.gwenview.desktop";
+          "text/plain" = "org.kde.kwrite.desktop";
+          "application/pdf" = "org.kde.okular.desktop";
+        })
+      ];
     };
 
     # Cursor Theme
