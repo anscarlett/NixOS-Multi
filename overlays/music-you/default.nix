@@ -10,7 +10,6 @@
 , libayatana-appindicator
 , nss
 , alsa-lib
-, sqlite
 }:
 # WIP!!!
 stdenv.mkDerivation rec {
@@ -18,8 +17,8 @@ stdenv.mkDerivation rec {
   version = "3.0.0";
 
   src = fetchurl {
-    url = "https://github.com/GuMengYu/music-you/releases/download/v3.0.0-alpha.0/music-you_3.0.0-alpha.0_amd64.deb";
-    hash = "sha256-TRjpLXce1gKgeUYZQraPzFkg3v0s8bOms+5wtXkVIAQ=";
+    url = "https://github.com/GuMengYu/music-you/releases/download/v3.0.0-alpha.2/music-you_3.0.0-alpha.2_amd64.deb";
+    hash = "sha256-UhLfMENMI706LAkZBDbP2rNW9cTEZ8lkmhlLTpDFvrg=";
   };
 
   nativeBuildInputs = [
