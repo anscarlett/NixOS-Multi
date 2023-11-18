@@ -66,6 +66,7 @@
       # dotspaces
       runcat
       caffeine
+      paperwm
       # ddterm
       improved-osk
     ]);

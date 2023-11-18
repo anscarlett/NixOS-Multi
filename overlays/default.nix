@@ -83,6 +83,7 @@
     */
 
     # clash-verge = prev.callPackage ./clash-verge-source {};
+    clash-nyanpasu = prev.callPackage ./clash-nyanpasu {};
 
     # Data
     ns-cli = prev.callPackage ./ns-cli {};
