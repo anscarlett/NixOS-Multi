@@ -37,7 +37,7 @@
     # (deadbeef-with-plugins.override {
     #   plugins = with deadbeefPlugins; [mpris2];
     # })
-    amberol
+    # amberol
     # audacious
     # rhythmbox
     goodvibes
@@ -160,13 +160,13 @@
       defaultApplications = lib.mkMerge [
         {
           "video/*" = "mpv.desktop";
-          "audio/mpeg" = "io.bassi.Amberol.desktop";
-          "audio/flac" = "io.bassi.Amberol.desktop";
-          "audio/x-vorbis+ogg" = "io.bassi.Amberol.desktop";
+          "audio/mpeg" = "qmmp.desktop";
+          "audio/flac" = "qmmp.desktop";
+          "audio/x-vorbis+ogg" = "qmmp.desktop";
           "text/html" = "firefox.desktop";
         }
         (lib.mkIf nixosConfig.services.xserver.desktopManager.gnome.enable {
-          "image/*" = "org.gnome.eog.desktop";
+          "image/*" = "org.gnome.Loupe.desktop";
           "text/plain" = "org.gnome.TextEditor.desktop";
           "application/pdf" = "org.gnome.Evince.desktop";
         })

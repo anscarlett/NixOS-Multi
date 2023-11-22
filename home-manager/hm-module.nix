@@ -27,4 +27,5 @@
     ];
 
   home.stateVersion = nixosConfig.system.stateVersion;
+  home.enableNixpkgsReleaseCheck = false;
 }
