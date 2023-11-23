@@ -31,7 +31,6 @@
         "app-hider@lynith.dev"
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-history@alexsaveau.dev"
-        "space-bar@luchrioh"
         # "gradienttopbar@pshow.org"
         "nightthemeswitcher@romainvigier.fr"
         "caffeine@patapon.info"
@@ -56,14 +55,6 @@
       hot-keys = false;
       show-trash = false;
       click-action = "focus-minimize-or-previews";
-    };
-
-    "org/gnome/shell/extensions/space-bar/behavior" = {
-      show-empty-workspaces = false;
-    };
-
-    "org/gnome/shell/extensions/space-bar/shortcuts" = {
-      open-menu = [];
     };
 
     "org/gnome/shell/extensions/caffeine" = {

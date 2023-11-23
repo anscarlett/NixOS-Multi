@@ -62,8 +62,6 @@
       gradient-top-bar
       top-bar-organizer
       # just-perfection
-      space-bar
-      # dotspaces
       runcat
       caffeine
       paperwm
