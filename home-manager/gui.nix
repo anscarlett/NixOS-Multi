@@ -52,6 +52,7 @@
     # ciano
     # video-trimmer
     # spotiflyer
+    # downonspot
 
     # Image manipulation
     # shutter
@@ -65,6 +66,7 @@
     warp
     remmina # (webkitgtk)
     gnome-decoder
+    localsend
     # motrix
     qbittorrent
     # deja-dup
