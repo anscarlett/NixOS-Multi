@@ -11,6 +11,7 @@
       ./mods/doas.nix
       ./mods/fcitx.nix
       ./mods/flatpak.nix
+      ./mods/clash-nyanpasu.nix
     ];
   };
 

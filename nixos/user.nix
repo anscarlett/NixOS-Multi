@@ -3,7 +3,17 @@
   config,
   username,
   ...
-}: {
+}: let
+  sudoRule = {
+    users = ["${username}"];
+    commands = [
+      {
+        command = "ALL";
+        options = ["NOPASSWD"];
+      }
+    ];
+  };
+in {
   users = {
     # Forbid create new user by `useradd`
     mutableUsers = false;
@@ -52,20 +62,18 @@
       ++ lib.optionals config.programs.adb.enable ["adbusers"];
   };
 
-  # sudo or doas
+  # doas
   mods.doas.enable = true;
 
-  # security.sudo.wheelNeedsPassword = false;
+  # sudo-rs
+  # security.sudo.enable = false;
+  # security.sudo-rs.enable = true;
+  # security.sudo-rs.extraRules = [sudoRule];
   # or
-  security.sudo.extraRules = [
-    {
-      users = ["${username}"];
-      commands = [
-        {
-          command = "ALL";
-          options = ["NOPASSWD"];
-        }
-      ];
-    }
-  ];
+  # security.sudo-rs.wheelNeedsPassword = false;
+
+  # vanilla sudo
+  # security.sudo.extraRules = [sudoRule];
+  # or
+  # security.sudo.wheelNeedsPassword = false;
 }

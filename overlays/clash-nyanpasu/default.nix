@@ -53,11 +53,11 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "A Clash GUI based on tauri";
-    homepage = "https://github.com/zzzgydi/clash-verge";
+    homepage = "https://github.com/keiko233/clash-nyanpasu";
     platforms = [ "x86_64-linux" ];
     license = licenses.gpl3Plus;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     maintainers = with maintainers; [ zendo ];
-    mainProgram = "clash-verge";
+    mainProgram = "clash-nyanpasu";
   };
 }

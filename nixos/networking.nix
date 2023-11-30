@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  programs.clash-verge = {
+  programs.clash-nyanpasu = {
     enable = true;
     tunMode = true;
     autoStart = true;
