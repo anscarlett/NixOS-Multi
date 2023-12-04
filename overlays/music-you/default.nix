@@ -17,8 +17,8 @@ stdenv.mkDerivation rec {
   version = "3.0.0";
 
   src = fetchurl {
-    url = "https://github.com/GuMengYu/music-you/releases/download/v3.0.0-alpha.2/music-you_3.0.0-alpha.2_amd64.deb";
-    hash = "sha256-UhLfMENMI706LAkZBDbP2rNW9cTEZ8lkmhlLTpDFvrg=";
+    url = "https://github.com/GuMengYu/music-you/releases/download/v3.0.0-alpha.3/music-you_3.0.0-alpha.3_amd64.deb";
+    hash = "sha256-R2sa2TCN23Mb76iygksgYG6B2LQON87HVMUx9RQD+Ow=";
   };
 
   nativeBuildInputs = [
