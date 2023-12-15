@@ -34,7 +34,7 @@
     # Publish this server and its address on the network
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       # publish = {
       #   enable = true;
       #   domain = true;
