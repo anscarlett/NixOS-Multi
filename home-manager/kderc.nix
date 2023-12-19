@@ -80,8 +80,7 @@
 
         # };
 
-        # https://github.com/pjones/plasma-manager/issues/8
-        "org.kde.kdecoration2" = {
+        "org\\.kde\\.kdecoration2" = {
           ButtonsOnLeft = "M";
           ButtonsOnRight = "IAX";
           ShowToolTips = false;
