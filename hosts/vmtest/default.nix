@@ -43,7 +43,7 @@
       # mate.enable = true;
       # lxqt.enable = true;
     };
-    displayManager.autoLogin.user = lib.mkForce "guest";
+    # displayManager.autoLogin.user = lib.mkForce "guest";
     xkbOptions = "ctrl:swapcaps"; # Xorg Layout
   };
 

@@ -4,7 +4,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    urlview
     xclip
   ];
 
@@ -25,7 +24,6 @@
     disableConfirmationPrompt = true;
     plugins = with pkgs.tmuxPlugins; [
       yank
-      urlview # prefix - u
       fuzzback # ?
       extrakto # tab
       tmux-fzf # prefix - F

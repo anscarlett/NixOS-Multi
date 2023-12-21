@@ -166,6 +166,12 @@
       enableZshIntegration = config.programs.zsh.enable;
     };
 
+    yazi = {
+      # enable = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableZshIntegration = config.programs.zsh.enable;
+    };
+
     nix-index = {
       enable = true;
       enableBashIntegration = config.programs.bash.enable;

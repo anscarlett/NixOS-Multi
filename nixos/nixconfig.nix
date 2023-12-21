@@ -6,6 +6,7 @@
   nix = {
     # channel.enable = false;
 
+    # system registry
     # nix registry list
     registry =
       lib.mapAttrs (_: value: {flake = value;}) inputs
@@ -35,7 +36,7 @@
       auto-optimise-store = true;
       auto-allocate-uids = true;
       use-cgroups = true;
-      flake-registry = /etc/nix/registry.json;
+      flake-registry = ""; # disable global registry
 
       substituters = lib.mkForce [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
