@@ -15,11 +15,16 @@
     kernelParams = lib.optionals config.boot.initrd.systemd.enable ["systemd.show_status=false"];
   };
 
-  zramSwap.enable = lib.mkDefault true;
-
   services = {
     fwupd.enable = true;
     acpid.enable = true;
+    zram-generator = {
+      enable = lib.mkDefault true;
+      settings.zram0 = {
+        compression-algorithm = "zstd";
+        zram-size = "ram / 2";
+      };
+    };
 
     journald.extraConfig = ''
       SystemMaxUse=50M
