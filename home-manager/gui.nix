@@ -66,7 +66,7 @@
     warp
     remmina # (webkitgtk)
     gnome-decoder
-    localsend
+    # localsend
     # motrix
     qbittorrent
     # deja-dup

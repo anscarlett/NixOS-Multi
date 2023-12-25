@@ -13,11 +13,11 @@
 
 stdenv.mkDerivation rec {
   pname = "clash-nyanpasu";
-  version = "1.4.1";
+  version = "1.4.2";
 
   src = fetchurl {
     url = "https://github.com/keiko233/clash-nyanpasu/releases/download/v${version}/clash-nyanpasu_${version}_amd64.deb";
-    hash = "sha256-GX95zR71q7i6LrHAj/rMXfuFG1wKZFGXHZlD/O3SoII=";
+    hash = "sha256-DH6Vp6PKKgJyIoVLEGj7n55HNerNOujoKFExggrkX04=";
   };
 
   nativeBuildInputs = [
