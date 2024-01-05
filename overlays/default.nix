@@ -80,6 +80,7 @@
     */
 
     # clash-verge = prev.callPackage ./clash-verge-source {};
+    clash-verge = prev.callPackage ./clash-verge-rev {};
     clash-nyanpasu = prev.callPackage ./clash-nyanpasu {};
 
     # Data

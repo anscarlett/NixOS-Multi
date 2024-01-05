@@ -27,7 +27,7 @@
           {
             home.username = "${username}";
             home.homeDirectory = "/home/${username}";
-            home.stateVersion = "23.11";
+            home.stateVersion = "24.05";
           }
         ]
         ++ extraModules;
