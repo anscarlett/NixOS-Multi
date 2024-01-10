@@ -112,6 +112,7 @@
 
     # Go
     trzsz-go = prev.callPackage ./trzsz-go {};
+    gtrash = prev.callPackage ./gtrash {};
 
     # Gtk
 

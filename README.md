@@ -8,14 +8,15 @@
 mkfs.fat -F32 /dev/nvme0n1p3
 mkswap /dev/nvme0n1p4
 swapon /dev/nvme0n1p4
-mkfs.btrfs /dev/nvme0n1p5
+mkfs.bcachefs /dev/nvme0n1p5
 mkdir /mnt/efi
+nixos-generate-config --root /mnt
 
 nix run github:nix-community/disko -- -m disko hosts/rmt/disko-bcachefs.nix --arg disks '[ "/dev/sda" ]'
 nixos-generate-config --no-filesystems --root /mnt
+
 nix run github:nix-community/nixos-anywhere -- --flake .#rmt root@192.168.122.89 --no-substitute-on-destination
 
-nixos-generate-config --root /mnt
 nixos-install --no-root-passwd --flake .#host
 --option substituters "https://cache.nixos.org"
 --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
