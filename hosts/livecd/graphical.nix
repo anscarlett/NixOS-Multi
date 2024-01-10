@@ -21,7 +21,17 @@
 
   boot = {
     initrd.systemd.enable = false;
-    supportedFilesystems = lib.mkForce ["btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs"];
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = lib.mkForce [
+      "btrfs"
+      "reiserfs"
+      "vfat"
+      "f2fs"
+      "xfs"
+      "ntfs"
+      "cifs"
+      "bcachefs"
+    ];
   };
 
   services.xserver = {

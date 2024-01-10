@@ -39,21 +39,25 @@
   ###############################################
   ## Kernel
   ###############################################
-  # latest / zen / lqx / xanmod_latest
-  # boot.kernelPackages = pkgs.linuxPackages;
+  boot = {
+    # latest / zen / lqx / xanmod_latest
+    kernelPackages = pkgs. linuxPackages_latest;
 
-  # Disabling Laptop's internal keyboard
-  # boot.kernelParams = ["i8042.nokbd"];
+    supportedFilesystems = ["ntfs"];
 
-  # https://fedoraproject.org/wiki/Changes/IncreaseVmMaxMapCount
-  # boot.kernel.sysctl = {
-  #   "vm.max_map_count" = 2147483642;  # default: 1048576
-  # };
+    # plymouth = {
+    #   theme = "double";
+    #   themePackages = [pkgs.adi1090x-plymouth-themes];
+    # };
 
-  # boot.plymouth = {
-  #   theme = "double";
-  #   themePackages = [pkgs.adi1090x-plymouth-themes];
-  # };
+    # Disabling Laptop's internal keyboard
+    # kernelParams = ["i8042.nokbd"];
+
+    # https://fedoraproject.org/wiki/Changes/IncreaseVmMaxMapCount
+    # kernel.sysctl = {
+    #   "vm.max_map_count" = 2147483642; # default: 1048576
+    # };
+  };
 
   # services.logind = {
   #   lidSwitch = "suspend-then-hibernate";

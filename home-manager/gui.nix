@@ -158,7 +158,7 @@
     };
 
     mimeApps = {
-      enable = true;
+      enable = false;
       defaultApplications = lib.mkMerge [
         {
           "video/*" = "mpv.desktop";

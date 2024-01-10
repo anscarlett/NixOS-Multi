@@ -13,6 +13,8 @@
     # self.nixosModules.kde
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   ###############################################
   ## Bootloader
   ###############################################
