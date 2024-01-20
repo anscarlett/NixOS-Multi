@@ -8,6 +8,7 @@
       ./nixconfig.nix
       ./networking.nix
       ./mods/virt.nix
+      ./mods/dae.nix
       ./mods/doas.nix
       ./mods/fcitx.nix
       ./mods/flatpak.nix

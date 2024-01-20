@@ -12,7 +12,7 @@ in {
 
   home.sessionVariables = {
     VISUAL = "micro";
-    EDITOR = "micro";
+    EDITOR = "emacs";
   };
 
   home.file = {

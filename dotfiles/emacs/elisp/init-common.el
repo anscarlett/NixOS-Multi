@@ -6,6 +6,10 @@
 (when (eq system-type 'gnu/linux)
   (setq org-directory "~/Documents/Notes")
   (set-face-font 'default "JetBrains Mono-10")
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font)
+                      charset
+                      (font-spec :family "Noto Sans CJK SC" :size 12)))
   )
 
 (when (eq system-type 'windows-nt)

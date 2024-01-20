@@ -10,6 +10,8 @@
   #   autoStart = true;
   # };
 
+  mods.daeWithConfig.enable = true;
+
   services = {
     openssh = {
       enable = true;
@@ -17,12 +19,6 @@
       settings.PermitRootLogin = lib.mkDefault "no";
     };
     # v2raya.enable = true;
-
-    dae = {
-      enable = true;
-      configFile = "/home/${username}/dev/config.dae";
-      # configFile = config.sops.secrets."config.dae".path;
-    };
 
     # resolved.enable = true;
     # resolved.fallbackDns = config.networking.nameservers;
