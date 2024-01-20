@@ -45,6 +45,7 @@
     fd
     sd
     choose
+    ssh-to-age
     sops
     age
     # rage # age encrypt RIIR
@@ -150,6 +151,13 @@
     # z: autojump directory
     zoxide = {
       enable = true;
+      enableBashIntegration = config.programs.bash.enable;
+      enableZshIntegration = config.programs.zsh.enable;
+    };
+
+    # shell history
+    atuin = {
+      enable = false;
       enableBashIntegration = config.programs.bash.enable;
       enableZshIntegration = config.programs.zsh.enable;
     };
