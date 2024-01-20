@@ -16,6 +16,13 @@
       specialArgs = {inherit inputs self username;};
       modules =
         [
+          inputs.sops-nix.nixosModules.sops
+          {
+            sops.defaultSopsFile = ../secrets/secrets.yaml;
+            sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+            # sops.age.generateKey = true;
+            sops.age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+          }
           inputs.disko.nixosModules.disko
           {
             nixpkgs.config.allowUnfree = true;

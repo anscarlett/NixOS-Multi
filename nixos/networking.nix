@@ -1,13 +1,14 @@
 {
   lib,
   config,
+  username,
   ...
 }: {
-  programs.clash-verge = {
-    enable = true;
-    tunMode = true;
-    autoStart = true;
-  };
+  # programs.clash-verge = {
+  #   enable = true;
+  #   tunMode = true;
+  #   autoStart = true;
+  # };
 
   services = {
     openssh = {
@@ -16,6 +17,12 @@
       settings.PermitRootLogin = lib.mkDefault "no";
     };
     # v2raya.enable = true;
+
+    dae = {
+      enable = true;
+      configFile = "/home/${username}/dev/config.dae";
+      # configFile = config.sops.secrets."config.dae".path;
+    };
 
     # resolved.enable = true;
     # resolved.fallbackDns = config.networking.nameservers;
@@ -61,7 +68,7 @@
     ];
 
     firewall = {
-      # enable = false; # true by default
+      enable = false; # true by default
       # allowedUDPPorts = [ 53317 ];
       # allowedTCPPorts = [ 53317 ];
     };

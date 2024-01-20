@@ -110,7 +110,7 @@
     };
 
     # agenix.url = github:ryantm/agenix;
-    # sops-nix.url = github:Mic92/sops-nix;
+    sops-nix.url = github:Mic92/sops-nix;
     # nur.url = "github:nix-community/NUR";
     devenv.url = "github:cachix/devenv";
     templates.url = "github:NixOS/templates";
