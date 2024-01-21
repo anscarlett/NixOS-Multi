@@ -3,10 +3,14 @@
   inputs,
   ...
 }: {
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = builtins.attrValues inputs.self.overlays;
+  };
+
   nix = {
     # channel.enable = false;
 
-    # system registry
     # nix registry list
     registry =
       lib.mapAttrs (_: value: {flake = value;}) inputs
@@ -14,7 +18,6 @@
         n.flake = inputs.nixpkgs;
       };
 
-    # Backwards compatibility for older nix
     # nix show-config nix-path
     # echo $NIX_PATH | tr ":" "\n"
     nixPath =
