@@ -81,7 +81,6 @@
 
     # clash-verge = prev.callPackage ./clash-verge-source {};
     clash-verge = prev.callPackage ./clash-verge-rev {};
-    clash-nyanpasu = prev.callPackage ./clash-nyanpasu {};
 
     # Data
     ns-cli = prev.callPackage ./ns-cli {};
@@ -112,7 +111,6 @@
 
     # Go
     trzsz-go = prev.callPackage ./trzsz-go {};
-    gtrash = prev.callPackage ./gtrash {};
 
     # Gtk
 

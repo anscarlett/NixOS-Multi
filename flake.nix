@@ -109,9 +109,9 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # agenix.url = github:ryantm/agenix;
-    sops-nix.url = github:Mic92/sops-nix;
     # nur.url = "github:nix-community/NUR";
+    # agenix.url = "github:ryantm/agenix";
+    sops-nix.url = "github:Mic92/sops-nix";
     devenv.url = "github:cachix/devenv";
     templates.url = "github:NixOS/templates";
     flake-parts.url = "github:hercules-ci/flake-parts";
