@@ -90,7 +90,6 @@
 
     # AppImage
     moonfm = prev.callPackage ./moonfm {};
-    gitfiend = prev.callPackage ./gitfiend {};
 
     # deb / autoPatchelf
     he3 = prev.callPackage ./he3 {};

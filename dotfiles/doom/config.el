@@ -21,7 +21,7 @@
 ;; environment
 (when IS-WINDOWS
   (setq doom-font (font-spec :family "JetBrains Mono" :size 26)
-      doom-unicode-font (font-spec :family "Segoe UI Emoji")
+      doom-symbol-font (font-spec :family "Segoe UI Emoji")
 
       default-directory "~/Desktop/"
       org-directory "~/Documents/Notes/"
@@ -31,7 +31,7 @@
   (setq doom-font (font-spec :family "JetBrains Mono" :size 14)
       doom-variable-pitch-font (font-spec :family "Fira Code")
       doom-big-font-increment 2
-      doom-unicode-font (font-spec :family "Noto Color Emoji")
+      doom-symbol-font (font-spec :family "Noto Color Emoji")
 
       ;; org-directory "~/Documents/Notes/"
       ))

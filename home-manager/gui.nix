@@ -11,12 +11,8 @@
     # azcomicv
     # moonfm
     # music-you
-    # gitfiend
-    # trzsz-go
 
     kitty
-    # foot
-    # alacritty
     nurl
     nix-init
     # nixpkgs-review
