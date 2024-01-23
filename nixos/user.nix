@@ -15,8 +15,7 @@
   };
 in {
   users = {
-    # Forbid create new user by `useradd`
-    mutableUsers = false;
+    # mutableUsers = false;
     # defaultUserShell = pkgs.zsh;
   };
 

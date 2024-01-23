@@ -4,6 +4,7 @@
   config,
   pkgs,
   lib,
+  modulesPath,
   ...
 }: {
   imports = [
@@ -11,6 +12,8 @@
 
     # Secure Boot
     # inputs.lanzaboote.nixosModules.lanzaboote
+
+    # "${modulesPath}/profiles/perlless.nix"
 
     # nixos-hardware repo
     inputs.nixos-hardware.nixosModules.common-gpu-amd
@@ -40,8 +43,7 @@
   ## Kernel
   ###############################################
   boot = {
-    # latest / zen / lqx / xanmod_latest
-    kernelPackages = pkgs. linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     supportedFilesystems = ["ntfs"];
 

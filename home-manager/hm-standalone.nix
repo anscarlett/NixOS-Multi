@@ -37,7 +37,7 @@ in {
   iab = mkHome {
     username = "iab";
     extraModules = [
-      ../nixos/desktop/hm-dconf.nix
+      ./dconf.nix
     ];
   };
 
