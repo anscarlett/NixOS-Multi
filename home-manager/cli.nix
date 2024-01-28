@@ -9,6 +9,7 @@
     ns-cli
     alejandra
     nixpkgs-fmt
+    nixfmt-rfc-style
     # lorri
     # cachix
     # comma # ,

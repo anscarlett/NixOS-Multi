@@ -15,3 +15,7 @@ patch:
 
   # 候选词数
   menu/page_size: 6
+
+  # 呼出菜单键
+  switcher/hotkeys:
+    - "Control+grave"
