@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.shellAliases = {
     cat = "${lib.getExe pkgs.bat} -p";
     l = "${lib.getExe pkgs.eza} -l --icons";
@@ -16,13 +17,13 @@
     psp = "${lib.getExe pkgs.procs} --sortd UsageMem";
     ps-sort = ''ps -ewwo pid,%cpu,%mem,nice,pri,rtprio,args --sort=-pcpu,-pid | awk -v filter="$1" 'NR==1 || tolower($0) ~ tolower(filter)' | less -e --header=1'';
     mount-ls = "mount | column -t";
-    beep = "echo -en \"\\007\"";
+    beep = ''echo -en "\007"'';
 
     inxi = "inxi -Fz";
     ip = "ip --color=auto";
     nload = "${lib.getExe pkgs.nload} devices wlp1s0";
 
-    wttr = "curl \"wttr.in/Huadu\?0\&lang=zh\"";
+    wttr = ''curl "wttr.in/Huadu?0&lang=zh"'';
     where-am-i = "${pkgs.geoclue2}/libexec/geoclue-2.0/demos/where-am-i";
     my-location = ''curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"' '';
     paste-termbin = "nc termbin.com 9999";
@@ -34,7 +35,7 @@
     ee = "emacs -nw";
     nse = "nix search nixpkgs";
     ssr = "export {http,https,ftp}_proxy=127.0.0.1:7890 ;export {HTTP,HTTPS,FTP}_PROXY=127.0.0.1:7890";
-    journalctl-1h = "journalctl -p err..alert --since \"60 min ago\"";
+    journalctl-1h = ''journalctl -p err..alert --since "60 min ago"'';
     nix-build-default = ''nix-build -E "(import <nixpkgs> {}).callPackage ./. {}"'';
   };
 }

@@ -1,8 +1,5 @@
+{ lib, config, ... }:
 {
-  lib,
-  config,
-  ...
-}: {
   # Bluetooth
   hardware.bluetooth.enable = true;
 

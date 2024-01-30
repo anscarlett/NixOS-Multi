@@ -3,7 +3,8 @@
   lib,
   username,
   ...
-}: {
+}:
+{
   # DisplayManager
   services.greetd = {
     enable = true;

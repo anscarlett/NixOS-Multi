@@ -6,7 +6,8 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
 
@@ -45,7 +46,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [ "ntfs" ];
 
     # plymouth = {
     #   theme = "double";
@@ -74,11 +75,10 @@
   ###############################################
   ## Bootloader
   ###############################################
-  /*
-  disable Secure-Boot and reset to Setup-Mode
-  sudo -i
-  sbctl create-keys
-  sbctl enroll-keys --microsoft
+  /* disable Secure-Boot and reset to Setup-Mode
+     sudo -i
+     sbctl create-keys
+     sbctl enroll-keys --microsoft
   */
   # boot.lanzaboote = {
   #   enable = true;
@@ -132,7 +132,10 @@
   services.btrfs.autoScrub.enable = true;
 
   fileSystems = {
-    "/".options = ["compress=zstd" "noatime"];
+    "/".options = [
+      "compress=zstd"
+      "noatime"
+    ];
     #   "/home".options = [ "compress=zstd" ];
     #   "/nix".options = [ "compress=zstd" "noatime" ];
     #   "/swap".options = [ "noatime" ];

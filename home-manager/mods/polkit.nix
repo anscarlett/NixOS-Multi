@@ -1,11 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
 let
 
   cfg = config.services.polkit;
-
 in
 {
   meta.maintainers = [ maintainers.zendo ];
@@ -15,10 +19,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      (lib.hm.assertions.assertPlatform "services.polkit" pkgs
-        lib.platforms.linux)
-    ];
+    assertions = [ (lib.hm.assertions.assertPlatform "services.polkit" pkgs lib.platforms.linux) ];
 
     systemd.user.services.polkit-agent-gnome = {
       Unit = {

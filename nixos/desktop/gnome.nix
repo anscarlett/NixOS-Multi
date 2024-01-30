@@ -1,11 +1,9 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}: {
   services = {
     xserver = {
       enable = true;
-      excludePackages = [pkgs.xterm];
+      excludePackages = [ pkgs.xterm ];
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };
@@ -31,7 +29,8 @@
     gnome.gnome-software
   ];
 
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       gthumb
       # authenticator
@@ -81,9 +80,7 @@
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [
       # libpinyin
-      (rime.override {
-        rimeDataPkgs = [pkgs.rime-ice];
-      })
+      (rime.override { rimeDataPkgs = [ pkgs.rime-ice ]; })
     ];
   };
 }

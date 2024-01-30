@@ -1,11 +1,6 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
-  home.packages = with pkgs; [
-    pure-prompt
-  ];
+  home.packages = with pkgs; [ pure-prompt ];
 
   programs.fish = {
     enable = false;

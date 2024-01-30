@@ -3,17 +3,19 @@
   config,
   username,
   ...
-}: let
+}:
+let
   sudoRule = {
-    users = ["${username}"];
+    users = [ "${username}" ];
     commands = [
       {
         command = "ALL";
-        options = ["NOPASSWD"];
+        options = [ "NOPASSWD" ];
       }
     ];
   };
-in {
+in
+{
   users = {
     # mutableUsers = false;
     # defaultUserShell = pkgs.zsh;
@@ -34,12 +36,12 @@ in {
         "video"
         "networkmanager"
       ]
-      ++ lib.optionals config.virtualisation.lxd.enable ["lxd"]
-      ++ lib.optionals config.virtualisation.docker.enable ["docker"]
-      ++ lib.optionals config.virtualisation.podman.enable ["podman"]
-      ++ lib.optionals config.virtualisation.libvirtd.enable ["libvirtd"]
+      ++ lib.optionals config.virtualisation.lxd.enable [ "lxd" ]
+      ++ lib.optionals config.virtualisation.docker.enable [ "docker" ]
+      ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
+      ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
       # ++ lib.optionals config.virtualisation.virtualbox.host.enable ["vboxusers"]
-      ++ lib.optionals config.programs.adb.enable ["adbusers"];
+      ++ lib.optionals config.programs.adb.enable [ "adbusers" ];
   };
 
   users.users.guest = {
@@ -53,12 +55,12 @@ in {
         "video"
         "networkmanager"
       ]
-      ++ lib.optionals config.virtualisation.lxd.enable ["lxd"]
-      ++ lib.optionals config.virtualisation.docker.enable ["docker"]
-      ++ lib.optionals config.virtualisation.podman.enable ["podman"]
-      ++ lib.optionals config.virtualisation.libvirtd.enable ["libvirtd"]
+      ++ lib.optionals config.virtualisation.lxd.enable [ "lxd" ]
+      ++ lib.optionals config.virtualisation.docker.enable [ "docker" ]
+      ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
+      ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
       # ++ lib.optionals config.virtualisation.virtualbox.host.enable ["vboxusers"]
-      ++ lib.optionals config.programs.adb.enable ["adbusers"];
+      ++ lib.optionals config.programs.adb.enable [ "adbusers" ];
   };
 
   # doas

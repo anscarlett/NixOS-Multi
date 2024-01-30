@@ -7,7 +7,8 @@
   username,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-base.nix"
     self.nixosModules.gnome
@@ -15,9 +16,7 @@
 
   mods.virt.enable = false;
 
-  environment.systemPackages = with pkgs; [
-    dippi
-  ];
+  environment.systemPackages = with pkgs; [ dippi ];
 
   boot = {
     initrd.systemd.enable = false;

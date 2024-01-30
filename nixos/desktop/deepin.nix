@@ -1,11 +1,9 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}: {
   services = {
     xserver = {
       enable = true;
-      excludePackages = [pkgs.xterm];
+      excludePackages = [ pkgs.xterm ];
       # displayManager.gdm.enable = true;
       desktopManager.deepin.enable = true;
     };
@@ -18,9 +16,7 @@
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [
       # libpinyin
-      (rime.override {
-        rimeDataPkgs = [pkgs.rime-ice];
-      })
+      (rime.override { rimeDataPkgs = [ pkgs.rime-ice ]; })
     ];
   };
 }

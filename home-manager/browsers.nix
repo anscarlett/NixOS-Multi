@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   chromeEnv = [
     "--enable-features=VaapiVideoDecodeLinuxGL"
     "--gtk-version=4" # broken! 主题改经典 fix
@@ -6,7 +7,8 @@
     "--disable-features=WaylandFractionalScaleV1"
     "--enable-features=TouchpadOverscrollHistoryNavigation"
   ];
-in {
+in
+{
   home.packages = with pkgs; [
     # (google-chrome.override {
     #   commandLineArgs = chromeEnv;
@@ -41,15 +43,15 @@ in {
     # package = pkgs.firefox-bin;
     profiles.default = {
       settings = {
-        "browser.tabs.closeTabByDblclick" = true;           # 双击关闭标签
-        "browser.tabs.selectOwnerOnClose" = false;          # 关闭标签后选附近标签而不是原始
-        "browser.tabs.closeWindowWithLastTab" = false;      # 关闭最后一个标签不退出界面
-        "browser.tabs.firefox-view" = false;                # disable Firefox View button on tab
+        "browser.tabs.closeTabByDblclick" = true; # 双击关闭标签
+        "browser.tabs.selectOwnerOnClose" = false; # 关闭标签后选附近标签而不是原始
+        "browser.tabs.closeWindowWithLastTab" = false; # 关闭最后一个标签不退出界面
+        "browser.tabs.firefox-view" = false; # disable Firefox View button on tab
         "browser.toolbars.bookmarks.visibility" = "always"; # Always show bookmarks
         "browser.aboutwelcome.enabled" = false;
-        "browser.aboutConfig.showWarning" = false;          # Dont show warning when accessing about:config
-        "browser.quitShortcut.disabled" = true;             # disable annoyinh Ctrl+Q shortcut
-        "media.eme.enabled" = true;                         # DRM
+        "browser.aboutConfig.showWarning" = false; # Dont show warning when accessing about:config
+        "browser.quitShortcut.disabled" = true; # disable annoyinh Ctrl+Q shortcut
+        "media.eme.enabled" = true; # DRM
 
         "gfx.webrender.all" = true; # 开启极速渲染
         "media.ffmpeg.vaapi.enabled" = true; # enable hw video acceleration, if supported

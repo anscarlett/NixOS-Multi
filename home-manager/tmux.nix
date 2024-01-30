@@ -1,11 +1,6 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
-  home.packages = with pkgs; [
-    xclip
-  ];
+  home.packages = with pkgs; [ xclip ];
 
   # programs.zellij = {
   #   enable = true;

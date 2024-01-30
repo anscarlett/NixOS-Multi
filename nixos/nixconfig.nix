@@ -1,8 +1,5 @@
+{ lib, inputs, ... }:
 {
-  lib,
-  inputs,
-  ...
-}: {
   nixpkgs = {
     config.allowUnfree = true;
     overlays = builtins.attrValues inputs.self.overlays;
@@ -12,19 +9,15 @@
     # channel.enable = false;
 
     # nix registry list
-    registry =
-      lib.mapAttrs (_: value: {flake = value;}) inputs
-      // {
-        n.flake = inputs.nixpkgs;
-      };
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs // {
+      n.flake = inputs.nixpkgs;
+    };
 
     # nix show-config nix-path
     # echo $NIX_PATH | tr ":" "\n"
-    nixPath =
-      lib.mapAttrsToList (name: path: "${name}=${path}") inputs
-      ++ [
-        "nixos-config=${inputs.self}"
-      ];
+    nixPath = lib.mapAttrsToList (name: path: "${name}=${path}") inputs ++ [
+      "nixos-config=${inputs.self}"
+    ];
 
     gc = {
       automatic = true;
@@ -50,13 +43,13 @@
         "https://nix-community.cachix.org"
       ];
 
-      trusted-users = ["root" "@wheel"];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       # List of binary cache URLs that non-root users can use
-      trusted-substituters = [
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+      trusted-substituters = [ ];
+      trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 
       experimental-features = [
         "nix-command"

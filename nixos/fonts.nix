@@ -1,7 +1,5 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}: {
   i18n.defaultLocale = "zh_CN.UTF-8";
 
   fonts = {
@@ -35,7 +33,7 @@
       # };
 
       defaultFonts = {
-        emoji = ["Noto Color Emoji"];
+        emoji = [ "Noto Color Emoji" ];
         monospace = [
           "Noto Sans Mono CJK SC"
           "Sarasa Mono SC"

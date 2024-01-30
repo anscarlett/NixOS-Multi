@@ -16,11 +16,11 @@
   };
 
   gnome = {
-    imports = [./desktop/gnome.nix];
+    imports = [ ./desktop/gnome.nix ];
   };
 
   kde = {
-    imports = [./desktop/kde.nix];
+    imports = [ ./desktop/kde.nix ];
   };
 
   sway = {

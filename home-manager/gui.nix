@@ -5,7 +5,8 @@
   config,
   nixosConfig,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     # nightpdf
     # azcomicv

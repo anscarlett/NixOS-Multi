@@ -1,10 +1,12 @@
-{inputs}: let
-  mkHome = {
-    username,
-    nixpkgs ? inputs.nixpkgs,
-    system ? "x86_64-linux",
-    extraModules ? [],
-  }:
+{ inputs }:
+let
+  mkHome =
+    {
+      username,
+      nixpkgs ? inputs.nixpkgs,
+      system ? "x86_64-linux",
+      extraModules ? [ ],
+    }:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         inherit system;
@@ -12,33 +14,32 @@
         config.allowUnfree = true;
       };
 
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {
+        inherit inputs;
+      };
 
-      modules =
-        [
-          ./git.nix
-          ./cli.nix
-          ./xdg.nix
-          ./zsh.nix
-          ./tmux.nix
-          ./alias.nix
-          ./non-nixos.nix
+      modules = [
+        ./git.nix
+        ./cli.nix
+        ./xdg.nix
+        ./zsh.nix
+        ./tmux.nix
+        ./alias.nix
+        ./non-nixos.nix
 
-          {
-            home.username = "${username}";
-            home.homeDirectory = "/home/${username}";
-            home.stateVersion = "24.05";
-          }
-        ]
-        ++ extraModules;
+        {
+          home.username = "${username}";
+          home.homeDirectory = "/home/${username}";
+          home.stateVersion = "24.05";
+        }
+      ] ++ extraModules;
     };
-in {
+in
+{
   # non-nixos
   iab = mkHome {
     username = "iab";
-    extraModules = [
-      ./dconf.nix
-    ];
+    extraModules = [ ./dconf.nix ];
   };
 
   # other user at nixos

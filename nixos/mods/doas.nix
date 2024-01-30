@@ -3,13 +3,17 @@
   config,
   username,
   ...
-}: let
+}:
+let
   cfg = config.mods.doas;
-in {
+in
+{
   options.mods.doas = {
-    enable = lib.mkEnableOption (lib.mdDoc ''
-      my doas customize.
-    '');
+    enable = lib.mkEnableOption (
+      lib.mdDoc ''
+        my doas customize.
+      ''
+    );
   };
 
   config = lib.mkIf cfg.enable {
@@ -21,7 +25,7 @@ in {
       # wheelNeedsPassword = false;
       extraRules = [
         {
-          users = ["${username}"];
+          users = [ "${username}" ];
           noPass = true;
           keepEnv = true;
         }

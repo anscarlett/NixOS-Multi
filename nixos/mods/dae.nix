@@ -1,14 +1,14 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib, config, ... }:
+let
   cfg = config.mods.daeWithConfig;
-in {
+in
+{
   options.mods.daeWithConfig = {
-    enable = lib.mkEnableOption (lib.mdDoc ''
-      my dae encryption config.
-    '');
+    enable = lib.mkEnableOption (
+      lib.mdDoc ''
+        my dae encryption config.
+      ''
+    );
   };
 
   config = lib.mkIf cfg.enable {
@@ -19,7 +19,7 @@ in {
     };
 
     sops.secrets = {
-      dae-sub = {};
+      dae-sub = { };
     };
 
     sops.templates."config.dae".content = ''

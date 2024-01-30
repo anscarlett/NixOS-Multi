@@ -1,8 +1,5 @@
+{ pkgs, username, ... }:
 {
-  pkgs,
-  username,
-  ...
-}: {
   mods.fcitx.enable = true;
 
   services = {
@@ -35,7 +32,7 @@
   };
 
   # If using wm@hm
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   programs.dconf.enable = true;
   programs.xwayland.enable = true;
 
@@ -53,90 +50,88 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
 
-  home-manager.users.${username} = {
-    config,
-    pkgs,
-    ...
-  }: {
-    home.packages = with pkgs; [
-      swappy # screenshot annotation editor
-      swaybg # wallpaper tool
-      swayidle
-      swaylock-effects
-      swaynotificationcenter
-      # mako  # , notify-send "sth"
-      libnotify # notify-send
-      wlogout
+  home-manager.users.${username} =
+    { config, pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        swappy # screenshot annotation editor
+        swaybg # wallpaper tool
+        swayidle
+        swaylock-effects
+        swaynotificationcenter
+        # mako  # , notify-send "sth"
+        libnotify # notify-send
+        wlogout
 
-      wofi # quick run
-      wofi-emoji
-      wl-clipboard
-      wf-recorder
-      cliphist
-      networkmanagerapplet
-      bluetuith
-      blueberry
-      wlopm
-      wev # wayland event view
-      wvkbd # on-screen keyboard
-      # waypipe # proxy ?
-      # wtype # xdotool
+        wofi # quick run
+        wofi-emoji
+        wl-clipboard
+        wf-recorder
+        cliphist
+        networkmanagerapplet
+        bluetuith
+        blueberry
+        wlopm
+        wev # wayland event view
+        wvkbd # on-screen keyboard
+        # waypipe # proxy ?
+        # wtype # xdotool
 
-      # Display
-      brightnessctl # same like light
-      wlsunset # nightlight
-      wl-gammactl
-      wdisplays
-      wlr-randr
-      kanshi # autorandr
+        # Display
+        brightnessctl # same like light
+        wlsunset # nightlight
+        wl-gammactl
+        wdisplays
+        wlr-randr
+        kanshi # autorandr
 
-      # Media
-      # grim # grab image
-      # slurp # select region
-      shotman
-      pavucontrol
-      playerctl # media player control
-      pamixer # volume control
+        # Media
+        # grim # grab image
+        # slurp # select region
+        shotman
+        pavucontrol
+        playerctl # media player control
+        pamixer # volume control
 
-      # Needs when use other DM
-      gnome.adwaita-icon-theme
-      gnome.gnome-themes-extra
-      gnome.dconf-editor
-      gnome.gnome-tweaks # (webkitgtk)
+        # Needs when use other DM
+        gnome.adwaita-icon-theme
+        gnome.gnome-themes-extra
+        gnome.dconf-editor
+        gnome.gnome-tweaks # (webkitgtk)
 
-      xfce.mousepad
-      nomacs
-      # gnome.gnome-power-manager
-      # gnome.gnome-characters
-      # gnome.eog
-      # gthumb
-      # libsForQt5.gwenview
-      gparted
-    ];
+        xfce.mousepad
+        nomacs
+        # gnome.gnome-power-manager
+        # gnome.gnome-characters
+        # gnome.eog
+        # gthumb
+        # libsForQt5.gwenview
+        gparted
+      ];
 
-    services = {
-      avizo.enable = true;
-      udiskie.enable = true;
-      gnome-keyring.enable = true;
-      # playerctld.enable = true;
-      polkit.enable = true;
+      services = {
+        avizo.enable = true;
+        udiskie.enable = true;
+        gnome-keyring.enable = true;
+        # playerctld.enable = true;
+        polkit.enable = true;
 
-      wlsunset = {
+        wlsunset = {
+          enable = true;
+          # gama = "2.0";
+          latitude = "22.2783";
+          longitude = "114.1747";
+        };
+      };
+
+      qt = {
         enable = true;
-        # gama = "2.0";
-        latitude = "22.2783";
-        longitude = "114.1747";
+        platformTheme = "gnome";
+        style.name = "adwaita";
+        style.package = pkgs.adwaita-qt;
       };
     };
-
-    qt = {
-      enable = true;
-      platformTheme = "gnome";
-      style.name = "adwaita";
-      style.package = pkgs.adwaita-qt;
-    };
-  };
 }

@@ -1,46 +1,51 @@
-/*
-## fix network `default` inactive
-sudo virsh net-start default
-sudo virsh net-autostart default
+/* ## fix network `default` inactive
+   sudo virsh net-start default
+   sudo virsh net-autostart default
 
-## for clipboard share
-spice-vdagent (Guest)
+   ## for clipboard share
+   spice-vdagent (Guest)
 
-## for folders share
-Memory —— enable the shared memory
-Add filesystem: virtiofs ~/Downloads shared
+   ## for folders share
+   Memory —— enable the shared memory
+   Add filesystem: virtiofs ~/Downloads shared
 
-edit xml (nixos bug):
-<binary path="/run/current-system/sw/bin/virtiofsd"/>
+   edit xml (nixos bug):
+   <binary path="/run/current-system/sw/bin/virtiofsd"/>
 
-mkdir shared (Guest)
-sudo mount -t virtiofs shared /home/iab/shared (Guest)
+   mkdir shared (Guest)
+   sudo mount -t virtiofs shared /home/iab/shared (Guest)
 
-## Windows Guest
-add tpm: tpm-crb、emulator、2.0
-https://www.spice-space.org/download.html  # spice-guest-tools
+   ## Windows Guest
+   add tpm: tpm-crb、emulator、2.0
+   https://www.spice-space.org/download.html  # spice-guest-tools
 
-## qemu iso emulator
-qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
+   ## qemu iso emulator
+   qemu-system-x86_64 -enable-kvm -m 8192 -cdrom result/iso
 
-## waydroid
-nix shell n\#android-tools
-adb connect 192.168.240.112:5555
-adb shell wm set-fix-to-user-rotation enabled  # force vertical
+   ## waydroid
+   nix shell n\#android-tools
+   adb connect 192.168.240.112:5555
+   adb shell wm set-fix-to-user-rotation enabled  # force vertical
 */
 {
   config,
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.mods.virt;
-in {
+in
+{
   options.mods.virt.enable =
-    lib.mkEnableOption (lib.mdDoc ''
-      my virtualisation customize.
-    '')
-    // {default = true;};
+    lib.mkEnableOption (
+      lib.mdDoc ''
+        my virtualisation customize.
+      ''
+    )
+    // {
+      default = true;
+    };
 
   config = lib.mkIf cfg.enable {
     # mods.flatpak.enable = true;
@@ -66,8 +71,8 @@ in {
       # steam-run
       # yuzu
       (appimage-run.override {
-        extraPkgs = pkgs:
-          with pkgs; [
+        extraPkgs =
+          pkgs: with pkgs; [
             libthai
             libsecret
           ];

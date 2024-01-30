@@ -1,7 +1,5 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  ...
-}: {
   mods.fcitx.enable = true;
 
   services = {
@@ -19,7 +17,8 @@
   # security.pam.services.login.enableGnomeKeyring = true;
   # programs.seahorse.enable = true;
 
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       # falkon
       kalendar
@@ -56,7 +55,7 @@
 
   services.xserver = {
     enable = true;
-    excludePackages = [pkgs.xterm];
+    excludePackages = [ pkgs.xterm ];
     displayManager = {
       defaultSession = "plasmawayland";
 

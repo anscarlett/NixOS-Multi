@@ -1,29 +1,31 @@
 {
   description = "NIX SAVE THE WORLD";
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    flake-parts,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-linux"];
-
-      imports = [
-        inputs.devenv.flakeModule
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      flake-parts,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
       ];
+
+      imports = [ inputs.devenv.flakeModule ];
 
       flake = {
         nixosModules = import ./nixos;
 
-        overlays = import ./overlays {inherit inputs;};
+        overlays = import ./overlays { inherit inputs; };
 
-        nixosConfigurations = import ./hosts {inherit inputs self;};
+        nixosConfigurations = import ./hosts { inherit inputs self; };
 
-        homeConfigurations = import ./home-manager/hm-standalone.nix {inherit inputs;};
+        homeConfigurations = import ./home-manager/hm-standalone.nix { inherit inputs; };
 
-        deploy = import ./hosts/deployment.nix {inherit inputs;};
+        deploy = import ./hosts/deployment.nix { inherit inputs; };
 
         templates = import ./templates;
 
@@ -36,39 +38,42 @@
         n = nixpkgs.legacyPackages.x86_64-linux;
       };
 
-      perSystem = {
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = builtins.attrValues self.overlays;
-          config = {
-            allowUnfree = true;
-            # allowBroken = true;
-            # allowInsecure = true;
-            # allowUnsupportedSystem = true;
+      perSystem =
+        {
+          inputs',
+          pkgs,
+          system,
+          ...
+        }:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues self.overlays;
+            config = {
+              allowUnfree = true;
+              # allowBroken = true;
+              # allowInsecure = true;
+              # allowUnsupportedSystem = true;
+            };
           };
+        in
+        {
+          # nix build .#apps
+          # access pkgs from self & overlays
+          legacyPackages = pkgs;
+
+          # nix fmt
+          formatter = pkgs.nixfmt-rfc-style;
+
+          # nix run .
+          packages.default = pkgs.ns-cli;
+
+          # nix develop .#rust
+          devShells = import ./devshells.nix { inherit pkgs; };
+
+          # nix develop --impure .#rust-env
+          devenv.shells = import ./devenvs.nix { inherit pkgs; };
         };
-      in {
-        # nix build .#apps
-        # access pkgs from self & overlays
-        legacyPackages = pkgs;
-
-        # nix fmt
-        formatter = pkgs.alejandra;
-
-        # nix run .
-        packages.default = pkgs.ns-cli;
-
-        # nix develop .#rust
-        devShells = import ./devshells.nix {inherit pkgs;};
-
-        # nix develop --impure .#rust-env
-        devenv.shells = import ./devenvs.nix {inherit pkgs;};
-      };
     };
 
   inputs = {

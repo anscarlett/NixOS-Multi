@@ -5,7 +5,8 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     # ./disko-btrfs.nix
     ./disko-bcachefs.nix
@@ -47,7 +48,7 @@
   };
 
   # Kernel
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = [ "kvm-amd" ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

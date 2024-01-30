@@ -1,9 +1,8 @@
-{
-  config,
-  ...
-}: let
+{ config, ... }:
+let
   lnDots = config.lib.file.mkOutOfStoreSymlink config.home.homeDirectory + "/nsworld/dotfiles";
-in {
+in
+{
   home.sessionPath = [
     "${../dotfiles/bin}"
     "${config.home.homeDirectory}/.local/bin"

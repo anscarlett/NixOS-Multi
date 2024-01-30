@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     gcc
     cmake
@@ -12,16 +13,16 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs29-pgtk;
-    extraPackages = epkgs:
-      with epkgs; [
+    extraPackages =
+      epkgs: with epkgs; [
         vterm
         emojify
         emacsql-sqlite
         # lsp-bridge
         # pdf-tools
         # telega
-        (treesit-grammars.with-grammars (grammars:
-          with grammars; [
+        (treesit-grammars.with-grammars (
+          grammars: with grammars; [
             tree-sitter-nix
             tree-sitter-bash
             tree-sitter-elisp
@@ -38,7 +39,8 @@
             tree-sitter-ruby
             tree-sitter-rust
             tree-sitter-python
-          ]))
+          ]
+        ))
       ];
   };
 
@@ -93,11 +95,12 @@
       vim-lsp
       vim-markdown
       editorconfig-vim
-      (nvim-treesitter.withPlugins (plugins:
-        with plugins; [
+      (nvim-treesitter.withPlugins (
+        plugins: with plugins; [
           tree-sitter-markdown
           tree-sitter-nix
-        ]))
+        ]
+      ))
     ];
   };
 

@@ -5,7 +5,8 @@
   self,
   username,
   ...
-}: {
+}:
+{
   imports = [
     "${inputs.nixpkgs}/nixos/modules/virtualisation/qemu-vm.nix"
     # "${inputs.pkgsReview}/nixos/modules/services/desktops/pipewire/pipewire.nix"
@@ -27,7 +28,7 @@
     gnomeExtensions.appindicator
   ];
 
-  environment.variables = {};
+  environment.variables = { };
 
   services.xserver = {
     enable = true;
@@ -73,6 +74,5 @@
   users.users.root.password = "root";
   users.users.${username}.password = lib.mkForce "test";
 
-  home-manager.users.${username} = {
-  };
+  home-manager.users.${username} = { };
 }

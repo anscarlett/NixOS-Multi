@@ -26,6 +26,10 @@
     :program "alejandra"
     ;; :args '("--" "quiet")
     )
+  (reformatter-define nixfmt
+    :program "nixfmt"
+    ;; :args '("--" "quiet")
+    )
   ;; Experimental.
   ;; (reformatter-define golint
   ;;   :program "golint"

@@ -1,19 +1,20 @@
-{
-  inputs,
-  self,
-}: let
-  mkHost = {
-    hostname,
-    username,
-    nixpkgs ? inputs.nixpkgs,
-    system ? "x86_64-linux",
-    defaultModules ? true,
-    hmEnable ? true,
-    extraModules ? [],
-  }:
+{ inputs, self }:
+let
+  mkHost =
+    {
+      hostname,
+      username,
+      nixpkgs ? inputs.nixpkgs,
+      system ? "x86_64-linux",
+      defaultModules ? true,
+      hmEnable ? true,
+      extraModules ? [ ],
+    }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {inherit inputs self username;};
+      specialArgs = {
+        inherit inputs self username;
+      };
       modules =
         [
           inputs.sops-nix.nixosModules.sops
@@ -35,24 +36,23 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit inputs;};
+              extraSpecialArgs = {
+                inherit inputs;
+              };
               users.${username} = import ../home-manager/hm-module.nix;
             };
           }
         ]
-        ++ nixpkgs.lib.optionals defaultModules [
-          self.nixosModules.default
-        ]
+        ++ nixpkgs.lib.optionals defaultModules [ self.nixosModules.default ]
         ++ extraModules;
     };
-in {
+in
+{
   # nixos-rebuild --use-remote-sudo --flake .#yoga
   yoga = mkHost {
     username = "iab";
     hostname = "yoga";
-    extraModules = [
-      ./yoga
-    ];
+    extraModules = [ ./yoga ];
   };
 
   # nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
@@ -60,9 +60,7 @@ in {
     username = "zendo";
     hostname = "svp";
     # nixpkgs = inputs.nixpkgs-stable;
-    extraModules = [
-      ./svp
-    ];
+    extraModules = [ ./svp ];
   };
 
   # remote machine test @ qemu
@@ -70,36 +68,30 @@ in {
     username = "aaa";
     hostname = "rmt";
     # hmEnable = false;
-    extraModules = [
-      ./rmt
-    ];
+    extraModules = [ ./rmt ];
   };
 
   # nixos-rebuild build-vm --flake .#vmtest
   vmtest = mkHost {
     username = "test";
     hostname = "vmtest";
-    extraModules = [
-      ./vmtest
-    ];
+    extraModules = [ ./vmtest ];
   };
 
   # nix build .#nixosConfigurations.livecd-graphical.config.system.build.isoImage
   livecd-graphical = mkHost {
     username = "livecd";
     hostname = "livecd";
-    extraModules = [
-      ./livecd/graphical.nix
-    ];
+    extraModules = [ ./livecd/graphical.nix ];
   };
 
   # nix build .#nixosConfigurations.livecd-minimal.config.system.build.isoImage
   livecd-minimal = inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = {inherit inputs;};
+    specialArgs = {
+      inherit inputs;
+    };
     system = "x86_64-linux";
-    modules = [
-      ./livecd/minimal.nix
-    ];
+    modules = [ ./livecd/minimal.nix ];
   };
 
   # nix build .#nixosConfigurations.wsl.config.system.build.installer

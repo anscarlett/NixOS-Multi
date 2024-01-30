@@ -1,8 +1,5 @@
+{ pkgs, username, ... }:
 {
-  pkgs,
-  username,
-  ...
-}: {
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       wslu
@@ -14,8 +11,9 @@
     ];
 
     home.shellAliases = {
-      wsl-proxy = "export {http,https,ftp}_proxy=192.168.2.118:7890 ; \\
-        export {HTTP,HTTPS,FTP}_PROXY=192.168.2.118:7890";
+      wsl-proxy = ''
+        export {http,https,ftp}_proxy=192.168.2.118:7890 ; \
+                export {HTTP,HTTPS,FTP}_PROXY=192.168.2.118:7890'';
     };
   };
 

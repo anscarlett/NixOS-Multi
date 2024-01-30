@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   boot = {
     plymouth.enable = true;
     # tmp.useTmpfs = true;
@@ -11,7 +12,7 @@
     initrd.systemd.enable = lib.mkDefault true;
 
     # Silent boot when `initrd.systemd` enable
-    kernelParams = lib.optionals config.boot.initrd.systemd.enable ["systemd.show_status=false"];
+    kernelParams = lib.optionals config.boot.initrd.systemd.enable [ "systemd.show_status=false" ];
   };
 
   services = {
