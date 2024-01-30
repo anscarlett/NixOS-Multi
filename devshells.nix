@@ -1,4 +1,5 @@
-{pkgs}: {
+{ pkgs }:
+{
   default = pkgs.mkShell {
     buildInputs = with pkgs; [
       git

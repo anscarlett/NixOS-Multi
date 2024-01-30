@@ -1,4 +1,5 @@
-{pkgs}: {
+{ pkgs }:
+{
   ###############################################
   ##  Shell
   ###############################################
@@ -10,7 +11,7 @@
       shellcheck --version
     '';
     # https://github.com/cachix/devenv/issues/528#issuecomment-1556108767
-    containers = pkgs.lib.mkForce {};
+    containers = pkgs.lib.mkForce { };
   };
 
   ###############################################
@@ -35,7 +36,7 @@
       versions
     '';
     # fix
-    containers = pkgs.lib.mkForce {};
+    containers = pkgs.lib.mkForce { };
   };
 
   ###############################################
@@ -48,9 +49,15 @@
       # add inputs: fenix.url = "github:nix-community/fenix";
       # channel = "nightly";
 
-      components = ["rustc" "cargo" "clippy" "rustfmt" "rust-analyzer"];
+      components = [
+        "rustc"
+        "cargo"
+        "clippy"
+        "rustfmt"
+        "rust-analyzer"
+      ];
     };
     # fix
-    containers = pkgs.lib.mkForce {};
+    containers = pkgs.lib.mkForce { };
   };
 }
