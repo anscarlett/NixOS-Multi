@@ -3,6 +3,23 @@
   default = pkgs.mkShell {
     buildInputs = with pkgs; [
       git
+      age
+      sops
+      ssh-to-age
+      home-manager
+      nixfmt-rfc-style
+    ];
+    name = "startup";
+    shellHook = ''
+      zsh && exit
+    '';
+  };
+
+  ###############################################
+  ## gcc
+  ###############################################
+  gcc = pkgs.mkShell {
+    buildInputs = with pkgs; [
       gcc
       gnumake
       cmake
@@ -10,7 +27,6 @@
       ninja
       pkg-config
       boost
-      home-manager
 
       # qt5.qtbase
       # qt5.qttools
@@ -25,6 +41,7 @@
       # xorg.libXi
       # xorg.libXinerama
     ];
+    name = "gcc";
     shellHook = ''
       zsh && exit
     '';

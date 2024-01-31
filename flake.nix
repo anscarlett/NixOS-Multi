@@ -29,7 +29,7 @@
 
         templates = import ./templates;
 
-        # for easily repl
+        # quickly repl
         inherit inputs;
         inherit (inputs.nixpkgs) lib;
         flake = builtins.getFlake (toString ./.);

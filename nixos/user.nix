@@ -40,7 +40,7 @@ in
       ++ lib.optionals config.virtualisation.docker.enable [ "docker" ]
       ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
       ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
-      # ++ lib.optionals config.virtualisation.virtualbox.host.enable ["vboxusers"]
+      ++ lib.optionals config.virtualisation.virtualbox.host.enable ["vboxusers"]
       ++ lib.optionals config.programs.adb.enable [ "adbusers" ];
   };
 
@@ -59,7 +59,7 @@ in
       ++ lib.optionals config.virtualisation.docker.enable [ "docker" ]
       ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
       ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
-      # ++ lib.optionals config.virtualisation.virtualbox.host.enable ["vboxusers"]
+      ++ lib.optionals config.virtualisation.virtualbox.host.enable ["vboxusers"]
       ++ lib.optionals config.programs.adb.enable [ "adbusers" ];
   };
 

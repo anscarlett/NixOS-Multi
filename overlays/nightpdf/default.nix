@@ -10,18 +10,18 @@
 
 mkYarnPackage rec {
   pname = "nightpdf";
-  version = "0.4.5";
+  version = "2.0.3";
 
   src = fetchFromGitHub {
     owner = "Lunarequest";
     repo = "NightPDF";
     rev = "v${version}";
-    hash = "sha256-QO9FRdd2TSqoIliCnouGg9CJT2/NIA7TjPx2fLMLJ9c=";
+    hash = "sha256-3OCAeOFykNK5p2q4R4DVhtE4H2/H5HP8nTXOxWECJjM=";
   };
 
   offlineCache = fetchYarnDeps {
     yarnLock = src + "/yarn.lock";
-    hash = "sha256-HAq68o0xkRE3a4sGxZOFblCm5Zs88N0OMIbYOqF4v/Y=";
+    hash = "sha256-HAq68o0xkRE3a4sGxZOeelCm5Zs88N0OMIbYOqF4v/Y=";
   };
 
   nativeBuildInputs = [
