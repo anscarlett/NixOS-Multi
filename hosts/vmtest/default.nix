@@ -20,6 +20,7 @@
 
   mods.virt.enable = false;
   # mods.fcitx.enable = true;
+  # mods.daeWithConfig.enable = true;
 
   environment.systemPackages = with pkgs; [
     git

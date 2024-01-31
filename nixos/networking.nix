@@ -1,25 +1,11 @@
+{ lib, config, ... }:
 {
-  lib,
-  config,
-  username,
-  ...
-}:
-{
-  # programs.clash-verge = {
-  #   enable = true;
-  #   tunMode = true;
-  #   autoStart = true;
-  # };
-
-  mods.daeWithConfig.enable = true;
-
   services = {
     openssh = {
       enable = true;
       # Forbid root login through SSH.
       settings.PermitRootLogin = lib.mkDefault "no";
     };
-    # v2raya.enable = true;
 
     # resolved.enable = true;
     # resolved.fallbackDns = config.networking.nameservers;

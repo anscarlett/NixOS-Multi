@@ -17,6 +17,19 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   ###############################################
+  ## Network
+  ###############################################
+  # mods.daeWithConfig.enable = true;
+
+  # programs.clash-verge = {
+  #   enable = true;
+  #   tunMode = true;
+  #   autoStart = true;
+  # };
+
+  # services.v2raya.enable = true;
+
+  ###############################################
   ## Bootloader
   ###############################################
   boot.loader = {

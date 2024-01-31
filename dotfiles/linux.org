@@ -53,55 +53,6 @@ sudo lynis audit system #安全漏洞审查
   journalctl -p3
 #+end_src
 
-* Systemd-boot & Grub
-bootctl / efibootmgr
-
-#+begin_src bash
-  sudo efibootmgr -b 0002 -B 删除启动项
-  sudo efibootmgr -c -w -L "opensuse-secure" -d /dev/nvme1n1 -p 5 -l "/EFI/opensue/shim.efi"
-  sudo efibootmgr -c -w -L "opensuse" -d /dev/nvme1n1 -p 5 -l "/EFI/opensuse/grubx64.efi"
-
-
-  chroot:
-  mount --bind /dev /mnt/dev
-  mount --bind /proc /mnt/proc
-  mount --bind /sys /mnt/sys
-#+end_src
-
-** sd-boot
-#+begin_src bash
-  sudo vi /boot/loader/entries/windows.conf
-  title Windows11
-  efi /EFI/Microsoft/Boot/bootmgfw.efi
-  sudo echo -e "title Windows11\nefi /EFI/Microsoft/Boot/bootmgfw.efi" > /boot/loader/entries/windows.conf
-#+end_src
-
-** grub2
-#+begin_src bash
-  grub2-install or
-  grub2-install --boot-directory=/mnt/boot  --target=x86_64-efi --efi-directory=/mnt/boot/efi
-  sudo grub2-mkconfig -o /boot/grub2/grub.cfg  //bios
-  sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg  //uefi
-  shim-install --config-file=/boot/grub2/grub.cfg
-#+end_src
-
-#+begin_src conf
-  大概无需显式 insmod
-  insmod part_gpt
-  insmod fat
-  insmod chain
-  insmod search_fs_uuid
-
-  set root=(hd0,gpt1)
-  chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-
-  search --file --no-floppy --set=root /EFI/Microsoft/Boot/bootmgfw.efi
-  chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
-
-  search --no-floppy --fs-uuid --set=root BCBB-ACC5
-  chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-#+end_src
-
 * Bash Basic
 https://github.com/skywind3000/awesome-cheatsheets/blob/master/languages/bash.sh
 
