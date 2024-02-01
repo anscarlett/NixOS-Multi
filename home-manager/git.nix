@@ -15,6 +15,7 @@
       unstage = "reset HEAD --";
       quick-rebase = "rebase --interactive --autostash --committer-date-is-author-date";
       quick-clone = "clone --depth=1 --recurse-submodules --shallow-submodules";
+      quick-clone-tree = "clone --filter=tree:0";
     };
     extraConfig = {
       init.defaultBranch = "main";
