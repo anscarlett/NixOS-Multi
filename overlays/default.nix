@@ -45,31 +45,13 @@
           --add-flags "--socket=wayland --enable-features=UseOzonePlatform --ozone-platform=wayland"
       '';
     };
-
-    # rust override
-    # shadowsocks-rust = prev.shadowsocks-rust.overrideAttrs (oldAttrs: rec {
-    #   version = "2022-06-27";
-    #   src = prev.fetchFromGitHub {
-    #     owner = "shadowsocks";
-    #     repo = "shadowsocks-rust";
-    #     rev = "a4955a198bdf6ab12e647b04180679dfef53fb0b";
-    #     sha256 = "sha256-sJKuGQH5PBOcFOpks8sUaAWJlfg7aCv6YS9DWaEF3K4=";
-    #   };
-    #   cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
-    #     inherit src;
-    #     outputHash = "sha256-YJ4Qva4keOk9aBPFwztkTpvS7uv7zl6TOHqYZzZEGAs=";
-    #   });
-    # });
   };
 
   # This one brings our custom packages from the 'pkgs' directory
   # additions = final: _prev: import ../pkgs { pkgs = final; };
 
+  # nix build --impure --expr "(import <nixpkgs> {}).callPackage ./. {}" -L
   default = final: prev: {
-    /* nix build --impure --expr "(import <nixpkgs> {}).callPackage ./. {}" -L
-       qt6Packages
-    */
-
     # clash-verge = prev.callPackage ./clash-verge-source {};
     clash-verge = prev.callPackage ./clash-verge-rev { };
 
