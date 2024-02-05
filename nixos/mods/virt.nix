@@ -48,7 +48,7 @@ in
     };
 
   config = lib.mkIf cfg.enable {
-    # mods.flatpak.enable = true;
+    mods.flatpak.enable = true;
 
     # programs.adb.enable = true;
 

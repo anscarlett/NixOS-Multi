@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   programs.git = {
     enable = true;
@@ -46,6 +46,18 @@
   # programs.lazygit = {
   #   enable = true;
   # };
+
+  programs.jujutsu = {
+    enable = true;
+    enableBashIntegration = config.programs.bash.enable;
+    enableZshIntegration = config.programs.zsh.enable;
+    settings = {
+      user = {
+        name = "zendo";
+        email = "linzway@qq.com";
+      };
+    };
+  };
 
   programs.ssh = {
     enable = true;
