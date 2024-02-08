@@ -66,6 +66,7 @@
       paperwm
       # ddterm
       improved-osk
+      astra-monitor
     ]);
 
   programs.kdeconnect = {

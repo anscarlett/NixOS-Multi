@@ -8,6 +8,7 @@
 , pkg-config
 , python3
 , nodejs
+, makeWrapper
 }:
 # WIP!!!
 buildNpmPackage rec {
@@ -23,6 +24,14 @@ buildNpmPackage rec {
   };
 
   npmDepsHash = "sha256-57KV6tZ8Vgpq/DDcuiPBhNMhfQVH1AstXjj1hZUiwFY=";
+
+  makeCacheWritable = true;
+
+  env.ELECTRON_SKIP_BINARY_DOWNLOAD = "1";
+
+  npmPackFlags = [ "--ignore-scripts" ];
+
+  NODE_OPTIONS = "--openssl-legacy-provider";
 
   # nativeBuildInputs = [ pkg-config python3 ];
 
