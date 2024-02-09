@@ -36,6 +36,7 @@
       # authenticator
       gparted
       gnome-randr
+      qadwaitadecorations-qt6
 
       gnome.gnome-tweaks
       gnome.dconf-editor
