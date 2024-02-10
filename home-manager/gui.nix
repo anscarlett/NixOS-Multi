@@ -39,6 +39,8 @@
     # rhythmbox
     goodvibes
     go-musicfox
+    #qcm
+    netease-cloud-music-gtk
     # mousai
     songrec
     # yt-dlp
@@ -63,7 +65,7 @@
     warp
     remmina # (webkitgtk)
     gnome-decoder
-    # localsend
+    localsend
     # motrix
     qbittorrent
     # deja-dup
