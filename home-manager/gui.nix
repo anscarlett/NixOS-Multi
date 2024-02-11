@@ -39,8 +39,8 @@
     # rhythmbox
     goodvibes
     go-musicfox
-    #qcm
-    netease-cloud-music-gtk
+    qcm
+    # netease-cloud-music-gtk
     # mousai
     songrec
     # yt-dlp
