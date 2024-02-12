@@ -20,7 +20,7 @@
     inputs.deploy-rs.packages.x86_64-linux.deploy-rs
 
     # nheko
-    # fractal-next
+    # fractal
     # discord
     tdesktop # (webkitgtk)
 
