@@ -16,7 +16,6 @@
 , clash-geoip
 , v2ray-geoip
 , v2ray-domain-list-community
-, clash
 , clash-meta
 }:
 # https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/clash-verge/PKGBUILD
@@ -29,14 +28,14 @@ stdenv.mkDerivation rec {
     repo = pname;
     rev = "v${version}";
     hash = "sha256-iIPi4+AIHVDY69w7agEETuz+m6CzXyfwzUhJFZunmwI=";
-    postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
+    # postFetch = "sed -i -e 's/npmmirror/yarnpkg/g' $out/yarn.lock";
   };
 
   postPatch = ''
     pushd $cargoDepsCopy/libappindicator-sys
     oldHash=$(sha256sum src/lib.rs | cut -d " " -f 1)
     substituteInPlace src/lib.rs \
-      --replace "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
+      --replace-fail "libayatana-appindicator3.so.1" "${libayatana-appindicator}/lib/libayatana-appindicator3.so.1"
     newHash=$(sha256sum src/lib.rs | cut -d " " -f 1)
     substituteInPlace .cargo-checksum.json --replace "$oldHash" "$newHash"
     popd
@@ -48,10 +47,11 @@ stdenv.mkDerivation rec {
     substituteInPlace .cargo-checksum.json --replace "$oldHash" "$newHash"
     popd
 
-    mkdir src-tauri/{sidecar,resources}
-    ln -s ${lib.getExe clash} src-tauri/sidecar/clash-x86_64-unknown-linux-gnu
-    ln -s ${lib.getExe clash-meta} src-tauri/sidecar/clash-meta-x86_64-unknown-linux-gnu
+    # mkdir src-tauri/{sidecar,resources}
+    # ln -s ${lib.getExe clash-meta} src-tauri/sidecar/clash-x86_64-unknown-linux-gnu
+    # ln -s ${lib.getExe clash-meta} src-tauri/sidecar/clash-meta-x86_64-unknown-linux-gnu
 
+    mkdir src-tauri/resources
     ln -s ${clash-geoip}/etc/clash/Country.mmdb src-tauri/resources/
     ln -s ${v2ray-geoip}/share/v2ray/geoip.dat src-tauri/resources/
     ln -s ${v2ray-domain-list-community}/share/v2ray/geosite.dat src-tauri/resources/

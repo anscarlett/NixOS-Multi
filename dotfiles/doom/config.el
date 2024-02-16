@@ -19,22 +19,22 @@
 (load! "functions")
 
 ;; environment
-(when IS-WINDOWS
+(when (featurep :system 'windows)
   (setq doom-font (font-spec :family "JetBrains Mono" :size 26)
-      doom-symbol-font (font-spec :family "Segoe UI Emoji")
+        doom-symbol-font (font-spec :family "Segoe UI Emoji")
 
-      default-directory "~/Desktop/"
-      org-directory "~/Documents/Notes/"
-      ))
+        default-directory "~/Desktop/"
+        org-directory "~/Documents/Notes/"
+        ))
 
-(when IS-LINUX
+(when (featurep :system 'linux)
   (setq doom-font (font-spec :family "JetBrains Mono" :size 14)
-      doom-variable-pitch-font (font-spec :family "Fira Code")
-      doom-big-font-increment 2
-      doom-symbol-font (font-spec :family "Noto Color Emoji")
+        doom-variable-pitch-font (font-spec :family "Fira Code")
+        doom-big-font-increment 2
+        doom-symbol-font (font-spec :family "Noto Color Emoji")
 
-      ;; org-directory "~/Documents/Notes/"
-      ))
+        ;; org-directory "~/Documents/Notes/"
+        ))
 
 ;; basic
 (setq user-full-name "zendo"
@@ -84,7 +84,7 @@
 (add-hook 'nix-mode-hook #'rainbow-delimiters-mode)
 ;; (add-hook! nix-mode #'lsp!)
 ;; alejandra for Nix Code Formatter :C-c c f
-(set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
+;; (set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
 
 ;; disable flycheck in some mode
 (setq flycheck-disabled-checkers '(sh-shellscript

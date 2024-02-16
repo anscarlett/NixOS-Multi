@@ -18,10 +18,10 @@
 ;; (global-set-key (kbd "C-S-z") 'undo-redo)
 
 ;; vterm or eshell
-(when IS-WINDOWS
+(when (featurep :system 'windows)
   (global-set-key (kbd "<f2>") '+eshell/toggle))
 
-(when IS-LINUX
+(when (featurep :system 'linux)
   (global-set-key (kbd "<f2>") '+vterm/toggle)
   (after! vterm
     (setq vterm-shell "zsh")
