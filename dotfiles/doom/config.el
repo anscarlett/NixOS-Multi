@@ -82,9 +82,8 @@
 
 ;; Nix Mode
 (add-hook 'nix-mode-hook #'rainbow-delimiters-mode)
-;; (add-hook! nix-mode #'lsp!)
 ;; alejandra for Nix Code Formatter :C-c c f
-;; (set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
+(set-formatter! 'nixfmt '("nixfmt") :modes '(nix-mode))
 
 ;; disable flycheck in some mode
 (setq flycheck-disabled-checkers '(sh-shellscript
