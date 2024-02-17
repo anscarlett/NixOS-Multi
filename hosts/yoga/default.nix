@@ -38,14 +38,14 @@
   # ];
 
   # amdvlk or opengl default
-  # hardware.amdgpu.amdvlk = true;
+  hardware.amdgpu.amdvlk = true;
 
   ###############################################
   ## Network
   ###############################################
   # mods.daeWithConfig.enable = true;
 
-  disabledModules = ["programs/clash-verge.nix"];
+  disabledModules = [ "programs/clash-verge.nix" ];
   programs.clash-verge = {
     enable = true;
     tunMode = true;
