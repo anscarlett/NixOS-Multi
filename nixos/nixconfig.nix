@@ -1,4 +1,9 @@
-{ lib, inputs, ... }:
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   nixpkgs = {
     config.allowUnfree = true;
@@ -24,6 +29,9 @@
       dates = "weekly";
       options = "--delete-older-than 5d";
     };
+
+    # 2.19
+    package = pkgs.nixVersions.unstable;
 
     settings = {
       # keep-outputs = true
@@ -51,11 +59,20 @@
       trusted-substituters = [ ];
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 
+      # impureEnvVars = [
+      #   "http_proxy"
+      #   "https_proxy"
+      # ];
+
       experimental-features = [
-        "nix-command"
         "flakes"
-        "repl-flake"
+        "nix-command"
+        # "configurable-impure-env"
+
+        # Allows Nix to automatically pick UIDs for builds, rather than creating nixbld* user accounts
         "auto-allocate-uids"
+
+        # Allows Nix to execute builds inside cgroups
         "cgroups"
       ];
     };

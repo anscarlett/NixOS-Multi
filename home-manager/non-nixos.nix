@@ -13,7 +13,10 @@
     nixgl = "nix run --impure github:guibou/nixGL";
   };
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [
+    dippi
+    goodvibes
+  ];
 
   programs.home-manager.enable = true;
 
@@ -29,7 +32,6 @@
       experimental-features = [
         "nix-command"
         "flakes"
-        "repl-flake"
       ];
     };
   };

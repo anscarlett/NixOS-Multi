@@ -34,7 +34,7 @@
 
     ee = "emacs -nw";
     nse = "nix search nixpkgs";
-    ssr = "export {http,https,ftp}_proxy=127.0.0.1:7890 ;export {HTTP,HTTPS,FTP}_PROXY=127.0.0.1:7890";
+    ssr = "export {http,https,ftp}_proxy=socks5h://127.0.0.1:7897 ;export {HTTP,HTTPS,FTP}_PROXY=socks5h://127.0.0.1:7897";
     journalctl-1h = ''journalctl -p err..alert --since "60 min ago"'';
     nix-build-default = ''nix-build -E "(import <nixpkgs> {}).callPackage ./. {}"'';
   };
