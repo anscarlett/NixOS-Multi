@@ -156,6 +156,8 @@
     };
 
     # shell history
+    # atuin login -u zendo
+    # atuin sync -f
     atuin = {
       enable = true;
       enableBashIntegration = config.programs.bash.enable;

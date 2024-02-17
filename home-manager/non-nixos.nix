@@ -3,9 +3,6 @@
    experimental-features = nix-command flakes
    trusted-users = root @wheel iab
    substituters = https://mirror.sjtu.edu.cn/nix-channels/store
-
-   # find desktop items
-   sudo sed -i '$aexport XDG_DATA_DIRS=$HOME/.nix-profile/share:$HOME/.share:"${XDG_DATA_DIRS:-/usr/local/share/:/usr/share/}"' /etc/profile.d/nix.sh
 */
 { pkgs, inputs, ... }:
 {
@@ -26,12 +23,12 @@
       nixpkgs.flake = inputs.nixpkgs;
       n.flake = inputs.nixpkgs;
     };
-    package = pkgs.nix; # need for nix.settings
+    package = pkgs.nixpkgs.nixVersions.unstable; # need for nix.settings
     settings = {
       warn-dirty = false;
       experimental-features = [
-        "nix-command"
         "flakes"
+        "nix-command"
       ];
     };
   };
