@@ -145,7 +145,6 @@
 
     tealdeer = {
       enable = true;
-      updateOnActivation = false;
     };
 
     # z: autojump directory
