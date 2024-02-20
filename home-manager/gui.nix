@@ -11,7 +11,6 @@
     # nightpdf
     # azcomicv
     # moonfm
-    # music-you
 
     kitty
     nurl

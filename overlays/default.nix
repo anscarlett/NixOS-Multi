@@ -69,11 +69,8 @@
     xmind = prev.callPackage ./xmind { };
 
     # electron ALL WIP!!!
-    listen1 = prev.callPackage ./listen1 { };
     nightpdf = prev.callPackage ./nightpdf { };
     weektodo = prev.callPackage ./weektodo { };
-    music-you = prev.callPackage ./music-you { };
-    koodo-reader = prev.callPackage ./koodo-reader { };
     thorium-reader = prev.callPackage ./thorium-reader { };
 
     # C
