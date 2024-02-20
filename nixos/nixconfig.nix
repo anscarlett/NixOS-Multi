@@ -11,15 +11,17 @@
   };
 
   nix = {
+    # FIXME: https://github.com/NixOS/nixpkgs/pull/273170
     # channel.enable = false;
 
-    # nix registry list
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs // {
-      n.flake = inputs.nixpkgs;
-    };
+    registry =
+      (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs)
+      // {
+        n.flake = inputs.nixpkgs;
+      };
 
-    # nix show-config nix-path
-    # echo $NIX_PATH | tr ":" "\n"
+    # nix show-config nix-path | tr " " "\n"
+    # consistent legacy nix, echo $NIX_PATH
     nixPath = lib.mapAttrsToList (name: path: "${name}=${path}") inputs ++ [
       "nixos-config=${inputs.self}"
     ];
