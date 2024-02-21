@@ -109,7 +109,7 @@ while [[ $# -gt 0 ]]; do
             nix path-info -rsSh "$2"
             shift ;;
 
-        git-fetch-merge)
+        git-sync-nixosVersion)
             git fetch upstream master && git merge "$(nixos-version --revision)"
             shift ;;
 

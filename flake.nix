@@ -36,7 +36,7 @@
         hosts = self.nixosConfigurations;
         hm = self.nixosConfigurations.yoga.config.home-manager.users;
         n = nixpkgs.legacyPackages.x86_64-linux;
-        self-n = self.legacyPackages.x86_64-linux;
+        selfPkgs = self.legacyPackages.x86_64-linux;
       };
 
       perSystem =

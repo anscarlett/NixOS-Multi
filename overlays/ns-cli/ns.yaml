@@ -16,7 +16,6 @@ ns:
 - generations
 - references
 - depends
-- git-fetch-merge
 - pr-pull
 - pr-build
 - pr-build-impure
@@ -25,3 +24,4 @@ ns:
 - impure-build
 - hash2sri
 - indexdb-update
+- git-sync-nixosVersion
