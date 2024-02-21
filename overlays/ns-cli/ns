@@ -139,7 +139,7 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         hash2sri)
-            nix hash to-sri --type sha256 "$2"
+            nix hash convert --to sri --type sha256 "$2"
             shift ;;
 
         indexdb-update)

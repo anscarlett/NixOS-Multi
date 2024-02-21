@@ -49,7 +49,6 @@
         # "https://mirrors.ustc.edu.cn/nix-channels/store"
         # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         # "https://cache.nixos.org"
-        # "https://aseipp-nix-cache.freetls.fastly.net"
         "https://nix-community.cachix.org"
       ];
 
@@ -60,11 +59,6 @@
       # List of binary cache URLs that non-root users can use
       trusted-substituters = [ ];
       trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
-
-      # impureEnvVars = [
-      #   "http_proxy"
-      #   "https_proxy"
-      # ];
 
       experimental-features = [
         "flakes"
