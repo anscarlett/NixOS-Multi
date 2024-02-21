@@ -1,22 +1,23 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, fetchYarnDeps
-, cargo
-, rustc
-, yarn
-, nodejs
-, fixup_yarn_lock
-, pkg-config
-, wrapGAppsHook
-, openssl
-, webkitgtk
-, libayatana-appindicator
-, clash-geoip
-, v2ray-geoip
-, v2ray-domain-list-community
-, clash-meta
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromGitHub,
+  fetchYarnDeps,
+  cargo,
+  rustc,
+  yarn,
+  nodejs,
+  fixup_yarn_lock,
+  pkg-config,
+  wrapGAppsHook,
+  openssl,
+  webkitgtk,
+  libayatana-appindicator,
+  clash-geoip,
+  v2ray-geoip,
+  v2ray-domain-list-community,
+  clash-meta,
 }:
 # https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/clash-verge/PKGBUILD
 stdenv.mkDerivation rec {

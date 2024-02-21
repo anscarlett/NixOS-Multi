@@ -4,7 +4,8 @@
   config,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     # "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     "${modulesPath}/installer/cd-dvd/installation-cd-graphical-gnome.nix"
@@ -61,11 +62,13 @@
   };
 
   nix.settings = {
-    substituters = lib.mkForce [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
+    substituters = lib.mkForce [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
+    trusted-users = [ "@wheel" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+      "repl-flake"
     ];
-    trusted-users = ["@wheel"];
-    experimental-features = ["nix-command" "flakes" "repl-flake"];
   };
 
   time.timeZone = "Asia/Shanghai";

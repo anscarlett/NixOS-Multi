@@ -1,12 +1,13 @@
-{ lib
-, buildNpmPackage
-, fetchFromGitHub
-, electron
-, openssl
-, libsecret
-, esbuild
-, pkg-config
-, python3
+{
+  lib,
+  buildNpmPackage,
+  fetchFromGitHub,
+  electron,
+  openssl,
+  libsecret,
+  esbuild,
+  pkg-config,
+  python3,
 }:
 # WIP!!!
 buildNpmPackage rec {
@@ -58,7 +59,6 @@ buildNpmPackage rec {
   #     mkdir -p $out
   #     cp -r node_modules $out/
   #   '';
-
 
   meta = with lib; {
     description = "A cross platform desktop reading app, based on the Readium Desktop toolkit";

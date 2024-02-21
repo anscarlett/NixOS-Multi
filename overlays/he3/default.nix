@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, fetchurl
-, dpkg
-, wrapGAppsHook
-, autoPatchelfHook
-, udev
-, mesa # for libgbm
-, cups
-, nss
-, nspr
-, libdrm
-, alsa-lib
+{
+  lib,
+  stdenv,
+  fetchurl,
+  dpkg,
+  wrapGAppsHook,
+  autoPatchelfHook,
+  udev,
+  mesa, # for libgbm
+  cups,
+  nss,
+  nspr,
+  libdrm,
+  alsa-lib,
 }:
 
 stdenv.mkDerivation rec {
@@ -38,9 +39,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc
   ];
 
-  runtimeDependencies = [
-    (lib.getLib udev)
-  ];
+  runtimeDependencies = [ (lib.getLib udev) ];
 
   installPhase = ''
     mkdir -p $out/bin

@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, fetchurl
-, dpkg
-, atomEnv
-, autoPatchelfHook
-, makeWrapper
-, makeDesktopItem
-, wrapGAppsHook
-, udev
+{
+  lib,
+  stdenv,
+  fetchurl,
+  dpkg,
+  atomEnv,
+  autoPatchelfHook,
+  makeWrapper,
+  makeDesktopItem,
+  wrapGAppsHook,
+  udev,
 }:
 
 stdenv.mkDerivation rec {
@@ -50,13 +51,11 @@ stdenv.mkDerivation rec {
     cp "${desktopItem}/share/applications/"* "$out/share/applications"
   '';
 
-  runtimeDependencies = [
-    (lib.getLib udev)
-  ];
+  runtimeDependencies = [ (lib.getLib udev) ];
 
   postFixup = ''
     makeWrapper $out/opt/Xmind/${pname} $out/bin/${pname} \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ stdenv.cc.cc ] }" \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ stdenv.cc.cc ]}" \
       "''${gappsWrapperArgs[@]}"
   '';
 
