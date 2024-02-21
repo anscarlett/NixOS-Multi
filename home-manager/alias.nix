@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ lib, pkgs, ... }:
 {
   home.shellAliases = {
     cat = "${lib.getExe pkgs.bat} -p";

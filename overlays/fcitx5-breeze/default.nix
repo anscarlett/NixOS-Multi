@@ -1,23 +1,38 @@
-{ lib, fetchurl, stdenvNoCC }:
+{
+  lib,
+  fetchFromGitLab,
+  stdenvNoCC,
+  python3,
+  inkscape,
+}:
 
-# https://github.com/nix-community/nur-combined/blob/master/repos/xddxdd/pkgs/uncategorized/fcitx5-breeze/default.nix#L20
-stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation rec {
   pname = "fcitx5-breeze";
-  version = "2.0.0";
+  version = "3.1.0";
 
-  src = fetchurl {
-    url = "https://github.com/scratch-er/fcitx5-breeze/releases/download/v2.0.0/fcitx5-breeze-prebuilt-2.0.0.tar.gz";
-    sha256 = "0wwwvq90dcb21avdgcqq5w192ndr2m5fmswxblm3l2vcrh36h3jz";
+  src = fetchFromGitLab {
+    owner = "scratch-er";
+    repo = "fcitx5-breeze";
+    rev = "v${version}";
+    hash = "sha256-rWDEKCz4saSHJER61KFhrlSHcQTdJNVgRIkT3K4mwhc=";
   };
 
+  nativeBuildInputs = [
+    python3
+    inkscape
+  ];
+
   installPhase = ''
+    mkdir -p $out/share/fcitx5/themes
+    python build.py
     ./install.sh $out
   '';
 
   meta = {
     description = "Fcitx5 theme to match KDE's Breeze style";
-    homepage = "https://github.com/scratch-er/fcitx5-breeze";
+    homepage = "https://gitlab.com/scratch-er/fcitx5-breeze";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.all;
+    maintainers = with lib.maintainers; [ zendo ];
   };
 }
