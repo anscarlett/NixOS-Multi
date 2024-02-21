@@ -50,7 +50,7 @@
     enable = true;
     tunMode = true;
     autoStart = true;
-    package = pkgs.clash-verge-rev;
+    package = pkgs.clash-nyanpasu;
   };
 
   # services.v2raya.enable = true;

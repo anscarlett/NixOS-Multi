@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.programs.clash-verge = {
@@ -16,13 +21,15 @@
 
       environment.systemPackages = [
         cfg.package
-        (lib.mkIf cfg.autoStart (pkgs.makeAutostartItem {
-          name = "clash-verge";
-          package = cfg.package;
-        }))
+        (lib.mkIf cfg.autoStart (
+          pkgs.makeAutostartItem {
+            name = lib.getName cfg.package;
+            package = cfg.package;
+          }
+        ))
       ];
 
-      security.wrappers.clash-verge = lib.mkIf cfg.tunMode {
+      security.wrappers.${lib.getName cfg.package} = lib.mkIf cfg.tunMode {
         owner = "root";
         group = "root";
         capabilities = "cap_net_bind_service,cap_net_admin=+ep";

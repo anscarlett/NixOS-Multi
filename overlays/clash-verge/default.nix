@@ -5,7 +5,6 @@
   dpkg,
   wrapGAppsHook,
   autoPatchelfHook,
-  clash-meta,
   openssl,
   webkitgtk,
   udev,
@@ -13,7 +12,7 @@
 }:
 
 stdenv.mkDerivation rec {
-  pname = "clash-verge-rev";
+  pname = "clash-verge";
   version = "1.5.2";
 
   src = fetchurl {
@@ -43,14 +42,9 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/bin
     mv usr/* $out
-    # rm $out/bin/{clash,clash-meta}
 
     runHook postInstall
   '';
-
-  # postFixup = ''
-  #   ln -s ${lib.getExe clash-meta} $out/bin/clash-meta
-  # '';
 
   meta = with lib; {
     description = "Continuation of Clash Verge - A Clash Meta GUI based on Tauri";
