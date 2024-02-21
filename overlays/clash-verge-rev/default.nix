@@ -1,23 +1,24 @@
-{ lib
-, stdenv
-, fetchurl
-, dpkg
-, wrapGAppsHook
-, autoPatchelfHook
-, clash-meta
-, openssl
-, webkitgtk
-, udev
-, libayatana-appindicator
+{
+  lib,
+  stdenv,
+  fetchurl,
+  dpkg,
+  wrapGAppsHook,
+  autoPatchelfHook,
+  clash-meta,
+  openssl,
+  webkitgtk,
+  udev,
+  libayatana-appindicator,
 }:
 
 stdenv.mkDerivation rec {
   pname = "clash-verge-rev";
-  version = "1.5.1";
+  version = "1.5.2";
 
   src = fetchurl {
     url = "https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v${version}/clash-verge_${version}_amd64.deb";
-    hash = "sha256-6tYMbVTmKa1Vk113qmdvtgJIGbCpzuQiCW/V9n/nMXU=";
+    hash = "sha256-MUj+9xo20yn6tzOguJkq5KPKxHZVax2ryHERIr+6dtA=";
   };
 
   nativeBuildInputs = [

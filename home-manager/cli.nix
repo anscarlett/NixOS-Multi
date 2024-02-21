@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  manual.manpages.enable = false;
+
   home.packages = with pkgs; [
     # Nix Tools
     nil
@@ -215,6 +217,4 @@
       };
     };
   };
-
-  manual.manpages.enable = false;
 }

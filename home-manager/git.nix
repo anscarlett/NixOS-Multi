@@ -48,9 +48,7 @@
   # };
 
   programs.jujutsu = {
-    # enable = true;
-    enableBashIntegration = config.programs.bash.enable;
-    enableZshIntegration = config.programs.zsh.enable;
+    enable = true;
     settings = {
       user = {
         name = "zendo";
