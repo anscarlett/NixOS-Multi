@@ -13,11 +13,11 @@
 
 stdenv.mkDerivation rec {
   pname = "clash-verge";
-  version = "1.5.2";
+  version = "1.5.3";
 
   src = fetchurl {
     url = "https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v${version}/clash-verge_${version}_amd64.deb";
-    hash = "sha256-MUj+9xo20yn6tzOguJkq5KPKxHZVax2ryHERIr+6dtA=";
+    hash = "sha256-ViGGSr2coMti1qj7DXUFVQC8l/YOJwEIr1hhtya/IUo=";
   };
 
   nativeBuildInputs = [
