@@ -106,6 +106,7 @@
     edid-decode
     read-edid
     xorg.xeyes
+    squirreldisk
 
     # libinput
     wallutils # lsmon getdpi wayinfo

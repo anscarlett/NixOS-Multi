@@ -1,6 +1,7 @@
 {
-  lib,
   config,
+  lib,
+  pkgs,
   username,
   ...
 }:
@@ -21,7 +22,6 @@ in
 
     security.doas = {
       enable = true;
-      # sudoShim.enable = true;
       # wheelNeedsPassword = false;
       extraRules = [
         {
@@ -32,8 +32,11 @@ in
       ];
     };
 
+    environment.systemPackages = [
+      pkgs.doas-sudo-shim
+    ];
+
     environment.shellAliases = {
-      sudo = "doas";
       sudoedit = "doas micro";
     };
   };

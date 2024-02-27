@@ -8,13 +8,13 @@ getUser=$(loginctl --no-legend list-users | awk '{print $2;}')
 getHost=$(uname -n)
 
 # Check for sudo or doas
-suid() {
-  if [ -x "$(command -v sudo)" ]; then
-    sudo "$@"
-  else
-    doas "$@"
-  fi
-}
+# suid() {
+#   if [ -x "$(command -v sudo)" ]; then
+#     sudo "$@"
+#   else
+#     doas "$@"
+#   fi
+# }
 
 # Main
 ns_usage() {
@@ -49,17 +49,17 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         boot)
-            suid nixos-rebuild --flake "$dotConfig"#"$getHost" boot
+            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" boot
             shift ;;
 
         switch)
-            suid nixos-rebuild --flake "$dotConfig"#"$getHost" switch
+            nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" switch
             shift ;;
 
         upgrade)
             cd "$dotConfig" || exit ; \
                 nix flake update && \
-                suid nixos-rebuild --flake "$dotConfig"#"$getHost" boot
+                nixos-rebuild --use-remote-sudo --flake "$dotConfig"#"$getHost" boot
                 shift ;;
 
         hmswitch)
