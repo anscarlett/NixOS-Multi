@@ -44,6 +44,7 @@ in
     "starship.toml".source = "${lnDots}/starship.toml";
     "sway/custom.conf".source = "${lnDots}/sway/custom.conf";
     "hypr/custom.conf".source = "${lnDots}/hypr/custom.conf";
+    "hypr/hyprlock.conf".source = "${lnDots}/hypr/hyprlock.conf";
   };
 
   xdg.dataFile = {

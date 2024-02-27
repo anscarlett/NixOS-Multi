@@ -6,7 +6,7 @@
     xserver = {
       # for X11
       enable = true;
-      xkbOptions = "ctrl:swapcaps";
+      xkb.options = "ctrl:swapcaps";
       displayManager.lightdm.enable = false; # greetd instaed
     };
 
@@ -66,6 +66,7 @@
         # mako  # , notify-send "sth"
         libnotify # notify-send
         wlogout
+        waybar
 
         wofi # quick run
         wofi-emoji

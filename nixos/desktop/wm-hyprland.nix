@@ -29,7 +29,7 @@
     home.packages = with pkgs; [
       # hyprpaper # wallpaper
       hyprpicker
-      waybar-hyprland
+      hyprlock
     ];
   };
 }

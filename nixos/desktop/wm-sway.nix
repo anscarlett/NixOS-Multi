@@ -32,7 +32,6 @@
     };
 
     home.packages = with pkgs; [
-      waybar
       swayr
       autotiling-rs
     ];
