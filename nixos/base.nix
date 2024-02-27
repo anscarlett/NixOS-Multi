@@ -55,6 +55,9 @@
   # zsh@hm need this
   programs.zsh.enable = true;
 
+  # make `xdg-open` works inside FHS envs
+  xdg.portal.xdgOpenUsePortal = true;
+
   programs.command-not-found.enable = false;
   documentation.enable = false;
   time.timeZone = "Asia/Shanghai";
