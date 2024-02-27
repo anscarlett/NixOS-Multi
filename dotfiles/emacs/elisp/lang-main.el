@@ -112,6 +112,10 @@
 (use-package license-templates
   :defer t)
 
+;; just
+(use-package just-mode
+  :mode ("\\.just'" "justfile\\'"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; rustic https://github.com/brotzeit/rustic
