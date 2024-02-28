@@ -12,12 +12,6 @@
 
     # opensnitch.enable = true;
 
-    # Proxy
-    # tor.tsocks = {
-    #   enable = true;
-    #   server = "127.0.0.1:7890";
-    # };
-
     # Enable CUPS to print documents.
     # printing.enable = true;
 
@@ -39,11 +33,8 @@
     networkmanager.dns = "none";
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # defaultGateway = "192.168.2.1";
-    #interfaces.eno1.useDHCP = true;
-    #interfaces.wlp1s0.useDHCP = true;
-
-    # proxy.default = "http://127.0.0.1:7890";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # interfaces.eno1.useDHCP = true;
+    # interfaces.wlp1s0.useDHCP = true;
 
     nameservers = [
       "8.8.8.8"

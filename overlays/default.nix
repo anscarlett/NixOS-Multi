@@ -60,6 +60,7 @@
     rime-ice = prev.callPackage ./rime-ice { };
     librime-lua = prev.callPackage ./librime-lua { };
     fcitx5-breeze = prev.callPackage ./fcitx5-breeze { };
+    fluent-fcitx5 = prev.callPackage ./fluent-fcitx5 { };
 
     # AppImage
     moonfm = prev.callPackage ./moonfm { };
