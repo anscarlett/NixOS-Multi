@@ -18,6 +18,7 @@
   programs.plasma = {
     enable = true;
 
+    # 面板
     panels = [
       {
         location = "bottom";
@@ -54,14 +55,18 @@
       #     "org.kde.plasma.appmenu"
       #   ];
       # }
-    ];
+    ]; #### panels end here
 
     configFile = {
+      # 密码库
       "kwalletrc"."Wallet"."Enabled" = false;
       "kwalletrc"."Wallet"."First Use" = false;
 
-      "dolphinrc"."General"."ShowFullPath" = true;
+      # 搜索
       "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
+
+      # dolphin
+      "dolphinrc"."General"."ShowFullPath" = true;
 
       kdeglobals = {
         "KDE"."SingleClick" = false;
@@ -70,14 +75,7 @@
         # "General"."ColorScheme" = "Genshin";
       };
 
-      kxkbrc = {
-        "Layout"."Use" = true;
-        "Layout"."ResetOldOptions" = true;
-        "Layout"."SwitchMode" = "Global";
-        "Layout"."LayoutList" = "cn";
-        "Layout"."Options" = "ctrl:swapcaps";
-      };
-
+      # 剪贴板
       klipperrc = {
         "General"."MaxClipItems" = 300;
         "General"."SyncClipboards" = true;
@@ -90,13 +88,35 @@
 
       # 锁屏
       kscreenlockerrc = {
-        "Daemon"."Timeout" = 8;
+        "Daemon"."Timeout" = 8; # minutes
       };
 
+      # 电源管理
       # powermanagementprofilesrc = {
+      #   "AC.DPMSControl".idleTime = 780; # 13 min
+      #   "AC.DimDisplay".idleTime = 480000; # 8 min
+      #   "AC.HandleButtonEvents" = {
+      #     lidAction = 32;
+      #     triggerLidActionWhenExternalMonitorPresent = false;
+      #   };
+      #   "AC.SuspendSession" = {
+      #     idleTime = null;
+      #     suspendThenHibernate = null;
+      #     suspendType = null;
+      #   };
+      #   "Battery.DPMSControl".idleTime = 600; # 10 min
+      #   "Battery.DimDisplay".idleTime = 300000; # 5 min
+      #   "Battery.HandleButtonEvents".triggerLidActionWhenExternalMonitorPresent = false;
+      #   "Battery.SuspendSession" = {
+      #     idleTime = null;
+      #     suspendThenHibernate = null;
+      #     suspendType = null;
+      #   };
+      #   "LowBattery.SuspendSession".suspendThenHibernate = false;
       # };
 
       kwinrc = {
+        # 窗口管理 - 虚拟桌面
         "Desktops"."Rows" = 2;
         "Desktops"."Number" = 4;
         "Desktops"."Name_1" = "one";
@@ -113,6 +133,7 @@
 
         "Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
 
+        # 窗口管理 - 桌面特效
         Plugins = {
           wobblywindowsEnabled = true;
           cubeEnabled = true;
@@ -123,6 +144,7 @@
           # zoomEnabled = false;
         };
 
+        # 窗口管理 - 任务切换器
         TabBox = {
           LayoutName = "big_icons";
           # HighlightWindows = false;
@@ -132,14 +154,25 @@
 
         # };
 
+        # 颜色和主题 - 窗口装饰元素
         "org\\.kde\\.kdecoration2" = {
           ButtonsOnLeft = "M";
           ButtonsOnRight = "IAX";
           ShowToolTips = false;
         };
-      };
-    };
+      };  #### kwinrc end here
 
+      # 键盘 - 布局/高级
+      kxkbrc = {
+        "Layout"."Use" = true;
+        "Layout"."ResetOldOptions" = true;
+        "Layout"."SwitchMode" = "Global";
+        "Layout"."LayoutList" = "cn";
+        "Layout"."Options" = "ctrl:swapcaps";
+      };
+    }; #### configFile end here
+
+    # 键盘 - 快捷键
     shortcuts = {
       "emacs.desktop"."_launch" = "Meta+E";
       "firefox.desktop"."_launch" = "Meta+W";
@@ -185,7 +218,7 @@
           "Meta+4"
           "Ctrl+F4"
         ];
-      };
+      }; #### kwin end here
     };
   };
 }
