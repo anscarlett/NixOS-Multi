@@ -110,7 +110,7 @@
         # gnome.gnome-characters
         # gnome.eog
         # gthumb
-        # libsForQt5.gwenview
+        # kdePackages.gwenview
         gparted
       ];
 

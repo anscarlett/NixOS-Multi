@@ -35,7 +35,6 @@
       # FIXME: https://github.com/pjones/plasma-manager/issues/47
       # kcminputrc = {
       #   "Libinput.1739.52804.MSFT0001:00 06CB:CE44 Touchpad"."NaturalScroll" = true;
-      #   "Libinput.1739.52804.MSFT0001:00 06CB:CE44 Touchpad"."TapToClick" = true;
       # };
 
       kscreenlockerrc = {

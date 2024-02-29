@@ -21,16 +21,13 @@
     with pkgs;
     [
       # falkon
-      kalendar
+      merkuro
       yakuake
       gparted
       # latte-dock
       kcolorchooser
-      gnome.gnome-color-manager # broken?
     ]
     ++ (with kdePackages; [
-      ark
-      kate
       kalk
       krfb
       krdc
@@ -44,9 +41,8 @@
       # korganizer
     ]);
 
-  environment.plasma6.excludePackages = with pkgs.libsForQt5; [
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
     # elisa
-    # oxygen
     # khelpcenter
     # print-manager
     plasma-browser-integration
@@ -55,6 +51,7 @@
   services.xserver = {
     enable = true;
     excludePackages = [ pkgs.xterm ];
+    desktopManager.plasma6.enable = true;
     displayManager = {
       defaultSession = "plasma";
 
@@ -82,11 +79,6 @@
           ];
         };
       };
-    };
-
-    desktopManager.plasma6 = {
-      enable = true;
-      # useQtScaling = true;
     };
   };
 }
