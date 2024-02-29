@@ -38,7 +38,7 @@
     # rhythmbox
     goodvibes
     go-musicfox
-    qcm
+    # qcm
     # netease-cloud-music-gtk
     # mousai
     songrec
@@ -171,7 +171,7 @@
           "text/plain" = "org.gnome.TextEditor.desktop";
           "application/pdf" = "org.gnome.Evince.desktop";
         })
-        (lib.mkIf nixosConfig.services.xserver.desktopManager.plasma5.enable {
+        (lib.mkIf nixosConfig.services.xserver.desktopManager.plasma6.enable {
           "image/*" = "org.kde.gwenview.desktop";
           "text/plain" = "org.kde.kwrite.desktop";
           "application/pdf" = "org.kde.okular.desktop";

@@ -28,14 +28,14 @@
       kcolorchooser
       gnome.gnome-color-manager # broken?
     ]
-    ++ (with libsForQt5; [
+    ++ (with kdePackages; [
       ark
       juk
       kate
       kalk
       krfb
       krdc
-      kgamma5 # broken?
+      kgamma # broken?
       kweather
       ksystemlog
       kmousetool
@@ -45,7 +45,7 @@
       # korganizer
     ]);
 
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+  environment.plasma6.excludePackages = with pkgs.libsForQt5; [
     # elisa
     # oxygen
     # khelpcenter
@@ -57,7 +57,7 @@
     enable = true;
     excludePackages = [ pkgs.xterm ];
     displayManager = {
-      defaultSession = "plasmawayland";
+      defaultSession = "plasma";
 
       sddm = {
         enable = true;
@@ -85,7 +85,7 @@
       };
     };
 
-    desktopManager.plasma5 = {
+    desktopManager.plasma6 = {
       enable = true;
       # useQtScaling = true;
     };

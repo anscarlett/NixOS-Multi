@@ -33,7 +33,7 @@
     enable = true;
     desktopManager = {
       # gnome.enable = true;
-      # plasma5.enable = true;
+      # plasma6.enable = true;
       # xfce.enable = true;
       # budgie.enable = true;
       # deepin.enable = true;
