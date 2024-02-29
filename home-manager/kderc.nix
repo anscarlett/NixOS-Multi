@@ -1,10 +1,61 @@
-{ config, inputs, ... }:
+{ inputs, ... }:
 {
   imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+
+  home.file.".config/kate/lspclient/settings.json".text = ''
+    {
+      "servers": {
+        "nix": {
+          "command": ["nil"],
+          "url": "https://github.com/oxalica/nil",
+          "highlightingModeRegex": "^Nix$"
+        }
+      }
+    }
+  '';
 
   # rm .config/k* .config/plasma* .config/power*
   programs.plasma = {
     enable = true;
+
+    panels = [
+      {
+        location = "bottom";
+        height = 44; # default value
+        widgets = [
+          "org.kde.plasma.panelspacer" # 面板间隙
+          "org.kde.plasma.kickoff"
+          "org.kde.plasma.marginsseparator" # 边距分隔符
+          {
+            name = "org.kde.plasma.icontasks";
+            config = {
+              General.launchers = [
+                "applications:kitty.desktop"
+                "applications:org.kde.dolphin.desktop"
+                "applications:org.kde.kate.desktop"
+                # "applications:emacs.desktop"
+                "applications:firefox.desktop"
+                "applications:org.telegram.desktop.desktop"
+              ];
+            };
+          }
+          "org.kde.plasma.panelspacer" # 面板间隙
+          "org.kde.plasma.marginsseparator" # 边距分隔符
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.digitalclock"
+          "org.kde.plasma.showdesktop"
+          "org.kde.plasma.pager" # 虚拟桌面切换器
+        ];
+      }
+      # {
+      #   location = "top";
+      #   height = 26;
+      #   widgets = [
+      #     "org.kde.plasma.appmenu"
+      #   ];
+      # }
+    ];
+
     configFile = {
       "kwalletrc"."Wallet"."Enabled" = false;
       "kwalletrc"."Wallet"."First Use" = false;
@@ -37,6 +88,7 @@
       #   "Libinput.1739.52804.MSFT0001:00 06CB:CE44 Touchpad"."NaturalScroll" = true;
       # };
 
+      # 锁屏
       kscreenlockerrc = {
         "Daemon"."Timeout" = 8;
       };
@@ -52,6 +104,7 @@
         "Desktops"."Name_3" = "three";
         "Desktops"."Name_4" = "four";
 
+        # 夜间颜色
         "NightColor"."Active" = true;
         "NightColor"."Mode" = "Location";
         "NightColor"."LatitudeFixed" = 23.12;

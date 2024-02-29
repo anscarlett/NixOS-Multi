@@ -48,11 +48,9 @@ in
     };
 
   config = lib.mkIf cfg.enable {
-    mods.flatpak.enable = true;
+    # mods.flatpak.enable = true;
 
     # programs.adb.enable = true;
-
-    # programs.steam.enable = true;
 
     # programs.java.enable = true;
 
@@ -90,6 +88,14 @@ in
           ];
       })
     ];
+
+    # fix steam tofu
+    # ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
+    programs.steam = {
+      # enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
 
     virtualisation = {
       spiceUSBRedirection.enable = true; # USB passthrough
