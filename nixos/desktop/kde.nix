@@ -30,7 +30,6 @@
     ]
     ++ (with kdePackages; [
       ark
-      juk
       kate
       kalk
       krfb

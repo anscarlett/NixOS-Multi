@@ -11,10 +11,10 @@
 
       "dolphinrc"."General"."ShowFullPath" = true;
       "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
-      "plasmarc"."Theme"."name" = "breeze-dark";
 
       kdeglobals = {
         "KDE"."SingleClick" = false;
+        "KDE"."LookAndFeelPackage" = "org.kde.breezetwilight.desktop";
         # "Icons"."Theme" = "Newaita";
         # "General"."ColorScheme" = "Genshin";
       };
@@ -32,7 +32,7 @@
         "General"."SyncClipboards" = true;
       };
 
-      # TODO
+      # FIXME: https://github.com/pjones/plasma-manager/issues/47
       # kcminputrc = {
       #   "Libinput.1739.52804.MSFT0001:00 06CB:CE44 Touchpad"."NaturalScroll" = true;
       #   "Libinput.1739.52804.MSFT0001:00 06CB:CE44 Touchpad"."TapToClick" = true;
@@ -54,11 +54,16 @@
         "Desktops"."Name_4" = "four";
 
         "NightColor"."Active" = true;
-        # "NightColor"."Mode" = "Location";
+        "NightColor"."Mode" = "Location";
+        "NightColor"."LatitudeFixed" = 23.12;
+        "NightColor"."LongitudeFixed" = 113.26;
         "NightColor"."NightTemperature" = 3800;
+
+        "Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
 
         Plugins = {
           wobblywindowsEnabled = true;
+          cubeEnabled = true;
           # blurEnabled = false;
           # contrastEnabled = true;
           # kwin4_effect_squashEnabled = false;
