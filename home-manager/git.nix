@@ -14,8 +14,6 @@
       ll = "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative";
       unstage = "reset HEAD --";
       quick-rebase = "rebase --interactive --autostash --committer-date-is-author-date";
-      quick-clone = "clone --depth=1 --recurse-submodules --shallow-submodules";
-      quick-clone-tree = "clone --filter=tree:0";
     };
     extraConfig = {
       init.defaultBranch = "main";

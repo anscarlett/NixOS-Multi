@@ -55,7 +55,7 @@
       #     "org.kde.plasma.appmenu"
       #   ];
       # }
-    ]; #### panels end here.
+    ]; # panels end here.
 
     configFile = {
       # 密码库
@@ -160,7 +160,7 @@
           ButtonsOnRight = "IAX";
           ShowToolTips = false;
         };
-      };  #### kwinrc end here.
+      }; # ### kwinrc end here.
 
       # 键盘 - 布局/高级
       kxkbrc = {
@@ -170,7 +170,7 @@
         "Layout"."LayoutList" = "cn";
         "Layout"."Options" = "ctrl:swapcaps";
       };
-    }; #### configFile end here.
+    }; # configFile end here.
 
     # 键盘 - 快捷键
     shortcuts = {
@@ -218,7 +218,7 @@
           "Meta+4"
           "Ctrl+F4"
         ];
-      }; #### kwin end here.
-    }; #### shortcuts end here.
-  }; #### programs.plasma end here.
+      }; # kwin end here.
+    }; # shortcuts end here.
+  }; # programs.plasma end here.
 }
