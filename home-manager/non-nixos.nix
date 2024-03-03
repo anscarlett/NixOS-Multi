@@ -1,8 +1,9 @@
-/* # non nixos setup
-   sudo vi /etc/nix/nix.conf
-   experimental-features = nix-command flakes
-   trusted-users = root @wheel iab
-   substituters = https://mirror.sjtu.edu.cn/nix-channels/store
+/*
+  # non nixos setup
+  sudo vi /etc/nix/nix.conf
+  experimental-features = nix-command flakes
+  trusted-users = root @wheel iab
+  substituters = https://mirror.sjtu.edu.cn/nix-channels/store
 */
 { pkgs, inputs, ... }:
 {

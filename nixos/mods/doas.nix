@@ -32,9 +32,7 @@ in
       ];
     };
 
-    environment.systemPackages = [
-      pkgs.doas-sudo-shim
-    ];
+    environment.systemPackages = [ pkgs.doas-sudo-shim ];
 
     environment.shellAliases = {
       sudoedit = "doas micro";

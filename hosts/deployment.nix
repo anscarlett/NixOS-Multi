@@ -1,7 +1,8 @@
-/* # Deployment
-   deploy -s .#svp
-   or
-   nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
+/*
+  # Deployment
+  deploy -s .#svp
+  or
+  nixos-rebuild --target-host zendo@192.168.2.198 --use-remote-sudo --flake .#svp boot
 */
 { inputs }:
 {

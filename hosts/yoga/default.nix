@@ -90,10 +90,11 @@
   ###############################################
   ## Bootloader
   ###############################################
-  /* disable Secure-Boot and reset to Setup-Mode
-     sudo -i
-     sbctl create-keys
-     sbctl enroll-keys --microsoft
+  /*
+    disable Secure-Boot and reset to Setup-Mode
+    sudo -i
+    sbctl create-keys
+    sbctl enroll-keys --microsoft
   */
   # boot.lanzaboote = {
   #   enable = true;
