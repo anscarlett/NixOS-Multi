@@ -16,6 +16,7 @@ ns:
 - generations
 - references
 - depends
+- depends-tree
 - pr-pull
 - pr-build
 - pr-build-impure
