@@ -17,6 +17,7 @@ let
       };
       modules =
         [
+          # sops-nix modules
           inputs.sops-nix.nixosModules.sops
           {
             sops.defaultSopsFile = ../secrets/secrets.yaml;
@@ -24,6 +25,7 @@ let
             # sops.age.generateKey = true;
             sops.age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
           }
+          # disko modules
           inputs.disko.nixosModules.disko
           {
             networking.hostName = "${hostname}";
@@ -31,6 +33,7 @@ let
           }
         ]
         ++ nixpkgs.lib.optionals hmEnable [
+          # home-manager modules
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
