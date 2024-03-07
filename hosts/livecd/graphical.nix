@@ -14,23 +14,16 @@
     self.nixosModules.gnome
   ];
 
+  # fast but lowest compression level
+  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+
   mods.virt.enable = false;
 
   environment.systemPackages = with pkgs; [ dippi ];
 
   boot = {
     initrd.systemd.enable = false;
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-    supportedFilesystems = lib.mkForce [
-      "btrfs"
-      "reiserfs"
-      "vfat"
-      "f2fs"
-      "xfs"
-      "ntfs"
-      "cifs"
-      "bcachefs"
-    ];
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   services.xserver = {
@@ -39,7 +32,4 @@
 
   # password: livecd
   users.users.${username}.password = lib.mkForce "livecd";
-
-  # faster but bigger size
-  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }
