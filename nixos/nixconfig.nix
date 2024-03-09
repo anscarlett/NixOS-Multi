@@ -20,7 +20,7 @@
         n.flake = inputs.nixpkgs;
       };
 
-    # nix show-config nix-path | tr " " "\n"
+    # nix config show nix-path | tr " " "\n"
     nixPath = lib.mapAttrsToList (name: path: "${name}=${path}") inputs ++ [
       "nixos-config=${inputs.self}"
     ];
