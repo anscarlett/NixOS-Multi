@@ -22,10 +22,6 @@
 (use-package reformatter
   :defer t
   :config
-  (reformatter-define nix-alejandra
-    :program "alejandra"
-    ;; :args '("--" "quiet")
-    )
   (reformatter-define nixfmt
     :program "nixfmt"
     )

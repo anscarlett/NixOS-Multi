@@ -52,7 +52,6 @@
     extensions = with pkgs.vscode-extensions; [
       ms-ceintl.vscode-language-pack-zh-hans
       jnoortheen.nix-ide
-      kamadorueda.alejandra
       editorconfig.editorconfig
       file-icons.file-icons
       golang.go

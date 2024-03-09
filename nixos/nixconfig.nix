@@ -21,7 +21,6 @@
       };
 
     # nix show-config nix-path | tr " " "\n"
-    # consistent legacy nix, echo $NIX_PATH
     nixPath = lib.mapAttrsToList (name: path: "${name}=${path}") inputs ++ [
       "nixos-config=${inputs.self}"
     ];
@@ -32,7 +31,6 @@
       options = "--delete-older-than 5d";
     };
 
-    # 2.19
     package = pkgs.nixVersions.unstable;
 
     settings = {

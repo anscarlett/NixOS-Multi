@@ -7,7 +7,7 @@
     nil
     # nixd
     ns-cli
-    alejandra
+    # alejandra
     nixpkgs-fmt
     nixfmt-rfc-style
     # lorri
