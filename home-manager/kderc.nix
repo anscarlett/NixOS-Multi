@@ -23,6 +23,7 @@
       {
         location = "bottom";
         height = 44; # default value
+        floating = true;
         widgets = [
           "org.kde.plasma.panelspacer" # 面板间隙
           "org.kde.plasma.kickoff"
@@ -33,7 +34,7 @@
               General.launchers = [
                 "applications:kitty.desktop"
                 "applications:org.kde.dolphin.desktop"
-                "applications:org.kde.kate.desktop"
+                # "applications:org.kde.kate.desktop"
                 # "applications:emacs.desktop"
                 "applications:firefox.desktop"
                 "applications:org.telegram.desktop.desktop"
