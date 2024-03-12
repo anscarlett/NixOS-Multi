@@ -1,4 +1,4 @@
-;;; init-shell.el --- main core settings -*- lexical-binding: t; -*-
+;;; ee-shell.el --- main core settings -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -47,5 +47,5 @@
 (use-package journalctl-mode
   :defer t)
 
-(provide 'init-shell)
+(provide 'ee-shell)
 ;;; init-shell.el ends here

@@ -110,5 +110,5 @@
 ;;       :defines company-backends
 ;;       :init (add-to-list 'company-backends 'company-restclient))))
 
-(provide 'lang-web)
-;;; init-web.el ends here
+(provide 'ee-web)
+;;; ee-web.el ends here

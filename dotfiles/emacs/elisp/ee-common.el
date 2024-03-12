@@ -147,5 +147,5 @@
 (put 'erase-buffer 'disabled nil)
 (put 'scroll-left 'disabled nil)
 
-(provide 'init-common)
+(provide 'ee-common)
 ;;; config.el ends here

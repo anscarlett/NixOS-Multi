@@ -53,5 +53,5 @@
     (call-interactively #'dired-mark-files-regexp)
     (command-execute "tk")))
 
-(provide 'init-dired)
+(provide 'ee-dired)
 ;;; init-dired.el ends here

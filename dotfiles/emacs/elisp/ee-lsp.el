@@ -1,4 +1,4 @@
-;;; lang-lsp.el --- Main Development languages -*- lexical-binding: t; -*-
+;;; ee-lsp.el --- Main Development languages -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -213,5 +213,5 @@
 ;;                       ("S" lsp-shutdown-workspace))))
 
 
-(provide 'lang-lsp)
+(provide 'ee-lsp)
 ;;; init-lsp.el ends here

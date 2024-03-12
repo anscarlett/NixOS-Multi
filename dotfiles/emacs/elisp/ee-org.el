@@ -1,4 +1,4 @@
-;;; lang-org.el --- main core settings -*- lexical-binding: t; -*-
+;;; ee-org.el --- main core settings -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -113,5 +113,5 @@
 ;;   (org-clock-out-when-done . t)
 ;;   )
 
-(provide 'lang-org)
+(provide 'ee-org)
 ;;; init-org.el ends here

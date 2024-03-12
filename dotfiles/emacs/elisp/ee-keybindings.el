@@ -1,4 +1,4 @@
-;;; init-keybindings.el --- Modify key bindings -*- lexical-binding: t; -*-
+;;; ee-keybindings.el --- Modify key bindings -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -115,5 +115,5 @@
   :config
   (setq view-read-only t))
 
-(provide 'init-keybindings)
+(provide 'ee-keybindings)
 ;;; keybindings.el ends here

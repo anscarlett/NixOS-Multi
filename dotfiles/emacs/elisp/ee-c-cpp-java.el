@@ -1,4 +1,4 @@
-;;; lang-c-cpp-java.el --- Main Development languages -*- lexical-binding: t; -*-
+;;; ee-c-cpp-java.el --- Main Development languages -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -103,5 +103,5 @@
 
 ;; (leaf groovy-mode :ensure t)
 
-(provide 'lang-c-cpp-java)
+(provide 'ee-c-cpp-java)
 ;;; init-c-cpp-java.el ends here

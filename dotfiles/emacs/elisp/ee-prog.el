@@ -1,4 +1,4 @@
-;;; lang-main.el --- Main Development languages -*- lexical-binding: t; -*-
+;;; ee-prog.el --- Main Development languages -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -54,12 +54,6 @@
   :init
   (editorconfig-mode t))
 
-;; (use-package direnv
-;;   :init
-;;   (direnv-mode)
-;;   :config
-;;   (setq direnv-always-show-summary nil))
-
 ;; Markdown
 (use-package markdown-mode
   :config
@@ -93,13 +87,6 @@
 ;; yaml
 (use-package yaml-mode
   :mode ("\\.yml'" "\\.yaml'"))
-
-;; nixos
-(use-package nix-mode
-  :mode ("\\.nix'"))
-
-(use-package nixpkgs-fmt
-  :defer t)
 
 ;; lua
 (use-package lua-mode
@@ -178,5 +165,5 @@
          ("C-c e" . macrostep-expand)))
 
 
-(provide 'lang-main)
+(provide 'ee-prog)
 ;;; init-main.el ends here

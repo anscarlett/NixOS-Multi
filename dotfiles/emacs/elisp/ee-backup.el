@@ -1,4 +1,4 @@
-;;; init-backup.el --- main core settings -*- lexical-binding: t; -*-
+;;; ee-backup.el --- main core settings -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -74,5 +74,5 @@
   (setq vundo-roll-back-on-quit nil))
 
 
-(provide 'init-backup)
+(provide 'ee-backup)
 ;;; init-backup.el ends here

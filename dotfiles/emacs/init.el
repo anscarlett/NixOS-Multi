@@ -68,21 +68,22 @@
   (load custom-file 'noerror))
 
 
-(require 'init-packages)
-(require 'init-common)
-(require 'init-functions)
+(require 'ee-packages)
+(require 'ee-common)
+(require 'ee-functions)
 
-(require 'init-backup)
-(require 'init-dired)
-(require 'init-shell)
-(require 'init-vertico)
-(require 'init-project)
-(require 'init-keybindings)
+(require 'ee-backup)
+(require 'ee-dired)
+(require 'ee-shell)
+(require 'ee-vertico)
+(require 'ee-project)
+(require 'ee-keybindings)
 
-(require 'lang-main)
-(require 'lang-lsp)
-(require 'lang-org)
-;; (require 'lang-web)
-(require 'lang-c-cpp-java)
+(require 'ee-prog)
+(require 'ee-lsp)
+(require 'ee-org)
+(require 'ee-nix)
+;; (require 'ee-web)
+(require 'ee-c-cpp-java)
 
 ;;; init.el ends here

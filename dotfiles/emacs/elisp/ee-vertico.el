@@ -1,4 +1,4 @@
-;;; init-vertico.el --- main core settings -*- lexical-binding: t; -*-
+;;; ee-vertico.el --- main core settings -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -78,5 +78,5 @@
                cand)))
 
 
-(provide 'init-vertico)
+(provide 'ee-vertico)
 ;;; init-vertico.el ends here

@@ -114,5 +114,5 @@
 (use-package blamer
   :commands (blamer-mode))
 
-(provide 'init-project)
+(provide 'ee-project)
 ;;; init-project.el ends here

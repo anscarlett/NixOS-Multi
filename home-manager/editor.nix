@@ -15,6 +15,7 @@
     package = pkgs.emacs29-pgtk;
     extraPackages =
       epkgs: with epkgs; [
+        jinx
         vterm
         emojify
         emacsql-sqlite

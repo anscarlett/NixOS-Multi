@@ -231,5 +231,5 @@
 (use-package disk-usage
   :commands (disk-usage))
 
-(provide 'init-packages)
+(provide 'ee-packages)
 ;;; init-packages.el ends here
