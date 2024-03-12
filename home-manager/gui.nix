@@ -80,7 +80,7 @@
     # drawio
     # rnote # handwritten note
     # foliate # (webkitgtk)
-    # standardnotes
+    # librum
     notes
     # endeavour
     # ghostwriter # (qtwebengine)

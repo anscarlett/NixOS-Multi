@@ -24,7 +24,7 @@
       nixpkgs.flake = inputs.nixpkgs;
       n.flake = inputs.nixpkgs;
     };
-    package = pkgs.nixpkgs.nixVersions.unstable; # need for nix.settings
+    package = pkgs.nixVersions.unstable; # need for nix.settings
     settings = {
       warn-dirty = false;
       experimental-features = [
