@@ -75,7 +75,7 @@
 (require 'ee-backup)
 (require 'ee-dired)
 (require 'ee-shell)
-(require 'ee-vertico)
+(require 'ee-minibuffer)
 (require 'ee-project)
 (require 'ee-keybindings)
 

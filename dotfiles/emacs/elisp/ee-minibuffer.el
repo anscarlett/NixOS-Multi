@@ -1,4 +1,4 @@
-;;; ee-vertico.el --- main core settings -*- lexical-binding: t; -*-
+;;; ee-minibuffer.el --- main core settings -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -78,5 +78,5 @@
                cand)))
 
 
-(provide 'ee-vertico)
-;;; init-vertico.el ends here
+(provide 'ee-minibuffer)
+;;; ee-minibuffer.el ends here

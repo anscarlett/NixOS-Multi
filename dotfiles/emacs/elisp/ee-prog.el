@@ -39,6 +39,9 @@
   :config
   (global-treesit-auto-mode))
 
+(use-package list-environment
+  :commands (list-environment))
+
 ;; conf-mode
 (use-package conf-mode
   :mode
