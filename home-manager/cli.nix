@@ -69,7 +69,6 @@
     iotop-c
     dstat
     powertop
-    bottom # btm
     psmisc # pstree
     procs
     erdtree
@@ -80,7 +79,6 @@
     tokei # count code
 
     # Utils
-    hstr # hh: history
     cht-sh
     # difftastic # too big
     kalker # calculator
@@ -119,17 +117,15 @@
   ];
 
   programs = {
+    aria2 = {
+      enable = true;
+    };
+
     eza = {
       enable = true;
-      # ll, la, lla, lt ...
-      enableAliases = true;
     };
 
     bat = {
-      enable = true;
-    };
-
-    ripgrep = {
       enable = true;
     };
 
@@ -137,11 +133,21 @@
       enable = true;
     };
 
+    # btm
+    bottom = {
+      enable = true;
+    };
+
+    ripgrep = {
+      enable = true;
+    };
+
     htop = {
       enable = true;
     };
 
-    aria2 = {
+    # hh :history
+    hstr = {
       enable = true;
     };
 
@@ -149,11 +155,21 @@
       enable = true;
     };
 
+    fzf = {
+      enable = true;
+    };
+
+    skim = {
+      enable = true;
+    };
+
+    yazi = {
+      enable = true;
+    };
+
     # z: autojump directory
     zoxide = {
       enable = true;
-      enableBashIntegration = config.programs.bash.enable;
-      enableZshIntegration = config.programs.zsh.enable;
     };
 
     # shell history
@@ -175,28 +191,8 @@
       # };
     };
 
-    fzf = {
-      enable = true;
-      enableBashIntegration = config.programs.bash.enable;
-      enableZshIntegration = config.programs.zsh.enable;
-    };
-
-    skim = {
-      enable = true;
-      enableBashIntegration = config.programs.bash.enable;
-      enableZshIntegration = config.programs.zsh.enable;
-    };
-
-    yazi = {
-      enable = true;
-      enableBashIntegration = config.programs.bash.enable;
-      enableZshIntegration = config.programs.zsh.enable;
-    };
-
     nix-index = {
       enable = true;
-      enableBashIntegration = config.programs.bash.enable;
-      enableZshIntegration = config.programs.zsh.enable;
     };
 
     direnv = {

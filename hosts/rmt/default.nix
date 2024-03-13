@@ -28,12 +28,13 @@
     gdu
   ];
 
+  # services.desktopManager.plasma6.enable = true;
+
   # Desktop Envirment
   services.xserver = {
     enable = true;
     desktopManager = {
       # gnome.enable = true;
-      # plasma6.enable = true;
       # xfce.enable = true;
       # budgie.enable = true;
       # deepin.enable = true;

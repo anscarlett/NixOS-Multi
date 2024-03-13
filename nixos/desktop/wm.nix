@@ -7,7 +7,26 @@
       # for X11
       enable = true;
       xkb.options = "ctrl:swapcaps";
-      displayManager.lightdm.enable = false; # greetd instaed
+
+      displayManager.lightdm  = {
+        enable = false; # greetd instaed
+        greeters.gtk = {
+          cursorTheme.size = 48;
+          extraConfig = ''
+            xft-dpi=261
+            clock-format=%H:%M
+          '';
+          indicators = [
+            "~spacer"
+            "~clock"
+            "~spacer"
+            "~session"
+            # "~language"
+            # "~a11y"
+            "~power"
+          ];
+        };
+      };
     };
 
     gvfs.enable = true; # (webkitgtk)

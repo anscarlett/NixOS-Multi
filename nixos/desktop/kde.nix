@@ -5,6 +5,7 @@
   services = {
     colord.enable = true;
     geoclue2.enable = true;
+    desktopManager.plasma6.enable = true;
   };
 
   programs = {
@@ -52,33 +53,13 @@
   services.xserver = {
     enable = true;
     excludePackages = [ pkgs.xterm ];
-    desktopManager.plasma6.enable = true;
+
     displayManager = {
       defaultSession = "plasma";
 
       sddm = {
         enable = true;
         wayland.enable = true;
-      };
-
-      lightdm = {
-        enable = false;
-        greeters.gtk = {
-          cursorTheme.size = 48;
-          extraConfig = ''
-            xft-dpi=261
-            clock-format=%H:%M
-          '';
-          indicators = [
-            "~spacer"
-            "~clock"
-            "~spacer"
-            "~session"
-            # "~language"
-            # "~a11y"
-            "~power"
-          ];
-        };
       };
     };
   };

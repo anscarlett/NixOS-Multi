@@ -16,7 +16,7 @@
       ./browsers.nix
       ./mods/polkit.nix
     ]
-    ++ lib.optionals nixosConfig.services.xserver.desktopManager.plasma6.enable [ ./kderc.nix ]
+    ++ lib.optionals nixosConfig.services.desktopManager.plasma6.enable [ ./kderc.nix ]
     ++ lib.optionals nixosConfig.services.xserver.desktopManager.gnome.enable [ ./dconf.nix ];
 
   home.stateVersion = nixosConfig.system.stateVersion;
