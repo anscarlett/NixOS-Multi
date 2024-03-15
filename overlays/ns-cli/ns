@@ -90,6 +90,7 @@ while [[ $# -gt 0 ]]; do
             shift ;;
 
         installed)
+            # cut -d- -f2-
             nix path-info --recursive /run/current-system | cut -b 45- | sort
             shift ;;
 

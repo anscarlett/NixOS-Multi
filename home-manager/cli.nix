@@ -177,8 +177,6 @@
     # atuin sync -f
     atuin = {
       enable = true;
-      enableBashIntegration = config.programs.bash.enable;
-      enableZshIntegration = config.programs.zsh.enable;
       flags = [
         "--disable-up-arrow"
         # "--disable-ctrl-r"

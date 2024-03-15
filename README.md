@@ -31,8 +31,7 @@ nixos-install --no-root-passwd --flake .#host
 ``` shell
 # Developer Environments
 nix develop --no-write-lock-file github:nix-community/nix-environments#openwrt
-nix develop 'github:the-nix-way/nix-flake-dev-environments?dir=rust'
-go/rust/python/java/node/php/ruby-on-rails
+nix flake init -t github:github:MordragT/nix-templates#tauri
 ```
 
 # Desktop Setup
