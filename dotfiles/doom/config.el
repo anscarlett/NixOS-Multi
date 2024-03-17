@@ -83,7 +83,7 @@
 ;; Nix Mode
 (add-hook 'nix-mode-hook #'rainbow-delimiters-mode)
 ;; C-c c f
-(set-formatter! 'nixfmt '("nixfmt") :modes '(nix-mode))
+;; (set-formatter! 'nixfmt "nixfmt" :modes '(nix-mode))
 
 ;; disable flycheck in some mode
 (setq flycheck-disabled-checkers '(sh-shellscript
