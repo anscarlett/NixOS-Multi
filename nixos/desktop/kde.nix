@@ -6,6 +6,18 @@
     colord.enable = true;
     geoclue2.enable = true;
     desktopManager.plasma6.enable = true;
+
+    xserver = {
+      enable = true;
+      excludePackages = [ pkgs.xterm ];
+
+      displayManager.defaultSession = "plasma";
+
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
+    };
   };
 
   programs = {
@@ -44,18 +56,4 @@
     # print-manager
     plasma-browser-integration
   ];
-
-  services.xserver = {
-    enable = true;
-    excludePackages = [ pkgs.xterm ];
-
-    displayManager = {
-      defaultSession = "plasma";
-
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-    };
-  };
 }

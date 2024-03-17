@@ -46,8 +46,8 @@
           system,
           ...
         }:
-        let
-          pkgs = import nixpkgs {
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
             overlays = builtins.attrValues self.overlays;
             config = {
@@ -57,8 +57,7 @@
               # allowUnsupportedSystem = true;
             };
           };
-        in
-        {
+
           # nix build .#apps
           # access pkgs from self & overlays
           legacyPackages = pkgs;
