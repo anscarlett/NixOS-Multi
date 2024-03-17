@@ -17,6 +17,7 @@ let
       };
       modules =
         [
+          { networking.hostName = "${hostname}"; }
           # sops-nix module
           inputs.sops-nix.nixosModules.sops
           {
@@ -30,10 +31,6 @@ let
           }
           # disko module
           inputs.disko.nixosModules.disko
-          {
-            networking.hostName = "${hostname}";
-            services.xserver.displayManager.autoLogin.user = "${username}";
-          }
         ]
         ++ nixpkgs.lib.optionals hmEnable [
           # home-manager module

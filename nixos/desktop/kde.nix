@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   mods.fcitx.enable = true;
 
@@ -11,8 +11,7 @@
       enable = true;
       excludePackages = [ pkgs.xterm ];
 
-      displayManager.defaultSession = "plasma";
-
+      displayManager.autoLogin.user = "${username}";
       displayManager.sddm = {
         enable = true;
         wayland.enable = true;
