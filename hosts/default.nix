@@ -42,6 +42,7 @@ let
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              # backupFileExtension = "hm_bak~";
               extraSpecialArgs = {
                 inherit inputs;
               };
