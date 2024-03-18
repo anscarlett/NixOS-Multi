@@ -9,8 +9,12 @@
     plymouth.enable = true;
     # tmp.useTmpfs = true;
     tmp.cleanOnBoot = !config.boot.tmp.useTmpfs;
-    initrd.systemd.enable = lib.mkDefault true;
-    # Silent boot when `initrd.systemd` enable
+
+    initrd.systemd = {
+      enable = lib.mkDefault true;
+      # root = "gpt-auto";
+    };
+
     kernelParams = lib.optionals config.boot.initrd.systemd.enable [ "systemd.show_status=false" ];
   };
 

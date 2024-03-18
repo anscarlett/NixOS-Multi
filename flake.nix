@@ -14,30 +14,20 @@
         "aarch64-linux"
       ];
 
-      imports = [ inputs.devenv.flakeModule ];
-
-      flake = {
-        nixosModules = import ./nixos;
-
-        overlays = import ./overlays { inherit inputs; };
-
-        nixosConfigurations = import ./hosts { inherit inputs self; };
-
-        homeConfigurations = import ./home-manager/hm-standalone.nix { inherit inputs; };
-
-        deploy = import ./hosts/deployment.nix { inherit inputs; };
-
-        templates = import ./templates;
-
-        # quickly repl
-        inherit inputs;
-        inherit (inputs.nixpkgs) lib;
-        flake = builtins.getFlake (toString ./.);
-        hosts = self.nixosConfigurations;
-        hm = self.nixosConfigurations.yoga.config.home-manager.users;
-        n = nixpkgs.legacyPackages.x86_64-linux;
-        selfPkgs = self.legacyPackages.x86_64-linux;
-      };
+      imports =
+        [
+          ./hosts
+          ./nixos
+          ./overlays
+          ./home-manager/hm-standalone.nix
+          ./hosts/deployment.nix
+          ./lib/repl.nix
+          ./templates
+        ]
+        ++ [
+          inputs.devenv.flakeModule
+          # inputs.treefmt-nix.flakeModule
+        ];
 
       perSystem =
         {
@@ -120,6 +110,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     devenv.url = "github:cachix/devenv";
     templates.url = "github:NixOS/templates";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };

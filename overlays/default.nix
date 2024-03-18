@@ -1,118 +1,120 @@
 { inputs, ... }:
 {
-  # nur = inputs.nur.overlay;
+  flake.overlays = {
+    # nur = inputs.nur.overlay;
 
-  # stable-packages = final: _prev: {
-  #   stable = import inputs.nixpkgs-stable {
-  #     system = final.system;
-  #     config.allowUnfree = true;
-  #   };
-  # };
-
-  modifications = _: prev: {
-    # fix .desktop missing
-    wl-color-picker = prev.wl-color-picker.overrideAttrs (oldAttrs: {
-      postFixup = "cp -r $out/usr/share $out/share ";
-    });
-
-    # xwayland env for inputMethod & native CSD
-    spotify = prev.spotify.overrideAttrs (oldAttrs: {
-      postFixup = ''
-        substituteInPlace $out/share/applications/spotify.desktop \
-          --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2"
-      '';
-    });
-
-    # spotify = prev.spotify.override {
-    #   deviceScaleFactor = 2.0;
+    # stable-packages = final: _prev: {
+    #   stable = import inputs.nixpkgs-stable {
+    #     system = final.system;
+    #     config.allowUnfree = true;
+    #   };
     # };
 
-    # Combining overrideAttrs and override
-    librime =
-      (prev.librime.overrideAttrs (oldAttrs: {
-        buildInputs = oldAttrs.buildInputs ++ [ prev.luajit ];
-      })).override
-        { plugins = [ prev.librime-lua ]; };
+    modifications = _: prev: {
+      # fix .desktop missing
+      wl-color-picker = prev.wl-color-picker.overrideAttrs (oldAttrs: {
+        postFixup = "cp -r $out/usr/share $out/share ";
+      });
 
-    # wrapProgram $out/bin/telegram-desktop --set QT_QPA_PLATFORM xcb
-    logseq-wayland = prev.symlinkJoin {
-      name = "logseq";
-      paths = [ prev.logseq ];
-      nativeBuildInputs = [ prev.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/logseq \
-          --add-flags "--socket=wayland --enable-features=UseOzonePlatform --ozone-platform=wayland"
-      '';
+      # xwayland env for inputMethod & native CSD
+      spotify = prev.spotify.overrideAttrs (oldAttrs: {
+        postFixup = ''
+          substituteInPlace $out/share/applications/spotify.desktop \
+            --replace "Exec=spotify %U" "Exec=env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2"
+        '';
+      });
+
+      # spotify = prev.spotify.override {
+      #   deviceScaleFactor = 2.0;
+      # };
+
+      # Combining overrideAttrs and override
+      librime =
+        (prev.librime.overrideAttrs (oldAttrs: {
+          buildInputs = oldAttrs.buildInputs ++ [ prev.luajit ];
+        })).override
+          { plugins = [ prev.librime-lua ]; };
+
+      # wrapProgram $out/bin/telegram-desktop --set QT_QPA_PLATFORM xcb
+      logseq-wayland = prev.symlinkJoin {
+        name = "logseq";
+        paths = [ prev.logseq ];
+        nativeBuildInputs = [ prev.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/logseq \
+            --add-flags "--socket=wayland --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        '';
+      };
     };
-  };
 
-  # This one brings our custom packages from the 'pkgs' directory
-  # additions = final: _prev: import ../pkgs { pkgs = final; };
+    # This one brings our custom packages from the 'pkgs' directory
+    # additions = final: _prev: import ../pkgs { pkgs = final; };
 
-  # nix build --impure --expr "(import <nixpkgs> {}).callPackage ./. {}" -L
-  default = final: prev: {
-    clash-verge = prev.callPackage ./clash-verge { };
-    clash-nyanpasu = prev.callPackage ./clash-nyanpasu { };
+    # nix build --impure --expr "(import <nixpkgs> {}).callPackage ./. {}" -L
+    default = final: prev: {
+      clash-verge = prev.callPackage ./clash-verge { };
+      clash-nyanpasu = prev.callPackage ./clash-nyanpasu { };
 
-    # Data
-    ns-cli = prev.callPackage ./ns-cli { };
-    rime-ice = prev.callPackage ./rime-ice { };
-    librime-lua = prev.callPackage ./librime-lua { };
-    fcitx5-breeze = prev.callPackage ./fcitx5-breeze { };
-    fluent-fcitx5 = prev.callPackage ./fluent-fcitx5 { };
+      # Data
+      ns-cli = prev.callPackage ./ns-cli { };
+      rime-ice = prev.callPackage ./rime-ice { };
+      librime-lua = prev.callPackage ./librime-lua { };
+      fcitx5-breeze = prev.callPackage ./fcitx5-breeze { };
+      fluent-fcitx5 = prev.callPackage ./fluent-fcitx5 { };
 
-    # AppImage
-    moonfm = prev.callPackage ./moonfm { };
+      # AppImage
+      moonfm = prev.callPackage ./moonfm { };
 
-    # deb / autoPatchelf
-    he3 = prev.callPackage ./he3 { };
-    xmind = prev.callPackage ./xmind { };
+      # deb / autoPatchelf
+      he3 = prev.callPackage ./he3 { };
+      xmind = prev.callPackage ./xmind { };
 
-    # electron ALL WIP!!!
-    nightpdf = prev.callPackage ./nightpdf { };
-    weektodo = prev.callPackage ./weektodo { };
-    thorium-reader = prev.callPackage ./thorium-reader { };
+      # electron ALL WIP!!!
+      nightpdf = prev.callPackage ./nightpdf { };
+      weektodo = prev.callPackage ./weektodo { };
+      thorium-reader = prev.callPackage ./thorium-reader { };
 
-    # C
-    azcomicv = prev.callPackage ./azcomicv { };
+      # C
+      azcomicv = prev.callPackage ./azcomicv { };
 
-    # Rust
+      # Rust
 
-    # Go
-    trzsz-go = prev.callPackage ./trzsz-go { };
+      # Go
+      trzsz-go = prev.callPackage ./trzsz-go { };
 
-    # Gtk
+      # Gtk
 
-    # Qt
+      # Qt
 
-    # Python
+      # Python
 
-    # Python Module Overlays
-    # pythonPackagesOverlays =
-    #   (prev.pythonPackagesOverlays or [])
-    #   ++ [
-    #     (python-final: python-prev: {
-    #       pyjokes = python-final.callPackage ./python-modules/pyjokes {};
-    #     })
-    #   ];
-    # python3 = let
-    #   self = prev.python3.override {
-    #     inherit self;
-    #     packageOverrides = prev.lib.composeManyExtensions final.pythonPackagesOverlays;
-    #   };
-    # in
-    #   self;
-    # python3Packages = final.python3.pkgs;
+      # Python Module Overlays
+      # pythonPackagesOverlays =
+      #   (prev.pythonPackagesOverlays or [])
+      #   ++ [
+      #     (python-final: python-prev: {
+      #       pyjokes = python-final.callPackage ./python-modules/pyjokes {};
+      #     })
+      #   ];
+      # python3 = let
+      #   self = prev.python3.override {
+      #     inherit self;
+      #     packageOverrides = prev.lib.composeManyExtensions final.pythonPackagesOverlays;
+      #   };
+      # in
+      #   self;
+      # python3Packages = final.python3.pkgs;
 
-    # Java
+      # Java
 
-    # flutter
+      # flutter
 
-    # gnome extensions
-    # gnomeExtensions =
-    #   prev.gnomeExtensions
-    #   // {
-    #     night-theme-switcher = prev.callPackage ./night-theme-switcher {};
-    #   };
+      # gnome extensions
+      # gnomeExtensions =
+      #   prev.gnomeExtensions
+      #   // {
+      #     night-theme-switcher = prev.callPackage ./night-theme-switcher {};
+      #   };
+    };
   };
 }
