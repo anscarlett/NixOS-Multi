@@ -1,5 +1,5 @@
 /*
-  # non nixos setup
+  # non-nixos setup
   sudo vi /etc/nix/nix.conf
   experimental-features = nix-command flakes
   trusted-users = root @wheel iab

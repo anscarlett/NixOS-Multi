@@ -46,11 +46,13 @@
       # setopt no_nomatch # Compatible bash wildcard
       unsetopt correct  # Disable AutoCorrect
 
-      # Promt themes
+      ## Promt theme
       # autoload -U promptinit; promptinit
       # PURE_PROMPT_SYMBOL=›
       # PURE_PROMPT_VICMD_SYMBOL=‹
       # prompt pure
+
+      ## Other themes
       # source minimal.zsh
       # source ${../dotfiles/zsh/oxide.zsh-theme}
 
@@ -65,16 +67,6 @@
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive tab completion
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" # Colored completion (different colors for dirs/files/etc)
       zstyle ':completion:*' menu select                        # Hit 'TAB' to select
-
-      # Color man pages
-      export LESS_TERMCAP_mb=$'\E[01;32m'
-      export LESS_TERMCAP_md=$'\E[01;32m'
-      export LESS_TERMCAP_me=$'\E[0m'
-      export LESS_TERMCAP_se=$'\E[0m'
-      export LESS_TERMCAP_so=$'\E[01;47;34m'
-      export LESS_TERMCAP_ue=$'\E[0m'
-      export LESS_TERMCAP_us=$'\E[01;36m'
-      export LESS=-R
 
       # Bash-like navigation between words
       autoload -U select-word-style

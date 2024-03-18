@@ -8,7 +8,7 @@
       enable = true;
       xkb.options = "ctrl:swapcaps";
 
-      displayManager.lightdm  = {
+      displayManager.lightdm = {
         enable = false; # greetd instaed
         greeters.gtk = {
           cursorTheme.size = 48;
