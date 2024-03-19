@@ -79,6 +79,7 @@
     tokei # count code
 
     # Utils
+    just
     cht-sh
     # difftastic # too big
     kalker # calculator
