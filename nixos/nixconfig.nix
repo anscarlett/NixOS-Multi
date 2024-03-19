@@ -34,13 +34,15 @@
     package = pkgs.nixVersions.unstable;
 
     settings = {
-      # keep-outputs = true
-      # keep-derivations = true
       warn-dirty = false;
       auto-optimise-store = true;
       auto-allocate-uids = true;
       use-cgroups = true;
       flake-registry = ""; # disable global registry
+
+      # for direnv GC roots
+      # keep-outputs = true;
+      # keep-derivations = true;
 
       substituters = [
         # "https://mirror.sjtu.edu.cn/nix-channels/store"
