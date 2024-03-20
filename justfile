@@ -9,25 +9,39 @@ user := `loginctl --no-legend list-users | awk '{print $2;}'`
 default:
     @just --choose
 
-os-boot:
-    nixos-rebuild --use-remote-sudo --flake .#"{{host}}" boot
-
 os-switch:
     nixos-rebuild --use-remote-sudo --flake .#"{{host}}" switch
 
-os-upgrade:
-    nix flake update && \
+os-boot:
     nixos-rebuild --use-remote-sudo --flake .#"{{host}}" boot
 
+os-upgrade:
+    nix flake update && \
+      nixos-rebuild --use-remote-sudo --flake .#"{{host}}" boot
+
+os-diff:
+    nix profile diff-closures --profile /nix/var/nix/profiles/system
+
 hm-switch:
-    nix run nixpkgs#home-manager switch -- \
-      --flake .#"{{user}}"
+    home-manager switch -- --flake .#"{{user}}"
+
+hm-diff:
+    nix profile diff-closures --profile ~/.local/state/nix/profiles/home-manager
+
+build-vm:
+    nixos-rebuild build-vm --flake .#vmtest
 
 build-livecd-graphical:
     nix build .#nixosConfigurations.livecd-graphical.config.system.build.isoImage
 
 build-livecd-minimal:
     nix build .#nixosConfigurations.livecd-minimal.config.system.build.isoImage
+
+build-wsl-installer:
+    nix build .#nixosConfigurations.wsl.config.system.build.installer
+
+nix-tree-with-gcroots:
+    nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree
 
 nix-index-database-update:
     #!/usr/bin/env bash
@@ -38,3 +52,21 @@ nix-index-database-update:
     ln -f "$filename" files
     popd > /dev/null
     ls -l ~/.cache/nix-index
+
+non-nixos-setup:
+    #!/usr/bin/env bash
+    sudo tee -a /etc/nix/nix.conf <<EOF
+    experimental-features = nix-command flakes
+    trusted-users = root @wheel {{user}}
+    substituters = https://mirror.sjtu.edu.cn/nix-channels/store
+    EOF
+
+backup-data:
+    #!/usr/bin/env bash
+    rsync -avhpL ~/.ssh ~/Documents/homeBackups/
+    rsync -avhpL ~/.config/sops ~/Documents/homeBackups/
+
+    rsync -avhpL ~/.mozilla ~/Documents/homeBackups/
+    # rsync -avhpL ~/.config/chromium ~/Documents/homeBackups/
+    # rsync -avhpL ~/.config/google-chrome ~/Documents/homeBackups/
+    rsync -avhpL ~/.config/fcitx5/conf ~/Documents/homeBackups/

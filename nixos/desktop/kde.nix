@@ -2,6 +2,9 @@
 {
   mods.fcitx.enable = true;
 
+  # FIXME
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
+
   services = {
     colord.enable = true;
     geoclue2.enable = true;
