@@ -24,7 +24,7 @@ os-diff:
     nix profile diff-closures --profile /nix/var/nix/profiles/system
 
 hm-switch:
-    home-manager switch -- --flake .#"{{user}}"
+    home-manager switch --flake .#"{{user}}"
 
 hm-diff:
     nix profile diff-closures --profile ~/.local/state/nix/profiles/home-manager
