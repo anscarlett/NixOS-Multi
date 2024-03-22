@@ -34,12 +34,6 @@ nix develop --no-write-lock-file github:nix-community/nix-environments#openwrt
 nix flake init -t github:github:MordragT/nix-templates#tauri
 ```
 
-# Desktop Setup
-
-``` shell
-...
-```
-
 # Nix Lang
 
 <!-- <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg" align="right" alt="Nix logo" width="150"> -->
