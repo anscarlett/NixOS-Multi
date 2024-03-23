@@ -12,8 +12,9 @@
         ./mods/doas.nix
         ./mods/fcitx.nix
         ./mods/flatpak.nix
-        ./mods/virtualisation.nix
         ./mods/clash-verge.nix
+        ./mods/virtualisation.nix
+        ../secrets/secrets.nix
       ];
     };
 

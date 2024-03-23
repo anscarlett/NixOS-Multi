@@ -15,4 +15,19 @@
   # show the real value
   sops --extract '["hello"]' --decrypt secrets/secrets.yaml
 */
-{ }
+{ inputs, username, ... }:
+{
+  imports = [ inputs.sops-nix.nixosModules.sops ];
+
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age = {
+      sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      keyFile = "/home/${username}/.config/sops/age/keys.txt";
+      # this will use an age key that is expected to already be in the filesystem
+      # age.keyFile = "/var/lib/sops-nix/key.txt";
+      # generate a new key if the key specified above does not exist
+      generateKey = true;
+    };
+  };
+}
