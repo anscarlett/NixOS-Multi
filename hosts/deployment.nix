@@ -10,7 +10,7 @@
     sudo = "doas -u";
     autoRollback = false;
     magicRollback = false;
-    # fastConnection = true; # copy from ssh
+    fastConnection = true; # copy from ssh
     nodes = {
       "svp" = {
         hostname = "192.168.2.198";
