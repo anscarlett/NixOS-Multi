@@ -27,11 +27,9 @@
   environment.systemPackages =
     with pkgs;
     [
-      # falkon
       merkuro
       yakuake
       gparted
-      # latte-dock
       kcolorchooser
     ]
     ++ (with kdePackages; [

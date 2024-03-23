@@ -8,6 +8,8 @@
         ./fonts.nix
         ./nixconfig.nix
         ./networking.nix
+        ./programs/steam.nix
+        ./programs/nix-ld.nix
         ./mods/dae.nix
         ./mods/doas.nix
         ./mods/fcitx.nix

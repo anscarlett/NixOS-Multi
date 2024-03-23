@@ -14,20 +14,17 @@
         "aarch64-linux"
       ];
 
-      imports =
-        [
-          ./hosts
-          ./nixos
-          ./overlays
-          ./home-manager/hm-standalone.nix
-          ./hosts/deployment.nix
-          ./lib/repl.nix
-          ./templates
-        ]
-        ++ [
-          inputs.devenv.flakeModule
-          # inputs.treefmt-nix.flakeModule
-        ];
+      imports = [
+        ./hosts
+        ./nixos
+        ./overlays
+        ./home-manager/hm-standalone.nix
+        ./hosts/deployment.nix
+        ./lib/repl.nix
+        ./templates
+        inputs.devenv.flakeModule
+        # inputs.treefmt-nix.flakeModule
+      ];
 
       perSystem =
         {
@@ -48,7 +45,6 @@
             };
           };
 
-          # nix build .#apps
           # access pkgs from self & overlays
           legacyPackages = pkgs;
 

@@ -29,7 +29,7 @@
       # hinting.enable = false; # default true
       # subpixel = {
       #   rgba = "none"; # default rgb
-      #   lcdfilter = "none"; # default 'default'
+      #   lcdfilter = "none"; # default default
       # };
 
       defaultFonts = {
