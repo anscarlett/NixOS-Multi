@@ -22,26 +22,7 @@
         # lsp-bridge
         # pdf-tools
         # telega
-        (treesit-grammars.with-grammars (
-          grammars: with grammars; [
-            tree-sitter-nix
-            tree-sitter-bash
-            tree-sitter-elisp
-            tree-sitter-json
-            tree-sitter-yaml
-            tree-sitter-toml
-            tree-sitter-css
-            tree-sitter-html
-            tree-sitter-tsx
-            tree-sitter-javascript
-            tree-sitter-typescript
-            # tree-sitter-elixir
-            # tree-sitter-dockerfile
-            tree-sitter-ruby
-            tree-sitter-rust
-            tree-sitter-python
-          ]
-        ))
+        (treesit-grammars.with-grammars (p: builtins.attrValues p))
       ];
   };
 
