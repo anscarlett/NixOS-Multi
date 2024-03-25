@@ -1,3 +1,6 @@
+/*
+wsl --import NixOS $env:USERPROFILE\NixOS\ nixos-wsl.tar.gz
+*/
 { pkgs, username, ... }:
 {
   home-manager.users.${username} = {

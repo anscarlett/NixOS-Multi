@@ -18,6 +18,15 @@
   programs.plasma = {
     enable = true;
 
+    workspace = {
+      clickItemTo = "select";
+      lookAndFeel = "org.kde.breezetwilight.desktop"; # breezedark, breezetwilight
+      # cursorTheme = "Bibata-Modern-Ice";
+      # iconTheme = "Papirus-Dark";
+      # colorScheme = "Genshin";
+      # wallpaper = "${pkgs.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
+    };
+
     # 面板
     panels = [
       {
@@ -68,13 +77,6 @@
 
       # dolphin
       "dolphinrc"."General"."ShowFullPath" = true;
-
-      kdeglobals = {
-        "KDE"."SingleClick" = false;
-        "KDE"."LookAndFeelPackage" = "org.kde.breezetwilight.desktop";
-        # "Icons"."Theme" = "Newaita";
-        # "General"."ColorScheme" = "Genshin";
-      };
 
       # 剪贴板
       klipperrc = {
@@ -156,7 +158,7 @@
         # };
 
         # 颜色和主题 - 窗口装饰元素
-        "org\\.kde\\.kdecoration2" = {
+        "org.kde.kdecoration2" = {
           ButtonsOnLeft = "M";
           ButtonsOnRight = "IAX";
           ShowToolTips = false;

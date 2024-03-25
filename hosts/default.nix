@@ -90,7 +90,7 @@
         modules = [ ./livecd/minimal.nix ];
       };
 
-      # nix build .#nixosConfigurations.wsl.config.system.build.installer
+      # nix build .#nixosConfigurations.wsl.config.system.build.tarballBuilder
       wsl = mkHost {
         username = "iab";
         hostname = "wsl";

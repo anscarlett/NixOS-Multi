@@ -106,7 +106,7 @@
     edid-decode
     read-edid
     xorg.xeyes
-    squirreldisk
+    # squirreldisk
 
     # libinput
     wallutils # lsmon getdpi wayinfo
@@ -117,8 +117,8 @@
   ];
 
   services = {
-    # diabsle on wm
-    # easyeffects.enable = !config.services.wlsunset.enable;
+    # disable on wm
+    # easyeffects.enable = !config.services.greetd.enable;
   };
 
   programs.mpv = {
