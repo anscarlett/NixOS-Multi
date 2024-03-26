@@ -17,7 +17,7 @@
     # self.nixosModules.hyprland
   ];
 
-  mods.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     notes

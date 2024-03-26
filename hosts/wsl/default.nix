@@ -1,5 +1,6 @@
 /*
 wsl --import NixOS $env:USERPROFILE\NixOS\ nixos-wsl.tar.gz
+wsl --unregister nixos
 */
 { pkgs, username, ... }:
 {
