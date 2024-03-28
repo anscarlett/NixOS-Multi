@@ -69,19 +69,19 @@
 
     configFile = {
       # 密码库
-      "kwalletrc"."Wallet"."Enabled" = false;
-      "kwalletrc"."Wallet"."First Use" = false;
+      "kwalletrc"."Wallet"."Enabled".value = false;
+      "kwalletrc"."Wallet"."First Use".value = false;
 
       # 搜索
-      "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
+      "baloofilerc"."Basic Settings"."Indexing-Enabled".value = false;
 
       # dolphin
-      "dolphinrc"."General"."ShowFullPath" = true;
+      "dolphinrc"."General"."ShowFullPath".value = true;
 
       # 剪贴板
       klipperrc = {
-        "General"."MaxClipItems" = 300;
-        "General"."SyncClipboards" = true;
+        "General"."MaxClipItems".value = 300;
+        "General"."SyncClipboards".value = true;
       };
 
       # FIXME: https://github.com/pjones/plasma-manager/issues/47
@@ -91,7 +91,7 @@
 
       # 锁屏
       kscreenlockerrc = {
-        "Daemon"."Timeout" = 8; # minutes
+        "Daemon"."Timeout".value = 8; # minutes
       };
 
       # 电源管理
@@ -120,26 +120,26 @@
 
       kwinrc = {
         # 窗口管理 - 虚拟桌面
-        "Desktops"."Rows" = 2;
-        "Desktops"."Number" = 4;
-        "Desktops"."Name_1" = "one";
-        "Desktops"."Name_2" = "two";
-        "Desktops"."Name_3" = "three";
-        "Desktops"."Name_4" = "four";
+        "Desktops"."Rows".value = 2;
+        "Desktops"."Number".value = 4;
+        "Desktops"."Name_1".value = "one";
+        "Desktops"."Name_2".value = "two";
+        "Desktops"."Name_3".value = "three";
+        "Desktops"."Name_4".value = "four";
 
         # 夜间颜色
-        "NightColor"."Active" = true;
-        "NightColor"."Mode" = "Location";
-        "NightColor"."LatitudeFixed" = 23.12;
-        "NightColor"."LongitudeFixed" = 113.26;
-        "NightColor"."NightTemperature" = 3800;
+        "NightColor"."Active".value = true;
+        "NightColor"."Mode".value = "Location";
+        "NightColor"."LatitudeFixed".value = 23.12;
+        "NightColor"."LongitudeFixed".value = 113.26;
+        "NightColor"."NightTemperature".value = 3800;
 
-        "Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
+        "Wayland"."InputMethod[$e]".value = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
 
         # 窗口管理 - 桌面特效
         Plugins = {
-          wobblywindowsEnabled = true;
-          cubeEnabled = true;
+          wobblywindowsEnabled.value = true;
+          cubeEnabled.value = true;
           # blurEnabled = false;
           # contrastEnabled = true;
           # kwin4_effect_squashEnabled = false;
@@ -149,7 +149,7 @@
 
         # 窗口管理 - 任务切换器
         TabBox = {
-          LayoutName = "big_icons";
+          LayoutName.value = "big_icons";
           # HighlightWindows = false;
         };
 
@@ -159,19 +159,19 @@
 
         # 颜色和主题 - 窗口装饰元素
         "org.kde.kdecoration2" = {
-          ButtonsOnLeft = "M";
-          ButtonsOnRight = "IAX";
-          ShowToolTips = false;
+          ButtonsOnLeft.value = "M";
+          ButtonsOnRight.value = "IAX";
+          ShowToolTips.value = false;
         };
       }; # ### kwinrc end here.
 
       # 键盘 - 布局/高级
       kxkbrc = {
-        "Layout"."Use" = true;
-        "Layout"."ResetOldOptions" = true;
-        "Layout"."SwitchMode" = "Global";
-        "Layout"."LayoutList" = "cn";
-        "Layout"."Options" = "ctrl:swapcaps";
+        "Layout"."Use".value = true;
+        "Layout"."ResetOldOptions".value = true;
+        "Layout"."SwitchMode".value = "Global";
+        "Layout"."LayoutList".value = "cn";
+        "Layout"."Options".value = "ctrl:swapcaps";
       };
     }; # configFile end here.
 
