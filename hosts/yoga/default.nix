@@ -17,16 +17,17 @@
     # "${modulesPath}/profiles/perlless.nix"
 
     # nixos-hardware repo
-    inputs.nixos-hardware.nixosModules.common-gpu-amd
-    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    # inputs.nixos-hardware.nixosModules.common-gpu-amd
+    # inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     # inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.lenovo-yoga-7-14ARH7.amdgpu
     # cpupower frequency-info
     # cat /sys/devices/system/cpu/cpufreq/policy0/scaling_driver
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
 
     # "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
-    # self.nixosModules.gnome
-    self.nixosModules.kde
+    self.nixosModules.gnome
+    # self.nixosModules.kde
     # self.nixosModules.sway
     # self.nixosModules.hyprland
   ];
@@ -43,7 +44,7 @@
   ###############################################
   ## Network
   ###############################################
-  # mods.daeWithConfig.enable = true;
+  mods.daeWithConfig.enable = true;
 
   disabledModules = [ "programs/clash-verge.nix" ];
   programs.clash-verge = {

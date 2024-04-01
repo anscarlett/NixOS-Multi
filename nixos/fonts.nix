@@ -3,8 +3,6 @@
   i18n.defaultLocale = "zh_CN.UTF-8";
 
   fonts = {
-    # create /run/current-system/sw/share/X11/fonts
-    fontDir.enable = true;
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
