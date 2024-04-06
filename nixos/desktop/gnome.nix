@@ -74,8 +74,8 @@
 
   programs.kdeconnect = {
     enable = true;
-    package = pkgs.valent;
-    # package = pkgs.gnomeExtensions.gsconnect;
+    # package = pkgs.valent;
+    package = pkgs.gnomeExtensions.gsconnect;
   };
 
   # mods.fcitx.enable = true;
