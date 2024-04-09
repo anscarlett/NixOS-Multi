@@ -157,7 +157,7 @@
     };
 
     fzf = {
-      enable = true;
+      # enable = true;
     };
 
     skim = {

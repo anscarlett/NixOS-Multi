@@ -1,16 +1,18 @@
 { pkgs, ... }:
 let
   chromeEnv = [
-    "--enable-features=VaapiVideoDecodeLinuxGL"
+    # Force GPU accleration
+    "--ignore-gpu-blocklist"
+    "--enable-zero-copy"
     "--gtk-version=4" # broken! 主题改经典 fix
     # https://bugs.chromium.org/p/chromium/issues/detail?id=1356014
     "--disable-features=WaylandFractionalScaleV1"
-    "--enable-features=TouchpadOverscrollHistoryNavigation"
+    "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoDecoder,Vulkan,WebRTCPipeWireCapturer,WaylandWindowDecorations,TouchpadOverscrollHistoryNavigation"
   ];
 in
 {
   home.packages = with pkgs; [
-    # (google-chrome.override { commandLineArgs = chromeEnv; })
+    (google-chrome.override { commandLineArgs = chromeEnv; })
     # (vivaldi.override {
     #   proprietaryCodecs = true;
     #   enableWidevine = true; # drm

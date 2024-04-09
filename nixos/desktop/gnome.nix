@@ -56,6 +56,7 @@
       app-icons-taskbar
       # rocketbar
       dash-to-dock
+      # dash2dock-lite
       # dash-to-panel
       night-theme-switcher
       clipboard-history
