@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.nix-ld = {
-    # enable = true;
+    enable = true;
     libraries = with pkgs; [
       alsa-lib
       at-spi2-atk
@@ -22,6 +22,7 @@
       libGL
       libappindicator-gtk3
       libdrm
+      libevent
       libglvnd
       libnotify
       libpulseaudio
@@ -35,8 +36,10 @@
       nss
       openssl
       pango
+      pcre2
       pipewire
       stdenv.cc.cc
+      sqlite
       systemd
       vulkan-loader
       xorg.libX11
