@@ -5,17 +5,17 @@
   services = {
     colord.enable = true;
     geoclue2.enable = true;
+
     desktopManager.plasma6.enable = true;
+    displayManager.autoLogin.user = "${username}";
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
 
     xserver = {
       enable = true;
       excludePackages = [ pkgs.xterm ];
-
-      displayManager.autoLogin.user = "${username}";
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
     };
   };
 

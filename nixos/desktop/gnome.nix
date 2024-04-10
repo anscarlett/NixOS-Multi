@@ -1,11 +1,12 @@
 { pkgs, username, ... }:
 {
   services = {
+    displayManager.autoLogin.user = "${username}";
+
     xserver = {
       enable = true;
       excludePackages = [ pkgs.xterm ];
 
-      displayManager.autoLogin.user = "${username}";
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };

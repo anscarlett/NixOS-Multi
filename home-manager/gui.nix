@@ -11,7 +11,8 @@
     # nightpdf
     # azcomicv
     # moonfm
-    zed-editor
+    # nekoray
+    # zed-editor
 
     kitty
     nurl
