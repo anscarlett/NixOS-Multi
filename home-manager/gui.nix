@@ -23,7 +23,7 @@
     # nheko
     # fractal
     # discord
-    tdesktop # (webkitgtk)
+    # tdesktop # (webkitgtk)
 
     # Multimedia
     spotify
@@ -64,7 +64,7 @@
     # wl-color-picker
 
     warp
-    remmina # (webkitgtk)
+    # remmina # (webkitgtk)
     gnome-decoder
     localsend
     # motrix

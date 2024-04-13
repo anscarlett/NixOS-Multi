@@ -43,11 +43,11 @@
   ###############################################
   ## Network
   ###############################################
-  # mods.daeWithConfig.enable = true;
+  mods.daeWithConfig.enable = true;
 
   disabledModules = [ "programs/clash-verge.nix" ];
   programs.clash-verge = {
-    enable = true;
+    # enable = true;
     tunMode = true;
     autoStart = true;
     # package = pkgs.clash-nyanpasu;
