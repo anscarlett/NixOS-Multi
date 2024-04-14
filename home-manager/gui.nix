@@ -23,7 +23,7 @@
     # nheko
     # fractal
     # discord
-    # tdesktop # (webkitgtk)
+    tdesktop # (webkitgtk)
 
     # Multimedia
     spotify

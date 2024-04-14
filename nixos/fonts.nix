@@ -7,6 +7,8 @@
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
+      # source-han-sans-vf-otf
+      # source-han-serif-vf-otf
       # source-han-sans
       # source-han-serif
       # sarasa-gothic
