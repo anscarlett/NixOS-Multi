@@ -4,7 +4,7 @@
     gcc
     cmake
     gnumake
-    # python3
+    python3
   ];
 
   ###############################################
@@ -24,6 +24,9 @@
         # telega
         (treesit-grammars.with-grammars (p: builtins.attrValues p))
       ];
+    extraConfig = ''
+      (display-time-mode 1)
+    '';
   };
 
   ###############################################

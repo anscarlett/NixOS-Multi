@@ -210,10 +210,11 @@
 (use-package fanyi
   :bind (("C-c y" . fanyi-dwim2)))
 
+; broken
 ;; C-x SPC, ?
-(use-package speedrect
-  :vc (:url "https://github.com/jdtsmith/speedrect"
-            :rev :newest))
+;; (use-package speedrect
+;;   :vc (:url "https://github.com/jdtsmith/speedrect"
+;;             :rev :newest))
 
 ;; (use-package auto-sudoedit
 ;;   :delight

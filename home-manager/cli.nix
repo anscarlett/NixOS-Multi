@@ -75,6 +75,7 @@
     ikill
     gdu
     duf
+    dysk
     fastfetch
     tokei # count code
 

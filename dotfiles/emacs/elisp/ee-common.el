@@ -49,6 +49,7 @@
 ;; interface
 (setq confirm-kill-processes nil
       ;; mouse-autoselect-window t
+      inhibit-default-init t ;Load the default init file
       visible-bell 1                ;关闭错误警示
       system-time-locale "C"        ;使用英文时间格式
       ispell-dictionary "en"        ;使用英文词典
@@ -56,6 +57,9 @@
       display-time-24hr-format t
       sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*" ;识别中文标点符号
       require-final-newline t)
+
+;; Load the default init file
+(load "default" 'noerror 'nomessage)
 
 ;; Modeline
 (column-number-mode t)      ;显示列数

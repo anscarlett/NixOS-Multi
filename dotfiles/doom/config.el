@@ -18,6 +18,9 @@
 (load! "keybindings")
 (load! "functions")
 
+;; Load the default init file
+(load "default" 'noerror 'nomessage)
+
 ;; environment
 (when (featurep :system 'windows)
   (setq doom-font (font-spec :family "JetBrains Mono" :size 26)

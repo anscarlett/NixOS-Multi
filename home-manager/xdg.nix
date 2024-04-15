@@ -32,8 +32,8 @@ in
 
     "doom".source = "${lnDots}/doom";
     "emacs/elisp".source = "${lnDots}/emacs/elisp";
-    "emacs/init.el".source = ../dotfiles/emacs/init.el;
-    "emacs/early-init.el".source = ../dotfiles/emacs/early-init.el;
+    "emacs/init.el".source = "${lnDots}/emacs/init.el";
+    "emacs/early-init.el".source = "${lnDots}/emacs/early-init.el";
 
     "lf".source = "${lnDots}/lf";
     "mpv".source = "${lnDots}/mpv";
