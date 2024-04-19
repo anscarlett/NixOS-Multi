@@ -43,7 +43,6 @@
 
     # FileManager
     f2
-    fd
     sd
     choose
     ssh-to-age
@@ -128,6 +127,10 @@
     };
 
     bat = {
+      enable = true;
+    };
+
+    fd = {
       enable = true;
     };
 

@@ -6,13 +6,13 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "librime-lua";
-  version = "2024-02-06";
+  version = "2024-04-13";
 
   src = fetchFromGitHub {
     owner = "hchunhui";
     repo = "librime-lua";
-    rev = "7f3eca2ce659fc2401b8acb52bd2182b433e12b1";
-    hash = "sha256-n+KCu8JmFBGPyfBgeLiFqND3wmQs/4eOZjqTXuaW+hk=";
+    rev = "7c1b93965962b7c480d4d7f1a947e4712a9f0c5f";
+    hash = "sha256-H/ufyHIfYjAjF/Dt3CilL4x9uAXGcF1BkdAgzIbSGA8=";
   };
 
   installPhase = ''

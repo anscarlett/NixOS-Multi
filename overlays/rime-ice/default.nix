@@ -6,27 +6,18 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "rime-ice";
-  version = "2024-03-07";
+  version = "2024-04-19";
 
   src = fetchFromGitHub {
     owner = "iDvel";
     repo = "rime-ice";
-    rev = "c9a2d01eb8ccbbdee571d7313e9b0ba21b198e2f";
-    hash = "sha256-I6R9cCCfxKMNBR0WOw8kcegJNjqlz80vd8SGaQfbhvs=";
+    rev = "7d348f6a48ff1c9c0d232b5b58f8c36544c9705c";
+    hash = "sha256-15qD3ktz1pf8jSeJDeyZ1J8a/RQMyVWHTF56nW0F46c=";
   };
 
   installPhase = ''
     mkdir -p $out/share/rime-data
-
-    install -Dm644 *.{schema,dict}.yaml   $out/share/rime-data
-    install -Dm644 *.{lua,gram}           $out/share/rime-data
-    install -Dm644 symbols*.yaml          $out/share/rime-data
-    install -Dm644 default.yaml           $out/share/rime-data
-
-    mv lua       $out/share/rime-data
-    mv opencc    $out/share/rime-data
-    mv cn_dicts  $out/share/rime-data
-    mv en_dicts  $out/share/rime-data
+    cp -r ./* $out/share/rime-data
   '';
 
   meta = {

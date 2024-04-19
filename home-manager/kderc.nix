@@ -2,17 +2,16 @@
 {
   imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
 
-  home.file.".config/kate/lspclient/settings.json".text = ''
-    {
-      "servers": {
-        "nix": {
-          "command": ["nil"],
-          "url": "https://github.com/oxalica/nil",
-          "highlightingModeRegex": "^Nix$"
-        }
-      }
-    }
-  '';
+  programs.kate = {
+    enable = true;
+    lsp.customServers = {
+      nix = {
+        command = ["nil"];
+        highlightingModeRegex = "^Nix$";
+        url = "https://github.com/oxalica/nil";
+      };
+    };
+  };
 
   # rm .config/k* .config/plasma* .config/power*
   programs.plasma = {

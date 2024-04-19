@@ -11,7 +11,6 @@
     # nightpdf
     # azcomicv
     # moonfm
-    nekoray
     # zed-editor
 
     kitty
@@ -24,6 +23,11 @@
     # fractal
     # discord
     tdesktop # (webkitgtk)
+    nekoray
+    (pkgs.makeAutostartItem {
+      name = "nekoray";
+      package = pkgs.nekoray;
+    })
 
     # Multimedia
     spotify
