@@ -6,7 +6,7 @@
     enable = true;
     lsp.customServers = {
       nix = {
-        command = ["nil"];
+        command = [ "nil" ];
         highlightingModeRegex = "^Nix$";
         url = "https://github.com/oxalica/nil";
       };
@@ -66,6 +66,28 @@
       # }
     ]; # panels end here.
 
+    kwin = {
+      effects.shakeCursor.enable = true;
+      titlebarButtons = {
+        left = [ "more-window-actions" ];
+        # right = [
+        #   "minimize"
+        #   "maximize"
+        #   "close"
+        # ];
+      };
+      virtualDesktops = {
+        number = 4;
+        rows = 2;
+        names = [
+          "壹"
+          "贰"
+          "叁"
+          "肆"
+        ];
+      };
+    }; # kwin end here.
+
     configFile = {
       # 密码库
       "kwalletrc"."Wallet"."Enabled".value = false;
@@ -118,14 +140,6 @@
       # }; #### powermanagement end here.
 
       kwinrc = {
-        # 窗口管理 - 虚拟桌面
-        "Desktops"."Rows".value = 2;
-        "Desktops"."Number".value = 4;
-        "Desktops"."Name_1".value = "one";
-        "Desktops"."Name_2".value = "two";
-        "Desktops"."Name_3".value = "three";
-        "Desktops"."Name_4".value = "four";
-
         # 夜间颜色
         "NightColor"."Active".value = true;
         "NightColor"."Mode".value = "Location";
@@ -155,13 +169,6 @@
         # Windows = {
 
         # };
-
-        # 颜色和主题 - 窗口装饰元素
-        "org.kde.kdecoration2" = {
-          ButtonsOnLeft.value = "M";
-          ButtonsOnRight.value = "IAX";
-          ShowToolTips.value = false;
-        };
       }; # ### kwinrc end here.
 
       # 键盘 - 布局/高级

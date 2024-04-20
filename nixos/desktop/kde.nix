@@ -37,7 +37,6 @@
       krfb
       krdc
       kgamma # broken?
-      kweather
       ksystemlog
       kmousetool
       # kleopatra
