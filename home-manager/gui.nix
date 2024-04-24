@@ -24,10 +24,10 @@
     # discord
     tdesktop # (webkitgtk)
     nekoray
-    (pkgs.makeAutostartItem {
-      name = "nekoray";
-      package = pkgs.nekoray;
-    })
+    # (pkgs.makeAutostartItem {
+    #   name = "nekoray";
+    #   package = pkgs.nekoray;
+    # })
 
     # Multimedia
     spotify
@@ -85,7 +85,7 @@
     # libreoffice-fresh
     # drawio
     # rnote # handwritten note
-    # foliate # (webkitgtk)
+    foliate # (webkitgtk)
     # librum
     notes
     # endeavour
