@@ -3,29 +3,23 @@
   mods.fcitx.enable = true;
 
   services = {
-    xserver = {
-      # for X11
-      enable = true;
-      xkb.options = "ctrl:swapcaps";
-
-      displayManager.lightdm = {
-        enable = false; # greetd instaed
-        greeters.gtk = {
-          cursorTheme.size = 48;
-          extraConfig = ''
-            xft-dpi=261
-            clock-format=%H:%M
-          '';
-          indicators = [
-            "~spacer"
-            "~clock"
-            "~spacer"
-            "~session"
-            # "~language"
-            # "~a11y"
-            "~power"
-          ];
-        };
+    xserver.displayManager.lightdm = {
+      enable = false; # greetd instaed
+      greeters.gtk = {
+        cursorTheme.size = 48;
+        extraConfig = ''
+          xft-dpi=261
+          clock-format=%H:%M
+        '';
+        indicators = [
+          "~spacer"
+          "~clock"
+          "~spacer"
+          "~session"
+          # "~language"
+          # "~a11y"
+          "~power"
+        ];
       };
     };
 
@@ -150,7 +144,7 @@
 
       qt = {
         enable = true;
-        platformTheme = "gnome";
+        platformTheme.name = "adwaita";
         style.name = "adwaita";
         style.package = pkgs.adwaita-qt;
       };

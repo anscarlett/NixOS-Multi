@@ -12,11 +12,6 @@
       enable = true;
       wayland.enable = true;
     };
-
-    xserver = {
-      enable = true;
-      excludePackages = [ pkgs.xterm ];
-    };
   };
 
   programs = {

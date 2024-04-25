@@ -67,7 +67,6 @@
     ]; # panels end here.
 
     kwin = {
-      effects.shakeCursor.enable = true;
       titlebarButtons = {
         left = [ "more-window-actions" ];
         # right = [
