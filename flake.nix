@@ -15,9 +15,9 @@
       ];
 
       imports = [
-        ./hosts
-        ./nixos
-        ./overlays
+        ./hosts/flake-module.nix
+        ./nixos/flake-module.nix
+        ./overlays/flake-module.nix
         ./home-manager/hm-standalone.nix
         ./hosts/deployment.nix
         ./lib/repl.nix

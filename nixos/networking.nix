@@ -1,5 +1,8 @@
 { lib, ... }:
 {
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
   services = {
     openssh = {
       enable = true;

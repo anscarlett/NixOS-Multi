@@ -63,7 +63,12 @@
   xdg.portal.xdgOpenUsePortal = true;
 
   programs.command-not-found.enable = false;
-  documentation.enable = false;
+
+  documentation.enable = lib.mkDefault false;
+  documentation.info.enable = lib.mkDefault false;
+  documentation.man.enable = lib.mkDefault false;
+  documentation.nixos.enable = lib.mkDefault false;
+
   time.timeZone = "Asia/Shanghai";
   system.stateVersion = "24.05";
 }

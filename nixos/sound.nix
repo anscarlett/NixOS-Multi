@@ -1,8 +1,5 @@
 { lib, config, ... }:
 {
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-
   # Pipewire
   hardware.pulseaudio.enable = lib.mkForce false; # false in pipewire
 

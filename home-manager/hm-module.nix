@@ -10,7 +10,7 @@
       ./tmux.nix
       ./alias.nix
     ]
-    ++ lib.optionals nixosConfig.services.xserver.enable [
+    ++ lib.optionals nixosConfig.services.pipewire.enable [
       ./gui.nix
       ./editor.nix
       ./browsers.nix
