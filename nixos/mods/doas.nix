@@ -10,11 +10,9 @@ let
 in
 {
   options.mods.doas = {
-    enable = lib.mkEnableOption (
-      lib.mdDoc ''
-        my doas customize.
-      ''
-    );
+    enable = lib.mkEnableOption ''
+      my doas customize.
+    '';
   };
 
   config = lib.mkIf cfg.enable {

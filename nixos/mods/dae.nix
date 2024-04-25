@@ -4,11 +4,9 @@ let
 in
 {
   options.mods.daeWithConfig = {
-    enable = lib.mkEnableOption (
-      lib.mdDoc ''
+    enable = lib.mkEnableOption ''
         my dae encryption config.
-      ''
-    );
+      '';
   };
 
   config = lib.mkIf cfg.enable {

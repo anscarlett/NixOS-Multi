@@ -9,11 +9,9 @@ let
 in
 {
   options.mods.fcitx = {
-    enable = lib.mkEnableOption (
-      lib.mdDoc ''
-        my fcitx5 customize.
-      ''
-    );
+    enable = lib.mkEnableOption ''
+      my fcitx5 customize.
+    '';
   };
 
   config = lib.mkIf cfg.enable {

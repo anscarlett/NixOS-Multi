@@ -39,11 +39,9 @@ let
 in
 {
   options.mods.virt.enable =
-    lib.mkEnableOption (
-      lib.mdDoc ''
-        my virtualisation customize.
-      ''
-    )
+    lib.mkEnableOption ''
+      my virtualisation customize.
+    ''
     // {
       default = true;
     };
