@@ -1,3 +1,4 @@
+# https://github.com/nix-community/srvos/blob/main/nixos/server/default.nix
 { pkgs, lib, ... }:
 {
   # No need for fonts on a server
