@@ -20,6 +20,7 @@ os-upgrade:
     nix flake update && \
       nixos-rebuild --use-remote-sudo --flake .#"{{host}}" boot
 
+# nvd diff $(\ls -d1v /nix/var/nix/profiles/system-*-link|tail -n 2)
 os-diff:
     nix profile diff-closures --profile /nix/var/nix/profiles/system
 
