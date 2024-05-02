@@ -31,7 +31,7 @@
       options = "--delete-older-than 5d";
     };
 
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.latest;
 
     settings = {
       warn-dirty = false;

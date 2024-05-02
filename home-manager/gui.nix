@@ -86,6 +86,7 @@
     # drawio
     # rnote # handwritten note
     foliate # (webkitgtk)
+    # koodo-reader
     # librum
     notes
     # endeavour

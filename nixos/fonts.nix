@@ -21,6 +21,7 @@
       fira-code
       mononoki
       jetbrains-mono
+      # cascadia-code
       # (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];
 

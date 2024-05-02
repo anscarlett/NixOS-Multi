@@ -23,6 +23,9 @@
       # cursorTheme = "Bibata-Modern-Ice";
       # iconTheme = "Papirus-Dark";
       # colorScheme = "Genshin";
+      # wallpaperPictureOfTheDay = {
+      #   provider = "bing";
+      # };
       # wallpaper = "${pkgs.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
     };
 
