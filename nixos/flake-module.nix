@@ -8,11 +8,11 @@
         ./fonts.nix
         ./nixconfig.nix
         ./networking.nix
-        ./programs/steam.nix
-        ./programs/nix-ld.nix
+        ./nix-ld.nix
         ./mods/dae.nix
         ./mods/doas.nix
         ./mods/fcitx.nix
+        ./mods/steam.nix
         ./mods/clash-verge.nix
         ./mods/virtualisation.nix
         ../secrets/secrets.nix

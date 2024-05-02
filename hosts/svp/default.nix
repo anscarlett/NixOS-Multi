@@ -9,7 +9,6 @@
     ./disko.nix
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     self.nixosModules.gnome
     # self.nixosModules.kde
   ];

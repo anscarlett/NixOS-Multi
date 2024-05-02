@@ -16,8 +16,8 @@
 
     # "${modulesPath}/profiles/perlless.nix"
 
-    inputs.nixos-hardware.nixosModules.common-gpu-amd
-    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    # inputs.nixos-hardware.nixosModules.common-gpu-amd
+    # inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     # inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     # inputs.nixos-hardware.nixosModules.lenovo-yoga-7-14ARH7.amdgpu
     # cpupower frequency-info
@@ -25,11 +25,18 @@
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
 
     # "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
-    # self.nixosModules.gnome
-    self.nixosModules.kde
+    self.nixosModules.gnome
+    # self.nixosModules.kde
     # self.nixosModules.sway
     # self.nixosModules.hyprland
   ];
+
+  ###############################################
+  ## Mods
+  ###############################################
+  # mods.steam.enable = true;
+
+  # programs.nix-ld.enable = true;
 
   # disabledModules = ["config/swap.nix"];
 
@@ -37,8 +44,23 @@
   #   # inputs.nixpkgs-pr.legacyPackages.x86_64-linux.apps
   # ];
 
+
+  ###############################################
+  ## Hardware
+  ###############################################
   # amdvlk or opengl default
-  hardware.amdgpu.amdvlk = true;
+  # hardware.amdgpu.amdvlk = true;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  # Optimize SSD
+  services.fstrim.enable = lib.mkDefault true;
 
   ###############################################
   ## Network
