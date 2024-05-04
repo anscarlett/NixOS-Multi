@@ -1,5 +1,2 @@
-{ lib, inputs }:
-{
-  # mkHost = import ./mkHost.nix inputs;
-  # mkHome = import ./mkHome.nix inputs;
-}
+# https://github.com/tejing1/nixos-config/tree/master/lib
+{ }
