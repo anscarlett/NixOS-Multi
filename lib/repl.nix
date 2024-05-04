@@ -2,7 +2,7 @@
 {
   flake = {
     inherit inputs;
-    inherit (inputs.nixpkgs) lib;
+    # inherit (inputs.nixpkgs) lib;
     flake = builtins.getFlake (toString ../.);
     hosts = self.nixosConfigurations;
     hm = self.nixosConfigurations.yoga.config.home-manager.users;

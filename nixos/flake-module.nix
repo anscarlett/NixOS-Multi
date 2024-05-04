@@ -1,44 +1,36 @@
+{ self, ... }:
 {
   flake.nixosModules = {
     default = {
-      imports = [
-        ./base.nix
-        ./user.nix
-        ./sound.nix
-        ./fonts.nix
-        ./nixconfig.nix
-        ./networking.nix
-        ./nix-ld.nix
-        ./mods/dae.nix
-        ./mods/doas.nix
-        ./mods/fcitx.nix
-        ./mods/steam.nix
-        ./mods/clash-verge.nix
-        ./mods/virtualisation.nix
-        ../secrets/secrets.nix
-      ];
-    };
+      imports = self.lib.mylib.umport {
+        path = ./.;
+        exclude = [
+          ./flake-module.nix
+        ];
+      };
 
-    gnome = {
-      imports = [ ./desktop/gnome.nix ];
-    };
-
-    kde = {
-      imports = [ ./desktop/kde.nix ];
-    };
-
-    sway = {
-      imports = [
-        ./desktop/wm.nix
-        ./desktop/wm-sway.nix
-      ];
-    };
-
-    hyprland = {
-      imports = [
-        ./desktop/wm.nix
-        ./desktop/wm-hyprland.nix
-      ];
+      # imports = [
+      #   ./base.nix
+      #   ./fonts.nix
+      #   ./networking.nix
+      #   ./nix-ld.nix
+      #   ./nixconfig.nix
+      #   ./sound.nix
+      #   ./user.nix
+      #   ./secrets/secrets.nix
+      #   ./mods/clash-verge.nix
+      #   ./mods/dae.nix
+      #   ./mods/doas.nix
+      #   ./mods/fcitx.nix
+      #   ./mods/steam.nix
+      #   ./mods/virtualisation.nix
+      #   ./desktop/gnome.nix
+      #   ./desktop/kde.nix
+      #   ./desktop/server.nix
+      #   ./desktop/wm-hyprland.nix
+      #   ./desktop/wm-sway.nix
+      #   ./desktop/wm.nix
+      # ];
     };
   };
 }

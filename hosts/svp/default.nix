@@ -9,9 +9,16 @@
     ./disko.nix
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
-    self.nixosModules.gnome
-    # self.nixosModules.kde
   ];
+
+  ###############################################
+  ## Mods
+  ###############################################
+  mods.gnome.enable = true;
+
+  # mods.steam.enable = true;
+
+  # programs.nix-ld.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

@@ -9,10 +9,9 @@
   ...
 }:
 {
-  imports = [
-    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-base.nix"
-    self.nixosModules.gnome
-  ];
+  imports = [ "${modulesPath}/installer/cd-dvd/installation-cd-graphical-base.nix" ];
+
+  mods.gnome.enable = true;
 
   # fast but lowest compression level
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
