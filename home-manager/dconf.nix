@@ -70,7 +70,6 @@
     ##  Keybindings
     ###############################################
     "org/gnome/desktop/peripherals/touchpad" = {
-      tap-to-click = true;
       click-method = "areas";
     };
 
