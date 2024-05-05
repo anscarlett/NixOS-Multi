@@ -2,7 +2,7 @@
 {
   flake.nixosModules = {
     default = {
-      imports = self.lib.mylib.umport {
+      imports = self.lib.umport {
         path = ./.;
         exclude = [
           ./flake-module.nix

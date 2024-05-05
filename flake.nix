@@ -35,14 +35,16 @@
           ...
         }:
         {
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            overlays = builtins.attrValues self.overlays;
-            config = {
-              allowUnfree = true;
-              # allowBroken = true;
-              # allowInsecure = true;
-              # allowUnsupportedSystem = true;
+          _module.args = {
+            pkgs = import inputs.nixpkgs {
+              inherit system;
+              overlays = builtins.attrValues self.overlays;
+              config = {
+                allowUnfree = true;
+                # allowBroken = true;
+                # allowInsecure = true;
+                # allowUnsupportedSystem = true;
+              };
             };
           };
 
