@@ -14,15 +14,9 @@
     # FIXME: https://github.com/NixOS/nixpkgs/pull/273170
     # channel.enable = false;
 
-    registry =
-      (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs)
-      // {
-        n.flake = inputs.nixpkgs;
-      };
-
-    # nix config show nix-path | tr " " "\n"
-    nixPath = lib.mapAttrsToList (name: path: "${name}=${path}") inputs ++ [
-      "nixos-config=${inputs.self}"
+    registry = lib.mkMerge [
+      { n.flake = inputs.nixpkgs; }
+      { self.flake = inputs.self; }
     ];
 
     gc = {

@@ -328,6 +328,19 @@ nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'
   };
 #+end_src
 
+#+begin_src nix
+    nix.registry =
+      (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs)
+      // {
+        n.flake = inputs.nixpkgs;
+      };
+
+    # nix config show nix-path | tr " " "\n"
+    nix.nixPath = lib.mapAttrsToList (name: path: "${name}=${path}") inputs ++ [
+      "nixos-config=${inputs.self}"
+    ];
+#+end_src
+
 tree-sitter
 https://olddeuteronomy.github.io/post/a-tree-sitter-config-that-works/
 
