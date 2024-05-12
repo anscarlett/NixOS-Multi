@@ -49,7 +49,7 @@
 
   # zsh
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  # users.defaultUserShell = pkgs.zsh;
 
   programs.command-not-found.enable = false;
   documentation.enable = false;
