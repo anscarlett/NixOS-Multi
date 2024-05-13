@@ -32,23 +32,27 @@
       '';
     };
 
+    # https://www.iana.org/assignments/media-types/media-types.xhtml
     mimeApps = {
-      enable = false;
+      enable = true;
       defaultApplications = lib.mkMerge [
         {
-          "video/*" = "mpv.desktop";
           "audio/mpeg" = "qmmp.desktop";
           "audio/flac" = "qmmp.desktop";
           "audio/x-vorbis+ogg" = "qmmp.desktop";
           "text/html" = "firefox.desktop";
         }
         (lib.mkIf nixosConfig.services.xserver.desktopManager.gnome.enable {
-          "image/*" = "org.gnome.Loupe.desktop";
+          "image/jpeg" = "org.gnome.Loupe.desktop";
+          "image/png" = "org.gnome.Loupe.desktop";
+          "image/webp" = "org.gnome.Loupe.desktop";
           "text/plain" = "org.gnome.TextEditor.desktop";
           "application/pdf" = "org.gnome.Evince.desktop";
         })
         (lib.mkIf nixosConfig.services.desktopManager.plasma6.enable {
-          "image/*" = "org.kde.gwenview.desktop";
+          "image/jpeg" = "org.kde.gwenview.desktop";
+          "image/png" = "org.kde.gwenview.desktop";
+          "image/webp" = "org.kde.gwenview.desktop";
           "text/plain" = "org.kde.kwrite.desktop";
           "application/pdf" = "org.kde.okular.desktop";
         })
