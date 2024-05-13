@@ -23,10 +23,10 @@
           modules = [
             ./git.nix
             ./cli.nix
-            ./xdg.nix
             ./zsh.nix
             ./tmux.nix
             ./alias.nix
+            ./files.nix
             ./non-nixos.nix
 
             {

@@ -1,5 +1,21 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
+{
+  home.sessionPath = [
+    "${../dotfiles/bin}"
+    "${config.home.homeDirectory}/.local/bin"
+    "${config.home.homeDirectory}/.emacs.d/bin"
+  ];
+
+  home.sessionVariables = {
+    VISUAL = "micro";
+    EDITOR = "emacs";
+  };
+
   home.shellAliases = {
     nixgl = "nix run --impure github:guibou/nixGL";
   };

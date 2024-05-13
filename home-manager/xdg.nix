@@ -1,7 +1,9 @@
-{ config, ... }:
-let
-  lnDots = config.lib.file.mkOutOfStoreSymlink config.home.homeDirectory + "/nsworld/dotfiles";
-in
+{
+  lib,
+  config,
+  nixosConfig,
+  ...
+}:
 {
   home.sessionPath = [
     "${../dotfiles/bin}"
@@ -12,43 +14,66 @@ in
   home.sessionVariables = {
     VISUAL = "micro";
     EDITOR = "emacs";
+    NIXOS_OZONE_WL = lib.mkDefault 1; # Electron wayland native
+    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 
-  home.file = {
-    ".proxychains/proxychains.conf".source = ../dotfiles/proxychains.conf;
-  };
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
 
-  xdg.configFile = {
-    "cava".source = ../dotfiles/cava;
-    "wofi".source = ../dotfiles/wofi;
-    "foot".source = ../dotfiles/foot;
-    "kitty".source = ../dotfiles/kitty;
-    "wezterm".source = ../dotfiles/wezterm;
-    "gtklock".source = ../dotfiles/gtklock;
-    "swaylock".source = ../dotfiles/swaylock;
-    "nix-init".source = ../dotfiles/nix-init;
-    "alacritty".source = ../dotfiles/alacritty;
-    "radioboat".source = ../dotfiles/radioboat;
+    dataFile = {
+      # Fix qt tiny cursor on gnome
+      "icons/default/index.theme".text = ''
+        [icon theme]
+        Inherits=Adwaita
+      '';
+    };
 
-    "doom".source = "${lnDots}/doom";
-    "emacs/elisp".source = "${lnDots}/emacs/elisp";
-    "emacs/init.el".source = "${lnDots}/emacs/init.el";
-    "emacs/early-init.el".source = "${lnDots}/emacs/early-init.el";
+    mimeApps = {
+      enable = false;
+      defaultApplications = lib.mkMerge [
+        {
+          "video/*" = "mpv.desktop";
+          "audio/mpeg" = "qmmp.desktop";
+          "audio/flac" = "qmmp.desktop";
+          "audio/x-vorbis+ogg" = "qmmp.desktop";
+          "text/html" = "firefox.desktop";
+        }
+        (lib.mkIf nixosConfig.services.xserver.desktopManager.gnome.enable {
+          "image/*" = "org.gnome.Loupe.desktop";
+          "text/plain" = "org.gnome.TextEditor.desktop";
+          "application/pdf" = "org.gnome.Evince.desktop";
+        })
+        (lib.mkIf nixosConfig.services.desktopManager.plasma6.enable {
+          "image/*" = "org.kde.gwenview.desktop";
+          "text/plain" = "org.kde.kwrite.desktop";
+          "application/pdf" = "org.kde.okular.desktop";
+        })
+      ];
+    };
 
-    "lf".source = "${lnDots}/lf";
-    "mpv".source = "${lnDots}/mpv";
-    "mako".source = "${lnDots}/mako";
-    "helix".source = "${lnDots}/helix";
-    "waybar".source = "${lnDots}/waybar";
-    "yt-dlp".source = "${lnDots}/yt-dlp";
-    "starship.toml".source = "${lnDots}/starship.toml";
-    "sway/custom.conf".source = "${lnDots}/sway/custom.conf";
-    "hypr/custom.conf".source = "${lnDots}/hypr/custom.conf";
-    "hypr/hyprlock.conf".source = "${lnDots}/hypr/hyprlock.conf";
-  };
+    # Cursor Theme
+    # home.pointerCursor = {
+    #   name = "Vanilla-DMZ-AA";
+    #   package = pkgs.vanilla-dmz;
+    #   size = 128;
+    #   # name = "Bibata-Modern-Classic";
+    #   # package = pkgs.bibata-cursors;
+    #   # size = 128;
+    # };
 
-  xdg.dataFile = {
-    "goodvibes".source = ../dotfiles/goodvibes;
-    "color-schemes/Genshin.colors".source = ../dotfiles/misc/kde-color-Genshin.colors;
+    # desktopEntries = {
+    #   spotify = {
+    #     name = "Spotify";
+    #     genericName = "Music Player";
+    #     icon = "spotify-client";
+    #     exec = "env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2";
+    #     terminal = false;
+    #     categories = ["Application" "Music"];
+    #   };
+    # };
   };
 }

@@ -4,14 +4,16 @@
     [
       ./git.nix
       ./cli.nix
-      ./xdg.nix
       ./zsh.nix
       ./bash.nix
       ./tmux.nix
       ./alias.nix
+      ./files.nix
     ]
+    # for desktop environment
     ++ lib.optionals nixosConfig.services.pipewire.enable [
       ./gui.nix
+      ./xdg.nix
       ./editor.nix
       ./browsers.nix
       ./mods/polkit.nix
