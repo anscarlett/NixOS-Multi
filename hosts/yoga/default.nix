@@ -29,9 +29,7 @@
   ###############################################
   ## Mods
   ###############################################
-  services.xserver.desktopManager.gnome.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-  # mods.sway.enable = true;
+  mods.gnome.enable = true;
 
   # mods.steam.enable = true;
 

@@ -22,7 +22,7 @@
     # fractal
     # discord
     tdesktop # (webkitgtk)
-    # nekoray
+    nekoray
     # (pkgs.makeAutostartItem {
     #   name = "nekoray";
     #   package = pkgs.nekoray;

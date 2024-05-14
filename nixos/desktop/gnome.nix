@@ -5,95 +5,106 @@
   username,
   ...
 }:
-lib.mkIf config.services.xserver.desktopManager.gnome.enable {
-
-  # mods.fcitx.enable = true;
-
-  i18n.inputMethod = {
-    enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [
-      # libpinyin
-      (rime.override { rimeDataPkgs = [ pkgs.rime-ice ]; })
-    ];
+let
+  cfg = config.mods.gnome;
+in
+{
+  options.mods.gnome = {
+    enable = lib.mkEnableOption ''
+      my gnome customize.
+    '';
   };
 
-  services = {
-    displayManager.autoLogin.user = "${username}";
+  config = lib.mkIf cfg.enable {
 
-    xserver = {
-      enable = true;
-      excludePackages = [ pkgs.xterm ];
+    # mods.fcitx.enable = true;
 
-      displayManager.gdm.enable = true;
-      # desktopManager.gnome.enable = true;
+    i18n.inputMethod = {
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [
+        # libpinyin
+        (rime.override { rimeDataPkgs = [ pkgs.rime-ice ]; })
+      ];
     };
 
-    packagekit.enable = false;
-    # gnome.sushi.enable = true;
-    # gnome.tracker.enable = false;
-    # gnome.tracker-miners.enable = false;
-  };
+    services = {
+      displayManager.autoLogin.user = "${username}";
 
-  # Fix autologin failed: https://nixos.wiki/wiki/GNOME
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+      xserver = {
+        enable = true;
+        excludePackages = [ pkgs.xterm ];
 
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome.yelp
-    gnome.geary
-    gnome.totem
-    gnome-photos
-    gnome.baobab
-    gnome.gnome-music
-    gnome.gnome-software
-  ];
+        displayManager.gdm.enable = true;
+        desktopManager.gnome.enable = true;
+      };
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      gthumb
-      # authenticator
-      gparted
-      gnome-randr
-      qadwaitadecorations-qt6
+      packagekit.enable = false;
+      # gnome.sushi.enable = true;
+      # gnome.tracker.enable = false;
+      # gnome.tracker-miners.enable = false;
+    };
 
-      gnome.gnome-tweaks
-      gnome.dconf-editor
-      gnome.gnome-power-manager
-      gnome.gnome-sound-recorder
-      # gnome.pomodoro
-      # gnome.gnome-boxes
-      # gnome-network-displays
-      # gnome-builder
-      # gnome-firmware-updater
-    ]
-    ++ (with gnomeExtensions; [
-      app-hider
-      appindicator
-      app-icons-taskbar
-      # rocketbar
-      dash-to-dock
-      # dash2dock-lite
-      # dash-to-panel
-      night-theme-switcher
-      clipboard-history
-      # clipboard-indicator
-      # blur-my-shell
-      gradient-top-bar
-      top-bar-organizer
-      # just-perfection
-      runcat
-      caffeine
-      paperwm
-      # ddterm
-      improved-osk
-      astra-monitor
-    ]);
+    # Fix autologin failed: https://nixos.wiki/wiki/GNOME
+    systemd.services."getty@tty1".enable = false;
+    systemd.services."autovt@tty1".enable = false;
 
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.valent;
-    # package = pkgs.gnomeExtensions.gsconnect;
+    environment.gnome.excludePackages = with pkgs; [
+      gnome-tour
+      gnome.yelp
+      gnome.geary
+      gnome.totem
+      gnome-photos
+      gnome.baobab
+      gnome.gnome-music
+      gnome.gnome-software
+    ];
+
+    environment.systemPackages =
+      with pkgs;
+      [
+        gthumb
+        # authenticator
+        gparted
+        gnome-randr
+        qadwaitadecorations-qt6
+
+        gnome.gnome-tweaks
+        gnome.dconf-editor
+        gnome.gnome-power-manager
+        gnome.gnome-sound-recorder
+        # gnome.pomodoro
+        # gnome.gnome-boxes
+        # gnome-network-displays
+        # gnome-builder
+        # gnome-firmware-updater
+      ]
+      ++ (with gnomeExtensions; [
+        app-hider
+        appindicator
+        app-icons-taskbar
+        # rocketbar
+        dash-to-dock
+        # dash2dock-lite
+        # dash-to-panel
+        night-theme-switcher
+        clipboard-history
+        # clipboard-indicator
+        # blur-my-shell
+        gradient-top-bar
+        top-bar-organizer
+        # just-perfection
+        runcat
+        caffeine
+        paperwm
+        # ddterm
+        improved-osk
+        astra-monitor
+      ]);
+
+    programs.kdeconnect = {
+      enable = true;
+      # package = pkgs.valent;
+      package = pkgs.gnomeExtensions.gsconnect;
+    };
   };
 }
