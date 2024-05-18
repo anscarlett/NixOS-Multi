@@ -29,11 +29,16 @@
   ###############################################
   ## Mods
   ###############################################
-  mods.gnome.enable = true;
+  mods = {
+    gnome.enable = true;
+    # kde.enable = true;
+    # steam.enable = true;
+  };
 
-  # mods.steam.enable = true;
-
-  # programs.nix-ld.enable = true;
+  programs = {
+    # nix-ld.enable = true;
+    firefox.enable = true;
+  };
 
   # disabledModules = ["config/swap.nix"];
 
