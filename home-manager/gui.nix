@@ -35,6 +35,7 @@
     # ffmpeg
     kooha
     qmmp
+    # fooyin
     # (deadbeef-with-plugins.override {
     #   plugins = with deadbeefPlugins; [mpris2];
     # })

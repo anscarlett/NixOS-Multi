@@ -24,6 +24,7 @@
       libdrm
       libevent
       libglvnd
+      libkrb5
       libnotify
       libpulseaudio
       libunwind
@@ -38,15 +39,17 @@
       pango
       pcre2
       pipewire
-      stdenv.cc.cc
       sqlite
+      stdenv.cc.cc
       systemd
       vulkan-loader
       xorg.libX11
       xorg.libXScrnSaver
+      xorg.libXau
       xorg.libXcomposite
       xorg.libXcursor
       xorg.libXdamage
+      xorg.libXdmcp
       xorg.libXext
       xorg.libXfixes
       xorg.libXi
