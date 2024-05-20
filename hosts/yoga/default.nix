@@ -170,18 +170,6 @@
     #   "/home".options = [ "compress=zstd" ];
     #   "/nix".options = [ "compress=zstd" "noatime" ];
     #   "/swap".options = [ "noatime" ];
-    # "/run/media/iab/Win" = {  # too dangerous
-    #   device = "/dev/nvme0n1p3";
-    #   fsType = "ntfs-3g";
-    #   options = [ # ??
-    #     # Lazy mounting
-    #     "x-systemd.automount"
-    #     "noauto"
-    #     # disconnects after 10 minutes (i.e. 600 seconds)
-    #     # "x-systemd.idle-timeout=600"
-    #   ];
-    #   # options = ["rw" "uid=${username}"]; # default was enough
-    # };
   };
 
   # Swapfile
