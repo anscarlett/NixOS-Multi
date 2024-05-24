@@ -18,7 +18,7 @@
     enable = true;
 
     workspace = {
-      clickItemTo = "select";
+      # clickItemTo = "open";
       lookAndFeel = "org.kde.breezetwilight.desktop"; # breezedark, breezetwilight
       # cursorTheme = "Bibata-Modern-Ice";
       # iconTheme = "Papirus-Dark";
@@ -26,7 +26,7 @@
       # wallpaperPictureOfTheDay = {
       #   provider = "bing";
       # };
-      # wallpaper = "${pkgs.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
+      # wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
     };
 
     # 面板
