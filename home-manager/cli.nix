@@ -110,7 +110,6 @@
     # airgeddon # wifi crack
 
     # Game & fun
-    cava # Music Visualizer
     # pipes-rs
     # cbonsai
     # hollywood

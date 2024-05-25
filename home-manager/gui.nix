@@ -29,6 +29,7 @@
     # })
 
     # Multimedia
+    cava
     spotify
     # muzika
     # vlc
