@@ -50,7 +50,6 @@
     age
     # rage # age encrypt RIIR
     lf
-    ctpv
     chafa # image viewer
     viu # image viewer
     graphviz

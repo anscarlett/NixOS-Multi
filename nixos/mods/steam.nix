@@ -21,8 +21,6 @@ in
 
     programs.steam = {
       enable = true;
-      # fix steam tofu
-      package = pkgs.steam.override { extraPkgs = pkgs: [ pkgs.noto-fonts-cjk-sans ]; };
       gamescopeSession.enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;

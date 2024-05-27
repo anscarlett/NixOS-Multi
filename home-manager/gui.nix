@@ -28,6 +28,10 @@
     #   package = pkgs.nekoray;
     # })
 
+    # Terminal
+    ctpv
+    cava
+
     # Multimedia
     cava
     spotify
