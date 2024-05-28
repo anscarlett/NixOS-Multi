@@ -10,7 +10,7 @@
       wsl-open
       # GUI
       kitty
-      goodvibes
+      # goodvibes
       # emacs29-pgtk
     ];
 

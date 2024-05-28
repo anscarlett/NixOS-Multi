@@ -14,7 +14,7 @@
 
     kitty
     nurl
-    nix-init
+    # nix-init
     # nixpkgs-review
     inputs.deploy-rs.packages.x86_64-linux.deploy-rs
 
