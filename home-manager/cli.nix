@@ -15,11 +15,11 @@
     # comma # ,
     nix-top
     nix-tree
-    nix-prefetch
+    # nix-prefetch
     # colmena
     # nix-update
     # nix-template
-    nix-output-monitor
+    # nix-output-monitor
 
     # Developing
     jq
@@ -52,10 +52,6 @@
     lf
     chafa # image viewer
     viu # image viewer
-    graphviz
-    # imagemagick
-    exiftool
-    ffmpegthumbnailer
     trash-cli
     eget
     croc

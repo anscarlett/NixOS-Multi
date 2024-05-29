@@ -32,6 +32,10 @@
     ctpv
     cava
     ripdrag
+    graphviz
+    # imagemagick
+    exiftool
+    ffmpegthumbnailer
 
     # Multimedia
     cava
