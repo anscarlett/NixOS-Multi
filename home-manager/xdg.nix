@@ -69,15 +69,21 @@
     #   # size = 128;
     # };
 
-    # desktopEntries = {
-    #   spotify = {
-    #     name = "Spotify";
-    #     genericName = "Music Player";
-    #     icon = "spotify-client";
-    #     exec = "env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2";
-    #     terminal = false;
-    #     categories = ["Application" "Music"];
-    #   };
-    # };
+    desktopEntries = {
+      #   spotify = {
+      #     name = "Spotify";
+      #     genericName = "Music Player";
+      #     icon = "spotify-client";
+      #     exec = "env NIXOS_OZONE_WL= spotify %U --force-device-scale-factor=2";
+      #     terminal = false;
+      #     categories = ["Application" "Music"];
+      #   };
+      # FIXME: fix bury on gnome wayland 2x scale
+      code = {
+        name = "Visual Studio Code";
+        icon = "vscode";
+        exec = "code --disable-features=WaylandFractionalScaleV1";
+      };
+    };
   };
 }

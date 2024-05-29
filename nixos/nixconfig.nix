@@ -11,7 +11,8 @@
   };
 
   nix = {
-    channel.enable = false;
+    # FIXME: https://github.com/NixOS/nixpkgs/pull/273170
+    # channel.enable = false;
 
     registry = lib.mkMerge [
       { n.flake = inputs.nixpkgs; }

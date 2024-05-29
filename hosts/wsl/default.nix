@@ -31,6 +31,7 @@
     wsl-open
 
     # GUI
+    foot
     kitty
     # goodvibes
     # emacs29-pgtk
