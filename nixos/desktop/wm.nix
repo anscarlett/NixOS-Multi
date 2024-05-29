@@ -73,11 +73,10 @@
       home.packages = with pkgs; [
         swappy # screenshot annotation editor
         swaybg # wallpaper tool
-        swayidle
         swaylock-effects
-        swaynotificationcenter
         # mako  # , notify-send "sth"
         libnotify # notify-send
+        swayidle
         wlogout
         waybar
 
@@ -133,6 +132,7 @@
         gnome-keyring.enable = true;
         # playerctld.enable = true;
         polkit.enable = true;
+        swaync.enable = true; # notification center
 
         wlsunset = {
           enable = true;

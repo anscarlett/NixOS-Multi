@@ -5,8 +5,6 @@
   ...
 }:
 {
-  imports = [ ./wm.nix ];
-
   # DisplayManager
   services.greetd = {
     enable = true;
