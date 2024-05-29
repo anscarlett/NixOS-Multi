@@ -49,7 +49,6 @@
     sops
     age
     # rage # age encrypt RIIR
-    lf
     chafa # image viewer
     viu # image viewer
     trash-cli

@@ -44,6 +44,7 @@
          ([remap yank-pop] . consult-yank-pop) ; M-y
          ("C-x C-r" . consult-recent-file)
          ("C-c b" . consult-bookmark)
+         ("C-s" . consult-line)
          ("M-." . consult-imenu)
          ("M-m" . consult-mark)))
 

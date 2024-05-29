@@ -2,25 +2,13 @@
   wsl --import NixOS $env:USERPROFILE\NixOS\ nixos-wsl.tar.gz
   wsl --unregister nixos
 */
-{ pkgs, username, ... }:
 {
-  home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      wslu
-      wsl-open
-      # GUI
-      kitty
-      # goodvibes
-      # emacs29-pgtk
-    ];
-
-    home.shellAliases = {
-      wsl-proxy = ''
-        export {http,https,ftp}_proxy=192.168.2.118:7890 ; \
-                export {HTTP,HTTPS,FTP}_PROXY=192.168.2.118:7890'';
-    };
-  };
-
+  lib,
+  pkgs,
+  username,
+  ...
+}:
+{
   wsl = {
     enable = true;
     defaultUser = "${username}";
@@ -39,6 +27,13 @@
     file
     wget
     nix-bash-completions
+    wslu
+    wsl-open
+
+    # GUI
+    kitty
+    # goodvibes
+    # emacs29-pgtk
   ];
 
   programs.gnupg.agent = {
@@ -51,7 +46,14 @@
   # users.defaultUserShell = pkgs.zsh;
 
   programs.command-not-found.enable = false;
-  documentation.enable = false;
+
+  documentation = {
+    enable = lib.mkDefault false;
+    man.enable = lib.mkDefault false;
+    info.enable = lib.mkDefault false;
+    nixos.enable = lib.mkDefault false;
+  };
+
   time.timeZone = "Asia/Shanghai";
   system.stateVersion = "24.05";
 }

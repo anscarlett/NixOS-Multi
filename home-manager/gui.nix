@@ -29,7 +29,6 @@
     # })
 
     # Terminal
-    ctpv
     cava
     ripdrag
     graphviz
