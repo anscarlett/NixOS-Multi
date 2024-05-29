@@ -10,13 +10,16 @@
   imports = [
     "${inputs.nixpkgs}/nixos/modules/virtualisation/qemu-vm.nix"
     # "${inputs.pkgsReview}/nixos/modules/services/desktops/pipewire/pipewire.nix"
+
+    self.nixosModules.gnome
+    # self.nixosModules.kde
+    # self.nixosModules.sway
+    # self.nixosModules.hyprland
   ];
 
   disabledModules = [
     # "services/desktops/pipewire/pipewire.nix"
   ];
-
-  mods.gnome.enable = true;
 
   mods.virt.enable = false;
   # mods.fcitx.enable = true;

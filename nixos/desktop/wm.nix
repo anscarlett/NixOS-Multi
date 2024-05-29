@@ -1,170 +1,152 @@
+{ pkgs, username, ... }:
 {
-  lib,
-  pkgs,
-  config,
-  username,
-  ...
-}:
-let
-  cfg = config.mods.wm;
-in
-{
-  options.mods.wm = {
-    enable = lib.mkEnableOption ''
-      my wm customize.
-    '';
-  };
+  mods.fcitx.enable = true;
 
-  config = lib.mkIf cfg.enable {
-
-    mods.fcitx.enable = true;
-
-    services = {
-      xserver.displayManager.lightdm = {
-        enable = false; # greetd instaed
-        greeters.gtk = {
-          cursorTheme.size = 48;
-          extraConfig = ''
-            xft-dpi=261
-            clock-format=%H:%M
-          '';
-          indicators = [
-            "~spacer"
-            "~clock"
-            "~spacer"
-            "~session"
-            # "~language"
-            # "~a11y"
-            "~power"
-          ];
-        };
-      };
-
-      gvfs.enable = true; # (webkitgtk)
-      upower.enable = true;
-      blueman.enable = true;
-      geoclue2.enable = true;
-    };
-
-    programs = {
-      light.enable = true;
-      # gtklock.enable = true;
-      evince.enable = true;
-      file-roller.enable = true;
-
-      thunar = {
-        enable = true;
-        plugins = with pkgs.xfce; [
-          thunar-archive-plugin
-          thunar-volman
+  services = {
+    xserver.displayManager.lightdm = {
+      enable = false; # greetd instaed
+      greeters.gtk = {
+        cursorTheme.size = 48;
+        extraConfig = ''
+          xft-dpi=261
+          clock-format=%H:%M
+        '';
+        indicators = [
+          "~spacer"
+          "~clock"
+          "~spacer"
+          "~session"
+          # "~language"
+          # "~a11y"
+          "~power"
         ];
       };
     };
 
-    # If using wm@hm
-    security.pam.services.swaylock = { };
-    programs.dconf.enable = true;
-    programs.xwayland.enable = true;
+    gvfs.enable = true; # (webkitgtk)
+    upower.enable = true;
+    blueman.enable = true;
+    geoclue2.enable = true;
+  };
 
-    environment.pathsToLink = [
-      "/share/fcitx5" # for fxitx theme
-    ];
+  programs = {
+    light.enable = true;
+    # gtklock.enable = true;
+    evince.enable = true;
+    file-roller.enable = true;
 
-    environment.sessionVariables = {
-      GTK_USE_PORTAL = "1";
-      # GDK_BACKEND = "wayland";
-      # WLR_DRM_NO_ATOMIC = "1";
-      WLR_NO_HARDWARE_CURSORS = "1";
-    };
-
-    xdg.portal = {
+    thunar = {
       enable = true;
-      wlr.enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "*";
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
     };
+  };
 
-    home-manager.users.${username} =
-      { config, pkgs, ... }:
-      {
-        home.packages = with pkgs; [
-          swappy # screenshot annotation editor
-          swaybg # wallpaper tool
-          swayidle
-          swaylock-effects
-          swaynotificationcenter
-          # mako  # , notify-send "sth"
-          libnotify # notify-send
-          wlogout
-          waybar
+  # If using wm@hm
+  security.pam.services.swaylock = { };
+  programs.dconf.enable = true;
+  programs.xwayland.enable = true;
 
-          wofi # quick run
-          wofi-emoji
-          wl-clipboard
-          wf-recorder
-          cliphist
-          networkmanagerapplet
-          bluetuith
-          blueberry
-          wlopm
-          wev # wayland event view
-          wvkbd # on-screen keyboard
-          # waypipe # proxy ?
-          # wtype # xdotool
+  environment.pathsToLink = [
+    "/share/fcitx5" # for fxitx theme
+  ];
 
-          # Display
-          brightnessctl # same like light
-          wlsunset # nightlight
-          wl-gammactl
-          wdisplays
-          wlr-randr
-          kanshi # autorandr
+  environment.sessionVariables = {
+    GTK_USE_PORTAL = "1";
+    # GDK_BACKEND = "wayland";
+    # WLR_DRM_NO_ATOMIC = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 
-          # Media
-          # grim # grab image
-          # slurp # select region
-          shotman
-          pavucontrol
-          playerctl # media player control
-          pamixer # volume control
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
 
-          # Needs when use other DM
-          gnome.adwaita-icon-theme
-          gnome.gnome-themes-extra
-          gnome.dconf-editor
-          gnome.gnome-tweaks # (webkitgtk)
+  home-manager.users.${username} =
+    { config, pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        swappy # screenshot annotation editor
+        swaybg # wallpaper tool
+        swayidle
+        swaylock-effects
+        swaynotificationcenter
+        # mako  # , notify-send "sth"
+        libnotify # notify-send
+        wlogout
+        waybar
 
-          xfce.mousepad
-          nomacs
-          # gnome.gnome-power-manager
-          # gnome.gnome-characters
-          # gnome.eog
-          # gthumb
-          # kdePackages.gwenview
-          gparted
-        ];
+        wofi # quick run
+        wofi-emoji
+        wl-clipboard
+        wf-recorder
+        cliphist
+        networkmanagerapplet
+        bluetuith
+        blueberry
+        wlopm
+        wev # wayland event view
+        wvkbd # on-screen keyboard
+        # waypipe # proxy ?
+        # wtype # xdotool
 
-        services = {
-          avizo.enable = true;
-          udiskie.enable = true;
-          gnome-keyring.enable = true;
-          # playerctld.enable = true;
-          polkit.enable = true;
+        # Display
+        brightnessctl # same like light
+        wlsunset # nightlight
+        wl-gammactl
+        wdisplays
+        wlr-randr
+        kanshi # autorandr
 
-          wlsunset = {
-            enable = true;
-            # gama = "2.0";
-            latitude = "22.2783";
-            longitude = "114.1747";
-          };
-        };
+        # Media
+        # grim # grab image
+        # slurp # select region
+        shotman
+        pavucontrol
+        playerctl # media player control
+        pamixer # volume control
 
-        qt = {
+        # Needs when use other DM
+        gnome.adwaita-icon-theme
+        gnome.gnome-themes-extra
+        gnome.dconf-editor
+        gnome.gnome-tweaks # (webkitgtk)
+
+        xfce.mousepad
+        nomacs
+        # gnome.gnome-power-manager
+        # gnome.gnome-characters
+        # gnome.eog
+        # gthumb
+        # kdePackages.gwenview
+        gparted
+      ];
+
+      services = {
+        avizo.enable = true;
+        udiskie.enable = true;
+        gnome-keyring.enable = true;
+        # playerctld.enable = true;
+        polkit.enable = true;
+
+        wlsunset = {
           enable = true;
-          platformTheme.name = "adwaita";
-          style.name = "adwaita";
-          style.package = pkgs.adwaita-qt;
+          # gama = "2.0";
+          latitude = "22.2783";
+          longitude = "114.1747";
         };
       };
-  };
+
+      qt = {
+        enable = true;
+        platformTheme.name = "adwaita";
+        style.name = "adwaita";
+        style.package = pkgs.adwaita-qt;
+      };
+    };
 }

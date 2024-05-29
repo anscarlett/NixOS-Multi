@@ -9,12 +9,16 @@
     ./disko.nix
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.common-gpu-intel
+
+    self.nixosModules.gnome
+    # self.nixosModules.kde
+    # self.nixosModules.sway
+    # self.nixosModules.hyprland
   ];
 
   ###############################################
   ## Mods
   ###############################################
-  mods.gnome.enable = true;
 
   # mods.steam.enable = true;
 

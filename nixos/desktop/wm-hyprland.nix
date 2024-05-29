@@ -1,50 +1,37 @@
 {
   lib,
   pkgs,
-  config,
   username,
   ...
 }:
-let
-  cfg = config.mods.hyprland;
-in
 {
-  options.mods.hyprland = {
-    enable = lib.mkEnableOption ''
-      my hyprland customize.
-    '';
+  imports = [ ./wm.nix ];
+
+  # DisplayManager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd Hyprland";
+      # Autologin
+      initial_session = {
+        command = "Hyprland";
+        user = "${username}";
+      };
+    };
   };
 
-  config = lib.mkIf cfg.enable {
-
-    mods.wm.enable = true;
-
-    # DisplayManager
-    services.greetd = {
+  home-manager.users.${username} = {
+    wayland.windowManager.hyprland = {
       enable = true;
-      settings = {
-        default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd Hyprland";
-        # Autologin
-        initial_session = {
-          command = "Hyprland";
-          user = "${username}";
-        };
-      };
+      extraConfig = ''
+        source=./custom.conf
+      '';
     };
 
-    home-manager.users.${username} = {
-      wayland.windowManager.hyprland = {
-        enable = true;
-        extraConfig = ''
-          source=./custom.conf
-        '';
-      };
-
-      home.packages = with pkgs; [
-        # hyprpaper # wallpaper
-        hyprpicker
-        hyprlock
-      ];
-    };
+    home.packages = with pkgs; [
+      # hyprpaper # wallpaper
+      hyprpicker
+      hyprlock
+    ];
   };
 }

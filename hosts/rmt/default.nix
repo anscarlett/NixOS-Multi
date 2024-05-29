@@ -11,9 +11,12 @@
     # ./disko-btrfs.nix
     ./disko-bcachefs.nix
     (modulesPath + "/profiles/qemu-guest.nix")
-  ];
 
-  mods.gnome.enable = true;
+    self.nixosModules.gnome
+    # self.nixosModules.kde
+    # self.nixosModules.sway
+    # self.nixosModules.hyprland
+  ];
 
   # services.flatpak.enable = true;
 

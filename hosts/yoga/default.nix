@@ -24,14 +24,17 @@
     # ls /sys/devices/system/cpu/cpu0/   :show CPPCCPPC
 
     # "${inputs.nixpkgs-pr}/nixos/modules/config/swap.nix"
+
+    self.nixosModules.gnome
+    # self.nixosModules.kde
+    # self.nixosModules.sway
+    # self.nixosModules.hyprland
   ];
 
   ###############################################
   ## Mods
   ###############################################
   mods = {
-    gnome.enable = true;
-    # kde.enable = true;
     # steam.enable = true;
   };
 
