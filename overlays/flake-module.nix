@@ -74,9 +74,6 @@
       weektodo = prev.callPackage ./weektodo { };
       thorium-reader = prev.callPackage ./thorium-reader { };
 
-      # pnpm
-      example-1 = prev.callPackage ./example { };
-
       # C
       azcomicv = prev.callPackage ./azcomicv { };
 

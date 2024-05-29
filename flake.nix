@@ -38,7 +38,7 @@
           _module.args = {
             pkgs = import inputs.nixpkgs {
               inherit system;
-              overlays = builtins.attrValues self.overlays ++ [ inputs.pnpm2nix.overlays.default ];
+              overlays = builtins.attrValues self.overlays;
               config = {
                 allowUnfree = true;
                 # allowBroken = true;
@@ -102,11 +102,6 @@
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    };
-
-    pnpm2nix = {
-      url = "github:nzbr/pnpm2nix-nzbr";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # nur.url = "github:nix-community/NUR";
