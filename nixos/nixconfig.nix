@@ -7,7 +7,7 @@
 {
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = builtins.attrValues inputs.self.overlays;
+    overlays = builtins.attrValues inputs.self.overlays ++ [ inputs.pnpm2nix.overlays.default ];
   };
 
   nix = {

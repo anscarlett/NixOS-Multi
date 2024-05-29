@@ -1,0 +1,21 @@
+{
+  "name": "pnpm2nix-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build --public-url ./"
+  },
+  "source": [
+    "index.html"
+  ],
+  "dependencies": {
+    "@fontsource/roboto-slab": "^5.0.0",
+    "@fortawesome/fontawesome-free": "^6.3.0",
+    "copperflame": "github:nzbr/copperflame"
+  },
+  "devDependencies": {
+    "parcel": "2.9.3",
+    "@parcel/transformer-sass": "2.9.3"
+  }
+}
