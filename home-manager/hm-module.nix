@@ -23,4 +23,7 @@
 
   home.stateVersion = nixosConfig.system.stateVersion;
   home.enableNixpkgsReleaseCheck = false;
+
+  # TODO: https://github.com/nix-community/home-manager/issues/5452
+  systemd.user.startServices = "sd-switch";
 }

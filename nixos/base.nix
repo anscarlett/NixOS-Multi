@@ -64,11 +64,19 @@
 
   programs.command-not-found.enable = false;
 
-  documentation.enable = lib.mkDefault false;
-  documentation.info.enable = lib.mkDefault false;
-  documentation.man.enable = lib.mkDefault false;
-  documentation.nixos.enable = lib.mkDefault false;
+  documentation = {
+    enable = lib.mkDefault false;
+    man.enable = lib.mkDefault false;
+    info.enable = lib.mkDefault false;
+    nixos.enable = lib.mkDefault false;
+  };
 
   time.timeZone = "Asia/Shanghai";
   system.stateVersion = "24.05";
+
+  # TODO: an experimental re-implementation of `switch-to-configuration`
+  system.switch = {
+    enable = false;
+    enableNg = true;
+  };
 }
