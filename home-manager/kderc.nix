@@ -14,6 +14,8 @@
   };
 
   # rm .config/k* .config/plasma* .config/power*
+  # FIXME: https://github.com/pjones/plasma-manager/issues/162
+  # rm ~/.local/share/plasma-manager/last_run_* ; ~/.local/share/plasma-manager/run_all.sh
   programs.plasma = {
     enable = true;
 

@@ -60,7 +60,6 @@
     eget
     croc
     magic-wormhole-rs
-    ripdrag
 
     # System Monitor
     ctop # containers monitor
@@ -74,7 +73,6 @@
     gdu
     duf
     dysk
-    fastfetch
     tokei # count code
 
     # Utils

@@ -31,6 +31,7 @@
     # Terminal
     ctpv
     cava
+    ripdrag
 
     # Multimedia
     cava
