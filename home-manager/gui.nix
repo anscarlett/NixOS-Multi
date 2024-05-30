@@ -10,7 +10,6 @@
     # nightpdf
     # azcomicv
     # moonfm
-    # zed-editor
 
     kitty
     nurl
