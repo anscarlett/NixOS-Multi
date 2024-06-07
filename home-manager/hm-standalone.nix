@@ -44,7 +44,7 @@
         extraModules = [ ./dconf.nix ];
       };
 
-      # other user at nixos
+      # other user on nixos
       guest = mkHome {
         username = "guest";
         extraModules = [

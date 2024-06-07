@@ -35,7 +35,7 @@
   ## Mods
   ###############################################
   mods = {
-    # steam.enable = true;
+    steam.enable = true;
   };
 
   programs = {
