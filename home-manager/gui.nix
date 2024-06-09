@@ -97,6 +97,7 @@
     # koodo-reader
     # librum
     notes
+    planify
     # endeavour
     # ghostwriter # (qtwebengine)
     # textpieces

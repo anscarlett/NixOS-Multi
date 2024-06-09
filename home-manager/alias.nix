@@ -2,7 +2,6 @@
 {
   home.shellAliases = {
     cat = "${lib.getExe pkgs.bat} -p";
-    j = "${lib.getExe pkgs.just}";
     l = "${lib.getExe pkgs.eza} -l --icons";
     "la." = "ls -d .*";
     rm = "${pkgs.trash-cli}/bin/trash-put";

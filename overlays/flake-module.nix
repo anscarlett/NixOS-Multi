@@ -52,7 +52,8 @@
 
     # nix build --impure --expr "(import <nixpkgs> {}).callPackage ./. {}" -L
     default = final: prev: {
-      clash-verge = prev.callPackage ./clash-verge { };
+      # clash-verge = prev.callPackage ./clash-verge { };
+      clash-verge = prev.callPackage ./clash-verge-source { };
       clash-nyanpasu = prev.callPackage ./clash-nyanpasu { };
 
       # Data
