@@ -17,7 +17,7 @@
   webkitgtk,
   libayatana-appindicator,
   clash-meta,
-  clash-geoip,
+  dbip-country-lite,
   v2ray-geoip,
   v2ray-domain-list-community,
 }:
@@ -103,19 +103,20 @@ stdenv.mkDerivation (finalAttrs: {
 
   postFixup = ''
     ln -sf ${lib.getExe clash-meta} $out/bin/clash-meta
+    # nixpkgs doesn't have clash-meta-alpha right now.
     ln -sf ${lib.getExe clash-meta} $out/bin/clash-meta-alpha
 
-    ln -sf ${clash-geoip}/etc/clash/Country.mmdb $out/lib/clash-verge/resources
     ln -sf ${v2ray-geoip}/share/v2ray/geoip.dat $out/lib/clash-verge/resources
     ln -sf ${v2ray-domain-list-community}/share/v2ray/geosite.dat $out/lib/clash-verge/resources
+    ln -sf ${dbip-country-lite}/share/dbip/dbip-country-lite.mmdb $out/lib/clash-verge/resources/Country.mmdb
   '';
 
-  meta = with lib; {
-    description = "A Clash Meta GUI based on Tauri, Continuation of Clash Verge";
+  meta = {
+    description = "Clash Meta GUI based on Tauri, Continuation of Clash Verge";
     homepage = "https://github.com/clash-verge-rev/clash-verge-rev";
-    license = licenses.gpl3Plus;
+    license = lib.licenses.gpl3Plus;
     platforms = lib.platforms.linux;
     mainProgram = "clash-verge";
-    maintainers = with maintainers; [ zendo ];
+    maintainers = with lib.maintainers; [ zendo ];
   };
 })
