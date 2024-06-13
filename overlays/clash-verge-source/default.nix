@@ -45,21 +45,16 @@ stdenv.mkDerivation (finalAttrs: {
 
     # correct path for resources
     substituteInPlace $cargoDepsCopy/tauri-utils-*/src/platform.rs \
-       --replace-fail "\"/usr" "\"$out"
+      --replace-fail "\"/usr" "\"$out"
 
-    # empty files as placeholders
-    mkdir ./{sidecar,resources}
-    touch sidecar/clash-meta-{,alpha-}x86_64-unknown-linux-gnu
-    touch resources/geo{ip,site}.dat
-    touch resources/Country.mmdb
+    # skip build sidecar and resources
+    sed -i -e '/externalBin/d' -e '/resources/d' tauri.conf.json
   '';
 
   pnpmDeps = pnpm.fetchDeps {
     inherit (finalAttrs) pname version src;
     hash = "sha256-yv7VjLcwIBR5Xh14IAwiUFzjoLgdJV18psKGWzhXULw=";
   };
-
-  # pnpmRoot = "..";
 
   cargoDeps = rustPlatform.importCargoLock {
     lockFile = ./Cargo.lock;
@@ -106,9 +101,10 @@ stdenv.mkDerivation (finalAttrs: {
     # nixpkgs doesn't have clash-meta-alpha right now.
     ln -sf ${lib.getExe clash-meta} $out/bin/clash-meta-alpha
 
+    mkdir -p $out/lib/clash-verge/resources
     ln -sf ${v2ray-geoip}/share/v2ray/geoip.dat $out/lib/clash-verge/resources
     ln -sf ${v2ray-domain-list-community}/share/v2ray/geosite.dat $out/lib/clash-verge/resources
-    ln -sf ${dbip-country-lite}/share/dbip/dbip-country-lite.mmdb $out/lib/clash-verge/resources/Country.mmdb
+    ln -sf ${dbip-country-lite.mmdb} $out/lib/clash-verge/resources/Country.mmdb
   '';
 
   meta = {

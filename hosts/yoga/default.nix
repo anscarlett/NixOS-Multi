@@ -16,7 +16,7 @@
 
     # "${modulesPath}/profiles/perlless.nix"
 
-    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    # inputs.nixos-hardware.nixosModules.common-gpu-amd
     # inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
     # inputs.nixos-hardware.nixosModules.lenovo-yoga-7-14ARH7.amdgpu
     # cpupower frequency-info
@@ -35,7 +35,7 @@
   ## Mods
   ###############################################
   mods = {
-    steam.enable = true;
+    # steam.enable = true;
   };
 
   programs = {
@@ -52,8 +52,17 @@
   ###############################################
   ## Hardware
   ###############################################
-  # amdvlk or opengl(default)
-  hardware.amdgpu.amdvlk = true;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  hardware.amdgpu.amdvlk = {
+    enable = true;
+    support32Bit.enable = true;
+  };
 
   # Optimize SSD
   services.fstrim.enable = lib.mkDefault true;

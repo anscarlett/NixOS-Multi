@@ -4,7 +4,7 @@
   sudo virsh net-autostart default
 
   ## for clipboard share
-  spice-vdagent (Guest)
+  apt install spice-vdagent (Guest)
 
   ## for folders share
   Memory —— enable the shared memory
