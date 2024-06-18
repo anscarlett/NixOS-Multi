@@ -14,15 +14,16 @@
   };
 
   # rm .config/k* .config/plasma* .config/power*
-  # FIXME: https://github.com/pjones/plasma-manager/issues/162
-  # rm ~/.local/share/plasma-manager/last_run_* ; ~/.local/share/plasma-manager/run_all.sh
   programs.plasma = {
     enable = true;
 
     workspace = {
       # clickItemTo = "open";
       lookAndFeel = "org.kde.breezetwilight.desktop"; # breezedark, breezetwilight
-      # cursorTheme = "Bibata-Modern-Ice";
+      # cursor = {
+      #   theme = "Bibata-Modern-Ice";
+      #   size = 32;
+      # };
       # iconTheme = "Papirus-Dark";
       # colorScheme = "Genshin";
       # wallpaperPictureOfTheDay = {
@@ -30,6 +31,13 @@
       # };
       # wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
     };
+
+    # fonts = {
+    #   general = {
+    #     family = "JetBrains Mono";
+    #     pointSize = 12;
+    #   };
+    # };
 
     # 面板
     panels = [
@@ -56,8 +64,26 @@
           }
           "org.kde.plasma.panelspacer" # 面板间隙
           "org.kde.plasma.marginsseparator" # 边距分隔符
-          "org.kde.plasma.systemtray"
-          "org.kde.plasma.digitalclock"
+          {
+            systemTray.items = {
+              # We explicitly show bluetooth and battery
+              shown = [
+                "org.kde.plasma.volume"
+                "org.kde.plasma.networkmanagement"
+              ];
+              # And explicitly hide networkmanagement and volume
+              hidden = [
+                "org.kde.plasma.battery"
+                "org.kde.plasma.bluetooth"
+              ];
+            };
+          }
+          {
+            digitalClock = {
+              calendar.firstDayOfWeek = "monday";
+              time.format = "24h";
+            };
+          }
           "org.kde.plasma.showdesktop"
           "org.kde.plasma.pager" # 虚拟桌面切换器
         ];
@@ -90,23 +116,29 @@
           "肆"
         ];
       };
+      # 窗口管理 - 桌面特效
+      effects = {
+        wobblyWindows.enable = true;
+        cube.enable = true;
+        desktopSwitching.animation = "slide";
+      };
     }; # kwin end here.
 
     configFile = {
       # 密码库
-      "kwalletrc"."Wallet"."Enabled".value = false;
-      "kwalletrc"."Wallet"."First Use".value = false;
+      "kwalletrc"."Wallet"."Enabled" = false;
+      "kwalletrc"."Wallet"."First Use" = false;
 
       # 搜索
-      "baloofilerc"."Basic Settings"."Indexing-Enabled".value = false;
+      baloofilerc."Basic Settings"."Indexing-Enabled" = false;
 
       # dolphin
-      "dolphinrc"."General"."ShowFullPath".value = true;
+      "dolphinrc"."General"."ShowFullPath" = true;
 
       # 剪贴板
       klipperrc = {
-        "General"."MaxClipItems".value = 300;
-        "General"."SyncClipboards".value = true;
+        "General"."MaxClipItems" = 300;
+        "General"."SyncClipboards" = true;
       };
 
       # FIXME: https://github.com/pjones/plasma-manager/issues/47
@@ -116,7 +148,7 @@
 
       # 锁屏
       kscreenlockerrc = {
-        "Daemon"."Timeout".value = 8; # minutes
+        "Daemon"."Timeout" = 8; # minutes
       };
 
       # 电源管理
@@ -145,28 +177,17 @@
 
       kwinrc = {
         # 夜间颜色
-        "NightColor"."Active".value = true;
-        "NightColor"."Mode".value = "Location";
-        "NightColor"."LatitudeFixed".value = 23.12;
-        "NightColor"."LongitudeFixed".value = 113.26;
-        "NightColor"."NightTemperature".value = 3800;
+        "NightColor"."Active" = true;
+        "NightColor"."Mode" = "Location";
+        "NightColor"."LatitudeFixed" = 23.12;
+        "NightColor"."LongitudeFixed" = 113.26;
+        "NightColor"."NightTemperature" = 3800;
 
-        "Wayland"."InputMethod[$e]".value = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
-
-        # 窗口管理 - 桌面特效
-        Plugins = {
-          wobblywindowsEnabled.value = true;
-          cubeEnabled.value = true;
-          # blurEnabled = false;
-          # contrastEnabled = true;
-          # kwin4_effect_squashEnabled = false;
-          # magiclampEnabled = true;
-          # zoomEnabled = false;
-        };
+        "Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
 
         # 窗口管理 - 任务切换器
         TabBox = {
-          LayoutName.value = "big_icons";
+          LayoutName = "big_icons";
           # HighlightWindows = false;
         };
 
@@ -177,11 +198,11 @@
 
       # 键盘 - 布局/高级
       kxkbrc = {
-        "Layout"."Use".value = true;
-        "Layout"."ResetOldOptions".value = true;
-        "Layout"."SwitchMode".value = "Global";
-        "Layout"."LayoutList".value = "cn";
-        "Layout"."Options".value = "ctrl:swapcaps";
+        "Layout"."Use" = true;
+        "Layout"."ResetOldOptions" = true;
+        "Layout"."SwitchMode" = "Global";
+        "Layout"."LayoutList" = "cn";
+        "Layout"."Options" = "ctrl:swapcaps";
       };
     }; # configFile end here.
 
@@ -199,10 +220,16 @@
         "Meta+X"
       ];
 
-      "ksmserver"."Log Out" = [
-        "Meta+Esc"
-        "Ctrl+Alt+Del"
-      ];
+      ksmserver = {
+        "Log Out" = [
+          "Meta+Esc"
+          "Ctrl+Alt+Del"
+        ];
+        # "Lock Session" = [
+        #   "Screensaver"
+        #   "Meta+Ctrl+Alt+L"
+        # ];
+      };
 
       kwin = {
         "Window Close" = [

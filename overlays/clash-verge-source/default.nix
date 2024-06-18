@@ -97,9 +97,8 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postFixup = ''
+    # Note: nixpkgs doesn't have clash-meta-alpha right now.
     ln -sf ${lib.getExe clash-meta} $out/bin/clash-meta
-    # nixpkgs doesn't have clash-meta-alpha right now.
-    ln -sf ${lib.getExe clash-meta} $out/bin/clash-meta-alpha
 
     mkdir -p $out/lib/clash-verge/resources
     ln -sf ${v2ray-geoip}/share/v2ray/geoip.dat $out/lib/clash-verge/resources
