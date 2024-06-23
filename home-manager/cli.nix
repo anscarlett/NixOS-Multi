@@ -13,7 +13,6 @@
     # lorri
     # cachix
     # comma # ,
-    nix-top
     nix-tree
     # nix-prefetch
     # colmena

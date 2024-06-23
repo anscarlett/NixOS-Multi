@@ -2,6 +2,7 @@
   lib,
   inputs,
   pkgs,
+  config,
   ...
 }:
 {
@@ -11,8 +12,7 @@
   };
 
   nix = {
-    # FIXME: https://github.com/NixOS/nixpkgs/pull/273170
-    # channel.enable = false;
+    channel.enable = false;
 
     registry = lib.mkMerge [
       { n.flake = inputs.nixpkgs; }
@@ -34,6 +34,10 @@
       use-cgroups = true;
       # max-jobs = 8; # limit the number of parallel jobs
       flake-registry = ""; # disable global registry
+
+      # Workaround for https://github.com/NixOS/nix/issues/9574
+      # https://github.com/NixOS/nixpkgs/pull/273170
+      nix-path = config.nix.nixPath;
 
       # for direnv GC roots
       # keep-outputs = true;

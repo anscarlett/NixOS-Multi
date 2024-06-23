@@ -73,12 +73,6 @@
 
   # services.v2raya.enable = true;
 
-  services.mihomo = {
-    # enable = true;
-    tunMode = true;
-    webui = pkgs.metacubexd;
-  };
-
   ###############################################
   ## Kernel
   ###############################################

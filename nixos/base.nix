@@ -72,7 +72,7 @@
   };
 
   time.timeZone = "Asia/Shanghai";
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   # TODO: an experimental re-implementation of `switch-to-configuration`
   system.switch = {
