@@ -58,6 +58,7 @@
   # Clipboard shared for NixOS@Guest
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
+  services.spice-webdavd.enable = true;
 
   virtualisation = {
     memorySize = 1024 * 3;
