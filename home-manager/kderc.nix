@@ -183,7 +183,7 @@
         "NightColor"."LongitudeFixed" = 113.26;
         "NightColor"."NightTemperature" = 3800;
 
-        "Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
+        # "Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
 
         # 窗口管理 - 任务切换器
         TabBox = {
