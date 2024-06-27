@@ -125,15 +125,17 @@
     }; # kwin end here.
 
     configFile = {
-      # 密码库
-      "kwalletrc"."Wallet"."Enabled" = false;
-      "kwalletrc"."Wallet"."First Use" = false;
-
       # 搜索
       baloofilerc."Basic Settings"."Indexing-Enabled" = false;
 
       # dolphin
-      "dolphinrc"."General"."ShowFullPath" = true;
+      dolphinrc."General"."ShowFullPath" = true;
+
+      # 密码库
+      kwalletrc = {
+        "Wallet"."Enabled" = false;
+        "Wallet"."First Use" = false;
+      };
 
       # 剪贴板
       klipperrc = {
@@ -177,13 +179,13 @@
 
       kwinrc = {
         # 夜间颜色
-        "NightColor"."Active" = true;
-        "NightColor"."Mode" = "Location";
-        "NightColor"."LatitudeFixed" = 23.12;
-        "NightColor"."LongitudeFixed" = 113.26;
-        "NightColor"."NightTemperature" = 3800;
-
-        # "Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
+        NightColor = {
+          "Active" = true;
+          "Mode" = "Location";
+          "LatitudeFixed" = 23.12;
+          "LongitudeFixed" = 113.26;
+          "NightTemperature" = 3800;
+        };
 
         # 窗口管理 - 任务切换器
         TabBox = {
