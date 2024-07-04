@@ -5,7 +5,7 @@
     cmake
     gnumake
     python3
-    zed-editor
+    # zed-editor
   ];
 
   ###############################################

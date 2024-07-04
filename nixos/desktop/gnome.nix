@@ -32,12 +32,12 @@
   systemd.services."autovt@tty1".enable = false;
 
   environment.gnome.excludePackages = with pkgs; [
+    yelp
+    geary
+    totem
+    baobab
     gnome-tour
-    gnome.yelp
-    gnome.geary
-    gnome.totem
     gnome-photos
-    gnome.baobab
     gnome.gnome-music
     gnome.gnome-software
   ];
@@ -51,8 +51,8 @@
       gnome-randr
       qadwaitadecorations-qt6
 
-      gnome.gnome-tweaks
-      gnome.dconf-editor
+      gnome-tweaks
+      dconf-editor
       gnome.gnome-power-manager
       gnome.gnome-sound-recorder
       # gnome.pomodoro
