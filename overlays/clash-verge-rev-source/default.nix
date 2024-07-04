@@ -1,8 +1,9 @@
 {
   lib,
   stdenv,
-  rustPlatform,
   fetchFromGitHub,
+  buildGoModule,
+  rustPlatform,
   nodejs,
   pnpm,
   cargo,
@@ -16,7 +17,7 @@
   openssl,
   webkitgtk,
   libayatana-appindicator,
-  clash-meta,
+  mihomo,
   dbip-country-lite,
   v2ray-geoip,
   v2ray-domain-list-community,
@@ -26,8 +27,24 @@
 # https://github.com/clash-verge-rev/clash-verge-rev/blob/main/src-tauri/tauri.conf.json
 # https://github.com/archlinuxcn/repo/blob/master/archlinuxcn/clash-verge/PKGBUILD
 # https://github.com/clash-verge-rev/clash-verge-rev/blob/main/scripts/check.mjs#L54
+let
+  # overrideAttrs not play well with buildGoModule. Simply redefine a drv.
+  mihomo-alpha = mihomo.overrideAttrs (old: rec {
+    pname = "mihomo";
+    version = "1.18.6-unstable-2024-06-28";
+
+    src = fetchFromGitHub {
+      owner = "MetaCubeX";
+      repo = "mihomo";
+      rev = "0e228765fce4d709af1e672426dea5294e6b7544";
+      hash = "sha256-ZrNnFkkvS8hLEW6u9ZOZ9icehkqlpI4iA3lQf7wM0tg=";
+    };
+
+    vendorHash = "sha256-lBHL4vD+0JDOlc6SWFsj0cerE/ypImoh8UFbL736SmA=";
+  });
+in
 stdenv.mkDerivation (finalAttrs: {
-  pname = "clash-verge";
+  pname = "clash-verge-rev";
   version = "1.6.4";
 
   src = fetchFromGitHub {
@@ -97,8 +114,8 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   postFixup = ''
-    # Note: nixpkgs doesn't have clash-meta-alpha right now.
-    ln -sf ${lib.getExe clash-meta} $out/bin/clash-meta
+    ln -sf ${lib.getExe mihomo} $out/bin/clash-meta
+    ln -sf ${lib.getExe mihomo-alpha} $out/bin/clash-meta-alpha
 
     mkdir -p $out/lib/clash-verge/resources
     ln -sf ${v2ray-geoip}/share/v2ray/geoip.dat $out/lib/clash-verge/resources
@@ -112,6 +129,9 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.gpl3Plus;
     platforms = lib.platforms.linux;
     mainProgram = "clash-verge";
-    maintainers = with lib.maintainers; [ zendo ];
+    maintainers = with lib.maintainers; [
+      zendo
+      Guanran928
+    ];
   };
 })

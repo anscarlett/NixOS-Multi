@@ -7,6 +7,7 @@
         exclude = [
           ./desktop
           ./flake-module.nix
+          ./mods/clash-verge.nix
         ];
       };
     };

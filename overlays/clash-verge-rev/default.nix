@@ -12,7 +12,7 @@
 }:
 
 stdenv.mkDerivation rec {
-  pname = "clash-verge";
+  pname = "clash-verge-rev";
   version = "1.7.2";
 
   src = fetchurl {
